@@ -1,6 +1,6 @@
 {
   "name": "@paycontrollimited/cashier",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "UNLICENSED",
   "type": "module",
   "main": "./dist/index.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PayControlLimited/cashier-public.git"
+    "url": "git+https://github.com/PayControlLimited/PayControl.git"
   },
   "exports": {
     "./package.json": "./package.json",
