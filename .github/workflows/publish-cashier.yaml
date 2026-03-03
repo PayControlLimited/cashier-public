@@ -1,0 +1,77 @@
+name: Publish Cashier to npm
+run-name: "Publish cashier: ${{ inputs.release_tag }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Cashier release tag to publish, for example cashier-v0.1.0"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish-cashier-${{ inputs.release_tag }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm-publish
+    steps:
+      - name: Validate release tag input
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${{ inputs.release_tag }}" != cashier-v* ]]; then
+            echo "release_tag must start with cashier-v. Received: ${{ inputs.release_tag }}" >&2
+            exit 1
+          fi
+
+      - name: Checkout code at release tag
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: refs/tags/${{ inputs.release_tag }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Validate tag version
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          TAG_VERSION="${{ inputs.release_tag }}"
+          TAG_VERSION="${TAG_VERSION#cashier-v}"
+          PACKAGE_VERSION=$(jq -r .version package.json)
+
+          if [ "$TAG_VERSION" != "$PACKAGE_VERSION" ]; then
+            echo "Tag version ($TAG_VERSION) does not match package.json version ($PACKAGE_VERSION)." >&2
+            exit 1
+          fi
+
+      - name: Ensure version is not already published
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          PACKAGE_NAME=$(jq -r .name package.json)
+          PACKAGE_VERSION=$(jq -r .version package.json)
+
+          if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version --registry=https://registry.npmjs.org > /dev/null 2>&1; then
+            echo "${PACKAGE_NAME}@${PACKAGE_VERSION} already exists on npm." >&2
+            exit 1
+          fi
+
+      - name: Verify npm package contents
+        run: npm pack --dry-run
+
+      - name: Publish package to npm
+        run: npm publish --access public --provenance
