@@ -1,11 +1,14 @@
 name: Publish Cashier to npm
-run-name: "Publish cashier: ${{ inputs.release_tag }}"
+run-name: "Publish cashier: ${{ github.event_name == 'workflow_dispatch' && inputs.release_tag || github.ref_name }}"
 
 on:
+  push:
+    tags:
+      - 'cashier-v*'
   workflow_dispatch:
     inputs:
       release_tag:
-        description: "Cashier release tag to publish, for example cashier-v0.1.0"
+        description: "Recovery only. Existing cashier-v* tag to publish again."
         required: true
         type: string
 
@@ -14,7 +17,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: publish-cashier-${{ inputs.release_tag }}
+  group: publish-cashier-${{ github.ref_type }}-${{ github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -22,21 +25,30 @@ jobs:
     runs-on: ubuntu-latest
     environment: npm-publish
     steps:
-      - name: Validate release tag input
+      - name: Resolve release tag
+        id: release-tag
         shell: bash
         run: |
           set -euo pipefail
 
-          if [[ "${{ inputs.release_tag }}" != cashier-v* ]]; then
-            echo "release_tag must start with cashier-v. Received: ${{ inputs.release_tag }}" >&2
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            RELEASE_TAG="${{ inputs.release_tag }}"
+          else
+            RELEASE_TAG="${GITHUB_REF_NAME}"
+          fi
+
+          if [[ "${RELEASE_TAG}" != cashier-v* ]]; then
+            echo "release_tag must start with cashier-v. Received: ${RELEASE_TAG}" >&2
             exit 1
           fi
+
+          echo "release_tag=${RELEASE_TAG}" >> "$GITHUB_OUTPUT"
 
       - name: Checkout code at release tag
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: refs/tags/${{ inputs.release_tag }}
+          ref: refs/tags/${{ steps.release-tag.outputs.release_tag }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -48,7 +60,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          TAG_VERSION="${{ inputs.release_tag }}"
+          TAG_VERSION="${{ steps.release-tag.outputs.release_tag }}"
           TAG_VERSION="${TAG_VERSION#cashier-v}"
           PACKAGE_VERSION=$(jq -r .version package.json)
 
