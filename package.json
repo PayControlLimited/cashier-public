@@ -1,7 +1,7 @@
 {
   "name": "@paycontrollimited/cashier",
-  "version": "0.0.9",
-  "license": "UNLICENSED",
+  "version": "0.0.10",
+  "license": "SEE LICENSE IN LICENCE.md",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
