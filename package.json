@@ -1,0 +1,55 @@
+{
+  "name": "@paycontrollimited/cashier",
+  "version": "0.0.8",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "styles.d.ts",
+    "package.json",
+    "README.md",
+    "LICENCE.md"
+  ],
+  "peerDependencies": {
+    "react": ">=18.0.0 <20.0.0",
+    "react-dom": ">=18.0.0 <20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PayControlLimited/cashier-public.git"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./styles": {
+      "types": "./styles.d.ts",
+      "style": "./dist/index.css",
+      "import": "./dist/index.css",
+      "require": "./dist/index.css",
+      "default": "./dist/index.css"
+    }
+  },
+  "nx": {
+    "tags": [
+      "publishable"
+    ],
+    "targets": {
+      "test": {
+        "dependsOn": [
+          "^build"
+        ]
+      }
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}
