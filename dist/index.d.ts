@@ -69,6 +69,7 @@ export declare type CashierConfig = {
     hostedFieldsFonts?: HostedFieldsFontDefinition[];
     hostedFieldsAutoFocusNextField?: boolean;
     uiTheme?: CashierTheme;
+    uiSelectorPrefix?: string;
     onInit?: (data?: CashierConfig) => void;
     onPaymentCreated?: (data?: PaymentsResponse | PaymentError) => void;
     onPaymentFinished?: (payment: PaymentProgress) => void;
@@ -225,11 +226,11 @@ declare type CommonSchemasSelectItem = {
     /**
      * Display label for this option (can be an i18n key)
      */
-    label?: string;
+    label: string;
     /**
      * Value to submit when this option is selected
      */
-    value?: string;
+    value: string;
 };
 
 /**

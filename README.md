@@ -77,6 +77,7 @@ const config: Partial<CashierConfig> = {
   sessionId: '<session-id>',
   method: CashierMethods.PAYIN,
   apiUrl: 'https://api.paycontrol.app',
+  uiSelectorPrefix: 'merchant-checkout-a',
   extraAttributes: {
     campaign: 'spring-2026',
   },
@@ -224,6 +225,16 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core'
 export class CheckoutModule {}
 ```
 
+## DOM hooks
+
+Cashier adds stable class names in the `pc-cashier__...` format and generated
+IDs for key screens and controls.
+
+- Use `uiSelectorPrefix` to control the ID prefix.
+- The default prefix is `pc-cashier`.
+- If you mount multiple Cashier instances on one page, set a different prefix for each instance.
+- Full selector reference: `docs/cashier/cashier-dom-selectors.md`.
+
 ## Web component usage (framework agnostic)
 
 ```ts
@@ -255,6 +266,7 @@ const config: CashierConfig = {
   uiBonusesAvailable: true,
   uiSuggestAmounts: '',
   uiSuggestAction: [],
+  uiSelectorPrefix: 'merchant-checkout-a',
   gotoPaymentType: null,
   extraAttributes: {
     campaign: 'spring-2026',
