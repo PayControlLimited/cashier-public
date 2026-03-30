@@ -1,8 +1,9 @@
 "use client";
 import { jsx as i, jsxs as Y } from "react/jsx-runtime";
-import { u as Z, a as ee, b as te, C as ne, c as se, d as ae, e as oe, f as ie, g as re, r as h, M as ce, h as ue, L as D, i as le, j as me, k as pe, S as q, l as de, P as fe, t as ye, m as he } from "./index-BEFWHJ_Y.js";
+import { u as Z, a as ee, b as te, C as ne, c as se, d as ae, e as oe, f as ie, g as re, r as h, h as ce, i as ue, B as L, j as le, k as me, l as pe, S as q, m as de, P as fe, t as ye, n as he } from "./index-Cn36M7gq.js";
 import { useContext as be, useRef as ke, useCallback as d, useMemo as $, useEffect as b } from "react";
-function Ae({
+import "react-dom";
+function Pe({
   loaderPaymentTypes: G = []
 }) {
   const k = Z(), {
@@ -15,9 +16,9 @@ function Ae({
     method: K,
     uiAccountDelete: _,
     uiListSelectable: C,
-    uiPreselectedPaymentType: S,
+    uiPreselectedPaymentType: A,
     onPaymentTypeSelected: m,
-    onPaymentTypeDeselected: A,
+    onPaymentTypeDeselected: S,
     resetFlowOnBack: w,
     setCashierState: N
   } = be(ne), {
@@ -29,11 +30,11 @@ function Ae({
     selectPaymentType: p,
     clearPaymentSelection: l
   } = oe(), {
-    requestAccountDelete: M,
+    requestAccountDelete: I,
     actionConfirmationModal: W
-  } = ie(), O = ke(!1), n = H.length > 0 ? H : G, J = he(c, K), I = f("cta.back"), {
+  } = ie(), O = ke(!1), n = H.length > 0 ? H : G, J = he(c, K), F = f("cta.back"), {
     canGoBack: T,
-    handleBack: F
+    handleBack: M
   } = re({
     defaultRoute: J,
     requireCanGoBackForHotkey: !0,
@@ -41,20 +42,20 @@ function Ae({
     useHistory: !0,
     replace: !c
   }), R = c && !v, g = d(() => {
-    R && l(), F();
-  }, [l, F, R]), j = f("cta.continue"), o = $(() => h(n, t), [n, t]), z = c && ce(B), y = d((e) => z ? ue(B, e.limits).isOutOfRange : !1, [B, z]), x = o ? y(o) : !1, r = C, E = !!o && !x, L = f("account.delete.title"), U = d((e) => !_ || !e.accountId ? null : /* @__PURE__ */ i(D, { size: "sm", variant: "neutral", "aria-label": L, onClick: () => {
-    M(e);
-  }, iconOnly: !0, label: L, leadingIcon: /* @__PURE__ */ i(le, {}) }), [L, M, _]);
+    R && l(), M();
+  }, [l, M, R]), V = f("cta.continue"), o = $(() => h(n, t), [n, t]), j = c && ce(B), y = d((e) => j ? ue(B, e.limits).isOutOfRange : !1, [B, j]), x = o ? y(o) : !1, r = C, z = !!o && !x, D = f("account.delete.title"), U = d((e) => !_ || !e.accountId ? null : /* @__PURE__ */ i(L, { size: "sm", variant: "neutral", "aria-label": D, onClick: () => {
+    I(e);
+  }, iconOnly: !0, label: D, leadingIcon: /* @__PURE__ */ i(le, {}) }), [D, I, _]);
   b(() => {
     w && N((e) => ({
       ...e,
       resetFlowOnBack: !1
     }));
   }, [w, N]), b(() => {
-    if (!C || O.current || t || !S) return;
-    const e = h(n, S);
+    if (!C || O.current || t || !A) return;
+    const e = h(n, A);
     e && p(e.name);
-  }, [n, p, t, C, S]), b(() => {
+  }, [n, p, t, C, A]), b(() => {
     x && l();
   }, [l, x]);
   const Q = d((e) => {
@@ -62,7 +63,7 @@ function Ae({
     if (!s || y(s)) return;
     if (r) {
       if (O.current = !0, o === s) {
-        l(), A && A(s);
+        l(), S && S(s);
         return;
       }
       p(s.name), m && m(s);
@@ -80,7 +81,7 @@ function Ae({
         id: s.name
       }
     });
-  }, [l, u, r, y, a, A, m, n, o, p]), V = d(() => {
+  }, [l, u, r, y, a, S, m, n, o, p]), E = d(() => {
     if (!o || !t) return;
     if (u(o) > 0) {
       a({
@@ -96,8 +97,8 @@ function Ae({
     });
   }, [u, a, o, t]), X = $(() => {
     const e = [];
-    return T && e.push(/* @__PURE__ */ i(D, { variant: "neutral", size: "xl", fullWidth: !0, onClick: g, label: I }, "cashier-pts-back")), r && !P && n.length > 0 && e.push(/* @__PURE__ */ i(D, { variant: "secondary", size: "xl", fullWidth: !0, onClick: V, disabled: !E, label: j }, "cashier-pts-continue")), e;
-  }, [I, T, j, g, V, E, P, r, n.length]);
+    return T && e.push(/* @__PURE__ */ i(L, { variant: "neutral", size: "xl", fullWidth: !0, onClick: g, label: F }, "cashier-pts-back")), r && !P && n.length > 0 && e.push(/* @__PURE__ */ i(L, { variant: "secondary", size: "xl", fullWidth: !0, onClick: E, disabled: !z, label: V }, "cashier-pts-continue")), e;
+  }, [F, T, V, g, E, z, P, r, n.length]);
   return me("bottom", X), pe({
     onBack: T ? g : void 0,
     backKey: "Backspace"
@@ -124,8 +125,8 @@ function Ae({
     W
   ] }) });
 }
-const Pe = () => /* @__PURE__ */ i(q, { text: "payment.no_pts_found" });
+const Te = () => /* @__PURE__ */ i(q, { text: "payment.no_pts_found" });
 export {
-  Ae as PtsView,
-  Pe as errorComponent
+  Pe as PtsView,
+  Te as errorComponent
 };

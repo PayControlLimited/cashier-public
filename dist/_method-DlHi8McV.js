@@ -1,8 +1,9 @@
 "use client";
 import { jsx as i, jsxs as X } from "react/jsx-runtime";
-import { u as Y, a as Z, b as ee, C as te, c as ne, d as se, e as ae, f as oe, g as ie, r as h, M as re, h as ce, L as w, i as ue, j as le, k as me, S as pe, l as de, P as ye, t as fe, R as he, m as be } from "./index-BEFWHJ_Y.js";
+import { u as Y, a as Z, b as ee, C as te, c as ne, d as se, e as ae, f as oe, g as ie, r as h, h as re, i as ce, B as w, j as ue, k as le, l as me, S as pe, m as de, P as ye, t as fe, R as he, n as be } from "./index-Cn36M7gq.js";
 import { useContext as ke, useRef as ve, useCallback as d, useMemo as E, useEffect as b } from "react";
-function Te() {
+import "react-dom";
+function ge() {
   const {
     paymentTypes: k
   } = he.useLoaderData();
@@ -27,7 +28,7 @@ function Be({
     resetFlowOnBack: R,
     setCashierState: H
   } = ke(te), {
-    paymentTypesList: M,
+    paymentTypesList: I,
     isError: T
   } = ne(), {
     getBonusCountForPaymentType: u
@@ -37,20 +38,20 @@ function Be({
   } = ae(), {
     requestAccountDelete: O,
     actionConfirmationModal: K
-  } = oe(), _ = ve(!1), n = M.length > 0 ? M : k, W = be(c, G), I = y("cta.back"), {
+  } = oe(), _ = ve(!1), n = I.length > 0 ? I : k, W = be(c, G), F = y("cta.back"), {
     canGoBack: g,
-    handleBack: F
+    handleBack: M
   } = ie({
     defaultRoute: W,
     requireCanGoBackForHotkey: !0,
     enableHotkey: !1,
     useHistory: !0,
     replace: !c
-  }), j = c && !B, x = d(() => {
-    j && l(), F();
-  }, [l, F, j]), z = y("cta.continue"), o = E(() => h(n, t), [n, t]), V = c && re(A), f = d((e) => V ? ce(A, e.limits).isOutOfRange : !1, [A, V]), L = o ? f(o) : !1, r = C, $ = !!o && !L, D = y("account.delete.title"), J = d((e) => !N || !e.accountId ? null : /* @__PURE__ */ i(w, { size: "sm", variant: "neutral", "aria-label": D, onClick: () => {
+  }), V = c && !B, x = d(() => {
+    V && l(), M();
+  }, [l, M, V]), j = y("cta.continue"), o = E(() => h(n, t), [n, t]), z = c && re(A), f = d((e) => z ? ce(A, e.limits).isOutOfRange : !1, [A, z]), D = o ? f(o) : !1, r = C, $ = !!o && !D, L = y("account.delete.title"), J = d((e) => !N || !e.accountId ? null : /* @__PURE__ */ i(w, { size: "sm", variant: "neutral", "aria-label": L, onClick: () => {
     O(e);
-  }, iconOnly: !0, label: D, leadingIcon: /* @__PURE__ */ i(ue, {}) }), [D, O, N]);
+  }, iconOnly: !0, label: L, leadingIcon: /* @__PURE__ */ i(ue, {}) }), [L, O, N]);
   b(() => {
     R && H((e) => ({
       ...e,
@@ -61,8 +62,8 @@ function Be({
     const e = h(n, P);
     e && p(e.name);
   }, [n, p, t, C, P]), b(() => {
-    L && l();
-  }, [l, L]);
+    D && l();
+  }, [l, D]);
   const U = d((e) => {
     const s = h(n, e);
     if (!s || f(s)) return;
@@ -102,8 +103,8 @@ function Be({
     });
   }, [u, a, o, t]), Q = E(() => {
     const e = [];
-    return g && e.push(/* @__PURE__ */ i(w, { variant: "neutral", size: "xl", fullWidth: !0, onClick: x, label: I }, "cashier-pts-back")), r && !T && n.length > 0 && e.push(/* @__PURE__ */ i(w, { variant: "secondary", size: "xl", fullWidth: !0, onClick: q, disabled: !$, label: z }, "cashier-pts-continue")), e;
-  }, [I, g, z, x, q, $, T, r, n.length]);
+    return g && e.push(/* @__PURE__ */ i(w, { variant: "neutral", size: "xl", fullWidth: !0, onClick: x, label: F }, "cashier-pts-back")), r && !T && n.length > 0 && e.push(/* @__PURE__ */ i(w, { variant: "secondary", size: "xl", fullWidth: !0, onClick: q, disabled: !$, label: j }, "cashier-pts-continue")), e;
+  }, [F, g, j, x, q, $, T, r, n.length]);
   return le("bottom", Q), me({
     onBack: g ? x : void 0,
     backKey: "Backspace"
@@ -132,5 +133,5 @@ function Be({
 }
 export {
   Be as PtsView,
-  Te as component
+  ge as component
 };

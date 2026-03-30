@@ -77,6 +77,7 @@ const config: Partial<CashierConfig> = {
   sessionId: '<session-id>',
   method: CashierMethods.PAYIN,
   apiUrl: 'https://api.paycontrol.app',
+  uiShowFees: true,
   uiSelectorPrefix: 'merchant-checkout-a',
   extraAttributes: {
     campaign: 'spring-2026',
@@ -128,6 +129,7 @@ const config: Partial<CashierConfig> = {
   sessionId: '<session-id>',
   method: 'payin' as CashierConfig['method'],
   apiUrl: 'https://api.paycontrol.app',
+  uiShowFees: true,
 }
 
 export default function CheckoutPage() {
@@ -161,6 +163,7 @@ const cashierConfig: Partial<CashierConfig> = {
   sessionId: '<session-id>',
   method: CashierMethods.PAYIN,
   apiUrl: 'https://api.paycontrol.app',
+  uiShowFees: true,
 }
 
 const cashierRef = ref<HTMLElement & { config?: Partial<CashierConfig> } | null>(
@@ -205,6 +208,7 @@ export class CheckoutComponent implements AfterViewInit {
       sessionId: '<session-id>',
       method: CashierMethods.PAYIN,
       apiUrl: 'https://api.paycontrol.app',
+      uiShowFees: true,
     }
 
     defineCashier()
@@ -261,6 +265,7 @@ const config: CashierConfig = {
   uiAmountView: true,
   uiAmountView__PaymentTypePicker: true,
   uiListSelectable: true,
+  uiShowFees: true,
   uiPreselectedPaymentType: null,
   uiAccountDelete: true,
   uiBonusesAvailable: true,

@@ -53,7 +53,9 @@ export declare type CashierConfig = {
     uiUserBalance?: boolean;
     uiAmountView: boolean;
     uiAmountView__PaymentTypePicker: boolean;
+    uiCardBrand: boolean;
     uiListSelectable: boolean;
+    uiShowFees: boolean;
     uiPreselectedPaymentType: string | null;
     uiAccountDelete: boolean;
     uiBonusesAvailable: boolean;
@@ -192,6 +194,10 @@ declare type CommonSchemasPaymentField = {
      * Options for select-type fields
      */
     options?: Array<CommonSchemasSelectItem>;
+    /**
+     * Placeholder text for the field input
+     */
+    placeholder?: string;
 };
 
 declare type CommonSchemasRedirectData = {
@@ -231,6 +237,60 @@ declare type CommonSchemasSelectItem = {
      * Value to submit when this option is selected
      */
     value: string;
+};
+
+/**
+ * 3D Secure 2.x browser data for cardholder authentication
+ */
+declare type CommonSchemasThreeDsBrowserData = {
+    /**
+     * HTTP accept header from the cardholder's browser (max 2048 chars)
+     */
+    browserAcceptHeader?: string;
+    /**
+     * Browser language preferences from Accept-Language header (IETF BCP47 format)
+     */
+    browserAcceptLanguage?: Array<string>;
+    /**
+     * Colour depth of the browser screen in bits
+     */
+    browserColorDepth?: '1' | '4' | '8' | '15' | '16' | '24' | '32' | '48';
+    /**
+     * IP address of the cardholder's browser (IPv4 or IPv6 format)
+     */
+    browserIP?: string;
+    /**
+     * Whether the cardholder's browser supports Java
+     */
+    browserJavaEnabled?: boolean;
+    /**
+     * Whether the cardholder's browser supports JavaScript
+     */
+    browserJavascriptEnabled?: boolean;
+    /**
+     * Language preference from browser settings (ISO 639-1 language code with optional region)
+     */
+    browserLanguage?: string;
+    /**
+     * Total height of the cardholder's screen in pixels
+     */
+    browserScreenHeight?: string;
+    /**
+     * Total width of the cardholder's screen in pixels
+     */
+    browserScreenWidth?: string;
+    /**
+     * Browser timezone offset in minutes from UTC
+     */
+    browserTZ?: string;
+    /**
+     * User agent string from the browser (max 2048 chars)
+     */
+    browserUserAgent?: string;
+    /**
+     * Preferred challenge window size for 3DS authentication UI
+     */
+    challengeWindowSize?: '01' | '02' | '03' | '04' | '05';
 };
 
 /**
@@ -318,61 +378,7 @@ declare type PaymentsRequest = {
      *
      */
     locales?: Array<string>;
-    /**
-     * 3D Secure 2.x browser data for cardholder authentication.
-     * Required for card payments that may trigger 3DS authentication.
-     *
-     */
-    threeds?: {
-        /**
-         * HTTP accept header from the cardholder's browser (max 2048 chars)
-         */
-        browserAcceptHeader?: string;
-        /**
-         * Browser language preferences from Accept-Language header (IETF BCP47 format). Required for 3DS 2.3.1+
-         */
-        browserAcceptLanguage?: Array<string>;
-        /**
-         * Color depth of the browser screen in bits
-         */
-        browserColorDepth?: '1' | '4' | '8' | '15' | '16' | '24' | '32' | '48';
-        /**
-         * IP address of the cardholder's browser (IPv4 or IPv6 format)
-         */
-        browserIP?: string;
-        /**
-         * Whether the cardholder's browser supports Java
-         */
-        browserJavaEnabled?: boolean;
-        /**
-         * Whether the cardholder's browser supports JavaScript
-         */
-        browserJavascriptEnabled?: boolean;
-        /**
-         * Language preference from browser settings (ISO 639-1 language code with optional region)
-         */
-        browserLanguage?: string;
-        /**
-         * Total height of the cardholder's screen in pixels
-         */
-        browserScreenHeight?: string;
-        /**
-         * Total width of the cardholder's screen in pixels
-         */
-        browserScreenWidth?: string;
-        /**
-         * Browser timezone offset in minutes from UTC (negative for east of UTC, positive for west)
-         */
-        browserTZ?: string;
-        /**
-         * User agent string from the browser (max 2048 chars)
-         */
-        browserUserAgent?: string;
-        /**
-         * Preferred challenge window size for 3DS authentication UI
-         */
-        challengeWindowSize?: '01' | '02' | '03' | '04' | '05';
-    };
+    threeds?: CommonSchemasThreeDsBrowserData;
     /**
      * User input, e.g. saveAccount, card holder name
      */

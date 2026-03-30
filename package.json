@@ -1,6 +1,6 @@
 {
   "name": "@paycontrollimited/cashier",
-  "version": "0.0.12",
+  "version": "1.0.0",
   "license": "SEE LICENSE IN LICENCE.md",
   "type": "module",
   "main": "./dist/index.js",
@@ -11,6 +11,7 @@
     "styles.d.ts",
     "package.json",
     "README.md",
+    "CHANGELOG.md",
     "LICENCE.md"
   ],
   "peerDependencies": {
