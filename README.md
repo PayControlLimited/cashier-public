@@ -77,6 +77,7 @@ const config: Partial<CashierConfig> = {
   sessionId: '<session-id>',
   method: CashierMethods.PAYIN,
   apiUrl: 'https://api.paycontrol.app',
+  uiProgressBar: true,
   uiShowFees: true,
   uiSelectorPrefix: 'merchant-checkout-a',
   extraAttributes: {
@@ -129,6 +130,7 @@ const config: Partial<CashierConfig> = {
   sessionId: '<session-id>',
   method: 'payin' as CashierConfig['method'],
   apiUrl: 'https://api.paycontrol.app',
+  uiProgressBar: true,
   uiShowFees: true,
 }
 
@@ -163,6 +165,7 @@ const cashierConfig: Partial<CashierConfig> = {
   sessionId: '<session-id>',
   method: CashierMethods.PAYIN,
   apiUrl: 'https://api.paycontrol.app',
+  uiProgressBar: true,
   uiShowFees: true,
 }
 
@@ -208,6 +211,7 @@ export class CheckoutComponent implements AfterViewInit {
       sessionId: '<session-id>',
       method: CashierMethods.PAYIN,
       apiUrl: 'https://api.paycontrol.app',
+      uiProgressBar: true,
       uiShowFees: true,
     }
 
@@ -239,6 +243,34 @@ IDs for key screens and controls.
 - If you mount multiple Cashier instances on one page, set a different prefix for each instance.
 - Full selector reference: `docs/cashier/cashier-dom-selectors.md`.
 
+## Progress bar
+
+Cashier shows a progress bar by default.
+
+- Use `uiProgressBar` to show or hide it.
+- The bar adapts to the active flow and omits steps that never appear.
+- The bar starts empty and fills as the flow moves forward.
+- Provider redirects and forms count as one provider step.
+- Summary is always the final full state.
+
+## Flow behaviour
+
+Cashier includes a few built-in layout behaviours that apply without extra
+configuration:
+
+- Payment-type confirm and enter-details screens render payment type, selected
+  bonus, and amount inside one shared summary card above the action area.
+- Use `lockAmount` to keep the configured amount fixed inside Cashier. The
+  locked amount is shown in the summary card instead of the editable
+  payment-form amount field. If the locked `initialAmount` is blank or
+  invalid, Cashier uses `0`. Suggested amounts are hidden while the amount is
+  locked.
+- When `uiAmountView__PaymentTypePicker` is enabled, the quick-payment payment
+  type picker stays height-capped and scrolls on longer lists instead of
+  growing to the full available drawer height.
+- Hosted card forms keep a minimum card-like shell height even when only a
+  sparse hosted-field subset is rendered, for example CSC-only verification.
+
 ## Web component usage (framework agnostic)
 
 ```ts
@@ -258,10 +290,12 @@ const config: CashierConfig = {
   apiUrl: 'https://api.paycontrol.app',
   debug: false,
   initialAmount: '0',
+  lockAmount: false,
   currency: 'EUR',
   uiListStyle: 'grid',
   locale: 'en-GB',
   uiPaymentMethodSwitcher: true,
+  uiProgressBar: true,
   uiAmountView: true,
   uiAmountView__PaymentTypePicker: true,
   uiListSelectable: true,

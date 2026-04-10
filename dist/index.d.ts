@@ -46,11 +46,13 @@ export declare type CashierConfig = {
     apiUrl: string;
     debug: boolean;
     initialAmount: string;
+    lockAmount: boolean;
     currency: CashierCurrency;
     uiListStyle: CashierLayoutListType;
     locale: CashierLocale;
     uiPaymentMethodSwitcher: boolean;
     uiUserBalance?: boolean;
+    uiProgressBar: boolean;
     uiAmountView: boolean;
     uiAmountView__PaymentTypePicker: boolean;
     uiCardBrand: boolean;

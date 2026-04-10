@@ -1,6 +1,6 @@
 "use client";
 import { jsx as i, jsxs as X } from "react/jsx-runtime";
-import { u as Y, a as Z, b as ee, C as te, c as ne, d as se, e as ae, f as oe, g as ie, r as h, h as re, i as ce, B as w, j as ue, k as le, l as me, S as pe, m as de, P as ye, t as fe, R as he, n as be } from "./index-Cn36M7gq.js";
+import { u as Y, a as Z, b as ee, C as te, c as ne, d as se, e as ae, f as oe, g as ie, r as h, h as re, i as ce, B as w, j as ue, k as le, l as me, S as pe, m as de, P as ye, t as fe, R as he, n as be } from "./index-CqAj6OOy.js";
 import { useContext as ke, useRef as ve, useCallback as d, useMemo as E, useEffect as b } from "react";
 import "react-dom";
 function ge() {
@@ -20,15 +20,15 @@ function Be({
     selectedPaymentType: t,
     initialAmount: A,
     method: G,
-    uiAccountDelete: N,
+    uiAccountDelete: I,
     uiListSelectable: C,
     uiPreselectedPaymentType: P,
     onPaymentTypeSelected: m,
     onPaymentTypeDeselected: S,
-    resetFlowOnBack: R,
-    setCashierState: H
+    resetFlowOnBack: N,
+    setCashierState: R
   } = ke(te), {
-    paymentTypesList: I,
+    paymentTypesList: H,
     isError: T
   } = ne(), {
     getBonusCountForPaymentType: u
@@ -38,7 +38,7 @@ function Be({
   } = ae(), {
     requestAccountDelete: O,
     actionConfirmationModal: K
-  } = oe(), _ = ve(!1), n = I.length > 0 ? I : k, W = be(c, G), F = y("cta.back"), {
+  } = oe(), _ = ve(!1), n = H.length > 0 ? H : k, W = be(c, G), F = y("cta.back"), {
     canGoBack: g,
     handleBack: M
   } = ie({
@@ -49,15 +49,15 @@ function Be({
     replace: !c
   }), V = c && !B, x = d(() => {
     V && l(), M();
-  }, [l, M, V]), j = y("cta.continue"), o = E(() => h(n, t), [n, t]), z = c && re(A), f = d((e) => z ? ce(A, e.limits).isOutOfRange : !1, [A, z]), D = o ? f(o) : !1, r = C, $ = !!o && !D, L = y("account.delete.title"), J = d((e) => !N || !e.accountId ? null : /* @__PURE__ */ i(w, { size: "sm", variant: "neutral", "aria-label": L, onClick: () => {
+  }, [l, M, V]), j = y("cta.continue"), o = E(() => h(n, t), [n, t]), z = c && re(A), f = d((e) => z ? ce(A, e.limits).isOutOfRange : !1, [A, z]), D = o ? f(o) : !1, r = C, $ = !!o && !D, L = y("account.delete.title"), J = d((e) => !I || !e.accountId ? null : /* @__PURE__ */ i(w, { size: "sm", variant: "neutral", "aria-label": L, onClick: () => {
     O(e);
-  }, iconOnly: !0, label: L, leadingIcon: /* @__PURE__ */ i(ue, {}) }), [L, O, N]);
+  }, iconOnly: !0, label: L, leadingIcon: /* @__PURE__ */ i(ue, {}) }), [L, O, I]);
   b(() => {
-    R && H((e) => ({
+    N && R((e) => ({
       ...e,
       resetFlowOnBack: !1
     }));
-  }, [R, H]), b(() => {
+  }, [N, R]), b(() => {
     if (!C || _.current || t || !P) return;
     const e = h(n, P);
     e && p(e.name);
@@ -127,7 +127,7 @@ function Be({
       replace: !0
     });
   }, [a, n, t, c, B, r, u]), T || n.length === 0 ? /* @__PURE__ */ i(pe, { text: "payment.no_pts_found" }) : /* @__PURE__ */ i(de, { id: v.id("route-payment-types"), className: v.className("route-payment-types"), title: y("cta.choose_payment_type"), fitted: !0, stickyHeader: !0, children: /* @__PURE__ */ X("div", { className: fe(v.className("route-payment-types-content"), "px-1.5 @sm:px-3 pt-1 pb-3"), children: [
-    /* @__PURE__ */ i(ye, { paymentTypes: n, domScope: "route-payment-types", selectable: r, selectedPaymentType: t, onSelect: U, renderActions: J, isPaymentTypeDisabled: f, showMeta: !0 }),
+    /* @__PURE__ */ i(ye, { paymentTypes: n, domScope: "route-payment-types", animateItems: !0, selectable: r, selectedPaymentType: t, onSelect: U, renderActions: J, isPaymentTypeDisabled: f, showMeta: !0 }),
     K
   ] }) });
 }

@@ -2,6 +2,19 @@
 
 ## Unreleased
 
+## 1.1.0
+
+### Added
+
+- Added `uiProgressBar` which visually tracks progress across payment flows.
+- Added `lockAmount` which locks the `initialAmount` set and hides `uiSuggestAmounts` visuals, for flows where amount shouldn't be user-defined.
+
+### Changed
+
+- Updated amount limit behaviour so over-limit amounts remain visible, show the regular error state, and keep progress blocked until the amount is valid.
+- Updated credit card shell to keep a minimum card-like height when only a sparse hosted-field subset is shown, such as CSC only.
+- Updated UI and usability.
+
 ## 1.0.0
 
 ### Added
@@ -19,15 +32,6 @@
   - Polished browser-managed field states and shared form-control behaviour used by forms.
 - Updated dependencies.
 
-### Documentation
-
-- Documented payment field placeholders.
-- Documented `uiCardBrand`.
-- Documented `uiShowFees`.
-- Clarified that `HF_CARD_BRAND` is an internal Hosted Fields message rather than a public Cashier callback.
-- Documented the Cashier-owned hosted-fields card-shell selector and the backend-resolved saved-card logo behaviour.
-- Updated the npm release flow docs to include publishing `CHANGELOG.md` in the release snapshot.
-
 ## 0.0.12
 
 ### Added
@@ -39,9 +43,3 @@
 
 - Updated cross-origin payment status streaming to non-credentialed EventSource (`withCredentials: false`).
 - Updated the shared Switcher behaviour so method switchers can collapse into a compact dropdown-style control when space is limited.
-
-### Documentation
-
-- Added a DOM hooks section to the Cashier README with `uiSelectorPrefix` usage and multi-instance guidance.
-- Added a full selector reference at `docs/cashier/cashier-dom-selectors.md`.
-- Clarified that `uiPaymentMethodSwitcher` now adapts to narrow layouts with a compact dropdown-style presentation.
