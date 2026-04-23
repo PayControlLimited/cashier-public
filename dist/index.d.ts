@@ -1,20 +1,25 @@
+import { ForwardRefExoticComponent } from 'react';
+import { RefAttributes } from 'react';
+
 declare type BaseRedirect = NonNullable<PaymentStatusResponse['redirect']>;
 
-declare function Cashier(props: CashierProps): React.ReactNode;
+declare const Cashier: ForwardRefExoticComponent<CashierProps & RefAttributes<CashierHandle>>;
 export { Cashier }
 export default Cashier;
 
-declare type CashierBonus = {
+export declare type CashierBonus = {
     code: string;
     title: string;
     description: string;
     logo?: string;
+    maxBonus?: number;
+    maxBonusPercentage?: number;
     preselected?: boolean;
     termsAndConditions?: string;
     conditions?: CashierBonusConditions;
 };
 
-declare type CashierBonusConditionItem = {
+export declare type CashierBonusConditionItem = {
     method?: CashierMethods;
     type?: CashierPaymentType['type'];
     service?: CashierPaymentType['service'];
@@ -33,9 +38,21 @@ declare type CashierBonusConditionItem = {
     closeToDaysSinceRegistration?: number;
 };
 
-declare type CashierBonusConditions = {
+export declare type CashierBonusConditions = {
     include?: CashierBonusConditionItem[];
     exclude?: CashierBonusConditionItem[];
+};
+
+export declare type CashierBonusPaymentTypeConditionItem = CashierBonusConditionItem;
+
+export declare type CashierBonusPaymentTypeConditions = CashierBonusConditions;
+
+export declare type CashierBonusTopUpEvent = {
+    bonus: CashierBonus;
+    previousAmount: number;
+    nextAmount: number;
+    addedAmount: number;
+    fullClaimAmount: number;
 };
 
 export declare type CashierConfig = {
@@ -53,8 +70,11 @@ export declare type CashierConfig = {
     uiPaymentMethodSwitcher: boolean;
     uiUserBalance?: boolean;
     uiProgressBar: boolean;
+    uiInteractivePrompts: boolean;
+    uiCancelPendingPayout: boolean;
     uiAmountView: boolean;
     uiAmountView__PaymentTypePicker: boolean;
+    /** Keep the branded card shell for card forms, or render card inputs like regular form fields. */
     uiCardBrand: boolean;
     uiListSelectable: boolean;
     uiShowFees: boolean;
@@ -77,6 +97,8 @@ export declare type CashierConfig = {
     onInit?: (data?: CashierConfig) => void;
     onPaymentCreated?: (data?: PaymentsResponse | PaymentError) => void;
     onPaymentFinished?: (payment: PaymentProgress) => void;
+    onPendingWithdrawalCancelled?: (event: CashierPendingWithdrawalCancelledEvent) => void;
+    onBonusToppedUp?: (event: CashierBonusTopUpEvent) => void;
     onBonusSelected?: (bonus: CashierBonus) => void;
     onBonusDeselected?: (bonus: CashierBonus) => void;
     onPaymentTypeSelected?: (paymentType: CashierPaymentType) => void;
@@ -84,25 +106,42 @@ export declare type CashierConfig = {
     onAccountDeleted?: (paymentType: CashierPaymentType) => void;
 };
 
-declare type CashierCurrency = NonNullable<Intl.NumberFormatOptions['currency']>;
+export declare type CashierCurrency = NonNullable<Intl.NumberFormatOptions['currency']>;
 
-declare type CashierDateTimeFormatOptions = Intl.DateTimeFormatOptions;
+export declare type CashierDateTimeFormatOptions = Intl.DateTimeFormatOptions;
 
-declare enum CashierLayoutListType {
+export declare type CashierHandle = {
+    setBonuses: (bonuses: CashierBonus[] | undefined) => void;
+    setUser: (user: CashierUser | undefined) => void;
+    setUserBalance: (userBalance: CashierUserBalance | undefined) => void;
+    setSelectedBonusCode: (code: string | null) => void;
+    clearSelectedBonus: () => void;
+};
+
+export declare enum CashierLayoutListType {
     GRID = "grid",
     LIST = "list"
 }
 
-declare type CashierLocale = Intl.Locale | string;
+export declare type CashierLocale = Intl.Locale | string;
 
 export declare enum CashierMethods {
     PAYIN = "payin",
     PAYOUT = "payout"
 }
 
-declare type CashierNumberFormatOptions = Intl.NumberFormatOptions;
+export declare type CashierNumberFormatOptions = Intl.NumberFormatOptions;
 
-declare type CashierPaymentType = PaymentType;
+export declare type CashierPaymentType = PaymentType;
+
+export declare type CashierPendingWithdrawalCancelledEvent = {
+    paymentId: string;
+    amount: number;
+    currency: string;
+    createdAt: Date;
+    remainingPendingCount: number;
+    remainingPendingTotal: number;
+};
 
 export declare type CashierProps = Partial<CashierConfig> | {
     config: Partial<CashierConfig>;
@@ -114,13 +153,16 @@ export declare enum CashierSuggestAction {
 
 export declare type CashierTheme = Record<string, string | number>;
 
-declare type CashierUser = {
+export declare type CashierUser = {
     payinCount?: number;
     daysSinceRegistration?: number;
     totalPayinAmount?: number;
     balance?: number;
+    withdrawableBalance?: number;
     bonusBalance?: number;
 };
+
+export declare type CashierUserBalance = Pick<CashierUser, 'balance' | 'withdrawableBalance' | 'bonusBalance'>;
 
 /**
  * Boolean validation rule (e.g., required, checksum)
@@ -318,7 +360,7 @@ export declare interface HostedFieldsFontDefinition {
     sources: HostedFieldsFontSource[];
 }
 
-declare interface HostedFieldsFontSource {
+export declare interface HostedFieldsFontSource {
     url: string;
     format?: 'woff2' | 'woff' | 'truetype' | 'opentype';
     weight?: string | number;

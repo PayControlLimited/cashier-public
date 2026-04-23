@@ -2,6 +2,32 @@
 
 ## Unreleased
 
+## 1.2.0
+
+### Added
+
+- Added `uiInteractivePrompts`, enabled by default, which replaces regular headers with interactive prompts.
+- Added `uiCancelPendingPayout`, enabled by default, which shows an interactive prompt for cancelling pending withdrawals in payin flows.
+- Added bonus configuration options for `maxBonus` and `maxBonusPercentage` used in interactive prompts for bonus top-ups.
+- Added `user.withdrawableBalance`. Withdrawable balance is treated as an amount limit and appears in payout flows.
+- Added runtime methods `setBonuses`, `setUser`, `setUserBalance`, `setSelectedBonusCode`, and `clearSelectedBonus`.
+- Added `onPendingWithdrawalCancelled` and `onBonusToppedUp` callbacks.
+- Added `CashierHandle`, `CashierUser`, `CashierUserBalance`, `CashierBonus`, `CashierBonusConditionItem`, `CashierBonusConditions`, `CashierBonusPaymentTypeConditionItem`, `CashierBonusPaymentTypeConditions`, `CashierPaymentType`, `CashierLocale`, `CashierCurrency`, `CashierTheme`, `CashierNumberFormatOptions`, `CashierDateTimeFormatOptions`, `CashierPendingWithdrawalCancelledEvent`, and `CashierBonusTopUpEvent` type exports.
+- Added user balance-related payout pre-payment summary rows `Withdrawable`, `Remaining balance` and `Locked` calculated via `user.withdrawableBalance` and `user.balance`.
+- Added fee-related pre-payment summary rows `Fee` and `Total` for payin flows, and `You will receive` for payout flows, when `uiShowFees` is enabled and a payment type has fees.
+
+### Changed
+
+- Updated locked amount flows so `lockAmount` skips the amount step even when `uiAmountView` is enabled.
+- Updated `uiCardBrand={false}` flows so card Hosted Fields drop the branded shell and render like the rest of the payment form, instead of showing a brandless card.
+- Updated selectable list behaviour so clicking an already selected item no longer deselects it when `uiListSelectable` is enabled.
+- Updated fee display so deducted fees include a leading minus sign, making fee direction clearer.
+- Updated UI and usability.
+
+### Fixed
+
+- Fixed i18n keys showing briefly on initialisation before i18n data is available.
+
 ## 1.1.0
 
 ### Added
