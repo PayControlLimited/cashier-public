@@ -18,6 +18,7 @@ Runtime exports from `@paycontrollimited/cashier`:
 - `Cashier` (named React component export)
 - `defineCashier`
 - `defaultCashierConfig`
+- `CashierComboViewPaymentTypesMode`
 - `CashierLayoutListType`
 - `CashierMethods`
 - `CashierSuggestAction`
@@ -36,6 +37,7 @@ Type exports from `@paycontrollimited/cashier`:
   ```
 - `CashierConfig`
 - `CashierProps`
+- `CashierComboViewPaymentTypesMode`
 - `CashierLocale`
 - `CashierCurrency`
 - `CashierNumberFormatOptions`
@@ -108,6 +110,7 @@ const config: Partial<CashierConfig> = {
   uiCancelPendingPayout: true,
   uiProgressBar: true,
   uiShowFees: true,
+  uiBonuses: true,
   uiSelectorPrefix: 'merchant-checkout-a',
   extraAttributes: {
     campaign: 'spring-2026',
@@ -123,7 +126,7 @@ When a payment type fee includes `direction: 'add'` or `direction: 'deduct'`,
 Cashier shows added fees without a leading sign, such as `€2.00`, and deducted
 fees with a leading minus sign, such as `-1.5%`. In payin flows, when
 `uiShowFees` is enabled, Cashier also shows a
-calculated `Fee` summary row in the amount view and in payment form / confirm
+calculated `Fee` summary row on the combo-view screen and in payment form / confirm
 summaries. Cashier also shows a calculated `Total` row under `Fee`. Before an
 amount is entered, `Total` stays at `0`. After that, it is shown when the fee
 changes the entered amount.
@@ -131,8 +134,8 @@ changes the entered amount.
 When `uiCancelPendingPayout` is enabled, payin flows can replace the
 normal interactive prompt with a pending-withdrawal cancellation prompt. Cashier
 checks the latest 100 payout history items and shows the prompt only when it
-finds a cancellable pending withdrawal. When amount view is enabled, the
-prompt stays on the amount step. When amount view is disabled, it appears on
+finds a cancellable pending withdrawal. When combo view is enabled, the
+prompt stays on the first payment screen. When combo view is disabled, it appears on
 the payment details or confirm step instead. When more than one pending
 withdrawal is found, Cashier keeps the prompt visible and opens a drawer so
 one payout can be chosen and cancelled at a time. Dismissing it hides the
@@ -147,10 +150,10 @@ same plain form style as the rest of the payment form.
 In payout flows, if you provide both `user.balance` and
 `user.withdrawableBalance`, Cashier uses `withdrawableBalance` as the payout
 amount ceiling and shows the regular amount-limit error state if the entered
-amount is too high. Cashier shows `Withdrawable` and `Locked` in the amount
-view and on editable payout payment-form routes. Cashier also shows
+amount is too high. Cashier shows `Withdrawable` and `Locked` on the combo-view
+screen and on editable payout payment-form routes. Cashier also shows
 `Remaining balance` on payout summary surfaces and a payout `You will receive`
-row in the amount view and in payout payment form / confirm summaries when the
+row on the combo-view screen and in payout payment form / confirm summaries when the
 selected payment type has a fee. When `uiShowFees` is enabled, Cashier also
 shows a payout `Fee` row in those summaries. `Remaining
 balance` is based on the entered payout amount, not on fee adjustments.
@@ -191,7 +194,10 @@ Cashier uses browser APIs, so skip server rendering for this component.
 'use client'
 
 import dynamic from 'next/dynamic'
-import type { CashierConfig } from '@paycontrollimited/cashier'
+import {
+  CashierMethods,
+  type CashierConfig,
+} from '@paycontrollimited/cashier'
 
 const Cashier = dynamic(
   () => import('@paycontrollimited/cashier').then((module) => module.default),
@@ -202,7 +208,7 @@ const config: Partial<CashierConfig> = {
   merchantId: '<merchant-id>',
   userId: '<user-id>',
   sessionId: '<session-id>',
-  method: 'payin' as CashierConfig['method'],
+  method: CashierMethods.PAYIN,
   apiUrl: 'https://api.paycontrol.app',
   uiInteractivePrompts: true,
   uiProgressBar: true,
@@ -341,10 +347,27 @@ configuration:
   locked amount is shown in the summary card instead of the editable
   payment-form amount field. If the locked `initialAmount` is blank or
   invalid, Cashier uses `0`. Suggested amounts are hidden while the amount is
-  locked, and the amount step is skipped even if `uiAmountView` is enabled.
-- When `uiAmountView__PaymentTypePicker` is enabled, the quick-payment payment
-  type picker stays height-capped and scrolls on longer lists instead of
-  growing to the full available drawer height.
+  locked, and the combo-view entry screen is skipped even if
+  `uiComboView` is enabled.
+- Use `uiListStyle: 'accordion'` to show payment types as an accordion. The
+  selected payment type opens its payment form inside the list and moves into
+  view below any sticky header, prompt, or shadow. Bonus lists use the regular
+  list style when this value is set.
+- Use `uiComboView__PaymentTypes` to choose how payment types appear on the
+  combo-view screen:
+  - `'picker'` keeps the compact picker at the bottom of the screen.
+  - `'accordion'` opens the payment form inside the selected payment type.
+  - `'list'` and `'grid'` show selectable payment types under the amount and
+    summary sections.
+  - `'none'` hides payment types on the combo-view screen and sends users to
+    the separate payment type step after they continue.
+- When `uiComboView__PaymentForm` is enabled, selected payment type fields
+  are shown on the first payment screen. The confirm-payment screen is still
+  shown before payment is submitted. With combo-view `'list'` or `'grid'`,
+  the payment types remain in the chosen layout and the selected form appears
+  below them. The deprecated 1.2.0 aliases `uiAmountView`,
+  `uiAmountView__PaymentTypePicker`, and `uiAmountView__PaymentForm` still
+  work, but `uiComboView__PaymentTypes` takes priority when supplied.
 - Hosted card forms keep a minimum card-like shell height even when only a
   sparse hosted-field subset is rendered, for example CSC-only verification.
 
@@ -359,6 +382,11 @@ configuration:
   headline text so the header area always stays populated.
 
 ## Bonus metadata
+
+Set `uiBonuses` to `false` to turn off the bonus flow. Cashier then behaves as
+if no bonuses are configured: it skips the bonus step, hides bonus labels,
+clears bonus selection, and does not send `bonusCode` with payments. Keep
+`uiBonusesAvailable` for the smaller badge/count display setting.
 
 Bonuses can include optional award metadata:
 
@@ -397,6 +425,8 @@ It exposes:
 
 This is most useful when bonus or user data arrives after the initial render,
 or when you want to respond to user actions outside Cashier.
+When `uiBonuses` is `false`, runtime bonus updates are kept hidden until the
+flow is enabled again.
 
 React:
 
@@ -515,6 +545,8 @@ Runtime method behaviour:
 
 ```ts
 import {
+  CashierComboViewPaymentTypesMode,
+  CashierLayoutListType,
   defineCashier,
   CashierMethods,
   type CashierConfig,
@@ -522,7 +554,7 @@ import {
 
 defineCashier()
 
-const config: CashierConfig = {
+const config: Partial<CashierConfig> = {
   merchantId: '<merchant-id>',
   userId: '<user-id>',
   sessionId: '<session-id>',
@@ -532,17 +564,19 @@ const config: CashierConfig = {
   initialAmount: '0',
   lockAmount: false,
   currency: 'EUR',
-  uiListStyle: 'grid',
+  uiListStyle: CashierLayoutListType.GRID,
   locale: 'en-GB',
   uiPaymentMethodSwitcher: true,
   uiProgressBar: true,
   uiInteractivePrompts: true,
-  uiAmountView: true,
-  uiAmountView__PaymentTypePicker: true,
+  uiComboView: true,
+  uiComboView__PaymentTypes: CashierComboViewPaymentTypesMode.PICKER,
+  uiComboView__PaymentForm: true,
   uiListSelectable: true,
   uiShowFees: true,
   uiPreselectedPaymentType: null,
   uiAccountDelete: true,
+  uiBonuses: true,
   uiBonusesAvailable: true,
   uiSuggestAmounts: '',
   uiSuggestAction: [],

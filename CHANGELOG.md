@@ -2,6 +2,26 @@
 
 ## Unreleased
 
+## 1.3.0
+
+### Added
+
+- Added `uiListStyle: "accordion"` for payment type lists. The selected payment type opens its form inside the list item.
+- Added ability to display payment type list or forms directly in the initial view (`uiComboView`, previously `uiAmountView`) via `uiComboView__PaymentTypes` and `uiComboView__PaymentForm`.
+- Added `uiComboView__PaymentTypes` settings `picker`, `accordion`, `list`, `grid`, and `none`, enabled by default as `picker`, to control how payment types appear on the intial screen.
+- Added `uiBonuses`, enabled by default, to turn the full bonus flow on or off even if bonuses are configured.
+- Added `CashierComboViewPaymentTypesMode` type export.
+- Added `top` and `bottom` orientation support for payment type and field notifications.
+- Added `trumo_payin` script-assisted provider redirect support for Trumo payins.
+
+### Changed
+
+- Updated UI and usability.
+
+### Deprecated
+
+- Deprecated `uiAmountView`, `uiAmountView__PaymentTypePicker`, and `uiAmountView__PaymentForm` names in favour of `uiComboView__*`.
+
 ## 1.2.0
 
 ### Added
@@ -18,7 +38,7 @@
 
 ### Changed
 
-- Updated locked amount flows so `lockAmount` skips the amount step even when `uiAmountView` is enabled.
+- Updated locked amount flows so `lockAmount` skips the amount step even when `uiComboView` is enabled.
 - Updated `uiCardBrand={false}` flows so card Hosted Fields drop the branded shell and render like the rest of the payment form, instead of showing a brandless card.
 - Updated selectable list behaviour so clicking an already selected item no longer deselects it when `uiListSelectable` is enabled.
 - Updated fee display so deducted fees include a leading minus sign, making fee direction clearer.

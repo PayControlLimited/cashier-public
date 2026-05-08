@@ -55,6 +55,14 @@ export declare type CashierBonusTopUpEvent = {
     fullClaimAmount: number;
 };
 
+export declare enum CashierComboViewPaymentTypesMode {
+    ACCORDION = "accordion",
+    GRID = "grid",
+    LIST = "list",
+    NONE = "none",
+    PICKER = "picker"
+}
+
 export declare type CashierConfig = {
     merchantId: string;
     userId: string;
@@ -72,14 +80,24 @@ export declare type CashierConfig = {
     uiProgressBar: boolean;
     uiInteractivePrompts: boolean;
     uiCancelPendingPayout: boolean;
+    uiComboView: boolean;
+    uiComboView__PaymentTypes: CashierComboViewPaymentTypesMode;
+    /** @deprecated Use uiComboView__PaymentTypes instead. */
+    uiComboView__PaymentTypePicker: boolean;
+    uiComboView__PaymentForm: boolean;
+    /** @deprecated Use uiComboView instead. */
     uiAmountView: boolean;
+    /** @deprecated Use uiComboView__PaymentTypes instead. */
     uiAmountView__PaymentTypePicker: boolean;
+    /** @deprecated Use uiComboView__PaymentForm instead. */
+    uiAmountView__PaymentForm: boolean;
     /** Keep the branded card shell for card forms, or render card inputs like regular form fields. */
     uiCardBrand: boolean;
     uiListSelectable: boolean;
     uiShowFees: boolean;
     uiPreselectedPaymentType: string | null;
     uiAccountDelete: boolean;
+    uiBonuses: boolean;
     uiBonusesAvailable: boolean;
     uiSuggestAmounts: string;
     uiSuggestAction: CashierSuggestAction[];
@@ -119,6 +137,7 @@ export declare type CashierHandle = {
 };
 
 export declare enum CashierLayoutListType {
+    ACCORDION = "accordion",
     GRID = "grid",
     LIST = "list"
 }
@@ -190,6 +209,10 @@ declare type CommonSchemasFieldNotification = {
      * Type of notification
      */
     type: 'info' | 'warning' | 'positive' | 'negative';
+    /**
+     * Where the notification is rendered relative to its field or payment type. Defaults to bottom.
+     */
+    orientation?: 'top' | 'bottom';
 };
 
 /**
@@ -264,7 +287,7 @@ declare type CommonSchemasRedirectData = {
      */
     type: 'iframe' | 'hidden_iframe' | 'window' | 'script';
     /**
-     * Identifier for the script/widget type (e.g., "mifinity"). Required when type is "script"
+     * Identifier for the script/widget type (e.g., "mifinity"). When set, the redirect should be handled by the matching provider script while the redirect type controls inline or window presentation.
      */
     scriptId?: string;
 };
