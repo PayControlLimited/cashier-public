@@ -1,8 +1,9 @@
 "use client";
-import { A as e, Ar as t, At as n, Bn as r, Dt as i, Ft as ee, Gn as te, I as a, It as ne, Jt as re, Kn as ie, M as o, N as s, Nr as ae, O as oe, Pr as se, Sr as c, T as ce, Xn as le, Zn as ue, _ as de, c as fe, f as pe, h as me, hr as he, n as ge, o as _e, on as ve, p as ye, rt as be, s as xe, t as Se, u as Ce, v as we, vr as Te, x as Ee, y as De } from "./useBackNavigation-Ca8vKjft.js";
-import { useCallback as l, useContext as Oe, useEffect as u, useMemo as d, useRef as ke, useState as Ae } from "react";
-import { jsx as f, jsxs as je } from "react/jsx-runtime";
-//#region src/routes/pts/$method.tsx?tsr-split=errorComponent
+import { A as e, Ar as t, At as n, Bn as r, Dt as i, Ft as ee, Gn as te, I as a, It as ne, Jt as re, Kn as ie, M as o, N as s, Nr as ae, O as oe, Pr as se, Sr as c, T as ce, Xn as le, Zn as ue, _ as de, c as l, f as fe, h as pe, hr as me, n as he, o as ge, on as _e, p as ve, rt as ye, s as be, t as xe, u as Se, v as Ce, vr as we, x as Te, y as Ee } from "./useBackNavigation-X8aGg6sp.js";
+import { t as De } from "./_method-DBvObRWV.js";
+import { useCallback as u, useContext as Oe, useEffect as d, useMemo as f, useRef as ke, useState as Ae } from "react";
+import { jsx as p, jsxs as je } from "react/jsx-runtime";
+//#region src/routes/pts/$method.tsx?tsr-split=component
 var Me = "pl-[0.9rem] pr-1.5 @sm:pl-[1.1rem] @sm:pr-3 @md:pl-[1.2rem] group-data-[stuck=true]:pb-0.5", Ne = "pt-2.5 @md:pt-3 [@container_(max-height:620px)]:pt-2.5 [@container_(max-height:520px)]:pt-2.25", Pe = (e, t) => e?.value ? e.feeType === "percentage" ? `${e.value}%` : t(e.value) || e.value : "", Fe = (e) => {
 	if (!e?.value) return !1;
 	let t = Number.parseFloat(e.value);
@@ -11,28 +12,32 @@ var Me = "pl-[0.9rem] pr-1.5 @sm:pl-[1.1rem] @sm:pr-3 @md:pl-[1.2rem] group-data
 	let r = e(t);
 	return r === t ? n : r;
 }, Le = (e) => typeof e == "string" ? e : e.baseName;
-function p({ loaderPaymentTypes: p = [] }) {
-	let m = te(), { translateKey: h } = ve(), g = se(), { uiComboView: _, lockAmount: Re, uiComboView__PaymentTypes: v, uiInteractivePrompts: y, uiShowFees: b, uiListStyle: ze, selectedPaymentType: x, initialAmount: S, method: C, user: w, locale: T, uiAccountDelete: E, uiListSelectable: Be, uiPreselectedPaymentType: D, onPaymentTypeSelected: O, paymentFormDraft: k, comboViewFormDraft: A, resetFlowOnBack: Ve, setCashierState: j } = Oe(ie), { formatDisplayValue: He } = be(), { paymentTypesList: Ue, isError: M } = i(), { getBonusCountForPaymentType: N } = Ee(), { selectPaymentType: P, clearPaymentSelection: F } = ce(), { requestAccountDelete: We, actionConfirmationModal: Ge } = de(), Ke = ke(!1), [qe, Je] = Ae(null), [I, Ye] = Ae({
+function m() {
+	let { paymentTypes: e } = De.useLoaderData();
+	return /* @__PURE__ */ p(h, { loaderPaymentTypes: e });
+}
+function h({ loaderPaymentTypes: De = [] }) {
+	let m = te(), { translateKey: h } = _e(), g = se(), { uiComboView: _, lockAmount: Re, uiComboView__PaymentTypes: v, uiInteractivePrompts: y, uiShowFees: b, uiListStyle: ze, selectedPaymentType: x, initialAmount: S, method: C, user: w, locale: T, uiAccountDelete: E, uiListSelectable: Be, uiPreselectedPaymentType: D, onPaymentTypeSelected: O, paymentFormDraft: k, comboViewFormDraft: A, resetFlowOnBack: Ve, setCashierState: j } = Oe(ie), { formatDisplayValue: He } = ye(), { paymentTypesList: Ue, isError: M } = i(), { getBonusCountForPaymentType: N } = Te(), { selectPaymentType: P, clearPaymentSelection: F } = ce(), { requestAccountDelete: We, actionConfirmationModal: Ge } = de(), Ke = ke(!1), [qe, Je] = Ae(null), [I, Ye] = Ae({
 		isComplete: !1,
 		errorMessage: null,
 		paymentTypeName: null
-	}), L = Ue.length > 0 ? Ue : p, Xe = re({
+	}), L = Ue.length > 0 ? Ue : De, Xe = re({
 		uiComboView: _,
 		lockAmount: Re,
 		method: C
-	}), Ze = h("cta.back"), { canGoBack: R, handleBack: Qe } = Se({
+	}), Ze = h("cta.back"), { canGoBack: R, handleBack: Qe } = xe({
 		defaultRoute: Xe,
 		requireCanGoBackForHotkey: !0,
 		enableHotkey: !1,
 		useHistory: !0,
 		replace: !_
-	}), $e = _ && !o(v), z = l(() => {
+	}), $e = _ && !o(v), z = u(() => {
 		$e && F(), Qe();
 	}, [
 		F,
 		Qe,
 		$e
-	]), et = h("cta.continue"), B = d(() => n(L, x), [L, x]), V = d(() => {
+	]), et = h("cta.continue"), B = f(() => n(L, x), [L, x]), V = f(() => {
 		if (!B || !b || !Fe(B.fee)) return null;
 		let e = Pe(B.fee, He);
 		if (!e) return null;
@@ -51,12 +56,12 @@ function p({ loaderPaymentTypes: p = [] }) {
 		B,
 		h,
 		b
-	]), tt = _ && c(S), H = _ && c(S), nt = H ? S : "", U = l((e) => tt ? ee(S, e.limits, { maxBoundary: ne(C, w, e.fee) }).isOutOfRange : !1, [
+	]), tt = _ && c(S), H = _ && c(S), nt = H ? S : "", U = u((e) => tt ? ee(S, e.limits, { maxBoundary: ne(C, w, e.fee) }).isOutOfRange : !1, [
 		S,
 		C,
 		tt,
 		w
-	]), W = B ? U(B) : !1, G = ze === le.ACCORDION, K = Be || G, q = !!B && !W, rt = l((t) => e(t, nt), [nt]), J = !!(G && B && rt(B)), Y = h("account.delete.title"), it = l((e) => !E || !e.accountId ? null : /* @__PURE__ */ f(t, {
+	]), W = B ? U(B) : !1, G = ze === le.ACCORDION, K = Be || G, q = !!B && !W, rt = u((t) => e(t, nt), [nt]), J = !!(G && B && rt(B)), Y = h("account.delete.title"), it = u((e) => !E || !e.accountId ? null : /* @__PURE__ */ p(t, {
 		size: "sm",
 		variant: "neutral",
 		appearance: "ghost",
@@ -66,18 +71,18 @@ function p({ loaderPaymentTypes: p = [] }) {
 		},
 		iconOnly: !0,
 		label: Y,
-		leadingIcon: /* @__PURE__ */ f(Te, {})
+		leadingIcon: /* @__PURE__ */ p(we, {})
 	}), [
 		Y,
 		We,
 		E
 	]);
-	u(() => {
+	d(() => {
 		Ve && j((e) => ({
 			...e,
 			resetFlowOnBack: !1
 		}));
-	}, [Ve, j]), u(() => {
+	}, [Ve, j]), d(() => {
 		if (!K || Ke.current || x || !D) return;
 		let e = n(L, D);
 		e && P(e.name);
@@ -87,10 +92,10 @@ function p({ loaderPaymentTypes: p = [] }) {
 		x,
 		K,
 		D
-	]), u(() => {
+	]), d(() => {
 		W && F();
 	}, [F, W]);
-	let X = l((e) => {
+	let X = u((e) => {
 		let t = n(L, e);
 		if (t && !U(t)) {
 			if (K) {
@@ -116,20 +121,20 @@ function p({ loaderPaymentTypes: p = [] }) {
 		L,
 		B,
 		P
-	]), at = l((e) => {
+	]), at = u((e) => {
 		let t = a(e, S), n = {
 			paymentTypeName: e.name,
 			method: C,
 			amount: t
 		};
-		if (fe(A, n)) return A.values;
-		if (fe(k, n)) return k.values;
+		if (l(A, n)) return A.values;
+		if (l(k, n)) return k.values;
 	}, [
 		A,
 		S,
 		C,
 		k
-	]), ot = l((e, t) => {
+	]), ot = u((e, t) => {
 		if (U(e)) return;
 		let n = s(e), r = a(e, S, t.values);
 		if (n && r.length === 0) return;
@@ -165,7 +170,7 @@ function p({ loaderPaymentTypes: p = [] }) {
 		C,
 		g,
 		j
-	]), st = l((e, t) => {
+	]), st = u((e, t) => {
 		let n = s(e), r = a(e, S, t.values), i = {
 			paymentTypeName: e.name,
 			method: C,
@@ -176,7 +181,7 @@ function p({ loaderPaymentTypes: p = [] }) {
 			} : t.values,
 			hasHostedFields: t.hasHostedFields
 		};
-		j((e) => xe(e.paymentFormDraft, i) ? e : {
+		j((e) => be(e.paymentFormDraft, i) ? e : {
 			...e,
 			paymentFormDraft: i
 		});
@@ -184,12 +189,12 @@ function p({ loaderPaymentTypes: p = [] }) {
 		S,
 		C,
 		j
-	]), ct = l((e, t) => {
+	]), ct = u((e, t) => {
 		Ye((n) => n.paymentTypeName === e && n.isComplete === t.isComplete && n.errorMessage === t.errorMessage ? n : {
 			...t,
 			paymentTypeName: e
 		});
-	}, []), lt = l((e) => /* @__PURE__ */ f(oe, {
+	}, []), lt = u((e) => /* @__PURE__ */ p(oe, {
 		paymentType: e,
 		amountValue: S,
 		hideAmountField: H,
@@ -206,7 +211,7 @@ function p({ loaderPaymentTypes: p = [] }) {
 		st,
 		S,
 		H
-	]), Z = qe?.submit, Q = !J || I.paymentTypeName === x, $ = l(() => {
+	]), Z = qe?.submit, Q = !J || I.paymentTypeName === x, $ = u(() => {
 		if (J) {
 			if (!Q) return;
 			Z?.onClick();
@@ -230,16 +235,16 @@ function p({ loaderPaymentTypes: p = [] }) {
 		B,
 		x,
 		J
-	]), ut = d(() => {
+	]), ut = f(() => {
 		let e = [], n = !!Z?.visible, r = J && Q && !!Z?.loading, i = J ? !q || !Q || !n || !!Z?.disabled : !q;
-		return R && e.push(/* @__PURE__ */ f(t, {
+		return R && e.push(/* @__PURE__ */ p(t, {
 			variant: "neutral",
 			size: "xl",
 			fullWidth: !0,
 			disabled: r,
 			onClick: z,
 			label: Ze
-		}, "cashier-pts-back")), K && !M && L.length > 0 && e.push(/* @__PURE__ */ f(t, {
+		}, "cashier-pts-back")), K && !M && L.length > 0 && e.push(/* @__PURE__ */ p(t, {
 			variant: "secondary",
 			size: "xl",
 			fullWidth: !0,
@@ -261,8 +266,8 @@ function p({ loaderPaymentTypes: p = [] }) {
 		K,
 		L.length,
 		J
-	]), dt = d(() => {
-		let e = ye({ translateKey: h });
+	]), dt = f(() => {
+		let e = ve({ translateKey: h });
 		if (!q) return e;
 		if (J) {
 			let t = I.paymentTypeName === x;
@@ -271,17 +276,17 @@ function p({ loaderPaymentTypes: p = [] }) {
 				legacyTitle: I.errorMessage,
 				titleKey: void 0,
 				bodyKey: void 0,
-				icon: /* @__PURE__ */ f(Te, {}),
+				icon: /* @__PURE__ */ p(we, {}),
 				tone: "danger"
 			};
-			if (!t || !I.isComplete) return me({ translateKey: h });
+			if (!t || !I.isComplete) return pe({ translateKey: h });
 		}
 		return {
 			legacyTitle: h("cta.interactive_prompt.payment_type_selected.title"),
 			titleKey: "cta.interactive_prompt.payment_type_selected.title",
 			bodyKey: V?.key ?? "cta.interactive_prompt.payment_type_selected.desc",
 			bodyValues: V?.values,
-			icon: /* @__PURE__ */ f(he, {})
+			icon: /* @__PURE__ */ p(me, {})
 		};
 	}, [
 		I,
@@ -291,10 +296,10 @@ function p({ loaderPaymentTypes: p = [] }) {
 		x,
 		h
 	]);
-	return r("bottom", ut), we({
+	return r("bottom", ut), Ce({
 		onBack: R ? z : void 0,
 		backKey: "Backspace"
-	}), u(() => {
+	}), d(() => {
 		if (!_ || !o(v) || K || !x) return;
 		let e = n(L, x);
 		if (e) {
@@ -319,11 +324,11 @@ function p({ loaderPaymentTypes: p = [] }) {
 		v,
 		K,
 		N
-	]), M || L.length === 0 ? /* @__PURE__ */ f(ge, { text: "payment.no_pts_found" }) : /* @__PURE__ */ f(_e, {
+	]), M || L.length === 0 ? /* @__PURE__ */ p(he, { text: "payment.no_pts_found" }) : /* @__PURE__ */ p(ge, {
 		id: m.id("route-payment-types"),
 		className: m.className("route-payment-types"),
 		title: y ? void 0 : h("cta.choose_payment_type"),
-		header: y ? /* @__PURE__ */ f(Ce, {
+		header: y ? /* @__PURE__ */ p(Se, {
 			content: dt,
 			className: Me
 		}) : void 0,
@@ -331,7 +336,7 @@ function p({ loaderPaymentTypes: p = [] }) {
 		stickyHeader: !0,
 		children: /* @__PURE__ */ je("div", {
 			className: ae(m.className("route-payment-types-content"), "px-1.5 @sm:px-3 pb-6 @md:pb-7", Ne),
-			children: [G ? /* @__PURE__ */ f(pe, {
+			children: [G ? /* @__PURE__ */ p(fe, {
 				paymentTypes: L,
 				domScope: "route-payment-types",
 				animateItems: !0,
@@ -342,7 +347,7 @@ function p({ loaderPaymentTypes: p = [] }) {
 				renderActions: it,
 				isPaymentTypeDisabled: U,
 				showMeta: !0
-			}) : /* @__PURE__ */ f(De, {
+			}) : /* @__PURE__ */ p(Ee, {
 				paymentTypes: L,
 				domScope: "route-payment-types",
 				animateItems: !0,
@@ -356,6 +361,5 @@ function p({ loaderPaymentTypes: p = [] }) {
 		})
 	});
 }
-var m = () => /* @__PURE__ */ f(ge, { text: "payment.no_pts_found" });
 //#endregion
-export { p as PtsView, m as errorComponent };
+export { h as PtsView, m as component };

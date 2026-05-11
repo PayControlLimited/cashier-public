@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 1.3.1
+
+## 1.3.1
+
+### Fixed
+
+- Fixed the package output so the animated payment summary status icon no longer exposes an undeclared `lottie-web` resolver to consumer bundlers.
+
 ## 1.3.0
 
 ### Added
