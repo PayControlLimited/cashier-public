@@ -1,0 +1,52 @@
+import { StoryObj } from '@storybook/react-vite';
+import { default as PaymentTypesAccordion } from './PaymentTypesAccordion.js';
+import { PaymentType } from '../types/payment.js';
+declare const meta: {
+    title: string;
+    component: typeof PaymentTypesAccordion;
+    args: {
+        paymentTypes: import('../../../api/src/payments.js').PaymentType[];
+        selectedPaymentType: string;
+        renderPanel: (paymentType: PaymentType) => import("react/jsx-runtime").JSX.Element;
+    };
+    decorators: ((Story: import('storybook/internal/csf').PartialStoryFn<import('@storybook/react').ReactRenderer, {
+        paymentTypes: PaymentType[];
+        selectedPaymentType?: string | null | undefined;
+        onSelect?: ((id: string) => void) | undefined;
+        renderPanel: (paymentType: PaymentType) => import('react').ReactNode;
+        hasPanel?: ((paymentType: PaymentType) => boolean) | undefined;
+        showMeta?: boolean | undefined;
+        compact?: boolean | undefined;
+        renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
+        isPaymentTypeDisabled?: ((paymentType: PaymentType) => boolean) | undefined;
+        preserveDisabledSelection?: boolean | undefined;
+        itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
+        itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
+        includeItemDataTheme?: boolean | undefined;
+        domScope?: string | undefined;
+        animateItems?: boolean | undefined;
+    }>, context: import('storybook/internal/csf').StoryContext<import('@storybook/react').ReactRenderer, {
+        paymentTypes: PaymentType[];
+        selectedPaymentType?: string | null | undefined;
+        onSelect?: ((id: string) => void) | undefined;
+        renderPanel: (paymentType: PaymentType) => import('react').ReactNode;
+        hasPanel?: ((paymentType: PaymentType) => boolean) | undefined;
+        showMeta?: boolean | undefined;
+        compact?: boolean | undefined;
+        renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
+        isPaymentTypeDisabled?: ((paymentType: PaymentType) => boolean) | undefined;
+        preserveDisabledSelection?: boolean | undefined;
+        itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
+        itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
+        includeItemDataTheme?: boolean | undefined;
+        domScope?: string | undefined;
+        animateItems?: boolean | undefined;
+    }>) => import("react/jsx-runtime").JSX.Element)[];
+};
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const ExpandedForm: Story;
+export declare const DisabledItem: Story;
+export declare const AccountAction: Story;
+export declare const StickyPromptScroll: Story;
+//# sourceMappingURL=PaymentTypesAccordion.stories.d.ts.map

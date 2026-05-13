@@ -1,0 +1,58 @@
+import { StoryObj } from '@storybook/react-vite';
+import { default as PaymentTypesList } from './PaymentTypesList.js';
+import { CashierLayoutListType } from '../types/CashierConfig.js';
+import { PaymentType } from '../types/payment.js';
+declare const meta: {
+    title: string;
+    component: typeof PaymentTypesList;
+    args: {
+        paymentTypes: import('../../../api/src/payments.js').PaymentType[];
+        listStyle: CashierLayoutListType.LIST;
+        selectable: true;
+        selectedPaymentType: string;
+    };
+    decorators: ((Story: import('storybook/internal/csf').PartialStoryFn<import('@storybook/react').ReactRenderer, {
+        paymentTypes: PaymentType[];
+        onSelect?: ((id: string) => void) | undefined;
+        listStyle?: CashierLayoutListType | undefined;
+        compact?: boolean | undefined;
+        stacked?: boolean | undefined;
+        showMeta?: boolean | undefined;
+        selectable?: boolean | undefined;
+        selectedPaymentType?: string | null | undefined;
+        renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
+        isPaymentTypeDisabled?: ((paymentType: PaymentType) => boolean) | undefined;
+        preserveDisabledSelection?: boolean | undefined;
+        itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
+        itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
+        includeItemDataTheme?: boolean | undefined;
+        domScope?: string | undefined;
+        animateItems?: boolean | undefined;
+    }>, context: import('storybook/internal/csf').StoryContext<import('@storybook/react').ReactRenderer, {
+        paymentTypes: PaymentType[];
+        onSelect?: ((id: string) => void) | undefined;
+        listStyle?: CashierLayoutListType | undefined;
+        compact?: boolean | undefined;
+        stacked?: boolean | undefined;
+        showMeta?: boolean | undefined;
+        selectable?: boolean | undefined;
+        selectedPaymentType?: string | null | undefined;
+        renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
+        isPaymentTypeDisabled?: ((paymentType: PaymentType) => boolean) | undefined;
+        preserveDisabledSelection?: boolean | undefined;
+        itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
+        itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
+        includeItemDataTheme?: boolean | undefined;
+        domScope?: string | undefined;
+        animateItems?: boolean | undefined;
+    }>) => import("react/jsx-runtime").JSX.Element)[];
+};
+export default meta;
+type Story = StoryObj<typeof meta>;
+export declare const ListSelectable: Story;
+export declare const GridSelectable: Story;
+export declare const ListWithoutSelection: Story;
+export declare const ListWithActions: Story;
+export declare const GridWithActions: Story;
+export declare const ListWithDisabled: Story;
+//# sourceMappingURL=PaymentTypesList.stories.d.ts.map

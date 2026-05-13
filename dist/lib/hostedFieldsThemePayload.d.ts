@@ -1,0 +1,2 @@
+export declare const buildHostedFieldsThemePayload: (resolveThemeSnapshot?: () => Record<string, string | number> | undefined) => Record<string, string | number>;
+//# sourceMappingURL=hostedFieldsThemePayload.d.ts.map

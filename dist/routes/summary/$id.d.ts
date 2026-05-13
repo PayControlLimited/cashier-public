@@ -1,0 +1,14 @@
+import { PaymentSummaryResponse } from '../../../../api/src/payments.js';
+export declare const Route: import('@tanstack/router-core').Route<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/summary/$id", "/summary/$id", "/summary/$id", "/summary/$id", (search: Record<string, unknown>) => {
+    merchantId: string;
+}, import('@tanstack/router-core').ResolveParams<"/summary/$id">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, ({ context, params, search }: import('@tanstack/router-core').BeforeLoadContextOptions<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, (search: Record<string, unknown>) => {
+    merchantId: string;
+}, import('@tanstack/router-core').ResolveParams<"/summary/$id">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, "/summary/$id", unknown, undefined>) => void, {
+    merchantId: string;
+}, ({ params, deps, }: import('@tanstack/router-core').LoaderFnContext<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/summary/$id", import('@tanstack/router-core').ResolveParams<"/summary/$id">, {
+    merchantId: string;
+}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, ({ context, params, search }: import('@tanstack/router-core').BeforeLoadContextOptions<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, (search: Record<string, unknown>) => {
+    merchantId: string;
+}, import('@tanstack/router-core').ResolveParams<"/summary/$id">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, "/summary/$id", unknown, undefined>) => void, unknown, undefined>) => Promise<PaymentSummaryResponse | undefined>, unknown, unknown, unknown, unknown, undefined>;
+export declare function SummaryView(): import("react/jsx-runtime").JSX.Element;
+//# sourceMappingURL=$id.d.ts.map

@@ -1,0 +1,21 @@
+import { ReactNode } from 'react';
+export declare const createDomSlugTracker: () => (rawValue: string | null | undefined, fallback?: string) => string;
+type DomHookOptions = {
+    slug?: string | null | undefined;
+    fallbackSlug?: string;
+};
+export type CashierDomHooksValue = {
+    prefix: string;
+    baseClass: string;
+    id: (slot: string, options?: DomHookOptions) => string;
+    className: (slot: string, options?: DomHookOptions) => string;
+    token: (rawValue: string | null | undefined, fallback?: string) => string;
+};
+type CashierDomHooksProviderProps = {
+    prefix?: string | null;
+    children: ReactNode;
+};
+export declare function CashierDomHooksProvider({ prefix, children, }: CashierDomHooksProviderProps): ReactNode;
+export declare const useCashierDomHooks: () => CashierDomHooksValue;
+export {};
+//# sourceMappingURL=domHooks.d.ts.map

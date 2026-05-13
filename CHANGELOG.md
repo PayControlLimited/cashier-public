@@ -2,7 +2,25 @@
 
 ## Unreleased
 
-## 1.3.1
+## 1.3.2
+
+### Added
+
+- Added type exports for payment callbacks and payloads:
+`CashierPaymentCreatedResponse`, `CashierPaymentError`, `CashierPaymentField`, `CashierPaymentFieldNotification`, `CashierPaymentFormData`, `CashierPaymentProgress`, and `CashierRedirectData`.
+- Added support for payment fields with `hidden` and `defaultValue`. Hidden fields are not rendered but their default values are still submitted.
+
+### Changed
+
+- Updated `gotoPaymentType` and `uiPreselectedPaymentType` to accept shorter payment type, service, method, and account ID values, e.g. `accountId`, `type`, `service`, `type.method`, `type.service`, `service.method`, `type.service.method`, `type.method.service`, while keeping old `payment_type.*` values backwards compatible.
+- Updated UI and usability.
+
+### Fixed
+
+- Fixed payment type matching and selection so saved accounts are identified by stable internal selection IDs.
+- Fixed Hosted Fields iframe not rendering a transparent background when host pages use `color-scheme: dark`.
+- Fixed package compatibility for browser and server-rendered apps.
+- Fixed root sizing so host applications can size the widget with a `min-height` wrapper.
 
 ## 1.3.1
 

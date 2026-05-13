@@ -52,7 +52,14 @@ Type exports from `@paycontrollimited/cashier`:
 - `CashierBonusConditions`
 - `CashierBonusPaymentTypeConditionItem`
 - `CashierBonusPaymentTypeConditions`
+- `CashierPaymentCreatedResponse`
+- `CashierPaymentError`
+- `CashierPaymentField`
+- `CashierPaymentFieldNotification`
+- `CashierPaymentFormData`
+- `CashierPaymentProgress`
 - `CashierPaymentType`
+- `CashierRedirectData`
 - `CashierTheme`
 - `HostedFieldsFontDefinition`
 - `HostedFieldsFontSource`
@@ -76,12 +83,14 @@ For web-component integrations, `defineCashier()` injects required styles automa
 > }
 > ```
 >
-> Cashier fills its container (`width: 100%`, `height: 100%`). Mount it inside an element with dimensions, otherwise it can render at `0x0`.
+> Cashier fills its host container. Give the host either a real height or a
+> minimum height. A `min-height` wrapper is enough for normal page layouts. If
+> you use `height: 100%`, every parent up the tree must also have a real height.
 >
 > ```tsx
 > export function Checkout() {
 >   return (
->     <div id="cashier-root" style={{ width: '100%', minHeight: 640 }}>
+>     <div id="cashier-root" style={{ minHeight: 640 }}>
 >       <Cashier config={config} />
 >     </div>
 >   )
@@ -89,7 +98,7 @@ For web-component integrations, `defineCashier()` injects required styles automa
 > ```
 >
 > ```html
-> <pc-cashier style="display:block;width:100%;height:640px;"></pc-cashier>
+> <pc-cashier style="display:block;min-height:640px;"></pc-cashier>
 > ```
 
 ## Framework examples
@@ -216,7 +225,11 @@ const config: Partial<CashierConfig> = {
 }
 
 export default function CheckoutPage() {
-  return <Cashier config={config} />
+  return (
+    <div style={{ minHeight: 640 }}>
+      <Cashier config={config} />
+    </div>
+  )
 }
 ```
 
@@ -366,10 +379,34 @@ configuration:
   shown before payment is submitted. With combo-view `'list'` or `'grid'`,
   the payment types remain in the chosen layout and the selected form appears
   below them. The deprecated 1.2.0 aliases `uiAmountView`,
-  `uiAmountView__PaymentTypePicker`, and `uiAmountView__PaymentForm` still
-  work, but `uiComboView__PaymentTypes` takes priority when supplied.
+  `uiComboView__PaymentTypePicker`, `uiAmountView__PaymentTypePicker`, and
+  `uiAmountView__PaymentForm` still work, but `uiComboView__PaymentTypes` takes
+  priority when supplied.
 - Hosted card forms keep a minimum card-like shell height even when only a
   sparse hosted-field subset is rendered, for example CSC-only verification.
+
+## Direct payment type selection
+
+Use `gotoPaymentType` to open a payment type when Cashier starts. Use
+`uiPreselectedPaymentType` to select a payment type in selectable lists without
+opening it immediately.
+
+Both settings accept these values:
+
+- `<accountId>`: exact saved account ID from the payment type.
+- `<paymentTypeName>`: exact `name` field returned by the payment type API.
+- `<type>`: first payment type with this `type`.
+- `<service>`: first payment type with this `service`.
+- `<type>.<method>`
+- `<type>.<service>`
+- `<service>.<method>`
+- `<type>.<service>.<method>`
+- `<type>.<method>.<service>`
+
+Structured values can also use the old `payment_type.` prefix for backwards
+compatibility. Matching is case-insensitive. If more than one payment type
+matches a structured value, Cashier uses the first one returned by the API. Use
+an account ID or a more specific structured value when the exact row matters.
 
 ## Interactive prompts mode
 
