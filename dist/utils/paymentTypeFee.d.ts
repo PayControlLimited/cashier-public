@@ -1,4 +1,4 @@
-import { PaymentSummaryField } from '../../../api/src/payments.js';
+import { PaymentSummaryField } from '../../../api/src/payments.ts';
 import { PaymentType } from '../types/payment.js';
 type PaymentTypeFee = NonNullable<PaymentType['fee']>;
 type PaymentTypeFeeDirection = NonNullable<PaymentTypeFee['direction']>;

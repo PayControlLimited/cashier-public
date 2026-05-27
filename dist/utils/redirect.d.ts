@@ -1,4 +1,4 @@
-import { CommonSchemasRedirectData, PaymentStatusResponse } from '../../../api/src/payments.js';
+import { CommonSchemasRedirectData, PaymentStatusResponse } from '../../../api/src/payments.ts';
 export type RedirectType = CommonSchemasRedirectData['type'];
 export type RedirectMethod = CommonSchemasRedirectData['method'];
 export type RedirectDataRecord = Record<string, string>;

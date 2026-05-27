@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { PaymentType } from '../../../api/src/payments.js';
+import { PaymentType } from '../../../api/src/payments.ts';
 export type AccountDeleteHandler = (paymentType: PaymentType) => void;
 export type UseAccountDeleteResult = {
     requestAccountDelete: AccountDeleteHandler;

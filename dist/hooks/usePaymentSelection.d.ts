@@ -1,4 +1,4 @@
-import { PaymentType } from '../../../api/src/payments.js';
+import { PaymentType } from '../../../api/src/payments.ts';
 export declare const usePaymentSelection: () => {
     selectedPaymentType: string | null;
     selectPaymentType: (id: string) => void;

@@ -1,4 +1,4 @@
-import { GetPaymentTypesData, PaymentType } from '../../../api/src/payments.js';
+import { GetPaymentTypesData, PaymentType } from '../../../api/src/payments.ts';
 export declare const formatCardAccountLabel: (paymentType: PaymentType) => string | null;
 export declare const getPaymentTypeSelectionId: (paymentType: PaymentType) => string;
 export type PaymentTypesResult = {

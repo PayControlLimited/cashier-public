@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { CreatePaymentData, PaymentStatusResponse, PaymentsRequest, PaymentsResponse } from '../../../api/src/payments.js';
+import { CreatePaymentData, PaymentStatusResponse, PaymentsRequest, PaymentsResponse } from '../../../api/src/payments.ts';
 import { RedirectWithType } from '../utils/redirect.js';
 type PaymentProgressBase = Omit<PaymentsResponse, 'redirect'> & {
     redirect?: RedirectWithType;

@@ -1,4 +1,4 @@
-import { PaymentsResponse } from '../../../../api/src/payments.js';
+import { PaymentsResponse } from '../../../../api/src/payments.ts';
 import { RedirectType, RedirectWithType } from '../../utils/redirect.js';
 export type ProviderSearch = {
     redirectUrl?: RedirectWithType['url'];

@@ -1,4 +1,4 @@
-import { PaymentsRequest } from '../../../api/src/payments.js';
+import { PaymentsRequest } from '../../../api/src/payments.ts';
 import { ReactNode } from 'react';
 import { PaymentType } from '../types/payment.js';
 import { HostedFieldsController, HostedFieldsFormData } from '../lib/hostedFields.js';

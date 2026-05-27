@@ -1,4 +1,4 @@
-import { PaymentSummaryField } from '../../../api/src/payments.js';
+import { PaymentSummaryField } from '../../../api/src/payments.ts';
 import { CashierMethods, CashierUser } from '../types/CashierConfig.js';
 import { PaymentType } from '../types/payment.js';
 type WithdrawalSummaryOptions = {

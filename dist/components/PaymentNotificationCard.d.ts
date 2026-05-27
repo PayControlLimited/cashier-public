@@ -1,4 +1,4 @@
-import { CommonSchemasFieldNotification } from '../../../api/src/payments.js';
+import { CommonSchemasFieldNotification } from '../../../api/src/payments.ts';
 type PaymentNotificationCardProps = {
     notification: CommonSchemasFieldNotification;
     translateKey: (key: string | null | undefined) => string;

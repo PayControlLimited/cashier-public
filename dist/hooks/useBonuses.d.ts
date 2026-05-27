@@ -1,4 +1,4 @@
-import { PaymentType } from '../../../api/src/payments.js';
+import { PaymentType } from '../../../api/src/payments.ts';
 import { CashierBonus } from '../types/CashierConfig.js';
 import { BonusAvailability, BonusEvaluationContext } from '../utils/bonuses.js';
 export default function useBonuses(): {

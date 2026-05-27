@@ -1,4 +1,4 @@
-import { GetPaymentHistoryData, PaymentHistoryEntry } from '../../../api/src/payments.js';
+import { GetPaymentHistoryData, PaymentHistoryEntry } from '../../../api/src/payments.ts';
 export type PendingWithdrawal = PaymentHistoryEntry & {
     amountValue: number;
     amountCurrency: string;
@@ -18,7 +18,7 @@ type CancelPendingWithdrawalParams = {
     sessionId: string;
     paymentId: string;
 };
-export declare const cancelPendingWithdrawal: ({ merchantId, userId, sessionId, paymentId, }: CancelPendingWithdrawalParams) => Promise<import('../../../api/src/payments.js').CancelPaymentResponse | undefined>;
+export declare const cancelPendingWithdrawal: ({ merchantId, userId, sessionId, paymentId, }: CancelPendingWithdrawalParams) => Promise<import('../../../api/src/payments.ts').CancelPaymentResponse | undefined>;
 export declare const resolvePendingWithdrawalDismissKey: (pendingWithdrawals: PendingWithdrawal[]) => string | null;
 export declare const getPendingWithdrawalAggregateAmount: (pendingWithdrawals: PendingWithdrawal[]) => number;
 export {};

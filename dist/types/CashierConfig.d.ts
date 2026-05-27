@@ -196,6 +196,7 @@ export type CashierConfig = {
     uiProgressBar: boolean;
     uiInteractivePrompts: boolean;
     uiCancelPendingPayout: boolean;
+    uiPaymentConfirmView: boolean;
     uiComboView: boolean;
     uiComboView__PaymentTypes: CashierComboViewPaymentTypesMode;
     /** @deprecated Use uiComboView__PaymentTypes instead. */

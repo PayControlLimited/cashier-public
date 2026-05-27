@@ -1,17 +1,10 @@
-//#region src/types/CashierConfig.ts
-var e = /* @__PURE__ */ function(e) {
-	return e.PAYIN = "payin", e.PAYOUT = "payout", e;
-}({}), t = /* @__PURE__ */ function(e) {
-	return e.ACCORDION = "accordion", e.GRID = "grid", e.LIST = "list", e;
-}({}), n = /* @__PURE__ */ function(e) {
-	return e.ACCORDION = "accordion", e.GRID = "grid", e.LIST = "list", e.NONE = "none", e.PICKER = "picker", e;
-}({}), r = /* @__PURE__ */ function(e) {
-	return e.ON_PAYMENT_FAILURE_LAST_SUCCESSFUL = "onPaymentFailed:lastSuccessful", e;
-}({}), i = "https://hf.pvault.net", a = {
-	merchantId: "000e8400-e29b-41d4-a716-446655440000",
+import { CashierComboViewPaymentTypesMode as e, CashierLayoutListType as t, CashierMethods as n, CashierSuggestAction as r } from "./types/CashierConfig.js";
+//#region src/config/defaults.ts
+var i = "https://hf.pvault.net", a = {
+	merchantId: "000e8400-e29b-41d4-a716-446655440002",
 	userId: "kalle_kula",
 	sessionId: "session_example",
-	method: e.PAYIN,
+	method: n.PAYIN,
 	apiUrl: "/api",
 	debug: !1,
 	initialAmount: "9001",
@@ -24,8 +17,9 @@ var e = /* @__PURE__ */ function(e) {
 	uiProgressBar: !0,
 	uiInteractivePrompts: !0,
 	uiCancelPendingPayout: !0,
+	uiPaymentConfirmView: !1,
 	uiComboView: !0,
-	uiComboView__PaymentTypes: n.PICKER,
+	uiComboView__PaymentTypes: e.PICKER,
 	uiComboView__PaymentTypePicker: !0,
 	uiComboView__PaymentForm: !0,
 	uiAmountView: !0,
@@ -56,4 +50,4 @@ var e = /* @__PURE__ */ function(e) {
 	uiSelectorPrefix: void 0
 };
 //#endregion
-export { e as a, t as i, a as n, r as o, n as r, i as t };
+export { a as n, i as t };

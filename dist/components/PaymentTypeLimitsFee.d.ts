@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { PaymentType } from '../../../api/src/payments.js';
+import { PaymentType } from '../../../api/src/payments.ts';
 type PaymentTypeLimitsFeeItem = {
     id: string;
     label?: string;

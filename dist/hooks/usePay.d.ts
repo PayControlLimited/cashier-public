@@ -1,4 +1,4 @@
-import { CreatePaymentData, PaymentsRequest } from '../../../api/src/payments.js';
+import { CreatePaymentData, PaymentsRequest } from '../../../api/src/payments.ts';
 import { PaymentProgress } from '../context/paymentStatus.js';
 import { FinishPaymentOptions } from './useFinishPayment.js';
 type PayHookType = {

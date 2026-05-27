@@ -1,4 +1,4 @@
-import { PaymentSummaryField } from '../../../api/src/payments.js';
+import { PaymentSummaryField } from '../../../api/src/payments.ts';
 import { UiOrientation, UiVariant } from '../../../ui/src/client.js';
 import { ReactNode } from 'react';
 import { EntranceAnimationDirection, SelectionListAnimationStyleOptions } from '../utils/entranceAnimation.js';

@@ -1,4 +1,4 @@
-import { PaymentType } from '../../../../api/src/payments.js';
+import { PaymentType } from '../../../../api/src/payments.ts';
 type LoaderData = {
     paymentTypes: PaymentType[];
 };

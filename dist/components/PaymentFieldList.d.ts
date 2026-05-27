@@ -10,7 +10,9 @@ type PaymentFieldListProps = {
     renderBelowFieldContent?: (fieldId: string) => ReactNode;
     belowFieldContentInheritsTheme?: boolean;
     renderBeforeField?: (fieldId: string) => ReactNode;
-    renderAfterField?: (fieldId: string) => ReactNode;
+    renderAfterField?: (fieldId: string, context: {
+        isLastRenderableField: boolean;
+    }) => ReactNode;
     animateRows?: boolean;
     animationStartIndex?: number;
     animationTotalCount?: number;

@@ -11,7 +11,8 @@ type PaymentTypeInlineFormProps = {
     onPromptStateChange: (paymentTypeName: string, state: PaymentFormPromptState) => void;
     onPreparedValues: (paymentType: PaymentType, preparedValues: PreparedPaymentFormValues) => void;
     onValuesChange: (paymentType: PaymentType, draftValues: PaymentFormDraftValues) => void;
+    submitMode?: 'prepare' | 'submit';
 };
-declare function PaymentTypeInlineForm({ paymentType, selectionId, amountValue, valueOverrides, hideAmountField, surfaceChrome, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, }: PaymentTypeInlineFormProps): import("react/jsx-runtime").JSX.Element;
+declare function PaymentTypeInlineForm({ paymentType, selectionId, amountValue, valueOverrides, hideAmountField, surfaceChrome, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, submitMode, }: PaymentTypeInlineFormProps): import("react/jsx-runtime").JSX.Element;
 export default PaymentTypeInlineForm;
 //# sourceMappingURL=PaymentTypeInlineForm.d.ts.map

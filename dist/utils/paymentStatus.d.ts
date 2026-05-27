@@ -1,5 +1,5 @@
 import { RedirectWithType } from './redirect.js';
-import { PaymentStatusResponse } from '../../../api/src/payments.js';
+import { PaymentStatusResponse } from '../../../api/src/payments.ts';
 type ParsedStatusPayload = {
     status?: PaymentStatusResponse['status'];
     redirect?: RedirectWithType;

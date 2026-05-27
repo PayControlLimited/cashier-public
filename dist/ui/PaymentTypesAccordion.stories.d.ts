@@ -5,7 +5,7 @@ declare const meta: {
     title: string;
     component: typeof PaymentTypesAccordion;
     args: {
-        paymentTypes: import('../../../api/src/payments.js').PaymentType[];
+        paymentTypes: import('../../../api/src/payments.ts').PaymentType[];
         selectedPaymentType: string;
         renderPanel: (paymentType: PaymentType) => import("react/jsx-runtime").JSX.Element;
     };

@@ -1,4 +1,4 @@
-import { PaymentType } from '../../../api/src/payments.js';
+import { PaymentType } from '../../../api/src/payments.ts';
 import { CashierBonus, CashierUser } from '../types/CashierConfig.js';
 export type BonusCloseReasonType = 'amount' | 'totalPayinAmount' | 'payinCount' | 'daysSinceRegistration';
 export type BonusCloseReason = {

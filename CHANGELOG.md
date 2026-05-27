@@ -2,6 +2,24 @@
 
 ## Unreleased
 
+## 1.4.0
+
+### Added
+
+- Added `uiPaymentConfirmView` setting which shows a confirmation step before payment submission even if no new significant information is added from previous steps.
+
+### Changed
+
+- Updated the default `merchantId` used by Cashier and Playground examples.
+- Updated user journeys to skip confirmation step if no new information is added from previous steps. Set `uiPaymentConfirmView` to `true` to always force confirmation page.
+- Updated accordion payment form panels to include pre-payment summaries.
+- Updated UI and usability.
+
+### Fixed
+
+- Fixed accordion auto-scroll so manual user scrolling cancels pending automatic scroll positioning.
+- Fixed amount input caret colour so it inherits theme colours.
+
 ## 1.3.2
 
 ### Added

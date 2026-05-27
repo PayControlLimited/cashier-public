@@ -1,4 +1,4 @@
-import { PaymentStatusResponse } from '../../../../api/src/payments.js';
+import { PaymentStatusResponse } from '../../../../api/src/payments.ts';
 type ProviderFormProps = {
     form: NonNullable<PaymentStatusResponse['form']>;
 };

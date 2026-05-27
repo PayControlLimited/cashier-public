@@ -6,7 +6,7 @@ declare const meta: {
     title: string;
     component: typeof PaymentTypesList;
     args: {
-        paymentTypes: import('../../../api/src/payments.js').PaymentType[];
+        paymentTypes: import('../../../api/src/payments.ts').PaymentType[];
         listStyle: CashierLayoutListType.LIST;
         selectable: true;
         selectedPaymentType: string;
