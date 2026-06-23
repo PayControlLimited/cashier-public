@@ -1,7 +1,10 @@
 import { ReactNode } from 'react';
 import { UiAppearance, UiVariant } from '../../../ui/src/client.js';
+import { PaymentTypeListItemThemeSlot } from './PaymentTypeListItem.js';
 import { CashierLayoutListType } from '../types/CashierConfig.js';
 import { PaymentType } from '../types/payment.js';
+import { BonusEvaluationContext } from '../utils/bonuses.js';
+type BonusEvaluationContextInput = BonusEvaluationContext | ((paymentType: PaymentType) => BonusEvaluationContext | undefined);
 type PaymentTypesListProps = {
     paymentTypes: PaymentType[];
     onSelect?: (id: string) => void;
@@ -19,7 +22,9 @@ type PaymentTypesListProps = {
     includeItemDataTheme?: boolean;
     domScope?: string;
     animateItems?: boolean;
+    bonusEvaluationContext?: BonusEvaluationContextInput;
+    themeSlot?: PaymentTypeListItemThemeSlot;
 };
-declare function PaymentTypesList({ paymentTypes, onSelect, listStyle, compact, stacked, showMeta, selectable, selectedPaymentType, renderActions, isPaymentTypeDisabled, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, domScope, animateItems, }: PaymentTypesListProps): import("react/jsx-runtime").JSX.Element;
+declare function PaymentTypesList({ paymentTypes, onSelect, listStyle, compact, stacked, showMeta, selectable, selectedPaymentType, renderActions, isPaymentTypeDisabled, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, domScope, animateItems, bonusEvaluationContext, themeSlot, }: PaymentTypesListProps): import("react/jsx-runtime").JSX.Element;
 export default PaymentTypesList;
 //# sourceMappingURL=PaymentTypesList.d.ts.map

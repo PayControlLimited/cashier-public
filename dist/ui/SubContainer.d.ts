@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-declare function SubContainer({ id, className, contentId, contentClassName, title, subtitle, header, stickyHeader, fitted, fullHeight, children, }: {
+declare function SubContainer({ id, className, contentId, contentClassName, title, subtitle, header, stickyHeader, fitted, fullHeight, constrainWidth, children, }: {
     id?: string;
     className?: string;
     contentId?: string;
@@ -10,6 +10,7 @@ declare function SubContainer({ id, className, contentId, contentClassName, titl
     stickyHeader?: boolean;
     fitted?: boolean;
     fullHeight?: boolean;
+    constrainWidth?: boolean;
     children?: ReactNode;
 }): import("react/jsx-runtime").JSX.Element;
 export default SubContainer;

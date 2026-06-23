@@ -4,6 +4,7 @@ import { BonusAvailability, BonusEvaluationContext } from '../utils/bonuses.js';
 export default function useBonuses(): {
     bonuses: CashierBonus[];
     getBonusAvailabilityForPaymentType: (paymentType?: PaymentType | null, override?: BonusEvaluationContext) => BonusAvailability[];
+    getBonusAvailabilityForPaymentTypes: (paymentTypes: PaymentType[], selectedPaymentType?: PaymentType | null, override?: BonusEvaluationContext) => BonusAvailability[];
     getAvailableBonusesForPaymentType: (paymentType?: PaymentType | null, override?: BonusEvaluationContext) => CashierBonus[];
     getBonusCountForPaymentType: (paymentType?: PaymentType | null, override?: BonusEvaluationContext) => number;
 };

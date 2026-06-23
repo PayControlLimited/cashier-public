@@ -1,5 +1,6 @@
 import { RedirectWithType } from './redirect.js';
 import { PaymentStatusResponse } from '../../../api/src/payments.ts';
+import { CashierPaymentUpdatedEvent } from '../types/CashierConfig.js';
 type ParsedStatusPayload = {
     status?: PaymentStatusResponse['status'];
     redirect?: RedirectWithType;
@@ -12,7 +13,7 @@ export declare const isTerminalPaymentStatus: (status?: string) => boolean;
 type StatusStreamParams = {
     paymentId: string;
     merchantId: string;
-    userId: string;
+    userId?: string;
     sessionId: string;
 };
 type StatusListener = (event: ParsedStatusPayload | null) => void;
@@ -24,7 +25,8 @@ export declare const subscribeToStatusStreamState: (listener: StreamStateListene
 export declare const stopStatusStream: (reason?: string) => void;
 type StartStatusStreamParams = StatusStreamParams & {
     debug?: boolean;
+    onPaymentUpdated?: (event: CashierPaymentUpdatedEvent) => void;
 };
-export declare const startStatusStream: ({ paymentId, merchantId, userId, sessionId, debug, }: StartStatusStreamParams) => EventSource | null;
+export declare const startStatusStream: ({ paymentId, merchantId, userId, sessionId, debug, onPaymentUpdated, }: StartStatusStreamParams) => EventSource | null;
 export {};
 //# sourceMappingURL=paymentStatus.d.ts.map

@@ -28,6 +28,8 @@ declare const meta: {
         includeItemDataTheme?: boolean | undefined;
         domScope?: string | undefined;
         animateItems?: boolean | undefined;
+        bonusEvaluationContext?: (import('../utils/bonuses.js').BonusEvaluationContext | ((paymentType: PaymentType) => import('../utils/bonuses.js').BonusEvaluationContext | undefined)) | undefined;
+        themeSlot?: import('./PaymentTypeListItem.js').PaymentTypeListItemThemeSlot | undefined;
     }>, context: import('storybook/internal/csf').StoryContext<import('@storybook/react').ReactRenderer, {
         paymentTypes: PaymentType[];
         onSelect?: ((id: string) => void) | undefined;
@@ -45,6 +47,8 @@ declare const meta: {
         includeItemDataTheme?: boolean | undefined;
         domScope?: string | undefined;
         animateItems?: boolean | undefined;
+        bonusEvaluationContext?: (import('../utils/bonuses.js').BonusEvaluationContext | ((paymentType: PaymentType) => import('../utils/bonuses.js').BonusEvaluationContext | undefined)) | undefined;
+        themeSlot?: import('./PaymentTypeListItem.js').PaymentTypeListItemThemeSlot | undefined;
     }>) => import("react/jsx-runtime").JSX.Element)[];
 };
 export default meta;

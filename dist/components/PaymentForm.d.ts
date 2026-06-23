@@ -1,28 +1,15 @@
-import { PaymentsRequest } from '../../../api/src/payments.ts';
 import { ReactNode } from 'react';
 import { PaymentType } from '../types/payment.js';
-import { HostedFieldsController, HostedFieldsFormData } from '../lib/hostedFields.js';
 import { PaymentFormValues } from '../utils/paymentFieldUtils.js';
 export type { PaymentFormValues } from '../utils/paymentFieldUtils.js';
-type RequiredPaymentPayloadParams = Pick<PaymentsRequest, 'merchantId' | 'userId' | 'sessionId' | 'accountId' | 'currency'>;
-type OptionalPaymentPayloadParams = Partial<Pick<PaymentsRequest, 'service' | 'bonusCode' | 'locales' | 'extra'>>;
-type PreparePaymentPayloadParams = RequiredPaymentPayloadParams & OptionalPaymentPayloadParams & {
-    values: PaymentFormValues;
-    method: PaymentType['method'] | undefined;
-    type: PaymentType['type'] | undefined;
-    debug: boolean;
-    overrideRaw?: string;
-    tokenizeHfData: (saveAccount?: boolean) => Promise<HostedFieldsFormData>;
-    controller: HostedFieldsController | null;
-};
-export declare const preparePaymentPayload: (params: PreparePaymentPayloadParams) => Promise<PaymentsRequest>;
+export { preparePaymentPayload } from './paymentFormPayload.js';
 export type PaymentFormActions = {
     submit: {
         label: string;
         disabled: boolean;
         visible: boolean;
         loading: boolean;
-        onClick: () => void;
+        onClick: () => Promise<unknown>;
     };
     reset: {
         label: string;
@@ -57,12 +44,15 @@ type PaymentFormProps = {
     renderMode?: 'form' | 'confirm';
     hideAmountField?: boolean;
     amountValueOverride?: string;
+    renderAfterAmountField?: ReactNode;
     valueOverrides?: Partial<PaymentFormValues>;
     requireDirtyBeforeSubmit?: boolean;
     comboViewLayout?: boolean;
     comboViewSurfaceChrome?: ComboViewSurfaceChrome;
+    reserveTrailingActionSpace?: boolean;
+    animateEntrance?: boolean;
 };
-declare function PaymentForm({ id, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, renderMode, hideAmountField, amountValueOverride, valueOverrides, requireDirtyBeforeSubmit, comboViewLayout, comboViewSurfaceChrome, }: PaymentFormProps): ReactNode | null;
+declare function PaymentForm({ id, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, renderMode, hideAmountField, amountValueOverride, renderAfterAmountField, valueOverrides, requireDirtyBeforeSubmit, comboViewLayout, comboViewSurfaceChrome, reserveTrailingActionSpace, animateEntrance, }: PaymentFormProps): ReactNode | null;
 export default PaymentForm;
 type PaymentFormActionsBridgeProps = {
     onActionsChange?: PaymentFormActionCallback;

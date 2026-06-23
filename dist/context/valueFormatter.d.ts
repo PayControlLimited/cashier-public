@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
+import { CurrencyFormatter } from '../../../format/src/index.ts';
 type ValueFormatterContextValue = {
-    currencyFormatter: Intl.NumberFormat | null;
+    currencyFormatter: CurrencyFormatter | null;
     formatCurrencyValue: (value: unknown) => string;
     formatDisplayValue: (value: unknown) => string;
 };

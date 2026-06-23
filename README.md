@@ -18,10 +18,12 @@ Runtime exports from `@paycontrollimited/cashier`:
 - `Cashier` (named React component export)
 - `defineCashier`
 - `defaultCashierConfig`
+- `CashierBonusesStyle`
 - `CashierComboViewPaymentTypesMode`
 - `CashierLayoutListType`
 - `CashierMethods`
 - `CashierSuggestAction`
+- `CashierSummaryActionType`
 
 Type exports from `@paycontrollimited/cashier`:
 
@@ -37,6 +39,7 @@ Type exports from `@paycontrollimited/cashier`:
   ```
 - `CashierConfig`
 - `CashierProps`
+- `CashierBonusesStyle`
 - `CashierComboViewPaymentTypesMode`
 - `CashierLocale`
 - `CashierCurrency`
@@ -58,9 +61,18 @@ Type exports from `@paycontrollimited/cashier`:
 - `CashierPaymentFieldNotification`
 - `CashierPaymentFormData`
 - `CashierPaymentProgress`
+- `CashierPaymentUpdatedEvent`
+- `CashierPaymentSummaryEvent`
+- `CashierPaymentSummaryField`
+- `CashierPaymentSummaryResponse`
 - `CashierPaymentType`
 - `CashierRedirectData`
+- `CashierSummaryAction`
+- `CashierSummaryActions`
+- `CashierSummaryActionThemeVariant`
+- `CashierSummaryUrlAction`
 - `CashierTheme`
+- `PayControlUiTheme`
 - `HostedFieldsFontDefinition`
 - `HostedFieldsFontSource`
 
@@ -116,10 +128,22 @@ const config: Partial<CashierConfig> = {
   method: CashierMethods.PAYIN,
   apiUrl: 'https://api.paycontrol.app',
   uiInteractivePrompts: true,
-  uiCancelPendingPayout: true,
+  uiSuggestAction: [
+    'onPaymentFailed:lastSuccessful',
+    'onPendingPayout:cancel',
+  ],
+  summaryActions: {
+    items: [{
+      id: 'try-again',
+      label: 'Try again',
+      paymentStatuses: ['failed'],
+      action: 'restart',
+    }],
+  },
   uiProgressBar: true,
   uiShowFees: true,
   uiBonuses: true,
+  uiBonusesStyle: 'picker-payment-form',
   uiSelectorPrefix: 'merchant-checkout-a',
   extraAttributes: {
     campaign: 'spring-2026',
@@ -128,6 +152,80 @@ const config: Partial<CashierConfig> = {
 
 export function Checkout() {
   return <Cashier config={config} />
+}
+```
+
+## Payment callbacks
+
+`onPaymentUpdated` fires for every payment status stream message and stream
+error. Message events use the same normalised payment progress fields Cashier
+uses internally:
+
+```ts
+const config: Partial<CashierConfig> = {
+  onPaymentUpdated(event) {
+    if (event.type === 'error') {
+      console.warn(event.paymentId, event.error.message)
+      return
+    }
+
+    console.log(event.paymentId, event.status, event.redirect, event.form)
+  },
+}
+```
+
+Typical payment update event:
+
+```ts
+{
+  type: 'message',
+  merchantId: 'merchant_abc',
+  paymentId: 'pay_123',
+  status: 'ongoing',
+  paymentStatus: 'ongoing',
+}
+```
+
+Malformed or non-normalisable stream messages still call `onPaymentUpdated`
+with the payment identity:
+
+```ts
+{
+  type: 'message',
+  merchantId: 'merchant_abc',
+  paymentId: 'pay_123',
+}
+```
+
+`onPaymentFinished` keeps its existing behaviour and fires only when the
+tracked payment reaches terminal `done`.
+
+`onPaymentSummary` fires after the Summary API response loads:
+
+```ts
+const config: Partial<CashierConfig> = {
+  onPaymentSummary(event) {
+    console.log(event.paymentId, event.summary.paymentStatus)
+  },
+}
+```
+
+`CashierPaymentSummaryResponse` mirrors the Summary API response shape as a
+Cashier-owned public type for package consumers.
+
+Typical summary event:
+
+```ts
+{
+  merchantId: 'merchant_abc',
+  paymentId: 'pay_123',
+  summary: {
+    paymentStatus: 'successful',
+    messages: ['payment.success'],
+    fields: [
+      { id: 'amount', label: 'field.amount.summary', value: '100.00' },
+    ],
+  },
 }
 ```
 
@@ -140,7 +238,7 @@ summaries. Cashier also shows a calculated `Total` row under `Fee`. Before an
 amount is entered, `Total` stays at `0`. After that, it is shown when the fee
 changes the entered amount.
 
-When `uiCancelPendingPayout` is enabled, payin flows can replace the
+When `uiSuggestAction` includes `onPendingPayout:cancel`, payin flows can replace the
 normal interactive prompt with a pending-withdrawal cancellation prompt. Cashier
 checks the latest 100 payout history items and shows the prompt only when it
 finds a cancellable pending withdrawal. When combo view is enabled, the
@@ -152,9 +250,20 @@ current pending set for the rest of the session unless the pending set
 changes. When `lockAmount` is `true`, Cashier treats this feature as
 disabled.
 
+`summaryActions` controls the action area on the payment summary. Omit it to
+keep the default Back button, or use `{ items: [] }` to remove actions. Actions
+can be guarded `restart` buttons, safe URL anchors, linked text, or flat text.
+`paymentStatuses` filters by summary status, and omitted `layout` stacks
+automatically when more than two buttons or any text action is present.
+
 When `uiCardBrand` is `true`, card payments use the branded card shell and
 card-brand footer. Set it to `false` if you want the card inputs to follow the
 same plain form style as the rest of the payment form.
+
+For shared Cashier and Hosted Fields styling, pass structured `uiTheme`
+with `variables` and scoped selector-object `css`. Flat
+`uiTheme` stays supported for existing integrations. Full theme and selector references:
+`docs/cashier/cashier-themes.md` and `docs/cashier/cashier-dom-selectors.md`.
 
 In payout flows, if you provide both `user.balance` and
 `user.withdrawableBalance`, Cashier uses `withdrawableBalance` as the payout
@@ -375,10 +484,13 @@ configuration:
   - `'none'` hides payment types on the combo-view screen and sends users to
     the separate payment type step after they continue.
 - When `uiComboView__PaymentForm` is enabled, selected payment type fields
-  are shown on the first payment screen. The confirm-payment screen is still
-  shown before payment is submitted. With combo-view `'list'` or `'grid'`,
-  the payment types remain in the chosen layout and the selected form appears
-  below them. The deprecated 1.2.0 aliases `uiAmountView`,
+  are shown on the first payment screen. Cashier submits directly from inline
+  combo-view payment forms when no bonus or other intermediate step is pending
+  and the confirm screen would not add user-visible details. Set
+  `uiPaymentConfirmView` to `true` to always show the confirm-payment screen
+  before submission. With combo-view `'list'` or `'grid'`, the payment types
+  remain in the chosen layout and the selected form appears below them. The
+  deprecated 1.2.0 aliases `uiAmountView`,
   `uiComboView__PaymentTypePicker`, `uiAmountView__PaymentTypePicker`, and
   `uiAmountView__PaymentForm` still work, but `uiComboView__PaymentTypes` takes
   priority when supplied.
@@ -425,22 +537,70 @@ if no bonuses are configured: it skips the bonus step, hides bonus labels,
 clears bonus selection, and does not send `bonusCode` with payments. Keep
 `uiBonusesAvailable` for the smaller badge/count display setting.
 
+Use `uiBonusesStyle` to choose how users select bonuses:
+
+- `picker-payment-form` (default) hides the bonus step and shows a bonus picker inside
+  the selected payment type form flow.
+- `picker-payment-list` hides the bonus step and shows one global bonus picker above
+  payment type list, grid, or accordion surfaces. Cashier forces selectable list
+  behaviour for this mode so users can choose a payment type and bonus before Continue.
+- `page` shows the separate bonus step.
+
+Picker modes scope bonuses to the selected payment type. `picker-payment-form`
+appears between amount and form in combo-view picker flows, inside accordion
+panels, and in the payment details presummary. `picker-payment-list` appears
+above the respective payment type list surface. When combo view uses the payment
+type picker, `picker-payment-list` falls back to the selected payment type picker
+because no payment type list is visible. The picker drawer uses the same
+eligible, close-to, terms, top-up, and `bonusCode` behaviour as the bonus page.
+In `picker-payment-list`, the drawer opens before a payment type is selected and
+shows all valid configured bonuses. Payment-type-specific or otherwise
+ineligible bonuses are disabled with reason copy until the user selects a
+compatible payment type. Payment-type-specific reasons list compatible payment
+type display names via `{paymentTypes}`. Bonuses with no payment-type restriction
+can be selected immediately. Minimum-threshold reasons reuse the
+`bonus.close_to_*` keys; maximum threshold and payment-type reasons use
+unavailable-specific keys.
+Top-up prompts show
+claim progress, bonus limits, and approve or reject actions when the current
+deposit is close to the full offer.
+
 Bonuses can include optional award metadata:
 
 - `maxBonus`
 - `maxBonusPercentage`
+- `awards`
 
-Cashier uses this metadata for interactive prompts and bonus summaries. Payment
-requests still send `bonusCode` only.
+Cashier keeps `maxBonus` and `maxBonusPercentage` as deprecated fallback fields
+for bonus picker progress and top-up prompts. Use `awards` to render estimated
+award lines on `/summary` and to define percentage-match progress for new
+configs. Each award must opt in with `paymentStatuses`; legacy-only bonus
+configs do not show summary award rows. Payment requests still send `bonusCode`
+only.
 
 ```ts
 const config: Partial<CashierConfig> = {
   bonuses: [{
     code: 'WELCOME',
     title: 'Welcome offer',
-    description: '100% up to 200 EUR',
-    maxBonus: 200,
-    maxBonusPercentage: 100,
+    description: '100% up to 200 EUR + 15 Free Spins',
+    awards: [
+      {
+        id: 'deposit-match',
+        type: 'currency',
+        paymentStatuses: ['successful'],
+        message: 'bonus.summary.money_applied',
+        value: { type: 'percentage', value: 100, maxValue: 200 },
+      },
+      {
+        id: 'free-spins',
+        type: 'item',
+        paymentStatuses: ['successful'],
+        message: '+{value} {name}',
+        name: 'bonus.item.free_spins',
+        value: { type: 'fixed', value: 15 },
+      },
+    ],
   }],
 }
 ```
@@ -606,6 +766,7 @@ const config: Partial<CashierConfig> = {
   uiPaymentMethodSwitcher: true,
   uiProgressBar: true,
   uiInteractivePrompts: true,
+  uiPaymentConfirmView: false,
   uiComboView: true,
   uiComboView__PaymentTypes: CashierComboViewPaymentTypesMode.PICKER,
   uiComboView__PaymentForm: true,
@@ -614,6 +775,7 @@ const config: Partial<CashierConfig> = {
   uiPreselectedPaymentType: null,
   uiAccountDelete: true,
   uiBonuses: true,
+  uiBonusesStyle: 'picker-payment-form',
   uiBonusesAvailable: true,
   uiSuggestAmounts: '',
   uiSuggestAction: [],

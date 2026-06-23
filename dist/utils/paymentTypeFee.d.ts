@@ -1,3 +1,4 @@
+import { CurrencyFormatter } from '../../../format/src/index.ts';
 import { PaymentSummaryField } from '../../../api/src/payments.ts';
 import { PaymentType } from '../types/payment.js';
 type PaymentTypeFee = NonNullable<PaymentType['fee']>;
@@ -11,13 +12,13 @@ export type CalculatedPaymentTypeFee = {
 };
 export declare const hasMeaningfulFeeValue: (fee: PaymentType["fee"] | undefined) => boolean;
 export declare const resolveFeeDirectionSign: (direction: PaymentTypeFee["direction"] | undefined) => string;
-export declare const createFeeCurrencyFormatter: (currencyFormatter: Intl.NumberFormat | null) => Intl.NumberFormat | null;
+export declare const createFeeCurrencyFormatter: (currencyFormatter: CurrencyFormatter | null) => CurrencyFormatter | null;
 export declare const formatCalculatedPaymentTypeFee: (fee: PaymentType["fee"] | undefined, amount: number, options: {
-    feeCurrencyFormatter: Intl.NumberFormat | null;
+    feeCurrencyFormatter: CurrencyFormatter | null;
     formatCurrencyValue: (value: unknown) => string;
 }) => string;
 export declare const getCalculatedFeeSummaryField: (fee: PaymentType["fee"] | undefined, amount: number, options: {
-    feeCurrencyFormatter: Intl.NumberFormat | null;
+    feeCurrencyFormatter: CurrencyFormatter | null;
     formatCurrencyValue: (value: unknown) => string;
 }) => PaymentSummaryField | null;
 export declare const getCalculatedPayoutTotalSummaryField: (fee: PaymentType["fee"] | undefined, amount: number, currency: string) => PaymentSummaryField | null;

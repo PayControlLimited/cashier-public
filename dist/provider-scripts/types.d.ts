@@ -16,9 +16,9 @@ export type ProviderScriptMountPayload = {
     container: HTMLElement;
     context: ProviderScriptRenderContext;
 };
-export type ProviderScriptTemplateContent = string | DocumentFragment | Node[];
+export type ProviderScriptTemplateContent = DocumentFragment | Node | Node[];
 export type ProviderScriptTemplateFactory = (doc: Document, context: ProviderScriptRenderContext) => ProviderScriptTemplateContent;
-export type ProviderScriptTemplate = string | ProviderScriptTemplateFactory;
+export type ProviderScriptTemplate = (ProviderScriptTemplateContent | ProviderScriptTemplateFactory);
 export type ProviderScriptDefinition = {
     id: string;
     presentation: ProviderScriptPresentation;

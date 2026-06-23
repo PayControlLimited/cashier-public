@@ -1,6 +1,7 @@
 import { UiAppearance, UiVariant } from '../../../ui/src/client.js';
 import { BonusAvailability } from '../utils/bonuses.js';
 import { CashierLayoutListType } from '../types/CashierConfig.js';
+import { PaymentTypeListItemThemeSlot } from './PaymentTypeListItem.js';
 type BonusesListProps = {
     bonuses: BonusAvailability[];
     selectedBonusCode: string | null;
@@ -16,7 +17,9 @@ type BonusesListProps = {
     itemAppearance?: UiAppearance;
     domScope?: string;
     animateItems?: boolean;
+    closeReasonPlacement?: 'meta' | 'info';
+    themeSlot?: PaymentTypeListItemThemeSlot;
 };
-declare function BonusesList({ bonuses, selectedBonusCode, onSelect, onSkip, selectable, showSkipOption, isSkipSelected, listStyle, compact, stacked, itemVariant, itemAppearance, domScope, animateItems, }: BonusesListProps): import("react/jsx-runtime").JSX.Element;
+declare function BonusesList({ bonuses, selectedBonusCode, onSelect, onSkip, selectable, showSkipOption, isSkipSelected, listStyle, compact, stacked, itemVariant, itemAppearance, domScope, animateItems, closeReasonPlacement, themeSlot, }: BonusesListProps): import("react/jsx-runtime").JSX.Element;
 export default BonusesList;
 //# sourceMappingURL=BonusesList.d.ts.map

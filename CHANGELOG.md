@@ -2,6 +2,45 @@
 
 ## Unreleased
 
+## 1.5.0
+
+### Added
+
+- Added `fetchConfig`, disabled by default, so Cashier can apply a merchant-provided `cashierConfig` asset from the payment-types response before the payment UI appears. Client-only identity, API, session, Hosted Fields, runtime data, and callbacks remain controlled by the client config.
+- Added structured `uiTheme` support through `PayControlUiTheme`, including CSS variables, scoped selector CSS, and trusted `uiThemeCssText` resolved by the host from `uiTheme.cssUrl`. Flat theme variables remain supported, and resolved theme variables and CSS are forwarded to Hosted Fields.
+- Added granular CSS-variable styling hooks for shared UI surfaces used by Cashier, including inputs, toggles, checkboxes, controls, cards, panels, logos, payment forms, payment summaries, payment type pickers, bonus pickers, accordions, and suggested amount buttons.
+- Added `CashierBonus.awards`, `CashierAward`, and `CashierAwardValue` for status-scoped currency and item award lines on the payment summary. Currency percentage awards also drive bonus progress and top-up prompts.
+- Added `uiBonusesStyle` with `page`, `picker-payment-form`, and `picker-payment-list` options. `picker-payment-form` is the default and keeps bonus selection inside the selected payment type form. `picker-payment-list` shows one global picker above selectable payment type lists and explains unavailable bonuses.
+- Added `uiFixedControls`, enabled by default, to place primary Cashier actions in the fixed bottom control rail. Disabling it keeps actions inline with an adaptive bottom-rail fallback when inline placement would be clipped.
+- Added `summaryActions` with `CashierSummaryActions` type exports for the payment summary action area. Omit it to keep the default Back action, set `items: []` to remove actions, or configure guarded restart buttons, safe URL buttons and links, linked text, flat text, status filters, `uiFixedControls` placement, and automatic row/stack layout.
+- Added `onPaymentUpdated` and `onPaymentSummary` callbacks, plus `CashierPaymentUpdatedEvent`, `CashierPaymentSummaryEvent`, `CashierPaymentSummaryField`, and `CashierPaymentSummaryResponse` type exports, so hosts can observe payment status stream updates and the loaded Summary API result.
+- Added `onPendingPayout:cancel` to `uiSuggestAction` so pending-payout cancellation can be configured with the other interactive prompt suggestions.
+- Added `uiGroupCardInputs`, enabled by default, to group Hosted Fields card number, expiry, and security code into one visual card input when the Hosted Fields iframe advertises `groupedCardInputs` support. Cashier keeps separate controls for older Hosted Fields iframes or when `uiGroupCardInputs` is `false`, with matching loading and loaded control geometry.
+- Added `accordion-collapsible` as a `uiListStyle` and `uiComboView__PaymentTypes` value so selected accordion payment types can collapse and clear selection when clicked again.
+- Added Hosted Fields focus handoff so focus can move from hosted card fields to the next Cashier field when `hostedFieldsAutoFocusNextField` is enabled.
+- Added read-only `display` and `qrcode` payment fields so providers can show copyable values and QR payloads in payment forms.
+- Added non-ISO currency display support so amount animation and fee summaries preserve currency-code suffixes such as `BTC`.
+- Added Pay and Play status polling support before a user ID is available by omitting `userId` from the status stream until it resolves.
+
+### Changed
+
+- Changed initial loading so Cashier waits for payment types and translations before showing the payment UI, allowing remote config, currency, and locale copy to apply to the first rendered screen.
+- Changed typable Cashier form controls to keep a 16px mobile focus font floor, avoiding mobile browser zoom while keeping compact Cashier spacing.
+- Changed `uiSuggestAction: []` to disable pending-payout cancellation prompts when `uiCancelPendingPayout` is not explicitly set. Explicit `uiCancelPendingPayout` values remain a compatibility override.
+
+### Deprecated
+
+- Deprecated `CashierBonus.maxBonus` and `CashierBonus.maxBonusPercentage` in favour of `CashierBonus.awards` currency awards. Both legacy fields remain supported as fallback metadata.
+- Deprecated `uiCancelPendingPayout`; use `uiSuggestAction` with `onPendingPayout:cancel` instead.
+
+### Fixed
+
+- Fixed the quick-payment amount area so clicking the label, amount, or empty space focuses the amount input without toggling the value.
+- Fixed payment forms so externally updated, hidden, or locked amounts submit the latest effective amount instead of stale form state.
+- Fixed payment submission so `bonusCode` is sent only when the selected bonus is still available for the submitted amount and payment type.
+- Fixed amount limit validation for high-precision decimal values so limits above JavaScript's safe integer range are compared before numeric conversion.
+- Fixed Hosted Fields initialisation reliability so card fields still configure when the Hosted Fields iframe loads or reports layout before its ready event.
+
 ## 1.4.0
 
 ### Added

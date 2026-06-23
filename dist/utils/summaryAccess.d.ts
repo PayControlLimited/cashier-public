@@ -1,6 +1,7 @@
 export type SummaryAccess = {
     paymentId: string;
     merchantId: string;
+    selectedBonusCode?: string | null;
 } | null;
 export declare const setSummaryAccess: (next: SummaryAccess) => void;
 export declare const getSummaryAccess: () => SummaryAccess;

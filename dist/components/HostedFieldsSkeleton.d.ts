@@ -1,6 +1,7 @@
-import { PaymentTypeField } from '../types/payment.js';
+import { LocalisedPaymentTypeField } from '../types/payment.js';
+type LocalisedHostedFieldEntry = LocalisedPaymentTypeField | readonly LocalisedPaymentTypeField[];
 type HostedFieldsSkeletonProps = {
-    fields: readonly PaymentTypeField[];
+    fields: readonly LocalisedHostedFieldEntry[];
     className?: string;
 };
 export default function HostedFieldsSkeleton({ fields, className, }: HostedFieldsSkeletonProps): import("react/jsx-runtime").JSX.Element;

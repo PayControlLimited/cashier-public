@@ -1,12 +1,14 @@
 import { ReactNode } from 'react';
-import { CashierTranslations } from '../utils/i18n.js';
+import { CashierTranslations, I18nKeyCandidates } from '../utils/i18n.js';
 type CashierI18nValue = {
     translations: CashierTranslations;
     translateKey: TranslateKey;
+    translateKeys: TranslateKeys;
     hasTranslation: HasTranslation;
     isTranslationVisible: boolean;
 };
 type TranslateKey = (key: string | null | undefined) => string;
+type TranslateKeys = (keys: I18nKeyCandidates) => string;
 type HasTranslation = (key: string | null | undefined) => boolean;
 type CashierI18nProviderProps = {
     children: ReactNode;

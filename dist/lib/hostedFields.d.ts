@@ -1,5 +1,6 @@
 import { CreditCardTypeCardBrandId } from 'credit-card-type/dist/types';
 import { HostedFieldsFontDefinition } from '../types/CashierConfig.js';
+import { HostedFieldsThemePayload } from './hostedFieldsThemePayload.js';
 /**
  * Quick start:
  *
@@ -27,6 +28,8 @@ export declare enum HostedFieldsEventId {
     FORM_DATA = "HF_FORM_DATA",
     FORM_STATE = "HF_FORM_STATE",
     CARD_BRAND = "HF_CARD_BRAND",
+    AUTO_FOCUS_NEXT = "HF_AUTO_FOCUS_NEXT",
+    CAPABILITIES = "HF_CAPABILITIES",
     READY = "HF_READY",
     ERROR = "HF_ERROR",
     RESET = "RESET"
@@ -42,29 +45,40 @@ export type HostedFieldsFormState = {
     isValid?: boolean;
     dirty?: boolean;
 };
+export type HostedFieldsCapabilities = {
+    groupedCardInputs?: boolean;
+};
 export type HostedFieldsMessage = {
     type: HostedFieldsEventId;
+    protocolVersion?: number;
     layout?: HostedFieldsLayout;
     formData?: HostedFieldsFormData;
     formState?: HostedFieldsFormState;
     cardBrand?: CreditCardTypeCardBrandId;
+    capabilities?: HostedFieldsCapabilities;
+    fieldId?: string;
     message?: string;
     fonts?: HostedFieldsFontDefinition[];
     autoFocusNextField?: boolean;
+    css?: string | null;
 };
 /** Configuration payload sent to the hosted fields iframe. */
 export type HostedFieldsConfiguration = {
+    protocolVersion?: number;
     fields?: readonly unknown[] | null;
     debugMode?: boolean;
     fonts?: HostedFieldsFontDefinition[] | null;
-    uiTheme?: Record<string, string | number> | null;
+    uiTheme?: HostedFieldsThemePayload | null;
+    css?: string | null;
     autoFocusNextField?: boolean;
     pciTenantId?: string;
+    uiGroupCardInputs?: boolean;
 };
 /** Event hooks fired while the iframe exchanges postMessage events. */
 export type HostedFieldsCallbacks = {
     onReady?: () => void;
     onLayout?: (layout: HostedFieldsLayout, message: HostedFieldsMessage) => void;
+    onCapabilities?: (capabilities: HostedFieldsCapabilities, message: HostedFieldsMessage) => void;
     onMessage?: (message: HostedFieldsMessage) => void;
     onInit?: (fonts: HostedFieldsFontDefinition[] | undefined, message: HostedFieldsMessage) => void;
 };
@@ -83,6 +97,7 @@ export type HostedFieldsController = {
     isReady(): boolean;
     getLastLayout(): HostedFieldsLayout | null;
     getLastFormState(): HostedFieldsFormState | null;
+    getCapabilities(): HostedFieldsCapabilities;
     reset(): void;
 };
 /** Construction options for {@link createHostedFieldsController}. */

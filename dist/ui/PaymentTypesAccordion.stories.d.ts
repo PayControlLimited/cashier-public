@@ -14,7 +14,9 @@ declare const meta: {
         selectedPaymentType?: string | null | undefined;
         onSelect?: ((id: string) => void) | undefined;
         renderPanel: (paymentType: PaymentType) => import('react').ReactNode;
+        renderFooter?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
         hasPanel?: ((paymentType: PaymentType) => boolean) | undefined;
+        collapsible?: boolean | undefined;
         showMeta?: boolean | undefined;
         compact?: boolean | undefined;
         renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
@@ -23,14 +25,18 @@ declare const meta: {
         itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
         itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
         includeItemDataTheme?: boolean | undefined;
+        hoverMode?: "group" | "none" | undefined;
         domScope?: string | undefined;
         animateItems?: boolean | undefined;
+        bonusEvaluationContext?: (import('../utils/bonuses.js').BonusEvaluationContext | ((paymentType: PaymentType) => import('../utils/bonuses.js').BonusEvaluationContext | undefined)) | undefined;
     }>, context: import('storybook/internal/csf').StoryContext<import('@storybook/react').ReactRenderer, {
         paymentTypes: PaymentType[];
         selectedPaymentType?: string | null | undefined;
         onSelect?: ((id: string) => void) | undefined;
         renderPanel: (paymentType: PaymentType) => import('react').ReactNode;
+        renderFooter?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
         hasPanel?: ((paymentType: PaymentType) => boolean) | undefined;
+        collapsible?: boolean | undefined;
         showMeta?: boolean | undefined;
         compact?: boolean | undefined;
         renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
@@ -39,8 +45,10 @@ declare const meta: {
         itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
         itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
         includeItemDataTheme?: boolean | undefined;
+        hoverMode?: "group" | "none" | undefined;
         domScope?: string | undefined;
         animateItems?: boolean | undefined;
+        bonusEvaluationContext?: (import('../utils/bonuses.js').BonusEvaluationContext | ((paymentType: PaymentType) => import('../utils/bonuses.js').BonusEvaluationContext | undefined)) | undefined;
     }>) => import("react/jsx-runtime").JSX.Element)[];
 };
 export default meta;

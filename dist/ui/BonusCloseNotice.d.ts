@@ -1,8 +1,9 @@
-import { BonusCloseReason } from '../utils/bonuses.js';
+import { BonusAvailabilityReason } from '../utils/bonuses.js';
 type BonusCloseNoticeProps = {
-    reasons: BonusCloseReason[];
+    reasons: BonusAvailabilityReason[];
     align?: 'left' | 'center';
+    tone?: 'hint' | 'neutral';
 };
-export default function BonusCloseNotice({ reasons, align, }: BonusCloseNoticeProps): import("react/jsx-runtime").JSX.Element | null;
+export default function BonusCloseNotice({ reasons, align, tone, }: BonusCloseNoticeProps): import("react/jsx-runtime").JSX.Element | null;
 export {};
 //# sourceMappingURL=BonusCloseNotice.d.ts.map

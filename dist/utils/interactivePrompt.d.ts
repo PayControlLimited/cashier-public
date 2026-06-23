@@ -34,6 +34,7 @@ export type InteractivePromptDescriptor = {
     compact?: boolean;
 };
 export declare function resolveInteractivePromptText(translateKey: (key: string) => string, key: string | undefined, fallback?: string, values?: Record<string, string>): string | undefined;
+export declare function resolveInteractivePromptRichText(translateKey: (key: string) => string, key: string | undefined, fallback?: ReactNode, values?: Record<string, string>): ReactNode | undefined;
 export declare function resolveInteractivePromptBody(translateKey: (key: string) => string, key: string | undefined, values?: Record<string, string>): string | undefined;
 export declare const resolveInteractivePromptDismissKey: ({ route, paymentType, bonusCode, targetAmount, }: {
     route: string;

@@ -1,16 +1,17 @@
-import { CashierComboViewPaymentTypesMode as e, CashierLayoutListType as t, CashierMethods as n, CashierSuggestAction as r } from "./types/CashierConfig.js";
+import { CashierBonusesStyle as e, CashierComboViewPaymentTypesMode as t, CashierLayoutListType as n, CashierMethods as r, CashierSuggestAction as i } from "./types/CashierConfig.js";
 //#region src/config/defaults.ts
-var i = "https://hf.pvault.net", a = {
+var a = "https://hf.pvault.net", o = {
 	merchantId: "000e8400-e29b-41d4-a716-446655440002",
 	userId: "kalle_kula",
 	sessionId: "session_example",
-	method: n.PAYIN,
+	method: r.PAYIN,
 	apiUrl: "/api",
 	debug: !1,
+	fetchConfig: !1,
 	initialAmount: "9001",
 	lockAmount: !1,
 	currency: "EUR",
-	uiListStyle: t.GRID,
+	uiListStyle: n.GRID,
 	locale: "en-GB",
 	uiPaymentMethodSwitcher: !0,
 	uiUserBalance: !1,
@@ -18,22 +19,26 @@ var i = "https://hf.pvault.net", a = {
 	uiInteractivePrompts: !0,
 	uiCancelPendingPayout: !0,
 	uiPaymentConfirmView: !1,
+	uiFixedControls: !0,
 	uiComboView: !0,
-	uiComboView__PaymentTypes: e.PICKER,
+	uiComboView__PaymentTypes: t.PICKER,
 	uiComboView__PaymentTypePicker: !0,
 	uiComboView__PaymentForm: !0,
 	uiAmountView: !0,
 	uiAmountView__PaymentTypePicker: !0,
 	uiAmountView__PaymentForm: !0,
 	uiCardBrand: !0,
+	uiGroupCardInputs: !0,
 	uiListSelectable: !0,
 	uiShowFees: !0,
 	uiPreselectedPaymentType: null,
 	uiAccountDelete: !0,
 	uiBonuses: !0,
+	uiBonusesStyle: e.PICKER_PAYMENT_FORM,
 	uiBonusesAvailable: !0,
 	uiSuggestAmounts: "",
-	uiSuggestAction: [r.ON_PAYMENT_FAILURE_LAST_SUCCESSFUL],
+	uiSuggestAction: [i.ON_PAYMENT_FAILURE_LAST_SUCCESSFUL, i.ON_PENDING_PAYOUT_CANCEL],
+	summaryActions: void 0,
 	gotoPaymentType: null,
 	extraAttributes: void 0,
 	user: void 0,
@@ -43,11 +48,12 @@ var i = "https://hf.pvault.net", a = {
 		dateStyle: "medium",
 		timeStyle: "short"
 	},
-	hostedFieldsUrl: i,
+	hostedFieldsUrl: a,
 	hostedFieldsFonts: void 0,
 	hostedFieldsAutoFocusNextField: !0,
 	uiTheme: void 0,
+	uiThemeCssText: null,
 	uiSelectorPrefix: void 0
 };
 //#endregion
-export { a as n, i as t };
+export { o as n, a as t };
