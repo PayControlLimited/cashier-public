@@ -10,6 +10,7 @@ type PaymentFieldListProps = {
     amountError?: string;
     amountFieldId?: string;
     renderBelowFieldContent?: (fieldId: string) => ReactNode;
+    belowFieldContentClassName?: string;
     belowFieldContentInheritsTheme?: boolean;
     renderBeforeField?: (fieldId: string) => ReactNode;
     renderAfterField?: (fieldId: string, context: {
@@ -22,12 +23,15 @@ type PaymentFieldListProps = {
     animationStartIndex?: number;
     animationTotalCount?: number;
     animationDirection?: EntranceAnimationDirection;
+    reserveInputMessageSpace?: boolean;
     reserveCheckboxMessageSpace?: boolean;
     reserveLastCheckboxMessageSpace?: boolean;
     reserveLastAmountMessageSpace?: boolean;
+    addFirstFieldTopPadding?: boolean;
     addLastFieldBottomPadding?: boolean;
+    allowReservedLastFieldBottomPadding?: boolean;
     reserveTrailingActionClearance?: boolean;
 };
-declare const PaymentFieldList: ({ fields, translateKey, translateKeys, disabled, amountError, amountFieldId, renderBelowFieldContent, belowFieldContentInheritsTheme, renderBeforeField, renderAfterField, renderAfterFieldRow, animateRows, animationStartIndex, animationTotalCount, animationDirection, reserveCheckboxMessageSpace, reserveLastCheckboxMessageSpace, reserveLastAmountMessageSpace, addLastFieldBottomPadding, reserveTrailingActionClearance, }: PaymentFieldListProps) => import("react/jsx-runtime").JSX.Element;
+declare const PaymentFieldList: ({ fields, translateKey, translateKeys, disabled, amountError, amountFieldId, renderBelowFieldContent, belowFieldContentClassName, belowFieldContentInheritsTheme, renderBeforeField, renderAfterField, renderAfterFieldRow, animateRows, animationStartIndex, animationTotalCount, animationDirection, reserveInputMessageSpace, reserveCheckboxMessageSpace, reserveLastCheckboxMessageSpace, reserveLastAmountMessageSpace, addFirstFieldTopPadding, addLastFieldBottomPadding, allowReservedLastFieldBottomPadding, reserveTrailingActionClearance, }: PaymentFieldListProps) => import("react/jsx-runtime").JSX.Element;
 export default PaymentFieldList;
 //# sourceMappingURL=PaymentFieldList.d.ts.map

@@ -10,7 +10,7 @@ export type BonusConditionAvailabilityReason = {
 };
 export type BonusPaymentAvailabilityReason = {
     type: BonusPaymentReasonType;
-    paymentTypeNames?: string[];
+    paymentTypeNames?: string[][];
 };
 export type BonusAvailabilityReason = BonusConditionAvailabilityReason | BonusPaymentAvailabilityReason;
 export type BonusCloseReasonType = BonusConditionReasonType;

@@ -129,9 +129,19 @@ export type CashierPaymentSummaryField = {
     label: string;
     value: string | Record<string, unknown>;
 };
+export type CashierPaymentSummaryMessage = {
+    keys: string[];
+};
 export type CashierPaymentSummaryResponse = {
     paymentStatus: string;
+    subStatus?: string;
+    /**
+     * @deprecated Scheduled for removal; use displayMessages instead. Legacy
+     * flat list of i18n keys, one displayed line per entry, retained only for
+     * older Payment API responses.
+     */
     messages?: string[];
+    displayMessages?: CashierPaymentSummaryMessage[];
     fields?: CashierPaymentSummaryField[];
 };
 export type CashierPaymentSummaryEvent = {
@@ -276,81 +286,219 @@ export type CashierHandle = {
     setSelectedBonusCode: (code: string | null) => void;
     clearSelectedBonus: () => void;
 };
-export type CashierConfig = {
-    merchantId: string;
-    userId: string;
-    sessionId: string;
-    method: CashierMethods;
-    apiUrl: string;
-    debug: boolean;
-    fetchConfig: boolean;
-    initialAmount: string;
-    lockAmount: boolean;
+/** @since 1.5.1 */
+export type CashierPaymentMethodChangedEvent = {
+    method: CashierMethods.PAYIN | CashierMethods.PAYOUT;
+};
+/** @since 1.5.1 */
+export type CashierPaymentTypeReference = {
+    name: string;
+    type: string;
+    typeId: number;
+    method: string;
+    accountId?: string;
+    service?: string;
+};
+/** @since 1.5.1 */
+export type CashierPaymentFormFieldState = {
+    type: string;
+    readOnly: boolean;
+    required: boolean;
+    dirty: boolean;
+    valid: boolean;
+    complete: boolean;
+};
+/** @since 1.5.1 */
+export type CashierHostedFieldsState = {
+    ready: boolean;
+    dirty: boolean;
+    valid: boolean;
+    complete: boolean;
+    error: boolean;
+};
+/** @since 1.5.1 */
+export type CashierPaymentFormState = {
+    amount: string;
     currency: CashierCurrency;
+    method: CashierMethods;
+    paymentType: CashierPaymentTypeReference;
+    bonusCode: string | null;
+    values: Record<string, string | boolean>;
+    fields: Record<string, CashierPaymentFormFieldState>;
+    hostedFields: CashierHostedFieldsState | null;
+    dirty: boolean;
+    valid: boolean;
+    complete: boolean;
+    submitting: boolean;
+    canSubmit: boolean;
+};
+/** @since 1.5.1 */
+export type CashierPaymentFormChangedEvent = {
+    status: 'active';
+    state: CashierPaymentFormState;
+} | {
+    status: 'inactive';
+    reason: 'submitted';
+    state: null;
+};
+export type CashierConfig = {
+    /** @since 0.0.4 */
+    merchantId: string;
+    /** @since 0.0.4 */
+    userId: string;
+    /** @since 0.0.4 */
+    sessionId: string;
+    /** @since 0.0.4 */
+    method: CashierMethods;
+    /** @since 0.0.4 */
+    apiUrl: string;
+    /** @since 0.0.4 */
+    debug: boolean;
+    /** @since 1.5.0 */
+    fetchConfig: boolean;
+    /** @since 0.0.4 */
+    initialAmount: string;
+    /** @since 1.1.0 */
+    lockAmount: boolean;
+    /** @since 0.0.4 */
+    currency: CashierCurrency;
+    /** @since 0.0.4 */
     uiListStyle: CashierLayoutListType;
+    /** @since 0.0.4 */
     locale: CashierLocale;
+    /** @since 0.0.4 */
     uiPaymentMethodSwitcher: boolean;
+    /** @since 0.0.4 */
     uiUserBalance?: boolean;
+    /** @since 1.1.0 */
     uiProgressBar: boolean;
+    /** @since 1.2.0 */
     uiInteractivePrompts: boolean;
     /**
+     * @since 1.2.0
      * @deprecated Use uiSuggestAction with 'onPendingPayout:cancel'.
+     * @deprecatedSince 1.5.0
      */
     uiCancelPendingPayout: boolean;
+    /** @since 1.4.0 */
     uiPaymentConfirmView: boolean;
+    /** @since 1.5.0 */
     uiFixedControls: boolean;
+    /** @since 1.3.0 */
     uiComboView: boolean;
+    /** @since 1.3.0 */
     uiComboView__PaymentTypes: CashierComboViewPaymentTypesMode;
-    /** @deprecated Use uiComboView__PaymentTypes instead. */
+    /**
+     * @since 1.3.0
+     * @deprecated Use uiComboView__PaymentTypes instead.
+     * @deprecatedSince 1.3.0
+     */
     uiComboView__PaymentTypePicker: boolean;
+    /** @since 1.3.0 */
     uiComboView__PaymentForm: boolean;
-    /** @deprecated Use uiComboView instead. */
+    /**
+     * @since 0.0.4
+     * @deprecated Use uiComboView instead.
+     * @deprecatedSince 1.3.0
+     */
     uiAmountView: boolean;
-    /** @deprecated Use uiComboView__PaymentTypes instead. */
+    /**
+     * @since 0.0.4
+     * @deprecated Use uiComboView__PaymentTypes instead.
+     * @deprecatedSince 1.3.0
+     */
     uiAmountView__PaymentTypePicker: boolean;
-    /** @deprecated Use uiComboView__PaymentForm instead. */
+    /**
+     * @since 1.3.0
+     * @deprecated Use uiComboView__PaymentForm instead.
+     * @deprecatedSince 1.3.0
+     */
     uiAmountView__PaymentForm: boolean;
-    /** Keep the branded card shell for card forms, or render card inputs like regular form fields. */
+    /**
+     * Keep the branded card shell for card forms, or render card inputs like regular form fields.
+     * @since 1.0.0
+     */
     uiCardBrand: boolean;
-    /** Group PAN, expiry date, and security code into one visual card input inside hosted fields. */
+    /**
+     * Group PAN, expiry date, and security code into one visual card input inside hosted fields.
+     * @since 1.5.0
+     */
     uiGroupCardInputs: boolean;
+    /** @since 0.0.4 */
     uiListSelectable: boolean;
+    /** @since 1.0.0 */
     uiShowFees: boolean;
+    /** @since 0.0.4 */
     uiPreselectedPaymentType: string | null;
+    /** @since 0.0.4 */
     uiAccountDelete: boolean;
+    /** @since 1.3.0 */
     uiBonuses: boolean;
+    /** @since 1.5.0 */
     uiBonusesStyle: CashierBonusesStyle;
+    /** @since 0.0.4 */
     uiBonusesAvailable: boolean;
+    /** @since 0.0.4 */
     uiSuggestAmounts: string;
+    /** @since 0.0.4 */
     uiSuggestAction: CashierSuggestAction[];
+    /** @since 1.5.0 */
     summaryActions?: CashierSummaryActions;
+    /** @since 0.0.4 */
     gotoPaymentType: string | null;
+    /** @since 0.0.4 */
     extraAttributes?: Record<string, string>;
+    /** @since 0.0.4 */
     user?: CashierUser;
+    /** @since 0.0.4 */
     bonuses?: CashierBonus[];
+    /** @since 0.0.4 */
     currencyFormatOptions?: CashierNumberFormatOptions;
+    /** @since 0.0.4 */
     dateTimeFormatOptions?: CashierDateTimeFormatOptions;
+    /** @since 0.0.4 */
     hostedFieldsUrl?: string;
+    /** @since 0.0.4 */
     hostedFieldsFonts?: HostedFieldsFontDefinition[];
+    /** @since 0.0.4 */
     hostedFieldsAutoFocusNextField?: boolean;
+    /** @since 0.0.4 */
     uiTheme?: CashierTheme;
     /**
      * Trusted CSS text resolved by an owning Backoffice/Playground loader from
      * uiTheme.cssUrl. Standalone Cashier never fetches CSS URLs by itself.
+     * @since 1.5.0
      */
     uiThemeCssText?: string | null;
+    /** @since 0.0.12 */
     uiSelectorPrefix?: string;
+    /** @since 0.0.4 */
     onInit?: (data?: CashierConfig) => void;
+    /** @since 0.0.4 */
     onPaymentCreated?: (data?: CashierPaymentCreatedResponse | CashierPaymentError) => void;
+    /** @since 1.5.0 */
     onPaymentUpdated?: (event: CashierPaymentUpdatedEvent) => void;
+    /** @since 0.0.4 */
     onPaymentFinished?: (payment: CashierPaymentProgress) => void;
+    /** @since 1.5.0 */
     onPaymentSummary?: (event: CashierPaymentSummaryEvent) => void;
+    /** @since 1.2.0 */
     onPendingWithdrawalCancelled?: (event: CashierPendingWithdrawalCancelledEvent) => void;
+    /** @since 1.2.0 */
     onBonusToppedUp?: (event: CashierBonusTopUpEvent) => void;
+    /** @since 0.0.4 */
     onBonusSelected?: (bonus: CashierBonus) => void;
+    /** @since 0.0.4 */
     onBonusDeselected?: (bonus: CashierBonus) => void;
+    /** @since 0.0.4 */
     onPaymentTypeSelected?: (paymentType: CashierPaymentType) => void;
+    /** @since 0.0.4 */
     onPaymentTypeDeselected?: (paymentType: CashierPaymentType) => void;
+    /** @since 0.0.4 */
     onAccountDeleted?: (paymentType: CashierPaymentType) => void;
+    /** @since 1.5.1 */
+    onPaymentMethodChanged?: (event: CashierPaymentMethodChangedEvent) => void | Promise<void>;
+    /** @since 1.5.1 */
+    onPaymentFormChanged?: (event: CashierPaymentFormChangedEvent) => void | Promise<void>;
 };
 //# sourceMappingURL=CashierConfig.d.ts.map

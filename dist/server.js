@@ -1,5 +1,5 @@
 import { CashierComboViewPaymentTypesMode as e, CashierLayoutListType as t, CashierMethods as n, CashierSuggestAction as r } from "./types/CashierConfig.js";
-import { n as i } from "./defaults-CbrzjOLL.js";
+import { n as i } from "./defaults-ldSVDOuy.js";
 //#region src/server.ts
 var a = i, o = (e = "pc-cashier") => e, s = () => null;
 //#endregion

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { PaymentType } from '../types/payment.js';
 import { PaymentFormValues } from '../utils/paymentFieldUtils.js';
+import { PaymentFormSurfaceChrome } from './PaymentFormSurface.js';
 export type { PaymentFormValues } from '../utils/paymentFieldUtils.js';
 export { preparePaymentPayload } from './paymentFormPayload.js';
 export type PaymentFormActions = {
@@ -34,7 +35,7 @@ type PaymentFormActionCallback = (actions: PaymentFormActions) => void;
 type PaymentFormPromptStateCallback = (state: PaymentFormPromptState) => void;
 type PreparedPaymentFormCallback = (preparedValues: PreparedPaymentFormValues) => void;
 type PaymentFormValuesChangeCallback = (draftValues: PaymentFormDraftValues) => void;
-type ComboViewSurfaceChrome = 'contained' | 'plain';
+type PaymentFormFieldPanelMode = 'auto' | 'none';
 type PaymentFormProps = {
     id: PaymentType['name'];
     onActionsChange?: PaymentFormActionCallback;
@@ -48,11 +49,15 @@ type PaymentFormProps = {
     valueOverrides?: Partial<PaymentFormValues>;
     requireDirtyBeforeSubmit?: boolean;
     comboViewLayout?: boolean;
-    comboViewSurfaceChrome?: ComboViewSurfaceChrome;
+    comboViewSurfaceChrome?: PaymentFormSurfaceChrome;
+    formSurfaceChrome?: PaymentFormSurfaceChrome;
+    fieldPanelMode?: PaymentFormFieldPanelMode;
     reserveTrailingActionSpace?: boolean;
     animateEntrance?: boolean;
+    observePublicState?: boolean;
+    onPaymentSubmitted?: () => void;
 };
-declare function PaymentForm({ id, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, renderMode, hideAmountField, amountValueOverride, renderAfterAmountField, valueOverrides, requireDirtyBeforeSubmit, comboViewLayout, comboViewSurfaceChrome, reserveTrailingActionSpace, animateEntrance, }: PaymentFormProps): ReactNode | null;
+declare function PaymentForm({ id, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, renderMode, hideAmountField, amountValueOverride, renderAfterAmountField, valueOverrides, requireDirtyBeforeSubmit, comboViewLayout, comboViewSurfaceChrome, formSurfaceChrome, fieldPanelMode, reserveTrailingActionSpace, animateEntrance, observePublicState, onPaymentSubmitted, }: PaymentFormProps): ReactNode | null;
 export default PaymentForm;
 type PaymentFormActionsBridgeProps = {
     onActionsChange?: PaymentFormActionCallback;

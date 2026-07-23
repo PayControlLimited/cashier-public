@@ -54,6 +54,9 @@ export declare const buildInitialValues: (fields: readonly {
     id?: string;
     type?: string;
     defaultValue?: string;
+    options?: readonly {
+        value?: string;
+    }[];
 }[] | undefined, overrides: Partial<Record<string, PaymentFormValue>>) => PaymentFormValues;
 export declare const hasMeaningfulValue: (value: PaymentFormValue | undefined) => boolean;
 export declare const hasAnyError: (value: unknown) => boolean;

@@ -2,6 +2,32 @@
 
 ## Unreleased
 
+## 1.5.1
+
+### Added
+
+- Added localised payment-type names derived from each pending withdrawal's payment type and method alongside its date in the pending-withdrawal cancellation drawer.
+- Added `onPaymentMethodChanged` and `onPaymentFormChanged` callbacks, with exported event and state types. Hosts can observe pay-in/pay-out method changes and payment-form state without exposing Hosted Fields values or tokens.
+- Added conditional payment fields. Cashier filters fields and options based on earlier selections, automatically selects a sole valid option, and clears values that no longer apply.
+- Added `subStatus`, structured `displayMessages`, and the exported `CashierPaymentSummaryMessage` type. Cashier supports sub-status-specific messages with fallback to general status copy.
+- Added `--pc-font-size-input` and `--pc-font-line-height-input`, defaulting to `16px` and `20px`, so Cashier input typography can be configured independently of the host page.
+- Added fallback payment-type names when a service-specific translation is unavailable.
+- Added Coinflow chargeback-protection device identification for card pay-ins. Merchant pages must load and initialise the nSure SDK; Cashier never loads it, and submission remains unchanged if it is unavailable.
+
+### Changed
+
+- Changed inline combo-view payment forms, including Hosted Fields loading states, to appear without entrance motion when a payment type is selected, matching accordion forms.
+- Changed quick-payment spacing so amount, bonus, and payment form panels remain evenly separated, and balanced non-card field-edge spacing while preserving hosted card layouts.
+
+### Deprecated
+
+- Deprecated `CashierPaymentSummaryResponse.messages` in favour of `displayMessages`; legacy Payment API responses remain supported.
+
+### Fixed
+
+- Fixed select fields without a configured default showing the first option but submitting an empty value.
+- Fixed explicit `uiTheme` component variables being overwritten inside nested Cashier surfaces and Hosted Fields.
+
 ## 1.5.0
 
 ### Added

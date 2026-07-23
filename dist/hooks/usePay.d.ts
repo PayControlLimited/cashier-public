@@ -1,8 +1,8 @@
-import { CreatePaymentData, PaymentsRequest } from '../../../api/src/payments.ts';
+import { CreatePaymentData, PaymentsRequest, PaymentsResponse } from '../../../api/src/payments.ts';
 import { PaymentProgress } from '../context/paymentStatus.js';
 import { FinishPaymentOptions } from './useFinishPayment.js';
 type PayHookType = {
-    makePayment: (values: PaymentsRequest) => void;
+    makePayment: (values: PaymentsRequest) => Promise<PaymentsResponse>;
     finishPayment: (options?: FinishPaymentOptions) => void;
     paymentStatusMessage: string | null;
     paymentResponse: PaymentProgress | undefined;

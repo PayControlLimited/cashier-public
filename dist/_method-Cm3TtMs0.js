@@ -1,63 +1,63 @@
 import { CashierMethods as e } from "./types/CashierConfig.js";
-import { Gr as t, Jr as n, Kr as r, Tn as i, Ur as a, Wr as o, Xr as s, Yr as c, jt as l, kt as u } from "./useBackNavigation-Dx4MaGNK.js";
+import { $r as t, $t as n, Mn as r, Xr as i, Yr as a, Zr as o, br as s, ei as c, ti as l, tn as u } from "./useBackNavigation-tTJ9dYNY.js";
 import * as d from "react";
 import f, { useCallback as p, useDebugValue as m, useEffect as h, useMemo as g, useRef as _, useState as v, useSyncExternalStore as y } from "react";
-import { jsx as b, jsxs as x } from "react/jsx-runtime";
+import { jsx as b } from "react/jsx-runtime";
 import { flushSync as ee } from "react-dom";
 //#region ../../node_modules/@tanstack/router-core/dist/esm/utils.js
-function S(e) {
+function x(e) {
 	return e[e.length - 1];
 }
-function C(e) {
+function S(e) {
 	return typeof e == "function";
 }
 function te(e, t) {
-	return C(e) ? e(t) : e;
+	return S(e) ? e(t) : e;
 }
-var w = Object.prototype.hasOwnProperty, T = Object.prototype.propertyIsEnumerable;
-function E(e) {
-	for (let t in e) if (w.call(e, t)) return !0;
+var C = Object.prototype.hasOwnProperty, w = Object.prototype.propertyIsEnumerable;
+function T(e) {
+	for (let t in e) if (C.call(e, t)) return !0;
 	return !1;
 }
-var D = () => Object.create(null), O = (e, t) => k(e, t, D);
-function k(e, t, n = () => ({}), r = 0) {
+var E = () => Object.create(null), D = (e, t) => O(e, t, E);
+function O(e, t, n = () => ({}), r = 0) {
 	if (e === t) return e;
 	if (r > 500) return t;
 	let i = t, a = re(e) && re(i);
-	if (!a && !(j(e) && j(i))) return i;
-	let o = a ? e : A(e);
+	if (!a && !(A(e) && A(i))) return i;
+	let o = a ? e : k(e);
 	if (!o) return i;
-	let s = a ? i : A(i);
+	let s = a ? i : k(i);
 	if (!s) return i;
 	let c = o.length, l = s.length, u = a ? Array(l) : n(), d = 0;
 	for (let t = 0; t < l; t++) {
 		let o = a ? t : s[t], l = e[o], f = i[o];
 		if (l === f) {
-			u[o] = l, (a ? t < c : w.call(e, o)) && d++;
+			u[o] = l, (a ? t < c : C.call(e, o)) && d++;
 			continue;
 		}
 		if (l === null || f === null || typeof l != "object" || typeof f != "object") {
 			u[o] = f;
 			continue;
 		}
-		let p = k(l, f, n, r + 1);
+		let p = O(l, f, n, r + 1);
 		u[o] = p, p === l && d++;
 	}
 	return c === l && d === c ? e : u;
 }
-function A(e) {
+function k(e) {
 	let t = Object.getOwnPropertyNames(e);
-	for (let n of t) if (!T.call(e, n)) return !1;
+	for (let n of t) if (!w.call(e, n)) return !1;
 	let n = Object.getOwnPropertySymbols(e);
 	if (n.length === 0) return t;
 	let r = t;
 	for (let t of n) {
-		if (!T.call(e, t)) return !1;
+		if (!w.call(e, t)) return !1;
 		r.push(t);
 	}
 	return r;
 }
-function j(e) {
+function A(e) {
 	if (!ne(e)) return !1;
 	let t = e.constructor;
 	if (t === void 0) return !0;
@@ -70,25 +70,25 @@ function ne(e) {
 function re(e) {
 	return Array.isArray(e) && e.length === Object.keys(e).length;
 }
-function M(e, t, n) {
+function j(e, t, n) {
 	if (e === t) return !0;
 	if (typeof e != typeof t) return !1;
 	if (Array.isArray(e) && Array.isArray(t)) {
 		if (e.length !== t.length) return !1;
-		for (let r = 0, i = e.length; r < i; r++) if (!M(e[r], t[r], n)) return !1;
+		for (let r = 0, i = e.length; r < i; r++) if (!j(e[r], t[r], n)) return !1;
 		return !0;
 	}
-	if (j(e) && j(t)) {
+	if (A(e) && A(t)) {
 		let r = n?.ignoreUndefined ?? !0;
 		if (n?.partial) {
-			for (let i in t) if ((!r || t[i] !== void 0) && !M(e[i], t[i], n)) return !1;
+			for (let i in t) if ((!r || t[i] !== void 0) && !j(e[i], t[i], n)) return !1;
 			return !0;
 		}
 		let i = 0;
 		if (!r) i = Object.keys(e).length;
 		else for (let t in e) e[t] !== void 0 && i++;
 		let a = 0;
-		for (let o in t) if ((!r || t[o] !== void 0) && (a++, a > i || !M(e[o], t[o], n))) return !1;
+		for (let o in t) if ((!r || t[o] !== void 0) && (a++, a > i || !j(e[o], t[o], n))) return !1;
 		return i === a;
 	}
 	return !1;
@@ -165,7 +165,7 @@ function fe(e) {
 function pe(e) {
 	return /\s|[^\u0000-\u007F]/.test(e) ? e.replace(/\s|[^\u0000-\u007F]/gu, encodeURIComponent) : e;
 }
-function N(e, t) {
+function M(e, t) {
 	if (e === t) return !0;
 	if (e.length !== t.length) return !1;
 	for (let n = 0; n < e.length; n++) if (e[n] !== t[n]) return !1;
@@ -173,12 +173,12 @@ function N(e, t) {
 }
 //#endregion
 //#region ../../node_modules/@tanstack/router-core/dist/esm/invariant.js
-function P() {
+function N() {
 	throw Error("Invariant failed");
 }
 //#endregion
 //#region ../../node_modules/@tanstack/router-core/dist/esm/lru-cache.js
-function F(e) {
+function P(e) {
 	let t = /* @__PURE__ */ new Map(), n, r, i = (e) => {
 		e.next && (e.prev ? (e.prev.next = e.next, e.next.prev = e.prev, e.next = void 0, r && (r.next = e, e.prev = r)) : (e.next.prev = void 0, n = e.next, e.next = void 0, r && (e.prev = r, r.next = e)), r = e);
 	};
@@ -210,14 +210,14 @@ function F(e) {
 }
 //#endregion
 //#region ../../node_modules/@tanstack/router-core/dist/esm/new-process-route-tree.js
-var I = 4, L = 5;
-function R(e) {
+var F = 4, I = 5;
+function me(e) {
 	let t = e.indexOf("{");
 	if (t === -1) return null;
 	let n = e.indexOf("}", t);
 	return n === -1 || t + 1 >= e.length ? null : [t, n];
 }
-function z(e, t, n = new Uint16Array(6)) {
+function L(e, t, n = new Uint16Array(6)) {
 	let r = e.indexOf("/", t), i = r === -1 ? e.length : r, a = e.substring(t, i);
 	if (!a || !a.includes("$")) return n[0] = 0, n[1] = t, n[2] = t, n[3] = i, n[4] = i, n[5] = i, n;
 	if (a === "$") {
@@ -225,7 +225,7 @@ function z(e, t, n = new Uint16Array(6)) {
 		return n[0] = 2, n[1] = t, n[2] = t, n[3] = r, n[4] = r, n[5] = r, n;
 	}
 	if (a.charCodeAt(0) === 36) return n[0] = 1, n[1] = t, n[2] = t + 1, n[3] = i, n[4] = i, n[5] = i, n;
-	let o = R(a);
+	let o = me(a);
 	if (o) {
 		let [r, s] = o, c = a.charCodeAt(r + 1);
 		if (c === 45) {
@@ -240,13 +240,13 @@ function z(e, t, n = new Uint16Array(6)) {
 	}
 	return n[0] = 0, n[1] = t, n[2] = t, n[3] = i, n[4] = i, n[5] = i, n;
 }
-function B(e, t, n, r, i, a, o) {
+function R(e, t, n, r, i, a, o) {
 	o?.(n);
 	let s = r;
 	{
 		let r = n.fullPath ?? n.from, o = r.length, c = n.options?.caseSensitive ?? e, l = n.options?.params?.parse ?? n.options?.parseParams;
 		for (; s < o;) {
-			let e = z(r, s, t), o, u = s, d = e[5];
+			let e = L(r, s, t), o, u = s, d = e[5];
 			switch (s = d + 1, a++, e[0]) {
 				case 0: {
 					let t = r.substring(e[2], e[3]);
@@ -255,7 +255,7 @@ function B(e, t, n, r, i, a, o) {
 						if (e) o = e;
 						else {
 							i.static ??= /* @__PURE__ */ new Map();
-							let e = U(n.fullPath ?? n.from);
+							let e = V(n.fullPath ?? n.from);
 							e.parent = i, e.depth = a, o = e, i.static.set(t, e);
 						}
 					} else {
@@ -263,7 +263,7 @@ function B(e, t, n, r, i, a, o) {
 						if (r) o = r;
 						else {
 							i.staticInsensitive ??= /* @__PURE__ */ new Map();
-							let t = U(n.fullPath ?? n.from);
+							let t = V(n.fullPath ?? n.from);
 							t.parent = i, t.depth = a, o = t, i.staticInsensitive.set(e, t);
 						}
 					}
@@ -273,7 +273,7 @@ function B(e, t, n, r, i, a, o) {
 					let t = r.substring(u, e[1]), s = r.substring(e[4], d), f = c && !!(t || s), p = t ? f ? t : t.toLowerCase() : void 0, m = s ? f ? s : s.toLowerCase() : void 0, h = !l && i.dynamic?.find((e) => !e.parse && e.caseSensitive === f && e.prefix === p && e.suffix === m);
 					if (h) o = h;
 					else {
-						let e = W(1, n.fullPath ?? n.from, f, p, m);
+						let e = H(1, n.fullPath ?? n.from, f, p, m);
 						o = e, e.depth = a, e.parent = i, i.dynamic ??= [], i.dynamic.push(e);
 					}
 					break;
@@ -282,32 +282,32 @@ function B(e, t, n, r, i, a, o) {
 					let t = r.substring(u, e[1]), s = r.substring(e[4], d), f = c && !!(t || s), p = t ? f ? t : t.toLowerCase() : void 0, m = s ? f ? s : s.toLowerCase() : void 0, h = !l && i.optional?.find((e) => !e.parse && e.caseSensitive === f && e.prefix === p && e.suffix === m);
 					if (h) o = h;
 					else {
-						let e = W(3, n.fullPath ?? n.from, f, p, m);
+						let e = H(3, n.fullPath ?? n.from, f, p, m);
 						o = e, e.parent = i, e.depth = a, i.optional ??= [], i.optional.push(e);
 					}
 					break;
 				}
 				case 2: {
-					let t = r.substring(u, e[1]), s = r.substring(e[4], d), l = c && !!(t || s), f = t ? l ? t : t.toLowerCase() : void 0, p = s ? l ? s : s.toLowerCase() : void 0, m = W(2, n.fullPath ?? n.from, l, f, p);
+					let t = r.substring(u, e[1]), s = r.substring(e[4], d), l = c && !!(t || s), f = t ? l ? t : t.toLowerCase() : void 0, p = s ? l ? s : s.toLowerCase() : void 0, m = H(2, n.fullPath ?? n.from, l, f, p);
 					o = m, m.parent = i, m.depth = a, i.wildcard ??= [], i.wildcard.push(m);
 				}
 			}
 			i = o;
 		}
 		if (l && n.children && !n.isRoot && n.id && n.id.charCodeAt(n.id.lastIndexOf("/") + 1) === 95) {
-			let e = U(n.fullPath ?? n.from);
-			e.kind = L, e.parent = i, a++, e.depth = a, i.pathless ??= [], i.pathless.push(e), i = e;
+			let e = V(n.fullPath ?? n.from);
+			e.kind = I, e.parent = i, a++, e.depth = a, i.pathless ??= [], i.pathless.push(e), i = e;
 		}
 		let u = (n.path || !n.children) && !n.isRoot;
 		if (u && r.endsWith("/")) {
-			let e = U(n.fullPath ?? n.from);
-			e.kind = I, e.parent = i, a++, e.depth = a, i.index = e, i = e;
+			let e = V(n.fullPath ?? n.from);
+			e.kind = F, e.parent = i, a++, e.depth = a, i.index = e, i = e;
 		}
 		i.parse = l ?? null, u && !i.route && (i.route = n, i.fullPath = n.fullPath ?? n.from);
 	}
-	if (n.children) for (let r of n.children) B(e, t, r, s, i, a, o);
+	if (n.children) for (let r of n.children) R(e, t, r, s, i, a, o);
 }
-function V(e, t) {
+function z(e, t) {
 	if (e.parse && !t.parse) return -1;
 	if (!e.parse && t.parse) return 1;
 	if (e.prefix && t.prefix && e.prefix !== t.prefix) {
@@ -320,24 +320,24 @@ function V(e, t) {
 	}
 	return e.prefix && !t.prefix ? -1 : !e.prefix && t.prefix ? 1 : e.suffix && !t.suffix ? -1 : !e.suffix && t.suffix ? 1 : e.caseSensitive && !t.caseSensitive ? -1 : !e.caseSensitive && t.caseSensitive ? 1 : 0;
 }
-function H(e) {
-	if (e.pathless) for (let t of e.pathless) H(t);
-	if (e.static) for (let t of e.static.values()) H(t);
-	if (e.staticInsensitive) for (let t of e.staticInsensitive.values()) H(t);
+function B(e) {
+	if (e.pathless) for (let t of e.pathless) B(t);
+	if (e.static) for (let t of e.static.values()) B(t);
+	if (e.staticInsensitive) for (let t of e.staticInsensitive.values()) B(t);
 	if (e.dynamic?.length) {
-		e.dynamic.sort(V);
-		for (let t of e.dynamic) H(t);
+		e.dynamic.sort(z);
+		for (let t of e.dynamic) B(t);
 	}
 	if (e.optional?.length) {
-		e.optional.sort(V);
-		for (let t of e.optional) H(t);
+		e.optional.sort(z);
+		for (let t of e.optional) B(t);
 	}
 	if (e.wildcard?.length) {
-		e.wildcard.sort(V);
-		for (let t of e.wildcard) H(t);
+		e.wildcard.sort(z);
+		for (let t of e.wildcard) B(t);
 	}
 }
-function U(e) {
+function V(e) {
 	return {
 		kind: 0,
 		depth: 0,
@@ -354,7 +354,7 @@ function U(e) {
 		parse: null
 	};
 }
-function W(e, t, n, r, i) {
+function H(e, t, n, r, i) {
 	return {
 		kind: e,
 		depth: 0,
@@ -374,56 +374,56 @@ function W(e, t, n, r, i) {
 		suffix: i
 	};
 }
-function me(e, t) {
-	let n = U("/"), r = new Uint16Array(6);
-	for (let t of e) B(!1, r, t, 1, n, 0);
-	H(n), t.masksTree = n, t.flatCache = F(1e3);
-}
 function he(e, t) {
+	let n = V("/"), r = new Uint16Array(6);
+	for (let t of e) R(!1, r, t, 1, n, 0);
+	B(n), t.masksTree = n, t.flatCache = P(1e3);
+}
+function ge(e, t) {
 	e ||= "/";
 	let n = t.flatCache.get(e);
 	if (n) return n;
-	let r = J(e, t.masksTree);
+	let r = G(e, t.masksTree);
 	return t.flatCache.set(e, r), r;
 }
-function ge(e, t, n, r, i) {
+function _e(e, t, n, r, i) {
 	e ||= "/", r ||= "/";
 	let a = t ? `case\0${e}` : e, o = i.singleCache.get(a);
-	return o || (o = U("/"), B(t, new Uint16Array(6), { from: e }, 1, o, 0), i.singleCache.set(a, o)), J(r, o, n);
+	return o || (o = V("/"), R(t, new Uint16Array(6), { from: e }, 1, o, 0), i.singleCache.set(a, o)), G(r, o, n);
 }
-function G(e, t, n = !1) {
+function ve(e, t, n = !1) {
 	let r = n ? e : `nofuzz\0${e}`, i = t.matchCache.get(r);
 	if (i !== void 0) return i;
 	e ||= "/";
 	let a;
 	try {
-		a = J(e, t.segmentTree, n);
+		a = G(e, t.segmentTree, n);
 	} catch (e) {
 		if (e instanceof URIError) a = null;
 		else throw e;
 	}
-	return a && (a.branch = _e(a.route)), t.matchCache.set(r, a), a;
+	return a && (a.branch = K(a.route)), t.matchCache.set(r, a), a;
 }
-function K(e) {
+function U(e) {
 	return e === "/" ? e : e.replace(/\/{1,}$/, "");
 }
-function q(e, t = !1, n) {
-	let r = U(e.fullPath), i = new Uint16Array(6), a = {}, o = {}, s = 0;
-	return B(t, i, e, 1, r, 0, (e) => {
+function W(e, t = !1, n) {
+	let r = V(e.fullPath), i = new Uint16Array(6), a = {}, o = {}, s = 0;
+	return R(t, i, e, 1, r, 0, (e) => {
 		if (n?.(e, s), e.id in a) {
 			if (process.env.NODE_ENV !== "production") throw Error(`Invariant failed: Duplicate routes found with id: ${String(e.id)}`);
-			P();
+			N();
 		}
 		if (a[e.id] = e, s !== 0 && e.path) {
-			let t = K(e.fullPath);
+			let t = U(e.fullPath);
 			(!o[t] || e.fullPath.endsWith("/")) && (o[t] = e);
 		}
 		s++;
-	}), H(r), {
+	}), B(r), {
 		processedTree: {
 			segmentTree: r,
-			singleCache: F(1e3),
-			matchCache: F(1e3),
+			singleCache: P(1e3),
+			matchCache: P(1e3),
 			flatCache: null,
 			masksTree: null
 		},
@@ -431,21 +431,21 @@ function q(e, t = !1, n) {
 		routesByPath: o
 	};
 }
-function J(e, t, n = !1) {
-	let r = e.split("/"), i = ye(e, r, t, n);
+function G(e, t, n = !1) {
+	let r = e.split("/"), i = xe(e, r, t, n);
 	if (!i) return null;
-	let [a] = Y(e, r, i);
+	let [a] = ye(e, r, i);
 	return {
 		route: i.node.route,
 		rawParams: a
 	};
 }
-function Y(e, t, n) {
-	let r = ve(n.node), i = null, a = Object.create(null), o = n.extract?.part ?? 0, s = n.extract?.node ?? 0, c = n.extract?.path ?? 0, l = n.extract?.segment ?? 0;
+function ye(e, t, n) {
+	let r = be(n.node), i = null, a = Object.create(null), o = n.extract?.part ?? 0, s = n.extract?.node ?? 0, c = n.extract?.path ?? 0, l = n.extract?.segment ?? 0;
 	for (; s < r.length; o++, s++, c++, l++) {
 		let u = r[s];
-		if (u.kind === I) break;
-		if (u.kind === L) {
+		if (u.kind === F) break;
+		if (u.kind === I) {
 			l--, o--, c--;
 			continue;
 		}
@@ -481,24 +481,24 @@ function Y(e, t, n) {
 		segment: l
 	}];
 }
-function _e(e) {
+function K(e) {
 	let t = [e];
 	for (; e.parentRoute;) e = e.parentRoute, t.push(e);
 	return t.reverse(), t;
 }
-function ve(e) {
+function be(e) {
 	let t = Array(e.depth + 1);
 	do
 		t[e.depth] = e, e = e.parent;
 	while (e);
 	return t;
 }
-function ye(e, t, n, r) {
+function xe(e, t, n, r) {
 	if (e === "/" && n.index) return {
 		node: n.index,
 		skipped: 0
 	};
-	let i = !S(t), a = i && e !== "/", o = t.length - +!!i, s = [{
+	let i = !x(t), a = i && e !== "/", o = t.length - +!!i, s = [{
 		node: n,
 		index: 1,
 		skipped: 0,
@@ -509,14 +509,14 @@ function ye(e, t, n, r) {
 	}], c = null, l = null;
 	for (; s.length;) {
 		let n = s.pop(), { node: i, index: u, skipped: d, depth: f, statics: p, dynamics: m, optionals: h } = n, { extract: g, rawParams: _ } = n;
-		if (i.kind === 2 && i.route && !Se(l, n)) continue;
+		if (i.kind === 2 && i.route && !J(l, n)) continue;
 		if (i.parse) {
-			if (!xe(e, t, n)) continue;
+			if (!Ce(e, t, n)) continue;
 			_ = n.rawParams, g = n.extract;
 		}
-		r && i.route && i.kind !== I && Se(c, n) && (c = n);
+		r && i.route && i.kind !== F && J(c, n) && (c = n);
 		let v = u === o;
-		if (v && (i.route && (!a || i.kind === I || i.kind === 2) && Se(l, n) && (l = n), !i.optional && !i.wildcard && !i.index && !i.pathless)) continue;
+		if (v && (i.route && (!a || i.kind === F || i.kind === 2) && J(l, n) && (l = n), !i.optional && !i.wildcard && !i.index && !i.pathless)) continue;
 		let y = v ? void 0 : t[u], b;
 		if (v && i.index) {
 			let n = {
@@ -530,9 +530,9 @@ function ye(e, t, n, r) {
 				extract: g,
 				rawParams: _
 			}, r = !0;
-			if (i.index.parse && (xe(e, t, n) || (r = !1)), r) {
-				if (!m && !h && !d && be(p, o)) return n;
-				Se(l, n) && (l = n);
+			if (i.index.parse && (Ce(e, t, n) || (r = !1)), r) {
+				if (!m && !h && !d && Se(p, o)) return n;
+				J(l, n) && (l = n);
 			}
 		}
 		if (i.wildcard) for (let e = i.wildcard.length - 1; e >= 0; e--) {
@@ -585,7 +585,7 @@ function ye(e, t, n, r) {
 					depth: t,
 					statics: p,
 					dynamics: m,
-					optionals: h + X(o, u),
+					optionals: h + q(o, u),
 					extract: g,
 					rawParams: _
 				});
@@ -603,7 +603,7 @@ function ye(e, t, n, r) {
 				skipped: d,
 				depth: f + 1,
 				statics: p,
-				dynamics: m + X(o, u),
+				dynamics: m + q(o, u),
 				optionals: h,
 				extract: g,
 				rawParams: _
@@ -616,7 +616,7 @@ function ye(e, t, n, r) {
 				index: u + 1,
 				skipped: d,
 				depth: f + 1,
-				statics: p + X(o, u),
+				statics: p + q(o, u),
 				dynamics: m,
 				optionals: h,
 				extract: g,
@@ -630,7 +630,7 @@ function ye(e, t, n, r) {
 				index: u + 1,
 				skipped: d,
 				depth: f + 1,
-				statics: p + X(o, u),
+				statics: p + q(o, u),
 				dynamics: m,
 				optionals: h,
 				extract: g,
@@ -664,16 +664,16 @@ function ye(e, t, n, r) {
 	}
 	return null;
 }
-function X(e, t) {
+function q(e, t) {
 	return 2 ** (e - t - 1);
 }
-function be(e, t) {
+function Se(e, t) {
 	return e === 2 ** (t - 1) - 1;
 }
-function xe(e, t, n) {
+function Ce(e, t, n) {
 	let r, i;
 	try {
-		[r, i] = Y(e, t, n);
+		[r, i] = ye(e, t, n);
 	} catch {
 		return null;
 	}
@@ -683,12 +683,12 @@ function xe(e, t, n) {
 	} catch {}
 	return !0;
 }
-function Se(e, t) {
-	return e ? t.statics > e.statics || t.statics === e.statics && (t.dynamics > e.dynamics || t.dynamics === e.dynamics && (t.optionals > e.optionals || t.optionals === e.optionals && ((t.node.kind === I) > (e.node.kind === I) || t.node.kind === I == (e.node.kind === I) && t.depth > e.depth))) : !0;
+function J(e, t) {
+	return e ? t.statics > e.statics || t.statics === e.statics && (t.dynamics > e.dynamics || t.dynamics === e.dynamics && (t.optionals > e.optionals || t.optionals === e.optionals && ((t.node.kind === F) > (e.node.kind === F) || t.node.kind === F == (e.node.kind === F) && t.depth > e.depth))) : !0;
 }
 //#endregion
 //#region ../../node_modules/@tanstack/router-core/dist/esm/path.js
-function Ce(e) {
+function Y(e) {
 	return we(e.filter((e) => e !== void 0).join("/"));
 }
 function we(e) {
@@ -704,13 +704,13 @@ function Ee(e) {
 function De(e) {
 	return Ee(Te(e));
 }
-function Oe(e, t) {
+function X(e, t) {
 	return e?.endsWith("/") && e !== "/" && e !== `${t}/` ? e.slice(0, -1) : e;
 }
-function ke(e, t, n) {
-	return Oe(e, n) === Oe(t, n);
+function Oe(e, t, n) {
+	return X(e, n) === X(t, n);
 }
-function Ae({ base: e, to: t, trailingSlash: n = "never", cache: r }) {
+function ke({ base: e, to: t, trailingSlash: n = "never", cache: r }) {
 	let i = t.startsWith("/"), a = !i && t === ".", o;
 	if (r) {
 		o = i ? t : a ? e : e + "\0" + t;
@@ -721,26 +721,26 @@ function Ae({ base: e, to: t, trailingSlash: n = "never", cache: r }) {
 	if (a) s = e.split("/");
 	else if (i) s = t.split("/");
 	else {
-		for (s = e.split("/"); s.length > 1 && S(s) === "";) s.pop();
+		for (s = e.split("/"); s.length > 1 && x(s) === "";) s.pop();
 		let n = t.split("/");
 		for (let e = 0, t = n.length; e < t; e++) {
 			let r = n[e];
 			r === "" ? e ? e === t - 1 && s.push(r) : s = [r] : r === ".." ? s.pop() : r === "." || s.push(r);
 		}
 	}
-	s.length > 1 && (S(s) === "" ? n === "never" && s.pop() : n === "always" && s.push(""));
+	s.length > 1 && (x(s) === "" ? n === "never" && s.pop() : n === "always" && s.push(""));
 	let c = we(s.join("/")) || "/";
 	return o && r && r.set(o, c), c;
 }
-function je(e) {
+function Ae(e) {
 	let t = new Map(e.map((e) => [encodeURIComponent(e), e])), n = Array.from(t.keys()).map((e) => e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"), r = new RegExp(n, "g");
 	return (e) => e.replace(r, (e) => t.get(e) ?? e);
 }
-function Me(e, t, n) {
+function je(e, t, n) {
 	let r = t[e];
-	return typeof r == "string" ? e === "_splat" ? /^[a-zA-Z0-9\-._~!/]*$/.test(r) ? r : r.split("/").map((e) => Pe(e, n)).join("/") : Pe(r, n) : r;
+	return typeof r == "string" ? e === "_splat" ? /^[a-zA-Z0-9\-._~!/]*$/.test(r) ? r : r.split("/").map((e) => Ne(e, n)).join("/") : Ne(r, n) : r;
 }
-function Ne({ path: e, params: t, decoder: n, ...r }) {
+function Me({ path: e, params: t, decoder: n, ...r }) {
 	let i = !1, a = Object.create(null);
 	if (!e || e === "/") return {
 		interpolatedPath: "/",
@@ -755,7 +755,7 @@ function Ne({ path: e, params: t, decoder: n, ...r }) {
 	let o = e.length, s = 0, c, l = "";
 	for (; s < o;) {
 		let r = s;
-		c = z(e, r, c);
+		c = L(e, r, c);
 		let o = c[5];
 		if (s = o + 1, r === o) continue;
 		let u = c[0];
@@ -771,14 +771,14 @@ function Ne({ path: e, params: t, decoder: n, ...r }) {
 				i = !0, (u || d) && (l += "/" + u + d);
 				continue;
 			}
-			let f = Me("_splat", t, n);
+			let f = je("_splat", t, n);
 			l += "/" + u + f + d;
 			continue;
 		}
 		if (u === 1) {
 			let s = e.substring(c[2], c[3]);
 			!i && !(s in t) && (i = !0), a[s] = t[s];
-			let u = e.substring(r, c[1]), d = e.substring(c[4], o), f = Me(s, t, n) ?? "undefined";
+			let u = e.substring(r, c[1]), d = e.substring(c[4], o), f = je(s, t, n) ?? "undefined";
 			l += "/" + u + f + d;
 			continue;
 		}
@@ -786,7 +786,7 @@ function Ne({ path: e, params: t, decoder: n, ...r }) {
 			let i = e.substring(c[2], c[3]), s = t[i];
 			if (s == null) continue;
 			a[i] = s;
-			let u = e.substring(r, c[1]), d = e.substring(c[4], o), f = Me(i, t, n) ?? "";
+			let u = e.substring(r, c[1]), d = e.substring(c[4], o), f = je(i, t, n) ?? "";
 			l += "/" + u + f + d;
 			continue;
 		}
@@ -797,21 +797,21 @@ function Ne({ path: e, params: t, decoder: n, ...r }) {
 		isMissingParams: i
 	};
 }
-function Pe(e, t) {
+function Ne(e, t) {
 	let n = encodeURIComponent(e);
 	return t?.(n) ?? n;
 }
 //#endregion
 //#region ../../node_modules/@tanstack/router-core/dist/esm/not-found.js
-function Fe(e) {
+function Pe(e) {
 	return e?.isNotFound === !0;
 }
 //#endregion
 //#region ../../node_modules/@tanstack/router-core/dist/esm/root.js
-var Ie = "__root__";
+var Fe = "__root__";
 //#endregion
 //#region ../../node_modules/@tanstack/router-core/dist/esm/redirect.js
-function Le(e) {
+function Ie(e) {
 	if (e.statusCode = e.statusCode || e.code || 307, !e._builtLocation && !e.reloadDocument && typeof e.href == "string") try {
 		new URL(e.href), e.reloadDocument = !0;
 	} catch {}
@@ -824,12 +824,12 @@ function Le(e) {
 	if (n.options = e, e.throw) throw n;
 	return n;
 }
-function Re(e) {
+function Le(e) {
 	return e instanceof Response && !!e.options;
 }
 //#endregion
 //#region ../../node_modules/@tanstack/router-core/dist/esm/link.js
-var ze = "Error preloading route! ☝️", Be = class {
+var Re = "Error preloading route! ☝️", ze = class {
 	get to() {
 		return this._to;
 	}
@@ -846,42 +846,42 @@ var ze = "Error preloading route! ☝️", Be = class {
 		if (this.init = (e) => {
 			this.originalIndex = e.originalIndex;
 			let t = this.options, n = !t?.path && !t?.id;
-			if (this.parentRoute = this.options.getParentRoute?.(), n) this._path = Ie;
+			if (this.parentRoute = this.options.getParentRoute?.(), n) this._path = Fe;
 			else if (!this.parentRoute) {
 				if (process.env.NODE_ENV !== "production") throw Error("Invariant failed: Child Route instances must pass a 'getParentRoute: () => ParentRoute' option that returns a Route instance.");
-				P();
+				N();
 			}
-			let r = n ? Ie : t?.path;
+			let r = n ? Fe : t?.path;
 			r && r !== "/" && (r = Te(r));
-			let i = t?.id || r, a = n ? Ie : Ce([this.parentRoute.id === "__root__" ? "" : this.parentRoute.id, i]);
-			r === "__root__" && (r = "/"), a !== "__root__" && (a = Ce(["/", a]));
-			let o = a === "__root__" ? "/" : Ce([this.parentRoute.fullPath, r]);
+			let i = t?.id || r, a = n ? Fe : Y([this.parentRoute.id === "__root__" ? "" : this.parentRoute.id, i]);
+			r === "__root__" && (r = "/"), a !== "__root__" && (a = Y(["/", a]));
+			let o = a === "__root__" ? "/" : Y([this.parentRoute.fullPath, r]);
 			this._path = r, this._id = a, this._fullPath = o, this._to = Ee(o);
-		}, this.addChildren = (e) => this._addFileChildren(e), this._addFileChildren = (e) => (Array.isArray(e) && (this.children = e), typeof e == "object" && e && (this.children = Object.values(e)), this), this._addFileTypes = () => this, this.updateLoader = (e) => (Object.assign(this.options, e), this), this.update = (e) => (Object.assign(this.options, e), this), this.lazy = (e) => (this.lazyFn = e, this), this.redirect = (e) => Le({
+		}, this.addChildren = (e) => this._addFileChildren(e), this._addFileChildren = (e) => (Array.isArray(e) && (this.children = e), typeof e == "object" && e && (this.children = Object.values(e)), this), this._addFileTypes = () => this, this.updateLoader = (e) => (Object.assign(this.options, e), this), this.update = (e) => (Object.assign(this.options, e), this), this.lazy = (e) => (this.lazyFn = e, this), this.redirect = (e) => Ie({
 			from: this.fullPath,
 			...e
 		}), this.options = e || {}, this.isRoot = !e?.getParentRoute, e?.id && e?.path) throw Error("Route cannot have both an 'id' and a 'path' option.");
 	}
-}, Ve = class extends Be {
+}, Be = class extends ze {
 	constructor(e) {
 		super(e);
 	}
 };
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/ClientOnly.js
-function He({ children: e, fallback: t = null }) {
-	return Ue() ? /* @__PURE__ */ b(f.Fragment, { children: e }) : /* @__PURE__ */ b(f.Fragment, { children: t });
+function Ve({ children: e, fallback: t = null }) {
+	return He() ? /* @__PURE__ */ b(f.Fragment, { children: e }) : /* @__PURE__ */ b(f.Fragment, { children: t });
+}
+function He() {
+	return f.useSyncExternalStore(Ue, () => !0, () => !1);
 }
 function Ue() {
-	return f.useSyncExternalStore(We, () => !0, () => !1);
-}
-function We() {
 	return () => {};
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/matchContext.js
-var Ge = d.createContext(void 0), Ke = d.createContext(void 0), qe = Object.is;
-function Je(e, t, n, r, i) {
+var We = d.createContext(void 0), Ge = d.createContext(void 0), Ke = Object.is;
+function qe(e, t, n, r, i) {
 	let a = _(null);
 	a.current === null && (a.current = {
 		hasValue: !1,
@@ -898,7 +898,7 @@ function Je(e, t, n, r, i) {
 				}
 				return s = n, n;
 			}
-			if (qe(a, t)) return s;
+			if (Ke(a, t)) return s;
 			let n = r(t);
 			return i && i(s, n) ? (a = t, s) : (a = t, s = n, n);
 		};
@@ -916,42 +916,42 @@ function Je(e, t, n, r, i) {
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-store/dist/esm/useStore.js
-function Ye(e, t) {
+function Je(e, t) {
 	return e === t;
 }
-function Xe(e, t, n = Ye) {
+function Ye(e, t, n = Je) {
 	let r = p((t) => {
 		if (!e) return () => {};
 		let { unsubscribe: n } = e.subscribe(t);
 		return n;
 	}, [e]), i = p(() => e?.get(), [e]);
-	return Je(r, i, i, t, n);
+	return qe(r, i, i, t, n);
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/useMatch.js
-var Ze = {
+var Xe = {
 	get: () => void 0,
 	subscribe: () => ({ unsubscribe: () => {} })
 };
 function Z(e) {
-	let t = r(), n = d.useContext(e.from ? Ke : Ge), i = e.from ?? n, a = i ? e.from ? t.stores.getRouteMatchStore(i) : t.stores.matchStores.get(i) : void 0, o = d.useRef(void 0);
-	return Xe(a ?? Ze, (n) => {
+	let t = o(), n = d.useContext(e.from ? Ge : We), r = e.from ?? n, i = r ? e.from ? t.stores.getRouteMatchStore(r) : t.stores.matchStores.get(r) : void 0, a = d.useRef(void 0);
+	return Ye(i ?? Xe, (n) => {
 		if ((e.shouldThrow ?? !0) && !n) {
 			if (process.env.NODE_ENV !== "production") throw Error(`Invariant failed: Could not find ${e.from ? `an active match from "${e.from}"` : "a nearest match!"}`);
-			P();
+			N();
 		}
 		if (n === void 0) return;
 		let r = e.select ? e.select(n) : n;
 		if (e.structuralSharing ?? t.options.defaultStructuralSharing) {
-			let e = k(o.current, r);
-			return o.current = e, e;
+			let e = O(a.current, r);
+			return a.current = e, e;
 		}
 		return r;
 	});
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/useLoaderData.js
-function Qe(e) {
+function Ze(e) {
 	return Z({
 		from: e.from,
 		strict: e.strict,
@@ -961,7 +961,7 @@ function Qe(e) {
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/useLoaderDeps.js
-function $e(e) {
+function Qe(e) {
 	let { select: t, ...n } = e;
 	return Z({
 		...n,
@@ -970,7 +970,7 @@ function $e(e) {
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/useParams.js
-function et(e) {
+function $e(e) {
 	return Z({
 		from: e.from,
 		shouldThrow: e.shouldThrow,
@@ -984,7 +984,7 @@ function et(e) {
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/useSearch.js
-function tt(e) {
+function et(e) {
 	return Z({
 		from: e.from,
 		strict: e.strict,
@@ -995,7 +995,7 @@ function tt(e) {
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/useRouteContext.js
-function nt(e) {
+function tt(e) {
 	return Z({
 		...e,
 		select: (t) => e.select ? e.select(t.context) : t.context
@@ -1003,8 +1003,8 @@ function nt(e) {
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/link.js
-function rt(e, t) {
-	let n = r(), i = c(t), { activeProps: a, inactiveProps: o, activeOptions: l, to: u, preload: f, preloadDelay: p, preloadIntentProximity: m, hashScrollIntoView: h, replace: g, startTransition: _, resetScroll: v, viewTransition: y, children: b, target: x, disabled: S, style: C, className: w, onClick: T, onBlur: E, onFocus: D, onMouseEnter: O, onMouseLeave: k, onTouchStart: A, ignoreBlocker: j, params: ne, search: re, hash: ie, state: ae, mask: oe, reloadDocument: se, unsafeRelative: ce, from: le, _fromLocation: ue, ...fe } = e, pe = Ue(), N = d.useMemo(() => e, [
+function nt(e, t) {
+	let n = o(), r = c(t), { activeProps: i, inactiveProps: a, activeOptions: s, to: u, preload: f, preloadDelay: p, preloadIntentProximity: m, hashScrollIntoView: h, replace: g, startTransition: _, resetScroll: v, viewTransition: y, children: b, target: x, disabled: S, style: C, className: w, onClick: T, onBlur: E, onFocus: D, onMouseEnter: O, onMouseLeave: k, onTouchStart: A, ignoreBlocker: ne, params: re, search: ie, hash: ae, state: oe, mask: se, reloadDocument: ce, unsafeRelative: le, from: ue, _fromLocation: fe, ...pe } = e, M = He(), N = d.useMemo(() => e, [
 		n,
 		e.from,
 		e._fromLocation,
@@ -1015,7 +1015,7 @@ function rt(e, t) {
 		e.state,
 		e.mask,
 		e.unsafeRelative
-	]), P = Xe(n.stores.location, (e) => e, (e, t) => e.href === t.href), F = d.useMemo(() => {
+	]), P = Ye(n.stores.location, (e) => e, (e, t) => e.href === t.href), F = d.useMemo(() => {
 		let e = {
 			_fromLocation: P,
 			...N
@@ -1025,20 +1025,20 @@ function rt(e, t) {
 		n,
 		P,
 		N
-	]), I = F.maskedLocation ? F.maskedLocation.publicHref : F.publicHref, L = F.maskedLocation ? F.maskedLocation.external : F.external, R = d.useMemo(() => ut(I, L, n.history, S), [
+	]), I = F.maskedLocation ? F.maskedLocation.publicHref : F.publicHref, me = F.maskedLocation ? F.maskedLocation.external : F.external, L = d.useMemo(() => lt(I, me, n.history, S), [
 		S,
-		L,
+		me,
 		I,
 		n.history
-	]), z = d.useMemo(() => {
-		if (R?.external) {
-			if (de(R.href, n.protocolAllowlist)) {
-				process.env.NODE_ENV !== "production" && console.warn(`Blocked Link with dangerous protocol: ${R.href}`);
+	]), R = d.useMemo(() => {
+		if (L?.external) {
+			if (de(L.href, n.protocolAllowlist)) {
+				process.env.NODE_ENV !== "production" && console.warn(`Blocked Link with dangerous protocol: ${L.href}`);
 				return;
 			}
-			return R.href;
+			return L.href;
 		}
-		if (!dt(u) && !(typeof u != "string" || u.indexOf(":") === -1)) try {
+		if (!ut(u) && !(typeof u != "string" || u.indexOf(":") === -1)) try {
 			if (new URL(u), de(u, n.protocolAllowlist)) {
 				process.env.NODE_ENV !== "production" && console.warn(`Blocked Link with dangerous protocol: ${u}`);
 				return;
@@ -1047,69 +1047,69 @@ function rt(e, t) {
 		} catch {}
 	}, [
 		u,
-		R,
+		L,
 		n.protocolAllowlist
-	]), B = d.useMemo(() => {
-		if (z) return !1;
-		if (l?.exact) {
-			if (!ke(P.pathname, F.pathname, n.basepath)) return !1;
+	]), z = d.useMemo(() => {
+		if (R) return !1;
+		if (s?.exact) {
+			if (!Oe(P.pathname, F.pathname, n.basepath)) return !1;
 		} else {
-			let e = Oe(P.pathname, n.basepath), t = Oe(F.pathname, n.basepath);
+			let e = X(P.pathname, n.basepath), t = X(F.pathname, n.basepath);
 			if (!(e.startsWith(t) && (e.length === t.length || e[t.length] === "/"))) return !1;
 		}
-		return (l?.includeSearch ?? !0) && !M(P.search, F.search, {
-			partial: !l?.exact,
-			ignoreUndefined: !l?.explicitUndefined
-		}) ? !1 : l?.includeHash ? pe && P.hash === F.hash : !0;
+		return (s?.includeSearch ?? !0) && !j(P.search, F.search, {
+			partial: !s?.exact,
+			ignoreUndefined: !s?.explicitUndefined
+		}) ? !1 : s?.includeHash ? M && P.hash === F.hash : !0;
 	}, [
-		l?.exact,
-		l?.explicitUndefined,
-		l?.includeHash,
-		l?.includeSearch,
+		s?.exact,
+		s?.explicitUndefined,
+		s?.includeHash,
+		s?.includeSearch,
 		P,
-		z,
-		pe,
+		R,
+		M,
 		F.hash,
 		F.pathname,
 		F.search,
 		n.basepath
-	]), V = B ? te(a, {}) ?? at : it, H = B ? it : te(o, {}) ?? it, U = [
+	]), B = z ? te(i, {}) ?? it : rt, V = z ? rt : te(a, {}) ?? rt, H = [
 		w,
-		V.className,
-		H.className
-	].filter(Boolean).join(" "), W = (C || V.style || H.style) && {
+		B.className,
+		V.className
+	].filter(Boolean).join(" "), he = (C || B.style || V.style) && {
 		...C,
-		...V.style,
-		...H.style
-	}, [me, he] = d.useState(!1), ge = d.useRef(!1), G = e.reloadDocument || z ? !1 : f ?? n.options.defaultPreload, K = p ?? n.options.defaultPreloadDelay ?? 0, q = d.useCallback(() => {
+		...B.style,
+		...V.style
+	}, [ge, _e] = d.useState(!1), ve = d.useRef(!1), U = e.reloadDocument || R ? !1 : f ?? n.options.defaultPreload, W = p ?? n.options.defaultPreloadDelay ?? 0, G = d.useCallback(() => {
 		n.preloadRoute({
 			...N,
 			_builtLocation: F
 		}).catch((e) => {
-			console.warn(e), console.warn(ze);
+			console.warn(e), console.warn(Re);
 		});
 	}, [
 		n,
 		N,
 		F
 	]);
-	s(i, d.useCallback((e) => {
-		e?.isIntersecting && q();
-	}, [q]), lt, { disabled: !!S || G !== "viewport" }), d.useEffect(() => {
-		ge.current || !S && G === "render" && (q(), ge.current = !0);
+	l(r, d.useCallback((e) => {
+		e?.isIntersecting && G();
+	}, [G]), ct, { disabled: !!S || U !== "viewport" }), d.useEffect(() => {
+		ve.current || !S && U === "render" && (G(), ve.current = !0);
 	}, [
 		S,
-		q,
-		G
+		G,
+		U
 	]);
-	let J = (e) => {
+	let ye = (e) => {
 		let t = e.currentTarget.getAttribute("target"), r = x === void 0 ? t : x;
-		if (!S && !pt(e) && !e.defaultPrevented && (!r || r === "_self") && e.button === 0) {
+		if (!S && !ft(e) && !e.defaultPrevented && (!r || r === "_self") && e.button === 0) {
 			e.preventDefault(), ee(() => {
-				he(!0);
+				_e(!0);
 			});
 			let t = n.subscribe("onResolved", () => {
-				t(), he(!1);
+				t(), _e(!1);
 			});
 			n.navigate({
 				...N,
@@ -1118,14 +1118,14 @@ function rt(e, t) {
 				hashScrollIntoView: h,
 				startTransition: _,
 				viewTransition: y,
-				ignoreBlocker: j
+				ignoreBlocker: ne
 			});
 		}
 	};
-	if (z) return {
-		...fe,
-		ref: i,
-		href: z,
+	if (R) return {
+		...pe,
+		ref: r,
+		href: R,
 		...b && { children: b },
 		...x && { target: x },
 		...S && { disabled: S },
@@ -1138,59 +1138,59 @@ function rt(e, t) {
 		...k && { onMouseLeave: k },
 		...A && { onTouchStart: A }
 	};
-	let Y = (e) => {
-		if (S || G !== "intent") return;
-		if (!K) {
-			q();
+	let K = (e) => {
+		if (S || U !== "intent") return;
+		if (!W) {
+			G();
 			return;
 		}
 		let t = e.currentTarget;
 		if (Q.has(t)) return;
 		let n = setTimeout(() => {
-			Q.delete(t), q();
-		}, K);
+			Q.delete(t), G();
+		}, W);
 		Q.set(t, n);
-	}, _e = (e) => {
-		S || G !== "intent" || q();
-	}, ve = (e) => {
-		if (S || !G || !K) return;
+	}, be = (e) => {
+		S || U !== "intent" || G();
+	}, xe = (e) => {
+		if (S || !U || !W) return;
 		let t = e.currentTarget, n = Q.get(t);
 		n && (clearTimeout(n), Q.delete(t));
 	};
 	return {
-		...fe,
+		...pe,
+		...B,
 		...V,
-		...H,
-		href: R?.href,
-		ref: i,
-		onClick: $([T, J]),
-		onBlur: $([E, ve]),
-		onFocus: $([D, Y]),
-		onMouseEnter: $([O, Y]),
-		onMouseLeave: $([k, ve]),
-		onTouchStart: $([A, _e]),
+		href: L?.href,
+		ref: r,
+		onClick: $([T, ye]),
+		onBlur: $([E, xe]),
+		onFocus: $([D, K]),
+		onMouseEnter: $([O, K]),
+		onMouseLeave: $([k, xe]),
+		onTouchStart: $([A, be]),
 		disabled: !!S,
 		target: x,
-		...W && { style: W },
-		...U && { className: U },
-		...S && ot,
-		...B && st,
-		...pe && me && ct
+		...he && { style: he },
+		...H && { className: H },
+		...S && at,
+		...z && ot,
+		...M && ge && st
 	};
 }
-var it = {}, at = { className: "active" }, ot = {
+var rt = {}, it = { className: "active" }, at = {
 	role: "link",
 	"aria-disabled": !0
-}, st = {
+}, ot = {
 	"data-status": "active",
 	"aria-current": "page"
-}, ct = { "data-transitioning": "transitioning" }, Q = /* @__PURE__ */ new WeakMap(), lt = { rootMargin: "100px" }, $ = (e) => (t) => {
+}, st = { "data-transitioning": "transitioning" }, Q = /* @__PURE__ */ new WeakMap(), ct = { rootMargin: "100px" }, $ = (e) => (t) => {
 	for (let n of e) if (n) {
 		if (t.defaultPrevented) return;
 		n(t);
 	}
 };
-function ut(e, t, n, r) {
+function lt(e, t, n, r) {
 	if (!r) return t ? {
 		href: e,
 		external: !0
@@ -1199,109 +1199,109 @@ function ut(e, t, n, r) {
 		external: !1
 	};
 }
-function dt(e) {
+function ut(e) {
 	if (typeof e != "string") return !1;
 	let t = e.charCodeAt(0);
 	return t === 47 ? e.charCodeAt(1) !== 47 : t === 46;
 }
-var ft = d.forwardRef((e, t) => {
-	let { _asChild: n, ...r } = e, { type: i, ...a } = rt(r, t), o = typeof r.children == "function" ? r.children({ isActive: a["data-status"] === "active" }) : r.children;
+var dt = d.forwardRef((e, t) => {
+	let { _asChild: n, ...r } = e, { type: i, ...a } = nt(r, t), o = typeof r.children == "function" ? r.children({ isActive: a["data-status"] === "active" }) : r.children;
 	if (!n) {
 		let { disabled: e, ...t } = a;
 		return d.createElement("a", t, o);
 	}
 	return d.createElement(n, a, o);
 });
-function pt(e) {
+function ft(e) {
 	return !!(e.metaKey || e.altKey || e.ctrlKey || e.shiftKey);
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/route.js
-var mt = class extends Be {
+var pt = class extends ze {
 	constructor(e) {
 		super(e), this.useMatch = (e) => Z({
 			select: e?.select,
 			from: this.id,
 			structuralSharing: e?.structuralSharing
-		}), this.useRouteContext = (e) => nt({
+		}), this.useRouteContext = (e) => tt({
 			...e,
 			from: this.id
-		}), this.useSearch = (e) => tt({
+		}), this.useSearch = (e) => et({
 			select: e?.select,
 			structuralSharing: e?.structuralSharing,
 			from: this.id
-		}), this.useParams = (e) => et({
+		}), this.useParams = (e) => $e({
 			select: e?.select,
 			structuralSharing: e?.structuralSharing,
 			from: this.id
-		}), this.useLoaderDeps = (e) => $e({
+		}), this.useLoaderDeps = (e) => Qe({
 			...e,
 			from: this.id
-		}), this.useLoaderData = (e) => Qe({
+		}), this.useLoaderData = (e) => Ze({
 			...e,
 			from: this.id
-		}), this.useNavigate = () => t({ from: this.fullPath }), this.Link = f.forwardRef((e, t) => /* @__PURE__ */ b(ft, {
+		}), this.useNavigate = () => i({ from: this.fullPath }), this.Link = f.forwardRef((e, t) => /* @__PURE__ */ b(dt, {
 			ref: t,
 			from: this.fullPath,
 			...e
 		}));
 	}
 };
-function ht(e) {
-	return new mt(e);
+function mt(e) {
+	return new pt(e);
 }
-var gt = class extends Ve {
+var ht = class extends Be {
 	constructor(e) {
 		super(e), this.useMatch = (e) => Z({
 			select: e?.select,
 			from: this.id,
 			structuralSharing: e?.structuralSharing
-		}), this.useRouteContext = (e) => nt({
+		}), this.useRouteContext = (e) => tt({
 			...e,
 			from: this.id
-		}), this.useSearch = (e) => tt({
+		}), this.useSearch = (e) => et({
 			select: e?.select,
 			structuralSharing: e?.structuralSharing,
 			from: this.id
-		}), this.useParams = (e) => et({
+		}), this.useParams = (e) => $e({
 			select: e?.select,
 			structuralSharing: e?.structuralSharing,
 			from: this.id
-		}), this.useLoaderDeps = (e) => $e({
+		}), this.useLoaderDeps = (e) => Qe({
 			...e,
 			from: this.id
-		}), this.useLoaderData = (e) => Qe({
+		}), this.useLoaderData = (e) => Ze({
 			...e,
 			from: this.id
-		}), this.useNavigate = () => t({ from: this.fullPath }), this.Link = f.forwardRef((e, t) => /* @__PURE__ */ b(ft, {
+		}), this.useNavigate = () => i({ from: this.fullPath }), this.Link = f.forwardRef((e, t) => /* @__PURE__ */ b(dt, {
 			ref: t,
 			from: this.fullPath,
 			...e
 		}));
 	}
 };
-function _t(e) {
-	return new gt(e);
+function gt(e) {
+	return new ht(e);
 }
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/fileRoute.js
-function vt(e) {
-	return new yt(e, { silent: !0 }).createRoute;
+function _t(e) {
+	return new vt(e, { silent: !0 }).createRoute;
 }
-var yt = class {
+var vt = class {
 	constructor(e, t) {
 		this.path = e, this.createRoute = (e) => {
 			process.env.NODE_ENV !== "production" && (this.silent || console.warn("Warning: FileRoute is deprecated and will be removed in the next major version. Use the createFileRoute(path)(options) function instead."));
-			let t = ht(e);
+			let t = mt(e);
 			return t.isRoot = !1, t;
 		}, this.silent = t?.silent;
 	}
 };
 //#endregion
 //#region ../../node_modules/@tanstack/react-router/dist/esm/lazyRouteComponent.js
-function bt(e, t) {
+function yt(e, n) {
 	let r, i, a, o, s = () => (r ||= e().then((e) => {
-		r = void 0, i = e[t ?? "default"];
+		r = void 0, i = e[n ?? "default"];
 	}).catch((e) => {
 		if (a = e, ae(a) && a instanceof Error && typeof window < "u" && typeof sessionStorage < "u") {
 			let e = `tanstack_router_reload:${a.message}`;
@@ -1310,14 +1310,14 @@ function bt(e, t) {
 	}), r), c = function(e) {
 		if (o) throw window.location.reload(), new Promise(() => {});
 		if (a) throw a;
-		if (!i) if (n) n(s());
+		if (!i) if (t) t(s());
 		else throw s();
 		return d.createElement(i, e);
 	};
 	return c.preload = s, c;
 }
-var xt = "animate-[pc-cashier-fullscreen-content-reveal_180ms_ease-out_both]", St = () => typeof window < "u" && typeof window.matchMedia == "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, Ct = () => {
-	let [e, t] = v(St);
+var bt = "animate-[pc-cashier-fullscreen-content-reveal_180ms_ease-out_both]", xt = () => typeof window < "u" && typeof window.matchMedia == "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches, St = () => {
+	let [e, t] = v(xt);
 	return h(() => {
 		if (typeof window > "u" || typeof window.matchMedia != "function") return;
 		let e = window.matchMedia("(prefers-reduced-motion: reduce)"), n = () => {
@@ -1328,85 +1328,67 @@ var xt = "animate-[pc-cashier-fullscreen-content-reveal_180ms_ease-out_both]", S
 		};
 	}, []), e;
 };
-function wt({ label: e = "Loading payment methods", message: t, testId: n = "cashier-fullscreen-loading", loaderSlot: r = "cashier-fullscreen-logo-loader", delayMs: i = 180, onVisibleChange: s }) {
-	let c = i > 0, [l, u] = v(null), d = t ?? e;
-	h(() => {
-		if (!c) return;
-		let e = window.setTimeout(() => {
-			u(i);
-		}, i);
-		return () => {
-			window.clearTimeout(e);
-		};
-	}, [i, c]);
-	let f = !c || l === i;
-	return h(() => {
-		s?.(f);
-	}, [f, s]), f ? /* @__PURE__ */ x("div", {
-		className: o("pc-cashier__fullscreen-loader", "flex h-full min-h-full w-full flex-1 flex-col items-center justify-center gap-4 px-6 py-7 text-[var(--pc-color-text)]"),
-		"data-testid": n,
-		role: "status",
-		"aria-live": "polite",
-		children: [/* @__PURE__ */ b(a, {
-			className: "h-16 w-16 text-[var(--pc-color-secondary)]",
-			"data-slot": r
-		}), t ? /* @__PURE__ */ b("span", {
-			className: "text-center text-sm font-medium leading-5 text-[var(--pc-color-text-muted,var(--pc-color-text))]",
-			children: t
-		}) : /* @__PURE__ */ b("span", {
-			className: "sr-only",
-			children: d
-		})]
-	}) : null;
+function Ct({ label: e = "Loading payment methods", message: t, testId: n = "cashier-fullscreen-loading", loaderSlot: r = "cashier-fullscreen-logo-loader", delayMs: i = 180, onVisibleChange: a }) {
+	return /* @__PURE__ */ b(s, {
+		className: "pc-cashier__fullscreen-loader",
+		label: e,
+		message: t,
+		testId: n,
+		delayMs: i,
+		indicatorSize: "xl",
+		indicatorTone: "accent",
+		iconSlot: r,
+		onVisibleChange: a
+	});
 }
-function Tt({ isLoading: e, children: t, loaderLabel: n, loaderMessage: r, loaderTestId: i, loaderSlot: a, loaderDelayMs: s }) {
-	let [c, l] = v(0), u = Ct(), d = p((e) => {
+function wt({ isLoading: e, children: t, loaderLabel: n, loaderMessage: r, loaderTestId: i, loaderSlot: o, loaderDelayMs: s }) {
+	let [c, l] = v(0), u = St(), d = p((e) => {
 		e && l((e) => e + 1);
 	}, []);
-	return e ? /* @__PURE__ */ b(wt, {
+	return e ? /* @__PURE__ */ b(Ct, {
 		label: n,
 		message: r,
 		testId: i,
-		loaderSlot: a,
+		loaderSlot: o,
 		delayMs: s,
 		onVisibleChange: d
 	}) : /* @__PURE__ */ b("div", {
 		"data-slot": "cashier-fullscreen-content-reveal",
-		className: o("pc-cashier__fullscreen-content-reveal flex min-h-0 h-full w-full flex-1 flex-col", c > 0 && !u && xt),
+		className: a("pc-cashier__fullscreen-content-reveal flex min-h-0 h-full w-full flex-1 flex-col", c > 0 && !u && bt),
 		children: t
 	}, c);
 }
 //#endregion
 //#region src/routes/pts/$method.tsx
-var Et = () => import("./_method-snK9qFDB.js"), Dt = () => import("./_method-BYkcUGTZ.js"), Ot = async (t) => {
-	let { merchantId: n, method: r, userId: i, sessionId: a, currency: o, fetchConfig: s, debug: c, queryClient: d } = t, f = {
-		merchantId: n,
-		method: r === e.PAYOUT ? e.PAYOUT : e.PAYIN,
-		userId: i,
-		sessionId: a,
-		currency: o,
-		fetchConfig: s,
-		debug: c
+var Tt = () => import("./_method-BRjhXt97.js"), Et = () => import("./_method-y8rxwPQb.js"), Dt = async (t) => {
+	let { merchantId: r, method: i, userId: a, sessionId: o, currency: s, fetchConfig: c, debug: l, queryClient: d } = t, f = {
+		merchantId: r,
+		method: i === e.PAYOUT ? e.PAYOUT : e.PAYIN,
+		userId: a,
+		sessionId: o,
+		currency: s,
+		fetchConfig: c,
+		debug: l
 	};
-	if (d.getQueryState(u(f))?.status === "error") return { paymentTypes: [] };
+	if (d.getQueryState(n(f))?.status === "error") return { paymentTypes: [] };
 	try {
-		return { paymentTypes: (await l(d, f)).paymentTypes };
+		return { paymentTypes: (await u(d, f)).paymentTypes };
 	} catch {
 		return { paymentTypes: [] };
 	}
 };
-function kt() {
-	let { translateKey: e } = i();
-	return /* @__PURE__ */ b(wt, {
+function Ot() {
+	let { translateKey: e } = r();
+	return /* @__PURE__ */ b(Ct, {
 		label: e("loading.payment_types"),
 		testId: "cashier-payment-types-loading"
 	});
 }
-var At = vt("/pts/$method")({
-	loader: async ({ context: e }) => Ot(e),
-	component: bt(Dt, "component"),
-	pendingComponent: kt,
-	errorComponent: bt(Et, "errorComponent")
+var kt = _t("/pts/$method")({
+	loader: async ({ context: e }) => Dt(e),
+	component: yt(Et, "component"),
+	pendingComponent: Ot,
+	errorComponent: yt(Tt, "errorComponent")
 });
 //#endregion
-export { ue as A, j as B, he as C, q as D, me as E, pe as F, S as H, se as I, te as L, ie as M, fe as N, F as O, M as P, E as R, _e as S, ge as T, O as U, oe as V, k as W, Ne as _, _t as a, De as b, Xe as c, Re as d, Le as f, je as g, we as h, vt as i, N as j, P as k, Ge as l, Fe as m, wt as n, tt as o, Ie as p, Tt as r, et as s, At as t, He as u, Ce as v, G as w, Ee as x, Ae as y, de as z };
+export { ue as A, A as B, ge as C, W as D, he as E, pe as F, x as H, se as I, te as L, ie as M, fe as N, P as O, j as P, T as R, K as S, _e as T, D as U, oe as V, O as W, Me as _, gt as a, De as b, Ye as c, Le as d, Ie as f, Ae as g, we as h, _t as i, M as j, N as k, We as l, Pe as m, Ct as n, et as o, Fe as p, wt as r, $e as s, kt as t, Ve as u, Y as v, ve as w, Ee as x, ke as y, de as z };

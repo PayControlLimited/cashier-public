@@ -24,7 +24,7 @@ type PaymentContextValue = {
     status: PaymentProgress['status'];
     redirect: RedirectWithType | undefined;
     paymentStatusMessage: string | null;
-    makePayment: (variables: PaymentMutationVariables) => void;
+    makePayment: (variables: PaymentMutationVariables) => Promise<PaymentsResponse>;
     clearPaymentState: (options?: ClearPaymentStateOptions) => void;
     setPaymentTracking: (paymentId: PaymentsResponse['paymentId'] | null, initial?: Partial<PaymentProgress>) => void;
     isPaymentPending: boolean;

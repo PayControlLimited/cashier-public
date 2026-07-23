@@ -65,6 +65,12 @@ Type exports from `@paycontrollimited/cashier`:
 - `CashierPaymentSummaryEvent`
 - `CashierPaymentSummaryField`
 - `CashierPaymentSummaryResponse`
+- `CashierPaymentMethodChangedEvent`
+- `CashierPaymentTypeReference`
+- `CashierPaymentFormFieldState`
+- `CashierHostedFieldsState`
+- `CashierPaymentFormState`
+- `CashierPaymentFormChangedEvent`
 - `CashierPaymentType`
 - `CashierRedirectData`
 - `CashierSummaryAction`
@@ -228,6 +234,34 @@ Typical summary event:
   },
 }
 ```
+
+`onPaymentMethodChanged` fires after a real user-initiated payin/payout change.
+It does not fire during initialisation, config replacement, remounts, or no-op
+selection. `onPaymentFormChanged` emits deduplicated active snapshots for the
+selected visible native form and emits `inactive/submitted` after successful
+payment creation or provider-form advancement.
+
+```ts
+const config: Partial<CashierConfig> = {
+  onPaymentMethodChanged(event) {
+    console.log('Payment method', event.method)
+  },
+  onPaymentFormChanged(event) {
+    // Native field values can contain personal data. Do not log snapshots by
+    // default; inspect and retain only fields your integration genuinely needs.
+    console.log('Payment form status', event.status)
+  },
+}
+```
+
+The form observer never exposes Hosted Fields values or tokens, PAN, CSC, or
+expiry. Native provider fields, including token-like values, remain observable
+when they are rendered as ordinary Cashier fields. Hosts are responsible for
+protecting any native personal data they choose to process. Cashier does not
+log or persist observer snapshots.
+Handler replacement does not remount Cashier; the latest handler is invoked
+synchronously and callback failures are isolated. See the repository Cashier
+callback reference for full ordering, subscription, field, and state semantics.
 
 When a payment type fee includes `direction: 'add'` or `direction: 'deduct'`,
 Cashier shows added fees without a leading sign, such as `€2.00`, and deducted

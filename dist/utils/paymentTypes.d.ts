@@ -1,5 +1,6 @@
 import { GetPaymentTypesData, PaymentType } from '../../../api/src/payments.ts';
 import { CashierConfig } from '../types/CashierConfig.js';
+export declare const getPaymentTypeNameKeys: (rawPaymentType: unknown, rawMethod: unknown, rawService?: unknown) => string[];
 export declare const formatCardAccountLabel: (paymentType: PaymentType) => string | null;
 export declare const getPaymentTypeSelectionId: (paymentType: PaymentType) => string;
 export type PaymentTypesResult = {

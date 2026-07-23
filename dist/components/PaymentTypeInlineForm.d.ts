@@ -9,6 +9,7 @@ type PaymentTypeInlineFormProps = {
     hideAmountField?: boolean;
     renderAfterAmountField?: ReactNode;
     surfaceChrome?: 'contained' | 'plain';
+    fieldPanelMode?: 'auto' | 'none';
     onActionsChange: (actions: PaymentFormActions) => void;
     onPromptStateChange: (paymentTypeName: string, state: PaymentFormPromptState) => void;
     onPreparedValues: (paymentType: PaymentType, preparedValues: PreparedPaymentFormValues) => void;
@@ -16,7 +17,9 @@ type PaymentTypeInlineFormProps = {
     submitMode?: 'prepare' | 'submit';
     reserveTrailingActionSpace?: boolean;
     animateEntrance?: boolean;
+    observePublicState?: boolean;
+    onPaymentSubmitted?: () => void;
 };
-declare function PaymentTypeInlineForm({ paymentType, selectionId, amountValue, valueOverrides, hideAmountField, renderAfterAmountField, surfaceChrome, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, submitMode, reserveTrailingActionSpace, animateEntrance, }: PaymentTypeInlineFormProps): import("react/jsx-runtime").JSX.Element;
+declare function PaymentTypeInlineForm({ paymentType, selectionId, amountValue, valueOverrides, hideAmountField, renderAfterAmountField, surfaceChrome, fieldPanelMode, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, submitMode, reserveTrailingActionSpace, animateEntrance, observePublicState, onPaymentSubmitted, }: PaymentTypeInlineFormProps): import("react/jsx-runtime").JSX.Element;
 export default PaymentTypeInlineForm;
 //# sourceMappingURL=PaymentTypeInlineForm.d.ts.map
