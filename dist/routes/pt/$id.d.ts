@@ -1,3 +1,3 @@
 export declare const Route: import('@tanstack/router-core').Route<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/pt/$id", "/pt/$id", "/pt/$id", "/pt/$id", undefined, import('@tanstack/router-core').ResolveParams<"/pt/$id">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>;
-export declare function PaymentTypeView(): import("react/jsx-runtime").JSX.Element;
+export declare function PaymentTypeView(): import("react").JSX.Element;
 //# sourceMappingURL=$id.d.ts.map

@@ -6,6 +6,6 @@ type InteractivePromptSessionValue = {
 export declare const useInteractivePromptSession: () => InteractivePromptSessionValue;
 export declare function InteractivePromptSessionProvider({ children, }: {
     children: ReactNode;
-}): import("react/jsx-runtime").JSX.Element;
+}): import("react").JSX.Element;
 export {};
 //# sourceMappingURL=interactivePrompt.d.ts.map

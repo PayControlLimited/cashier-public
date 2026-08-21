@@ -47,6 +47,7 @@ export type HostedFieldsFormState = {
 };
 export type HostedFieldsCapabilities = {
     groupedCardInputs?: boolean;
+    fieldOverrides?: boolean;
 };
 export type HostedFieldsMessage = {
     type: HostedFieldsEventId;

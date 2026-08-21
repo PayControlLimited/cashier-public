@@ -16,6 +16,6 @@ type PaymentSummaryDetailsProps = {
     animationStyleOptions?: SelectionListAnimationStyleOptions;
     animateEntrance?: boolean;
 };
-export default function PaymentSummaryDetails({ summaryFields, variant, rowVariants, className, children, panelBorderEdges, surfaceChrome, animationDirection, animationStyleOptions, animateEntrance, }: PaymentSummaryDetailsProps): import("react/jsx-runtime").JSX.Element;
+export default function PaymentSummaryDetails({ summaryFields, variant, rowVariants, className, children, panelBorderEdges, surfaceChrome, animationDirection, animationStyleOptions, animateEntrance, }: PaymentSummaryDetailsProps): import("react").JSX.Element;
 export {};
 //# sourceMappingURL=PaymentSummaryDetails.d.ts.map

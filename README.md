@@ -279,10 +279,15 @@ finds a cancellable pending withdrawal. When combo view is enabled, the
 prompt stays on the first payment screen. When combo view is disabled, it appears on
 the payment details or confirm step instead. When more than one pending
 withdrawal is found, Cashier keeps the prompt visible and opens a drawer so
-one payout can be chosen and cancelled at a time. Dismissing it hides the
-current pending set for the rest of the session unless the pending set
-changes. When `lockAmount` is `true`, Cashier treats this feature as
-disabled.
+one payout can be chosen at a time. Before sending a cancellation, Cashier
+opens a confirmation drawer showing the selected amount, payment type, and
+date. Closing that drawer leaves the withdrawal unchanged; a failed
+cancellation stays open so the user can retry. Each withdrawal keeps its own
+currency, and mixed-currency totals are listed separately rather than summed.
+Host callback errors do not turn a successful cancellation into a failed user
+action. Dismissing the prompt hides the current pending set for the rest of the
+session unless the pending set changes. When `lockAmount` is `true`, Cashier
+treats this feature as disabled.
 
 `summaryActions` controls the action area on the payment summary. Omit it to
 keep the default Back button, or use `{ items: [] }` to remove actions. Actions

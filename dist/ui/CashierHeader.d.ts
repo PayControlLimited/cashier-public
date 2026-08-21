@@ -18,6 +18,6 @@ type CashierHeaderProps = {
     titleMetaClassName?: string;
 };
 type CashierHeaderVariant = 'default' | 'details';
-declare function CashierHeader({ title, subtitle, leading, trailing, titleMeta, variant, layout, stuckLayout, className, layoutClassName, titleWrapperClassName, titleClassName, subtitleClassName, leadingClassName, trailingClassName, titleMetaClassName, }: CashierHeaderProps): import("react/jsx-runtime").JSX.Element | null;
+declare function CashierHeader({ title, subtitle, leading, trailing, titleMeta, variant, layout, stuckLayout, className, layoutClassName, titleWrapperClassName, titleClassName, subtitleClassName, leadingClassName, trailingClassName, titleMetaClassName, }: CashierHeaderProps): import("react").JSX.Element | null;
 export default CashierHeader;
 //# sourceMappingURL=CashierHeader.d.ts.map

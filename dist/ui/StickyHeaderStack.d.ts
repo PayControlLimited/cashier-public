@@ -4,6 +4,6 @@ type StickyHeaderStackProps = {
     className?: string;
     children?: ReactNode;
 };
-export default function StickyHeaderStack({ sticky, className, children, }: StickyHeaderStackProps): import("react/jsx-runtime").JSX.Element | null;
+export default function StickyHeaderStack({ sticky, className, children, }: StickyHeaderStackProps): import("react").JSX.Element | null;
 export {};
 //# sourceMappingURL=StickyHeaderStack.d.ts.map

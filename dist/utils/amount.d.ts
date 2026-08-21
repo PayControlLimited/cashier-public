@@ -2,6 +2,7 @@ import { hasAmountValue, normalizeAmountValue, parseAmountSuggestions, sanitizeA
 import { CashierMethods, CashierUser } from '../types/CashierConfig.js';
 import { PaymentType } from '../types/payment.js';
 export { hasAmountValue, normalizeAmountValue, parseAmountSuggestions, sanitizeAmountInput, };
+export declare const applyAmountEdit: (previousValue: string, nextValue: string) => string;
 export declare const resolveConfiguredAmount: (rawValue: string, lockAmount: boolean) => string;
 export type AmountLimits = {
     min?: string;

@@ -5,6 +5,6 @@ type Props = {
     hiddenFields: Array<[string, string]>;
     providerStepKey?: string | null;
 };
-declare const ProviderWindow: ({ redirectUrl, redirectMethod, hiddenFields, providerStepKey, }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const ProviderWindow: ({ redirectUrl, redirectMethod, hiddenFields, providerStepKey, }: Props) => import("react").JSX.Element;
 export default ProviderWindow;
 //# sourceMappingURL=ProviderWindow.d.ts.map

@@ -4,11 +4,15 @@ export type ProviderScriptNavigateOptions = {
     replace?: boolean;
 };
 export type ProviderScriptNavigate = (targetUrl: string, options?: ProviderScriptNavigateOptions) => void;
-export type ProviderScriptRenderContext = {
+export type ProviderScriptBaseContext = {
     scriptUrl: string;
     data: RedirectDataRecord;
     returnUrl?: string;
     navigate?: ProviderScriptNavigate;
+};
+export type ProviderScriptRenderContext = ProviderScriptBaseContext & {
+    signal: AbortSignal;
+    targetId: string;
 };
 export type ProviderScriptCleanup = () => void;
 export type ProviderScriptMountPayload = {
@@ -18,13 +22,12 @@ export type ProviderScriptMountPayload = {
 };
 export type ProviderScriptTemplateContent = DocumentFragment | Node | Node[];
 export type ProviderScriptTemplateFactory = (doc: Document, context: ProviderScriptRenderContext) => ProviderScriptTemplateContent;
-export type ProviderScriptTemplate = (ProviderScriptTemplateContent | ProviderScriptTemplateFactory);
 export type ProviderScriptDefinition = {
     id: string;
     presentation: ProviderScriptPresentation;
-    template: ProviderScriptTemplate;
+    template: ProviderScriptTemplateFactory;
     isAllowedUrl?: (url: URL) => boolean;
-    render?: (template: ProviderScriptTemplate, context: ProviderScriptRenderContext) => ProviderScriptTemplate;
-    setup?: (payload: ProviderScriptMountPayload) => ProviderScriptCleanup | undefined;
+    isReady?: (doc: Document) => boolean;
+    setup?: (payload: ProviderScriptMountPayload) => (ProviderScriptCleanup | undefined | Promise<ProviderScriptCleanup | undefined>);
 };
 //# sourceMappingURL=types.d.ts.map

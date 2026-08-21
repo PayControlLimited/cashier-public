@@ -14,7 +14,7 @@ type PaymentTypeLimitsFeeProps = {
     truncate?: boolean;
     className?: string;
 };
-export default function PaymentTypeLimitsFee({ limits, fee, extraItems, rowGap, align, truncate, className, }: PaymentTypeLimitsFeeProps): import("react/jsx-runtime").JSX.Element | null;
+export default function PaymentTypeLimitsFee({ limits, fee, extraItems, rowGap, align, truncate, className, }: PaymentTypeLimitsFeeProps): import("react").JSX.Element | null;
 type PaymentTypeLimitsFeeMetaProps = {
     limits?: PaymentType['limits'];
     fee?: PaymentType['fee'];
@@ -24,6 +24,6 @@ type PaymentTypeLimitsFeeMetaProps = {
     truncate?: PaymentTypeLimitsFeeProps['truncate'];
     className?: string;
 };
-export declare function PaymentTypeLimitsFeeMeta({ limits, fee, extraItems, align, rowGap, truncate, className, }: PaymentTypeLimitsFeeMetaProps): import("react/jsx-runtime").JSX.Element;
+export declare function PaymentTypeLimitsFeeMeta({ limits, fee, extraItems, align, rowGap, truncate, className, }: PaymentTypeLimitsFeeMetaProps): import("react").JSX.Element;
 export {};
 //# sourceMappingURL=PaymentTypeLimitsFee.d.ts.map

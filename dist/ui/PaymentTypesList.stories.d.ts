@@ -22,6 +22,7 @@ declare const meta: {
         selectedPaymentType?: string | null | undefined;
         renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
         isPaymentTypeDisabled?: ((paymentType: PaymentType) => boolean) | undefined;
+        interactionLocked?: boolean | undefined;
         preserveDisabledSelection?: boolean | undefined;
         itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
         itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
@@ -41,6 +42,7 @@ declare const meta: {
         selectedPaymentType?: string | null | undefined;
         renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
         isPaymentTypeDisabled?: ((paymentType: PaymentType) => boolean) | undefined;
+        interactionLocked?: boolean | undefined;
         preserveDisabledSelection?: boolean | undefined;
         itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
         itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
@@ -49,7 +51,7 @@ declare const meta: {
         animateItems?: boolean | undefined;
         bonusEvaluationContext?: (import('../utils/bonuses.js').BonusEvaluationContext | ((paymentType: PaymentType) => import('../utils/bonuses.js').BonusEvaluationContext | undefined)) | undefined;
         themeSlot?: import('./PaymentTypeListItem.js').PaymentTypeListItemThemeSlot | undefined;
-    }>) => import("react/jsx-runtime").JSX.Element)[];
+    }>) => import("react").JSX.Element)[];
 };
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -3,6 +3,7 @@ export type FinishPaymentOptions = {
     merchantId?: string;
     replace?: boolean;
     reachedSummaryViaProvider?: boolean;
+    userFlowDoneUrl?: string;
 };
 export declare const useFinishPayment: () => (options?: FinishPaymentOptions) => void;
 //# sourceMappingURL=useFinishPayment.d.ts.map

@@ -7,6 +7,6 @@ type Props = {
     redirectType?: RedirectType;
     redirectScriptId?: RedirectWithType['scriptId'];
 };
-declare const ProviderRedirect: ({ paymentId, redirectUrl, redirectMethod, redirectData, redirectType, redirectScriptId, }: Props) => import("react/jsx-runtime").JSX.Element;
+declare const ProviderRedirect: ({ paymentId, redirectUrl, redirectMethod, redirectData, redirectType, redirectScriptId, }: Props) => import("react").JSX.Element;
 export default ProviderRedirect;
 //# sourceMappingURL=ProviderRedirect.d.ts.map

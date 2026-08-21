@@ -6,6 +6,6 @@ type ProviderScriptProps = {
     redirectData?: string;
     redirectType?: RedirectType;
 };
-declare const ProviderScript: ({ providerStepKey, scriptId, redirectUrl, redirectData, redirectType, }: ProviderScriptProps) => import("react/jsx-runtime").JSX.Element;
+declare const ProviderScript: ({ providerStepKey, scriptId, redirectUrl, redirectData, redirectType, }: ProviderScriptProps) => import("react").JSX.Element;
 export default ProviderScript;
 //# sourceMappingURL=ProviderScript.d.ts.map

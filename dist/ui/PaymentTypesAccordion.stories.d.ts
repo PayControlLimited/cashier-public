@@ -7,7 +7,7 @@ declare const meta: {
     args: {
         paymentTypes: import('../../../api/src/payments.ts').PaymentType[];
         selectedPaymentType: string;
-        renderPanel: (paymentType: PaymentType) => import("react/jsx-runtime").JSX.Element;
+        renderPanel: (paymentType: PaymentType) => import("react").JSX.Element;
     };
     decorators: ((Story: import('storybook/internal/csf').PartialStoryFn<import('@storybook/react').ReactRenderer, {
         paymentTypes: PaymentType[];
@@ -21,6 +21,7 @@ declare const meta: {
         compact?: boolean | undefined;
         renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
         isPaymentTypeDisabled?: ((paymentType: PaymentType) => boolean) | undefined;
+        interactionLocked?: boolean | undefined;
         preserveDisabledSelection?: boolean | undefined;
         itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
         itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
@@ -41,6 +42,7 @@ declare const meta: {
         compact?: boolean | undefined;
         renderActions?: ((paymentType: PaymentType) => import('react').ReactNode) | undefined;
         isPaymentTypeDisabled?: ((paymentType: PaymentType) => boolean) | undefined;
+        interactionLocked?: boolean | undefined;
         preserveDisabledSelection?: boolean | undefined;
         itemVariant?: import('../../../ui/src/index.ts').UiVariant | undefined;
         itemAppearance?: import('../../../ui/src/index.ts').UiAppearance | undefined;
@@ -49,7 +51,7 @@ declare const meta: {
         domScope?: string | undefined;
         animateItems?: boolean | undefined;
         bonusEvaluationContext?: (import('../utils/bonuses.js').BonusEvaluationContext | ((paymentType: PaymentType) => import('../utils/bonuses.js').BonusEvaluationContext | undefined)) | undefined;
-    }>) => import("react/jsx-runtime").JSX.Element)[];
+    }>) => import("react").JSX.Element)[];
 };
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -12,6 +12,6 @@ type SelectableListLayoutProps = {
     compact?: boolean;
     stacked?: boolean;
 };
-declare function SelectableListLayout({ children, id, className, rootAttributes, contentClassName, contentAttributes, contentStyle, listStyle, compact, stacked, }: SelectableListLayoutProps): import("react/jsx-runtime").JSX.Element;
+declare function SelectableListLayout({ children, id, className, rootAttributes, contentClassName, contentAttributes, contentStyle, listStyle, compact, stacked, }: SelectableListLayoutProps): import("react").JSX.Element;
 export default SelectableListLayout;
 //# sourceMappingURL=SelectableListLayout.d.ts.map

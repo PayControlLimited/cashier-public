@@ -4,6 +4,6 @@ export type CashierHotkeyScopeRef = RefObject<HTMLElement | null>;
 export declare function CashierHotkeyScopeProvider({ children, rootRef, }: {
     children: ReactNode;
     rootRef: CashierHotkeyScopeRef;
-}): import("react/jsx-runtime").JSX.Element;
+}): import("react").JSX.Element;
 export declare const useCashierHotkeyScopeRef: () => CashierHotkeyScopeRef | null;
 //# sourceMappingURL=hotkeyScope.d.ts.map

@@ -241,7 +241,16 @@ export type CashierPendingWithdrawalCancelledEvent = {
     currency: string;
     createdAt: Date;
     remainingPendingCount: number;
+    /**
+     * Total value of remaining withdrawals in the cancelled withdrawal's
+     * `currency`.
+     */
     remainingPendingTotal: number;
+    /** Per-currency totals for all remaining pending withdrawals. */
+    remainingPendingTotals?: Array<{
+        amount: number;
+        currency: string;
+    }>;
 };
 export type CashierBonusTopUpEvent = {
     bonus: CashierBonus;

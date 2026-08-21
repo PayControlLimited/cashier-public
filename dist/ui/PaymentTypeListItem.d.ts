@@ -38,6 +38,7 @@ export type PaymentTypeListItemProps = Pick<PaymentType, 'name'> & Partial<Pick<
     hoverMode?: 'self' | 'group' | 'none';
     themeSlot?: PaymentTypeListItemThemeSlot;
     isDisabled?: boolean;
+    isUnavailable?: boolean;
     balanceLogo?: boolean;
     density?: 'default' | 'compact';
     embedded?: boolean;
@@ -75,7 +76,7 @@ type PaymentTypeListItemActionSlotProps = {
     onClick?: (event: MouseEvent<HTMLDivElement>) => void;
     onKeyDown?: (event: KeyboardEvent<HTMLDivElement>) => void;
 };
-export declare function PaymentTypeListItemActionSlot({ children, placement, isGrid, id, dataSlot, domClassName, onClick, onKeyDown, }: PaymentTypeListItemActionSlotProps): import("react/jsx-runtime").JSX.Element | null;
-declare function PaymentTypeListItem({ name, nameKeys, selectionId, domSlug, logo, logoContent, logoContentPresentation, logoCompact, logoSurface, limits, fee, onSelect, listStyle, compact, variant, appearance, shape, showMeta, title, description, descriptionPresentation, meta, metaPlacement, isSelected, showSelectedIndicator, bonusLabel, badges, hasAvailableBonuses, interactive, includeDataTheme, hoverMode, themeSlot, isDisabled, balanceLogo, density, embedded, embeddedSurfacePosition, actions, actionsAlignment, interactiveSurface, section, actionStopsPropagation, ariaLabel, ariaExpanded, ariaControls, className, animationClassName, animationStyle, infoDrawer, }: PaymentTypeListItemProps): import("react/jsx-runtime").JSX.Element;
+export declare function PaymentTypeListItemActionSlot({ children, placement, isGrid, id, dataSlot, domClassName, onClick, onKeyDown, }: PaymentTypeListItemActionSlotProps): import("react").JSX.Element | null;
+declare function PaymentTypeListItem({ name, nameKeys, selectionId, domSlug, logo, logoContent, logoContentPresentation, logoCompact, logoSurface, limits, fee, onSelect, listStyle, compact, variant, appearance, shape, showMeta, title, description, descriptionPresentation, meta, metaPlacement, isSelected, showSelectedIndicator, bonusLabel, badges, hasAvailableBonuses, interactive, includeDataTheme, hoverMode, themeSlot, isDisabled, isUnavailable, balanceLogo, density, embedded, embeddedSurfacePosition, actions, actionsAlignment, interactiveSurface, section, actionStopsPropagation, ariaLabel, ariaExpanded, ariaControls, className, animationClassName, animationStyle, infoDrawer, }: PaymentTypeListItemProps): import("react").JSX.Element;
 export default PaymentTypeListItem;
 //# sourceMappingURL=PaymentTypeListItem.d.ts.map

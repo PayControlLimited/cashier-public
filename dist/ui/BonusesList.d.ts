@@ -20,6 +20,6 @@ type BonusesListProps = {
     closeReasonPlacement?: 'meta' | 'info';
     themeSlot?: PaymentTypeListItemThemeSlot;
 };
-declare function BonusesList({ bonuses, selectedBonusCode, onSelect, onSkip, selectable, showSkipOption, isSkipSelected, listStyle, compact, stacked, itemVariant, itemAppearance, domScope, animateItems, closeReasonPlacement, themeSlot, }: BonusesListProps): import("react/jsx-runtime").JSX.Element;
+declare function BonusesList({ bonuses, selectedBonusCode, onSelect, onSkip, selectable, showSkipOption, isSkipSelected, listStyle, compact, stacked, itemVariant, itemAppearance, domScope, animateItems, closeReasonPlacement, themeSlot, }: BonusesListProps): import("react").JSX.Element;
 export default BonusesList;
 //# sourceMappingURL=BonusesList.d.ts.map

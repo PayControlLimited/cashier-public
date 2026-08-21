@@ -6,6 +6,6 @@ type ProviderWindowNoticeProps = {
     buttonLabel: string;
     onManualOpen: () => void;
 };
-declare const ProviderWindowNotice: ({ manualOpenRequired, title, manualDescription, autoDescription, buttonLabel, onManualOpen, }: ProviderWindowNoticeProps) => import("react/jsx-runtime").JSX.Element;
+declare const ProviderWindowNotice: ({ manualOpenRequired, title, manualDescription, autoDescription, buttonLabel, onManualOpen, }: ProviderWindowNoticeProps) => import("react").JSX.Element;
 export default ProviderWindowNotice;
 //# sourceMappingURL=ProviderWindowNotice.d.ts.map

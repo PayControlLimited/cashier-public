@@ -8,6 +8,6 @@ type PaymentFormSurfaceProps = {
     fieldEdgeSpacing?: 'default' | 'balanced';
     animateEntrance?: boolean;
 };
-export default function PaymentFormSurface({ children, kind, chrome, fieldEdgeSpacing, animateEntrance, }: PaymentFormSurfaceProps): import("react/jsx-runtime").JSX.Element;
+export default function PaymentFormSurface({ children, kind, chrome, fieldEdgeSpacing, animateEntrance, }: PaymentFormSurfaceProps): import("react").JSX.Element;
 export {};
 //# sourceMappingURL=PaymentFormSurface.d.ts.map

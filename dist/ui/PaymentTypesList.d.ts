@@ -16,6 +16,7 @@ type PaymentTypesListProps = {
     selectedPaymentType?: string | null;
     renderActions?: (paymentType: PaymentType) => ReactNode;
     isPaymentTypeDisabled?: (paymentType: PaymentType) => boolean;
+    interactionLocked?: boolean;
     preserveDisabledSelection?: boolean;
     itemVariant?: UiVariant;
     itemAppearance?: UiAppearance;
@@ -25,6 +26,6 @@ type PaymentTypesListProps = {
     bonusEvaluationContext?: BonusEvaluationContextInput;
     themeSlot?: PaymentTypeListItemThemeSlot;
 };
-declare function PaymentTypesList({ paymentTypes, onSelect, listStyle, compact, stacked, showMeta, selectable, selectedPaymentType, renderActions, isPaymentTypeDisabled, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, domScope, animateItems, bonusEvaluationContext, themeSlot, }: PaymentTypesListProps): import("react/jsx-runtime").JSX.Element;
+declare function PaymentTypesList({ paymentTypes, onSelect, listStyle, compact, stacked, showMeta, selectable, selectedPaymentType, renderActions, isPaymentTypeDisabled, interactionLocked, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, domScope, animateItems, bonusEvaluationContext, themeSlot, }: PaymentTypesListProps): import("react").JSX.Element;
 export default PaymentTypesList;
 //# sourceMappingURL=PaymentTypesList.d.ts.map

@@ -21,6 +21,6 @@ type PaymentTypeLogoProps = {
     content?: ReactNode;
 };
 export declare const getCashierLogoThemeSurfaceClassName: (surface?: CashierLogoThemeSurface, layout?: CashierLogoLayout) => string;
-export declare function PaymentTypeLogo({ id, logo, alt, seed, className, contentClassName, rootAttributes, surface, tone, listStyle, compact, balanceLogo, stuck, content, }: PaymentTypeLogoProps): import("react/jsx-runtime").JSX.Element;
+export declare function PaymentTypeLogo({ id, logo, alt, seed, className, contentClassName, rootAttributes, surface, tone, listStyle, compact, balanceLogo, stuck, content, }: PaymentTypeLogoProps): import("react").JSX.Element;
 export {};
 //# sourceMappingURL=PaymentTypeLogo.d.ts.map

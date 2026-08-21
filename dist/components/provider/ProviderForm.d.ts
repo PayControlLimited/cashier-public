@@ -6,6 +6,6 @@ type ProviderFormProps = {
     observerSourceId?: string;
 };
 export declare const getProviderFormObserverSourceId: (form: ProviderFormProps["form"], paymentId?: string) => string;
-declare const ProviderForm: ({ form, observerPaymentType, observerSourceId, }: ProviderFormProps) => import("react/jsx-runtime").JSX.Element;
+declare const ProviderForm: ({ form, observerPaymentType, observerSourceId, }: ProviderFormProps) => import("react").JSX.Element;
 export default ProviderForm;
 //# sourceMappingURL=ProviderForm.d.ts.map

@@ -4,6 +4,6 @@ type PaymentNotificationSectionProps = {
     translateKey: (key: string | null | undefined) => string;
     tone?: 'default' | 'status';
 };
-export default function PaymentNotificationSection({ notification, translateKey, tone, }: PaymentNotificationSectionProps): import("react/jsx-runtime").JSX.Element | null;
+export default function PaymentNotificationSection({ notification, translateKey, tone, }: PaymentNotificationSectionProps): import("react").JSX.Element | null;
 export {};
 //# sourceMappingURL=PaymentNotificationSection.d.ts.map

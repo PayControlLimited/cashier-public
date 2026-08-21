@@ -7,7 +7,7 @@ type PendingWithdrawalCancellationContextValue = {
 };
 export declare function PendingWithdrawalCancellationProvider({ children, }: {
     children: ReactNode;
-}): import("react/jsx-runtime").JSX.Element;
+}): import("react").JSX.Element;
 export declare const usePendingWithdrawalCancellation: () => PendingWithdrawalCancellationContextValue;
 export {};
 //# sourceMappingURL=pendingWithdrawalCancellation.d.ts.map

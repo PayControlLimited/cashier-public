@@ -32,6 +32,6 @@ type PaymentFieldListProps = {
     allowReservedLastFieldBottomPadding?: boolean;
     reserveTrailingActionClearance?: boolean;
 };
-declare const PaymentFieldList: ({ fields, translateKey, translateKeys, disabled, amountError, amountFieldId, renderBelowFieldContent, belowFieldContentClassName, belowFieldContentInheritsTheme, renderBeforeField, renderAfterField, renderAfterFieldRow, animateRows, animationStartIndex, animationTotalCount, animationDirection, reserveInputMessageSpace, reserveCheckboxMessageSpace, reserveLastCheckboxMessageSpace, reserveLastAmountMessageSpace, addFirstFieldTopPadding, addLastFieldBottomPadding, allowReservedLastFieldBottomPadding, reserveTrailingActionClearance, }: PaymentFieldListProps) => import("react/jsx-runtime").JSX.Element;
+declare const PaymentFieldList: ({ fields, translateKey, translateKeys, disabled, amountError, amountFieldId, renderBelowFieldContent, belowFieldContentClassName, belowFieldContentInheritsTheme, renderBeforeField, renderAfterField, renderAfterFieldRow, animateRows, animationStartIndex, animationTotalCount, animationDirection, reserveInputMessageSpace, reserveCheckboxMessageSpace, reserveLastCheckboxMessageSpace, reserveLastAmountMessageSpace, addFirstFieldTopPadding, addLastFieldBottomPadding, allowReservedLastFieldBottomPadding, reserveTrailingActionClearance, }: PaymentFieldListProps) => import("react").JSX.Element;
 export default PaymentFieldList;
 //# sourceMappingURL=PaymentFieldList.d.ts.map

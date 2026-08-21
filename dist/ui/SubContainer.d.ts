@@ -12,6 +12,6 @@ declare function SubContainer({ id, className, contentId, contentClassName, titl
     fullHeight?: boolean;
     constrainWidth?: boolean;
     children?: ReactNode;
-}): import("react/jsx-runtime").JSX.Element;
+}): import("react").JSX.Element;
 export default SubContainer;
 //# sourceMappingURL=SubContainer.d.ts.map

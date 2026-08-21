@@ -1,6 +1,6 @@
 import { ProviderScriptRenderContext, ProviderScriptTemplateFactory } from './types.js';
 export type ProviderScriptTemplateBuilderOptions = {
-    containerId?: string;
+    createTargetContainer?: boolean;
     containerClassName?: string;
     configureScript?: (script: HTMLScriptElement, context: ProviderScriptRenderContext) => void;
     onLoad?: (payload: {
@@ -11,5 +11,5 @@ export type ProviderScriptTemplateBuilderOptions = {
     }) => void;
 };
 export declare const takeProviderScriptOnLoad: (script: HTMLScriptElement) => (() => void) | undefined;
-export declare const buildProviderScriptTemplate: ({ containerId, containerClassName, configureScript, onLoad, }: ProviderScriptTemplateBuilderOptions) => ProviderScriptTemplateFactory;
+export declare const buildProviderScriptTemplate: ({ createTargetContainer, containerClassName, configureScript, onLoad, }: ProviderScriptTemplateBuilderOptions) => ProviderScriptTemplateFactory;
 //# sourceMappingURL=template.d.ts.map

@@ -23,6 +23,6 @@ type AmountProps = {
     disabled?: boolean;
     onFocusChange?: (isFocused: boolean) => void;
 };
-export default function Amount({ value, onChange, helper, onSubmit, canSubmit, inputRef, currency, locale, formatOptions, clearOnFocus, errorMessage, invalid, limits, reserveErrorSpace, showMeta, showDivider, reserveEmptyLimitMetaSpace, align, animateValueChange, disabled, onFocusChange, }: AmountProps): import("react/jsx-runtime").JSX.Element;
+export default function Amount({ value, onChange, helper, onSubmit, canSubmit, inputRef, currency, locale, formatOptions, clearOnFocus, errorMessage, invalid, limits, reserveErrorSpace, showMeta, showDivider, reserveEmptyLimitMetaSpace, align, animateValueChange, disabled, onFocusChange, }: AmountProps): import("react").JSX.Element;
 export {};
 //# sourceMappingURL=Amount.d.ts.map

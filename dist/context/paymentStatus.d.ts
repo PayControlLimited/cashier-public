@@ -31,9 +31,15 @@ type PaymentContextValue = {
     isPaymentFailed: boolean;
     isPaymentSuccessful: boolean;
 };
+type PaymentInteractionLockProviderProps = {
+    children: ReactNode;
+    locked: boolean;
+};
+export declare const PaymentInteractionLockProvider: ({ children, locked, }: PaymentInteractionLockProviderProps) => import("react").JSX.Element;
 export declare const PaymentProvider: ({ children }: {
     children: ReactNode;
-}) => import("react/jsx-runtime").JSX.Element;
+}) => import("react").JSX.Element;
 export declare const usePaymentStatus: () => PaymentContextValue;
+export declare const useIsPaymentInteractionLocked: () => boolean;
 export {};
 //# sourceMappingURL=paymentStatus.d.ts.map

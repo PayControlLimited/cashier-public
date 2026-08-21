@@ -13,6 +13,6 @@ type CashierDrawerProps = {
     variant?: UiVariant;
     contentRef?: (node: HTMLDivElement | null) => void;
 };
-export default function CashierDrawer({ isOpen, onClose, side, title, children, portalContainer, closeButtonLabel, overlayClassName, contentClassName, variant, contentRef, }: CashierDrawerProps): import("react/jsx-runtime").JSX.Element;
+export default function CashierDrawer({ isOpen, onClose, side, title, children, portalContainer, closeButtonLabel, overlayClassName, contentClassName, variant, contentRef, }: CashierDrawerProps): import("react").JSX.Element;
 export {};
 //# sourceMappingURL=CashierDrawer.d.ts.map

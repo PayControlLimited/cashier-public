@@ -4,6 +4,6 @@ type BonusCloseNoticeProps = {
     align?: 'left' | 'center';
     tone?: 'hint' | 'neutral';
 };
-export default function BonusCloseNotice({ reasons, align, tone, }: BonusCloseNoticeProps): import("react/jsx-runtime").JSX.Element | null;
+export default function BonusCloseNotice({ reasons, align, tone, }: BonusCloseNoticeProps): import("react").JSX.Element | null;
 export {};
 //# sourceMappingURL=BonusCloseNotice.d.ts.map

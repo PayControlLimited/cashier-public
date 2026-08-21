@@ -46,6 +46,7 @@ type BonusSummaryAwardLineOptions = {
     formatAmount?: (value: number) => string;
 };
 export declare const sortBonusAvailability: (availability: BonusAvailability[]) => BonusAvailability[];
+export declare const isBonusSelectionCandidate: (availability: BonusAvailability) => boolean;
 export type BonusEvaluationContext = {
     amount?: number | null;
     user?: CashierUser | null;

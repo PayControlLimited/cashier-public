@@ -2,6 +2,30 @@
 
 ## Unreleased
 
+## 1.5.2
+
+### Added
+
+- Added conditional field overrides for payment fields. A field's validation pattern, required flag, or visibility can now change based on another field's current value (for example a 4-digit CVV while the card number identifies an American Express card), driven entirely by backend field configuration. Overrides are forwarded to Hosted Fields only when the iframe reports the `fieldOverrides` capability; older Hosted Fields builds keep receiving exactly the static field configuration and card-field behaviour there is unchanged.
+
+### Changed
+
+- Changed pending-withdrawal cancellation so Cashier asks users to confirm the selected withdrawal before sending the cancellation request.
+
+### Fixed
+
+- Fixed pending-withdrawal amounts using the active Cashier currency instead of each withdrawal's currency. Mixed-currency totals now stay separate, and host callback errors no longer present a successful cancellation as failed.
+- Fixed preselected or already-selected bonuses disappearing from bonus pickers when the current amount is below `minAmount` but within `closeToAmount`. The picker now keeps the bonus selected and marks only the bonus item as unavailable, while both the picker and its drawer show the eligibility hint. The picker remains operable, while `bonusCode` stays excluded from payment submission until the bonus is eligible.
+- Fixed Deposit and Withdraw switching leaving the previous method frozen while the next method loaded. Cashier now immediately shows a full-screen loading state and reveals the requested method only after it is ready; failed switches expose the target error state and leave method switching available for recovery.
+- Fixed Hosted Fields loading replacing the entire Cashier with a full-screen loader. Cashier keeps the surrounding payment screen visible, announces the secure-field loading state to assistive technology, and shows the grouped or separate Hosted Fields loading geometry locally once that geometry is known; the loading-to-ready geometry settlement, later validation-driven layout changes, and static non-interactive error state remain supported.
+- Fixed Cashier toggle thumbs blending into card payment surfaces. Toggles inside branded and unbranded card layouts now use one lighter tint of the current card surface in both checked states, ordinary toggles retain the neutral default, and explicit consumer-provided toggle colours still take precedence.
+- Fixed accordion payment forms collapsing and briefly flashing the payment-type list after submission, and stopped combo-view payment pickers replaying their entrance animation when submission locks or unlocks their controls. The selected form and picker now remain mounted and non-interactive until Cashier transitions to the provider or payment summary.
+- Fixed padded payment field values being accepted in the form and then rejected on submission. A value with leading or trailing whitespace is now checked exactly as it will be submitted, so the field reports the problem immediately instead of the payment failing afterwards. A value consisting only of whitespace continues to count as missing rather than invalid.
+- Fixed amount fields accepting arbitrary text while typing. Amount edits now keep digits and a single decimal separator, converting a typed comma to a decimal point; invalid edits such as pasted text are rejected without changing the entered amount. This applies to payment-form, provider-form, and quick-payment amount inputs.
+- Fixed payments staying in a waiting state after the user's flow ends client-side for providers that never redirect the user back - for example when the user closes the provider window. When the payment status response includes the new optional `redirect.userFlowDoneUrl`, Cashier notifies the system on reaching the summary without a terminal status so the payment progresses; without the field, behaviour is unchanged.
+- Fixed live status updates stopping for one payment when a page embeds more than one Cashier and another payment on the page finished or was reset. The remaining payment keeps receiving status updates and reaches its final state without a page reload.
+- Fixed provider-script replacement and remount races so stale inline or window mounts cannot initialise, navigate, or remove the active provider widget. MiFinity mounts now use unique targets and close their widget during lifecycle cleanup.
+
 ## 1.5.1
 
 ### Added
