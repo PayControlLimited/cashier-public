@@ -1,3 +1,7 @@
+export { Combo as QuickPayment } from '../combo.js';
+/**
+ * Backwards-compatible alias. It renders in place so existing deep links,
+ * browser history and query strings are not rewritten.
+ */
 export declare const Route: import('@tanstack/router-core').Route<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/quick-payment", "/quick-payment/", "/quick-payment/", "/quick-payment/", undefined, import('@tanstack/router-core').ResolveParams<"/quick-payment">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, ({ context }: import('@tanstack/router-core').BeforeLoadContextOptions<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, undefined, import('@tanstack/router-core').ResolveParams<"/quick-payment">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, "/quick-payment/", unknown, undefined>) => void, {}, undefined, unknown, unknown, unknown, unknown, undefined>;
-export declare function QuickPayment(): import("react").JSX.Element | null;
 //# sourceMappingURL=index.d.ts.map

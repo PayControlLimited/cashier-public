@@ -13,6 +13,9 @@ type ValidationWithMessages = {
     rules?: ValidationMessage[];
     luhn?: ValidationMessage;
     iban?: ValidationMessage;
+    expiryDate?: ValidationMessage & {
+        maxFutureYears?: number;
+    };
 };
 type ValidationRule = {
     pattern?: string;
@@ -28,6 +31,9 @@ type FieldValidation = {
     required?: BooleanValidation;
     rules?: ValidationRule[];
     iban?: BooleanValidation;
+    expiryDate?: BooleanValidation & {
+        maxFutureYears?: number;
+    };
 };
 export type FieldOverrideEntry = FieldOverride<ValidationRule, BooleanValidation>;
 type LocalisedBooleanValidation = {
@@ -43,6 +49,9 @@ export type LocalisedFieldValidation = {
     rules?: LocalisedValidationRule[];
     luhn?: LocalisedBooleanValidation;
     iban?: LocalisedBooleanValidation;
+    expiryDate?: LocalisedBooleanValidation & {
+        maxFutureYears?: number;
+    };
 };
 export type TranslateKeysFn = (keys: I18nKeyCandidates) => string;
 type FieldWithValidation = {

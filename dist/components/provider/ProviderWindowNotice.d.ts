@@ -1,9 +1,10 @@
+import { CashierPresentationText } from '../../types/presentation.js';
 type ProviderWindowNoticeProps = {
     manualOpenRequired: boolean;
-    title: string;
-    manualDescription: string;
-    autoDescription: string;
-    buttonLabel: string;
+    title: CashierPresentationText;
+    manualDescription: CashierPresentationText;
+    autoDescription: CashierPresentationText;
+    buttonLabel: CashierPresentationText;
     onManualOpen: () => void;
 };
 declare const ProviderWindowNotice: ({ manualOpenRequired, title, manualDescription, autoDescription, buttonLabel, onManualOpen, }: ProviderWindowNoticeProps) => import("react").JSX.Element;

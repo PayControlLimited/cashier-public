@@ -1,6 +1,6 @@
 {
   "name": "@paycontrollimited/cashier",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "license": "SEE LICENSE IN LICENCE.md",
   "type": "module",
   "main": "./dist/index.js",
@@ -12,6 +12,7 @@
     "dist/index.d.ts",
     "dist/server.d.ts",
     "dist/types/CashierConfig.d.ts",
+    "dist/types/presentation.d.ts",
     "styles.d.ts",
     "package.json",
     "README.md",
@@ -47,14 +48,7 @@
   "nx": {
     "tags": [
       "publishable"
-    ],
-    "targets": {
-      "test": {
-        "dependsOn": [
-          "^build"
-        ]
-      }
-    }
+    ]
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",

@@ -48,7 +48,14 @@ export type HostedFieldsFormState = {
 export type HostedFieldsCapabilities = {
     groupedCardInputs?: boolean;
     fieldOverrides?: boolean;
+    expiryDateValidation?: boolean;
 };
+export type NormalisedHostedFieldsCapabilities = {
+    groupedCardInputs: boolean;
+    fieldOverrides: boolean;
+    expiryDateValidation: boolean;
+};
+export declare const normaliseHostedFieldsCapabilities: (capabilities?: HostedFieldsCapabilities) => NormalisedHostedFieldsCapabilities;
 export type HostedFieldsMessage = {
     type: HostedFieldsEventId;
     protocolVersion?: number;

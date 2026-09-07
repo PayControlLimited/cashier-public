@@ -1,7 +1,7 @@
 import { CashierMethods, CashierUser } from '../types/CashierConfig.js';
 type MethodSwitcherProps = {
     method: CashierMethods;
-    onSelect: (method: CashierMethods) => void;
+    onSelect: (method: CashierMethods) => void | Promise<void>;
     disabled?: boolean;
     interactivePrompts?: boolean;
     showSwitcher?: boolean;

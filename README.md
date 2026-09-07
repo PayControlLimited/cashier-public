@@ -81,6 +81,15 @@ Type exports from `@paycontrollimited/cashier`:
 - `PayControlUiTheme`
 - `HostedFieldsFontDefinition`
 - `HostedFieldsFontSource`
+- `CashierPresentation`, `CashierScreenProps` and `CashierSlotProps` for React
+  screen and slot overrides
+- `CashierDomPresentation` and its explicit DOM renderer/lifecycle types for
+  the `pc-cashier` Custom Element
+- `CashierPresentationError` and `CashierPresentationIntentReceipt`
+- `CashierPresentationText`, `CashierPresentationLocalisation`,
+  `CashierPresentationMoney`, `CashierPresentationPaymentType`,
+  `CashierPresentationLogo`, `CashierPresentationLimit` and
+  `CashierPresentationOutcome`
 
 ## Styles
 
@@ -161,11 +170,200 @@ export function Checkout() {
 }
 ```
 
+## Recovering an active payment
+
+Cashier normally keeps an active payment alive across its own configuration,
+runtime and route remounts. If the host must destroy and recreate the complete
+Cashier component, retain the payment ID received by `onPaymentCreated` and
+pass it back through the top-level `resumePaymentId` prop:
+
+```tsx
+import { useState } from 'react'
+import Cashier, {
+  type CashierConfig,
+} from '@paycontrollimited/cashier'
+
+export function Checkout({
+  initialPaymentId,
+}: {
+  initialPaymentId?: string
+}) {
+  const [resumePaymentId, setResumePaymentId] = useState(initialPaymentId)
+  const checkoutConfig: Partial<CashierConfig> = {
+    ...config,
+    onPaymentCreated: (result) => {
+      if (result && 'paymentId' in result && result.paymentId) {
+        setResumePaymentId(result.paymentId)
+      }
+    },
+    onPaymentFinished: () => setResumePaymentId(undefined),
+  }
+
+  return (
+    <Cashier
+      config={checkoutConfig}
+      resumePaymentId={resumePaymentId}
+    />
+  )
+}
+```
+
+`resumePaymentId` is not part of `CashierConfig`, cannot be supplied by remote
+merchant configuration, and has no HTML attribute. For a Custom Element,
+assign its DOM property before connection or upgrade when possible:
+
+```ts
+cashierElement.resumePaymentId = retainedPaymentId
+```
+
+Adopting a recovered payment does not replay `onPaymentCreated`. The same
+payment ID is consumed once per Cashier instance; removing the prop does not
+cancel tracking, and a different ID is rejected while another non-terminal
+payment is active. Clear the host-retained ID from `onPaymentFinished`.
+
+Recovery restores the latest server-known status and provider action. It
+cannot restore an iframe's in-memory state, unsent provider-form values, or
+Hosted Fields values. Avoid destroying an active Cashier when the provider
+interaction itself must remain continuous. Cashier does not write payment IDs
+to browser storage; persistence across complete host destruction remains the
+host's responsibility.
+
+## Cashier UI overrides
+
+Cashier UI overrides change approved UI while Cashier keeps payment state,
+validation, API/status work, provider execution and Hosted Fields. Omit
+`presentation` to keep the standard Cashier unchanged. The prop is an
+independently hot-updated UI contract, not `CashierConfig`.
+
+React integrations use the canonical `CashierPresentation` type shown below.
+Custom Elements use `CashierDomPresentation` because their entries are
+synchronous DOM renderers rather than React components. Both bindings expose
+the same screen and slot models, actions, options and diagnostics.
+
+```tsx
+import Cashier, {
+  type CashierPresentation,
+} from '@paycontrollimited/cashier'
+
+const presentation: CashierPresentation = {
+  slots: {
+    header: ({ model }) => (
+      <header>
+        {model.title && <h1>{model.title.value}</h1>}
+        {model.subtitle && <p>{model.subtitle.value}</p>}
+      </header>
+    ),
+  },
+  screens: {
+    processing: {
+      scope: 'screen',
+      component: ({ model }) => (
+        <main role="status" aria-live="polite" aria-busy={model.busy}>
+          <h1>{model.title.value}</h1>
+          {model.message && <p>{model.message.value}</p>}
+        </main>
+      ),
+    },
+  },
+}
+
+<Cashier config={config} presentation={presentation} />
+```
+
+`<Cashier {...config} presentation={presentation} />` also works. Adding,
+removing or replacing presentation does not restart an in-flight Cashier.
+Adding an override to an active standard protected task waits for that task to
+end. Replacing or removing an override that has mounted its `ProtectedSurface`
+also waits; an override that never mounts the offered surface cannot freeze its
+own removal. These rules keep form drafts and Hosted Fields mounted. Other
+presentation changes apply immediately.
+For a Custom Element presentation that should replace an initially protected
+screen, assign the `presentation` property before the element connects (or
+before `defineCashier()` upgrades it); a first assignment made after the task
+starts follows the same deferral rule.
+The installed package version defines the presentation contract. TypeScript
+reports incompatible shapes during upgrades; invalid JavaScript shapes fall
+back safely.
+
+Available slots are:
+
+| ID | Replaces | Cashier still owns |
+| --- | --- | --- |
+| `header` | Title/subtitle block | Leading and trailing controls plus header layout |
+| `methodSwitcher` | Pay-in/pay-out controls | Selection state, guarded transitions and payment task continuity |
+| `progress` | Progress visual | Placement and progress calculation |
+| `paymentTypeItem` | Primary logo/name/description | Selection/accessibility shell, account controls and expanded content |
+| `providerActionPrompt` | Provider prompt content | Provider execution, popup ownership and status handling |
+| `summaryDetails` | Final payment-summary field rows | Panel chrome, outcome header, surrounding panels and actions; other form/combo summaries are unchanged |
+| `summaryActions` | Summary controls | Filtering, safe URL/restart behaviour and placement |
+
+All Cashier-owned copy is `CashierPresentationText`: render `.value`; use the
+optional `.key` only to identify or replace the complete Cashier-resolved
+value. Every renderer also receives `localisation.locale` and
+`localisation.direction`. Cashier does not expose its translation catalogue,
+candidate resolver or formatter. Money carries its exact decimal `value`,
+`currency` and Cashier-formatted `display`; do not round or reformat it.
+Payment methods expose semantic identity, bounded logo variants and optional
+formatted limits without leaking generated Payment API types.
+
+`methodSwitcher` exposes the Cashier-owned pay-in/pay-out region. Render its
+options and call the guarded `actions.select(method)` intent; do not mirror
+method state or remount `<Cashier>` on a method change. It is available with
+`content`-scoped screens while `screen` scope deliberately remains shellless.
+
+Screen/task override IDs are `combo`, `paymentTypes`, `bonusSelection`,
+`paymentDetails`, `paymentConfirmation`, `providerAction`, `summary`,
+`loading`, `empty`, `processing`, `unsupported`, and `error`.
+
+Entries use `content` by default, retaining the Cashier frame and global
+controls. `screen` replaces the complete visible canvas for that active task,
+including method switcher and progress, while Cashier keeps workflow and
+payment effects:
+
+```tsx
+const presentation: CashierPresentation = {
+  screens: {
+    summary: {
+      component: MerchantSummary,
+      scope: 'screen',
+    },
+  },
+}
+```
+
+Use a full screen to rearrange model fields/actions. Screens that retain a
+Cashier-owned form receive an opaque `ProtectedSurface`; render it once wherever
+the secure task should appear. Combo overrides receive
+`model.amountEntryVisible` to determine whether amount entry applies,
+Cashier-localised validation as `model.amountError`, exact/formatted
+`model.amount`, and applicable effective configuration suggestions as
+`model.suggestedAmounts`. When amount entry does not apply, Cashier projects an
+empty amount and suggestion list, and rejects `setAmount`. Nested slots are
+suppressed inside a screen.
+
+Slots restore their standard content if they fail. Screen failures show a
+Cashier-owned **Try again** / **Use standard screen** rescue. Presentation
+actions return guarded accepted/rejected receipts; rejected receipts include a
+Cashier-localised `message`. Duplicate asynchronous
+submissions remain rejected as busy until the Cashier-owned operation settles.
+Accepted means Cashier accepted the intent, not that payment succeeded.
+Summary renderers use canonical `model.outcome` for icons, colour and accessible
+semantics instead of parsing raw Payment API status values.
+
+Custom Elements use the `presentation` DOM property with synchronous
+`mount`/`update`/`destroy` renderers. There is no `presentation` HTML attribute.
+
+See the complete tutorial for individual slots, rearrangement, full-screen
+summary, post-submit processing, protected surfaces, DOM renderers, diagnostics
+and legacy summary-action migration:
+[Customise Cashier with slots and screen overrides](https://github.com/PayControlLimited/PayControl/blob/master/docs/cashier/cashier-ui-overrides.md).
+
 ## Payment callbacks
 
-`onPaymentUpdated` fires for every payment status stream message and stream
-error. Message events use the same normalised payment progress fields Cashier
-uses internally:
+`onPaymentUpdated` fires for ordinary live status-stream messages, meaningful
+status changes discovered by JSON reconciliation, and one error per distinct
+status-stream outage. Message events use the same normalised payment progress
+fields Cashier uses internally:
 
 ```ts
 const config: Partial<CashierConfig> = {
@@ -203,8 +401,23 @@ with the payment identity:
 }
 ```
 
-`onPaymentFinished` keeps its existing behaviour and fires only when the
-tracked payment reaches terminal `done`.
+Unchanged safety-poll results and the first unchanged stream replay after a
+reconnect or internal remount are suppressed. An outage error means status
+observation is recovering; it does not mark the payment failed. Cashier keeps
+the current provider action mounted while recovery is in progress. An
+established, healthy stream is reconciled over JSON once per minute; startup,
+foreground return and degraded-stream recovery reconcile sooner. This bounds
+the merchant `ValidateSession` work performed by every JSON status request.
+
+If a stable observation error becomes fatal, Cashier keeps payment creation
+locked and shows **Try again**. Retrying re-arms observation for the same
+payment; it does not create another payment or replace a mounted provider
+iframe or form.
+
+`onPaymentFinished` fires exactly once per Cashier instance when the tracked
+payment reaches terminal `done`, whether SSE or JSON reconciliation discovers
+it. Host callback throws and rejected promises are isolated from Cashier
+tracking and navigation.
 
 `onPaymentSummary` fires after the Summary API response loads:
 

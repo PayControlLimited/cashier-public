@@ -1,11 +1,8 @@
 import { ReactNode } from 'react';
-import { CreatePaymentData, PaymentStatusResponse, PaymentsRequest, PaymentsResponse } from '../../../api/src/payments.ts';
-import { RedirectWithType } from '../utils/redirect.js';
-type PaymentProgressBase = Omit<PaymentsResponse, 'redirect'> & {
-    redirect?: RedirectWithType;
-};
-export type PaymentProgress = PaymentProgressBase & Partial<Omit<PaymentStatusResponse, 'redirect'>> & {
-    redirect?: RedirectWithType;
+import { CreatePaymentData, PaymentsRequest, PaymentsResponse } from '../../../api/src/payments.ts';
+import { PaymentTrackingPhase, TrackedPaymentProgress } from '../utils/paymentLifecycleTracker.js';
+export type PaymentProgress = Omit<TrackedPaymentProgress, 'paymentId'> & {
+    paymentId?: string;
 };
 export type PaymentError = {
     error: string;
@@ -22,7 +19,7 @@ type PaymentContextValue = {
     payment: PaymentProgress | undefined;
     paymentId: PaymentsResponse['paymentId'] | null;
     status: PaymentProgress['status'];
-    redirect: RedirectWithType | undefined;
+    redirect: PaymentProgress['redirect'];
     paymentStatusMessage: string | null;
     makePayment: (variables: PaymentMutationVariables) => Promise<PaymentsResponse>;
     clearPaymentState: (options?: ClearPaymentStateOptions) => void;
@@ -30,6 +27,9 @@ type PaymentContextValue = {
     isPaymentPending: boolean;
     isPaymentFailed: boolean;
     isPaymentSuccessful: boolean;
+    isTrackingFatal: boolean;
+    trackingPhase: PaymentTrackingPhase;
+    refreshPaymentTracking: () => void;
 };
 type PaymentInteractionLockProviderProps = {
     children: ReactNode;

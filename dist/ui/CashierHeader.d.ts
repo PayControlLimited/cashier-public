@@ -1,7 +1,10 @@
 import { ReactNode } from 'react';
+import { CashierPresentationText } from '../types/presentation.js';
 type CashierHeaderProps = {
     title?: ReactNode;
     subtitle?: ReactNode;
+    presentationTitle?: CashierPresentationText;
+    presentationSubtitle?: CashierPresentationText;
     leading?: ReactNode;
     trailing?: ReactNode;
     titleMeta?: ReactNode;
@@ -18,6 +21,6 @@ type CashierHeaderProps = {
     titleMetaClassName?: string;
 };
 type CashierHeaderVariant = 'default' | 'details';
-declare function CashierHeader({ title, subtitle, leading, trailing, titleMeta, variant, layout, stuckLayout, className, layoutClassName, titleWrapperClassName, titleClassName, subtitleClassName, leadingClassName, trailingClassName, titleMetaClassName, }: CashierHeaderProps): import("react").JSX.Element | null;
+declare function CashierHeader({ title, subtitle, presentationTitle, presentationSubtitle, leading, trailing, titleMeta, variant, layout, stuckLayout, className, layoutClassName, titleWrapperClassName, titleClassName, subtitleClassName, leadingClassName, trailingClassName, titleMetaClassName, }: CashierHeaderProps): import("react").JSX.Element | null;
 export default CashierHeader;
 //# sourceMappingURL=CashierHeader.d.ts.map

@@ -31,7 +31,7 @@ export type PaymentFormDraftValues = {
     values: PaymentFormValues;
     hasHostedFields: boolean;
 };
-type PaymentFormActionCallback = (actions: PaymentFormActions) => void;
+type PaymentFormActionCallback = (actions: PaymentFormActions | null) => void;
 type PaymentFormPromptStateCallback = (state: PaymentFormPromptState) => void;
 type PreparedPaymentFormCallback = (preparedValues: PreparedPaymentFormValues) => void;
 type PaymentFormValuesChangeCallback = (draftValues: PaymentFormDraftValues) => void;

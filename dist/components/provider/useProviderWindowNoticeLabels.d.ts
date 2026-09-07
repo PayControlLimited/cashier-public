@@ -1,9 +1,10 @@
+import { CashierPresentationText } from '../../types/presentation.js';
 export type ProviderWindowNoticeLabels = {
-    title: string;
-    manualDescription: string;
-    autoDescription: string;
-    buttonLabel: string;
-    popupBlockedMessage: string;
+    title: CashierPresentationText;
+    manualDescription: CashierPresentationText;
+    autoDescription: CashierPresentationText;
+    buttonLabel: CashierPresentationText;
+    popupBlockedMessage: CashierPresentationText;
 };
 declare const useProviderWindowNoticeLabels: () => ProviderWindowNoticeLabels;
 export default useProviderWindowNoticeLabels;

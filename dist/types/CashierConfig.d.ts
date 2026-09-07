@@ -1,3 +1,4 @@
+import { CashierExtensions } from './presentation.js';
 export declare enum CashierMethods {
     PAYIN = "payin",
     PAYOUT = "payout",
@@ -100,13 +101,33 @@ export type CashierPaymentFormData = {
     actionUrl: string;
     fields: CashierPaymentField[];
 };
+/**
+ * Payload of onPaymentCreated. Payment creation is asynchronous, so it carries
+ * the payment ID alone - status, redirect and form data arrive later through
+ * onPaymentUpdated and onPaymentFinished.
+ */
 export type CashierPaymentCreatedResponse = {
     paymentId?: string;
+    /**
+     * @deprecated Never populated on the create response; read it from the
+     * CashierPaymentProgress passed to onPaymentUpdated or onPaymentFinished.
+     */
     paymentStatus?: string;
+    /**
+     * @deprecated Never populated on the create response; read it from the
+     * CashierPaymentProgress passed to onPaymentUpdated or onPaymentFinished.
+     */
     redirect?: CashierRedirectData;
 };
-export type CashierPaymentProgress = CashierPaymentCreatedResponse & {
+/**
+ * Payload of onPaymentUpdated and onPaymentFinished. Declared standalone rather
+ * than extending CashierPaymentCreatedResponse so the deprecation on that
+ * type's compatibility members does not reach the channel that populates them.
+ */
+export type CashierPaymentProgress = {
+    paymentId?: string;
     status?: string;
+    paymentStatus?: string;
     form?: CashierPaymentFormData;
     redirect?: CashierRedirectData;
 };
@@ -285,9 +306,21 @@ export interface HostedFieldsFontDefinition {
     family: string;
     sources: HostedFieldsFontSource[];
 }
-export type CashierProps = Partial<CashierConfig> | {
+export type CashierProps = (Partial<CashierConfig> & CashierExtensions & {
+    /**
+     * Resumes observation of a server-known payment after the host recreates
+     * Cashier. This intentionally sits outside CashierConfig.
+     */
+    resumePaymentId?: string;
+}) | ({
     config: Partial<CashierConfig>;
-};
+} & CashierExtensions & {
+    /**
+     * Resumes observation of a server-known payment after the host recreates
+     * Cashier. This intentionally sits outside CashierConfig.
+     */
+    resumePaymentId?: string;
+});
 export type CashierHandle = {
     setBonuses: (bonuses: CashierBonus[] | undefined) => void;
     setUser: (user: CashierUser | undefined) => void;

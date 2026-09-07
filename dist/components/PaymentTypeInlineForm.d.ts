@@ -10,7 +10,7 @@ type PaymentTypeInlineFormProps = {
     renderAfterAmountField?: ReactNode;
     surfaceChrome?: 'contained' | 'plain';
     fieldPanelMode?: 'auto' | 'none';
-    onActionsChange: (actions: PaymentFormActions) => void;
+    onActionsChange: (actions: PaymentFormActions | null) => void;
     onPromptStateChange: (paymentTypeName: string, state: PaymentFormPromptState) => void;
     onPreparedValues: (paymentType: PaymentType, preparedValues: PreparedPaymentFormValues) => void;
     onValuesChange: (paymentType: PaymentType, draftValues: PaymentFormDraftValues) => void;

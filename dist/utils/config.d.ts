@@ -1,7 +1,8 @@
-import { CashierConfig } from '../types/CashierConfig.js';
+import { CashierConfig, CashierSummaryActions } from '../types/CashierConfig.js';
 import { PaymentTypesResponse } from '../../../api/src/payments.ts';
 export declare const CASHIER_CONFIG_CALLBACK_KEYS: ["onInit", "onPaymentCreated", "onPaymentUpdated", "onPaymentFinished", "onPaymentSummary", "onPendingWithdrawalCancelled", "onBonusToppedUp", "onBonusSelected", "onBonusDeselected", "onPaymentTypeSelected", "onPaymentTypeDeselected", "onAccountDeleted", "onPaymentMethodChanged", "onPaymentFormChanged"];
 export declare const CASHIER_CONFIG_LOCAL_ONLY_KEYS: ["merchantId", "userId", "sessionId", "apiUrl", "method", "currency", "debug", "fetchConfig", "gotoPaymentType", "uiPreselectedPaymentType", "user", "bonuses", "extraAttributes", "hostedFieldsUrl", "hostedFieldsFonts", "uiSelectorPrefix", "onInit", "onPaymentCreated", "onPaymentUpdated", "onPaymentFinished", "onPaymentSummary", "onPendingWithdrawalCancelled", "onBonusToppedUp", "onBonusSelected", "onBonusDeselected", "onPaymentTypeSelected", "onPaymentTypeDeselected", "onAccountDeleted", "onPaymentMethodChanged", "onPaymentFormChanged"];
+export declare const isCashierSummaryActions: (value: unknown) => value is CashierSummaryActions;
 export declare const extractCashierConfigAsset: (assets?: PaymentTypesResponse["assets"], debug?: boolean) => Partial<CashierConfig> | undefined;
 export declare const requireCashierConfigAsset: (assets?: PaymentTypesResponse["assets"], debug?: boolean) => Partial<CashierConfig>;
 export declare const normaliseCashierConfig: (overrides: Partial<CashierConfig>) => CashierConfig;

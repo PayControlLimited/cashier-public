@@ -1,6 +1,8 @@
+import { ReactNode } from 'react';
 /**
- * Owns payment navigation outside route and form disclosure lifecycles.
- * Provider-route completion remains owned by ProviderStatusStream.
+ * Sole owner for status-driven provider and terminal navigation.
  */
-export declare function PaymentLifecycleCoordinator(): null;
+export declare function PaymentLifecycleCoordinator({ children, }: {
+    children?: ReactNode;
+}): ReactNode;
 //# sourceMappingURL=PaymentLifecycleCoordinator.d.ts.map

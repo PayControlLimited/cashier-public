@@ -1,6 +1,7 @@
 import { Route as rootRouteImport } from './routes/__root.js';
 import { Route as IndexRouteImport } from './routes/index.js';
 import { Route as BonusIndexRouteImport } from './routes/bonus/index.js';
+import { Route as ComboIndexRouteImport } from './routes/combo/index.js';
 import { Route as ProviderIndexRouteImport } from './routes/provider/index.js';
 import { Route as PtIdRouteImport } from './routes/pt/$id.js';
 import { Route as PtsMethodRouteImport } from './routes/pts/$method.js';
@@ -8,6 +9,7 @@ import { Route as QuickPaymentIndexRouteImport } from './routes/quick-payment/in
 import { Route as SummaryIdRouteImport } from './routes/summary/$id.js';
 declare const IndexRoute: import('@tanstack/router-core').Route<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/", "/", "/", "/", undefined, import('@tanstack/router-core').ResolveParams<"/">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, ({ context }: import('@tanstack/router-core').BeforeLoadContextOptions<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, undefined, import('@tanstack/router-core').ResolveParams<"/">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, "/", unknown, undefined>) => never, {}, undefined, unknown, unknown, unknown, unknown, undefined>;
 declare const BonusIndexRoute: import('@tanstack/router-core').Route<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/bonus", "/bonus/", "/bonus/", "/bonus/", undefined, import('@tanstack/router-core').ResolveParams<"/bonus">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>;
+declare const ComboIndexRoute: import('@tanstack/router-core').Route<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/combo", "/combo/", "/combo/", "/combo/", undefined, import('@tanstack/router-core').ResolveParams<"/combo">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, ({ context }: import('@tanstack/router-core').BeforeLoadContextOptions<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, undefined, import('@tanstack/router-core').ResolveParams<"/combo">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, "/combo/", unknown, undefined>) => void, {}, undefined, unknown, unknown, unknown, unknown, undefined>;
 declare const ProviderIndexRoute: import('@tanstack/router-core').Route<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/provider", "/provider/", "/provider/", "/provider/", (search: Record<string, unknown>) => import('./routes/provider/index.js').ProviderSearch, import('@tanstack/router-core').ResolveParams<"/provider">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>;
 declare const PtIdRoute: import('@tanstack/router-core').Route<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/pt/$id", "/pt/$id", "/pt/$id", "/pt/$id", undefined, import('@tanstack/router-core').ResolveParams<"/pt/$id">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>;
 declare const PtsMethodRoute: import('@tanstack/router-core').Route<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/pts/$method", "/pts/$method", "/pts/$method", "/pts/$method", undefined, import('@tanstack/router-core').ResolveParams<"/pts/$method">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, ({ context }: import('@tanstack/router-core').LoaderFnContext<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/pts/$method", import('@tanstack/router-core').ResolveParams<"/pts/$method">, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, unknown, undefined>) => Promise<{
@@ -20,7 +22,7 @@ declare const SummaryIdRoute: import('@tanstack/router-core').Route<import('@tan
     merchantId: string;
 }, import('@tanstack/router-core').ResolveParams<"/summary/$id">, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, "/summary/$id", unknown, undefined>) => void, {
     merchantId: string;
-}, ({ params, deps, }: import('@tanstack/router-core').LoaderFnContext<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/summary/$id", import('@tanstack/router-core').ResolveParams<"/summary/$id">, {
+}, ({ context, params, deps, }: import('@tanstack/router-core').LoaderFnContext<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, "/summary/$id", import('@tanstack/router-core').ResolveParams<"/summary/$id">, {
     merchantId: string;
 }, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, ({ context, params, search }: import('@tanstack/router-core').BeforeLoadContextOptions<import('@tanstack/react-router').Register, import('@tanstack/react-router').RootRoute<import('@tanstack/react-router').Register, undefined, {}, import('@tanstack/router-core').AnyContext, import('@tanstack/router-core').AnyContext, {}, undefined, unknown, unknown, unknown, unknown, undefined>, (search: Record<string, unknown>) => {
     merchantId: string;
@@ -31,6 +33,7 @@ export interface FileRoutesByFullPath {
     '/pts/$method': typeof PtsMethodRoute;
     '/summary/$id': typeof SummaryIdRoute;
     '/bonus/': typeof BonusIndexRoute;
+    '/combo/': typeof ComboIndexRoute;
     '/provider/': typeof ProviderIndexRoute;
     '/quick-payment/': typeof QuickPaymentIndexRoute;
 }
@@ -40,6 +43,7 @@ export interface FileRoutesByTo {
     '/pts/$method': typeof PtsMethodRoute;
     '/summary/$id': typeof SummaryIdRoute;
     '/bonus': typeof BonusIndexRoute;
+    '/combo': typeof ComboIndexRoute;
     '/provider': typeof ProviderIndexRoute;
     '/quick-payment': typeof QuickPaymentIndexRoute;
 }
@@ -50,15 +54,16 @@ export interface FileRoutesById {
     '/pts/$method': typeof PtsMethodRoute;
     '/summary/$id': typeof SummaryIdRoute;
     '/bonus/': typeof BonusIndexRoute;
+    '/combo/': typeof ComboIndexRoute;
     '/provider/': typeof ProviderIndexRoute;
     '/quick-payment/': typeof QuickPaymentIndexRoute;
 }
 export interface FileRouteTypes {
     fileRoutesByFullPath: FileRoutesByFullPath;
-    fullPaths: '/' | '/pt/$id' | '/pts/$method' | '/summary/$id' | '/bonus/' | '/provider/' | '/quick-payment/';
+    fullPaths: '/' | '/pt/$id' | '/pts/$method' | '/summary/$id' | '/bonus/' | '/combo/' | '/provider/' | '/quick-payment/';
     fileRoutesByTo: FileRoutesByTo;
-    to: '/' | '/pt/$id' | '/pts/$method' | '/summary/$id' | '/bonus' | '/provider' | '/quick-payment';
-    id: '__root__' | '/' | '/pt/$id' | '/pts/$method' | '/summary/$id' | '/bonus/' | '/provider/' | '/quick-payment/';
+    to: '/' | '/pt/$id' | '/pts/$method' | '/summary/$id' | '/bonus' | '/combo' | '/provider' | '/quick-payment';
+    id: '__root__' | '/' | '/pt/$id' | '/pts/$method' | '/summary/$id' | '/bonus/' | '/combo/' | '/provider/' | '/quick-payment/';
     fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
@@ -67,6 +72,7 @@ export interface RootRouteChildren {
     PtsMethodRoute: typeof PtsMethodRoute;
     SummaryIdRoute: typeof SummaryIdRoute;
     BonusIndexRoute: typeof BonusIndexRoute;
+    ComboIndexRoute: typeof ComboIndexRoute;
     ProviderIndexRoute: typeof ProviderIndexRoute;
     QuickPaymentIndexRoute: typeof QuickPaymentIndexRoute;
 }
@@ -84,6 +90,13 @@ declare module '@tanstack/react-router' {
             path: '/bonus';
             fullPath: '/bonus/';
             preLoaderRoute: typeof BonusIndexRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        '/combo/': {
+            id: '/combo/';
+            path: '/combo';
+            fullPath: '/combo/';
+            preLoaderRoute: typeof ComboIndexRouteImport;
             parentRoute: typeof rootRouteImport;
         };
         '/provider/': {

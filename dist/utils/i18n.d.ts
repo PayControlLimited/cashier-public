@@ -1,3 +1,4 @@
+import { Client } from '../../../api/src/payments/client.js';
 import { CashierConfig } from '../types/CashierConfig.js';
 export { localeToString, resolveLocale } from '../../../format/src/index.ts';
 export type CashierTranslations = Record<string, string>;
@@ -7,7 +8,7 @@ export declare const resolveTranslationCandidates: (translations: CashierTransla
 export type CashierTranslationsQueryParams = Pick<CashierConfig, 'merchantId'> & {
     locale: string;
 };
-export declare const cashierTranslationsQueryOptions: (params: CashierTranslationsQueryParams) => {
+export declare const cashierTranslationsQueryOptions: (params: CashierTranslationsQueryParams, client: Client) => {
     queryKey: readonly ["cashier", "i18n", string, string];
     queryFn: () => Promise<CashierTranslations>;
     retry: boolean;

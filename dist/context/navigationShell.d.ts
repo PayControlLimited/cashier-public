@@ -15,6 +15,7 @@ type NavigationShellContextValue = {
     setItems: (placement: NavigationShellPlacement, items: NavigationShellItem[], options?: NavigationShellItemOptions) => void;
     clearItems: (placement?: NavigationShellPlacement, options?: NavigationShellClearOptions) => void;
     registerOverlay: (overlay: ReactNode | null) => void;
+    shellNode: HTMLDivElement | null;
     contentNode: HTMLDivElement | null;
     contentInset: number;
     setContentInset: (inset: number) => void;

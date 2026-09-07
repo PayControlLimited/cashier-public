@@ -3,8 +3,8 @@ type Args = {
     paymentResponse: PaymentProgress | undefined;
     merchantId: string;
     debug: boolean;
-    enabled?: boolean;
+    pathname: string;
 };
-export declare const usePaymentNavigation: ({ paymentResponse, merchantId, debug, enabled, }: Args) => void;
+export declare const usePaymentNavigation: ({ paymentResponse, merchantId, debug, pathname, }: Args) => void;
 export {};
 //# sourceMappingURL=usePaymentNavigation.d.ts.map

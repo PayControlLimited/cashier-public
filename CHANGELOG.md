@@ -2,6 +2,77 @@
 
 ## Unreleased
 
+## 1.6.0
+
+### Added
+
+- Added separate typography settings for input labels, amount-limit text, helper
+  text and error messages. Set these CSS variables in your theme; explicit
+  values are also passed to Hosted Fields:
+  - Labels: `--pc-font-input-label-size`,
+    `--pc-font-input-label-line-height`, `--pc-font-input-label-weight`,
+    `--pc-font-input-label-letter-spacing`, `--pc-font-input-label-style`,
+    `--pc-font-input-label-text-transform`.
+  - Amount-limit text: `--pc-font-input-meta-size`,
+    `--pc-font-input-meta-line-height`, `--pc-font-input-meta-weight`,
+    `--pc-font-input-meta-letter-spacing`, `--pc-font-input-meta-style`,
+    `--pc-font-input-meta-text-transform`.
+  - Helper text: `--pc-font-input-helper-size`,
+    `--pc-font-input-helper-line-height`, `--pc-font-input-helper-weight`,
+    `--pc-font-input-helper-letter-spacing`, `--pc-font-input-helper-style`,
+    `--pc-font-input-helper-text-transform`.
+  - Error messages: `--pc-font-input-error-size`,
+    `--pc-font-input-error-line-height`, `--pc-font-input-error-weight`,
+    `--pc-font-input-error-letter-spacing`, `--pc-font-input-error-style`,
+    `--pc-font-input-error-text-transform`.
+- Added optional card expiry-date checks, disabled by default. Merchants can
+  reject expired dates and limit how far into the future a date may be, with
+  compatible Hosted Fields. When enabled, saved cards marked as having an
+  invalid expiry cannot be selected but can still be deleted; users can enter
+  a new card where that option is available.
+- Added `resumePaymentId` so hosts can resume an existing payment after
+  recreating Cashier. Available as a top-level React prop or Custom Element
+  DOM property.
+- Added `presentation` to customise individual parts or entire Cashier screens
+  in React and Custom Element integrations. Cashier continues to handle payment
+  processing and validation. Custom summary actions use
+  `presentation.options.summary.actions`; existing `config.summaryActions`
+  settings remain supported.
+- Added validation, instructions, prefilled values and conditional fields to
+  forms shown by providers during a payment. Users see input errors before
+  submitting and only need to complete fields relevant to their choices.
+- Added payment details that update with the user's selections, such as a
+  crypto deposit address for the chosen asset and network.
+- Added more specific translated field notices, such as deposit instructions
+  for a selected asset, with a general message as fallback.
+
+### Changed
+
+- Tightened `uiSuggestAmounts` validation. Only numeric entries such as `10` or
+  `10.50` are accepted; malformed entries are ignored.
+
+### Deprecated
+
+- Deprecated the unused `paymentStatus` and `redirect` fields on
+  `CashierPaymentCreatedResponse`. `onPaymentCreated` provides the payment ID;
+  use `onPaymentUpdated` or `onPaymentFinished` for status and redirect details.
+
+### Fixed
+
+- Fixed configured error borders disappearing when an input loses focus.
+  `--pc-color-input-danger-border` now keeps the border visible while the input
+  is invalid.
+- Fixed payments getting stuck after connection loss or returning to a
+  backgrounded page. Cashier restores status updates and keeps the current
+  payment open, with a retry option if recovery fails. Completion callbacks
+  and navigation are no longer repeated during recovery.
+- Fixed payment dropdowns showing a selection after it was cleared, or a blank
+  option instead of the configured prompt. They now show the prompt until the
+  user selects a value.
+- Fixed Cashiers on the same page sharing API settings and loaded data. Each
+  now uses its own configured `apiUrl`, loads its own data and tracks its own
+  payment independently.
+
 ## 1.5.2
 
 ### Added
