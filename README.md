@@ -10,6 +10,9 @@ npm install @paycontrollimited/cashier
 yarn add @paycontrollimited/cashier
 ```
 
+If the host uses Content Security Policy, allow the configured Return API origin
+in `connect-src` so Cashier can report a missing 3DS Method callback.
+
 ## Root exports
 
 Runtime exports from `@paycontrollimited/cashier`:
@@ -221,12 +224,13 @@ payment ID is consumed once per Cashier instance; removing the prop does not
 cancel tracking, and a different ID is rejected while another non-terminal
 payment is active. Clear the host-retained ID from `onPaymentFinished`.
 
-Recovery restores the latest server-known status and provider action. It
+Recovery restores the latest server-known status and supported provider actions. It
 cannot restore an iframe's in-memory state, unsent provider-form values, or
 Hosted Fields values. Avoid destroying an active Cashier when the provider
 interaction itself must remain continuous. Cashier does not write payment IDs
 to browser storage; persistence across complete host destruction remains the
-host's responsibility.
+host's responsibility. A 3DS Method action with timeout reporting is not
+restarted after Cashier recreation; recovery observes its status only.
 
 ## Cashier UI overrides
 
@@ -373,10 +377,14 @@ const config: Partial<CashierConfig> = {
       return
     }
 
-    console.log(event.paymentId, event.status, event.redirect, event.form)
+    console.log(event.paymentId, event.status)
   },
 }
 ```
+
+Payment updates can contain bearer credentials in `redirect.timeout.reportToken`.
+Log selected fields such as payment ID and status; keep full events out of logs,
+analytics and browser storage.
 
 Typical payment update event:
 
@@ -412,14 +420,40 @@ the merchant `ValidateSession` work performed by every JSON status request.
 If a stable observation error becomes fatal, Cashier keeps payment creation
 locked and shows **Try again**. Retrying re-arms observation for the same
 payment; it does not create another payment or replace a mounted provider
-iframe or form.
+iframe or form. Repeated status `404` responses without a successful observation
+also show **Try again** after 60 seconds; this does not mark the payment as failed.
+
+Session-only integrations must retain the creation session until the payment's
+current user is known. A replacement session alone does not establish ownership;
+provide credentials for the resolved user to restore status access.
 
 `onPaymentFinished` fires exactly once per Cashier instance when the tracked
 payment reaches terminal `done`, whether SSE or JSON reconciliation discovers
 it. Host callback throws and rejected promises are isolated from Cashier
 tracking and navigation.
 
-`onPaymentSummary` fires after the Summary API response loads:
+A payment can still be unresolved when the user flow completes. Cashier keeps
+re-reading the summary while that is the case, and calls `onPaymentUpdated`
+again once the payment settles. In this one event `paymentStatus` carries the
+payment's own outcome rather than the flow status, while `status` stays `done`
+because the flow did complete:
+
+```ts
+{
+  type: 'message',
+  merchantId: 'merchant_abc',
+  paymentId: 'pay_123',
+  status: 'done',
+  paymentStatus: 'successful',
+}
+```
+
+The re-reads slow down as they go and pause while the page is in a background
+tab, resuming as soon as the user returns to it. Nothing on the summary screen
+changes until the status does.
+
+`onPaymentSummary` fires after the Summary API response loads, and again if
+a later re-read returns a changed summary:
 
 ```ts
 const config: Partial<CashierConfig> = {
@@ -749,6 +783,42 @@ configuration:
 - Hosted card forms keep a minimum card-like shell height even when only a
   sparse hosted-field subset is rendered, for example CSC-only verification.
 
+## Merchant return URL
+
+Some providers open a window of their own from inside the provider page.
+Cashier did not open that window, so it cannot close it either, and the payer
+is left on a blank page there when they come back. Set `returnUrl` to a page of
+your own and the payer is sent to it once the payment flow is finished, so you
+can close that window or tell the payer to close it.
+
+```ts
+const config: Partial<CashierConfig> = {
+  returnUrl: 'https://merchant.example/checkout/return',
+}
+```
+
+What to expect:
+
+- The host must be listed in `returnUrlHosts` on your merchant configuration.
+  Payment creation is rejected when it is not.
+- `paymentId` is appended to the URL as a query parameter. The payment status
+  is not: read it from `GET /payment/status/{paymentId}`, from your
+  `/payment-update` webhook, or from the `onPaymentFinished` callback in the
+  Cashier that is still running in your own page.
+- The payer is only sent there when nothing further is required of them. If the
+  flow continues, they stay on the provider page and Cashier carries on.
+- The redirect is best effort. Some connections treat the provider's own
+  notification as the point the payment is finished; when it has not arrived by
+  the time the payer returns, no redirect happens. The payment itself completes
+  as usual.
+- A provider page that Cashier renders in a frame is never redirected, so your
+  page cannot be loaded inside the checkout.
+- Cashier does not close the provider window of a payment it created with a
+  return URL: that window is yours to end, and it stays yours even if you
+  change the configuration while the payment is still running. Your return page
+  can call `window.close()`, which browsers allow for a window opened by a
+  script, and should otherwise tell the payer they can close it.
+
 ## Direct payment type selection
 
 Use `gotoPaymentType` to open a payment type when Cashier starts. Use
@@ -1037,6 +1107,7 @@ const config: Partial<CashierConfig> = {
     campaign: 'spring-2026',
     channel: 'affiliate',
   },
+  returnUrl: 'https://merchant.example/checkout/return',
 }
 
 const element = document.querySelector('pc-cashier') as (

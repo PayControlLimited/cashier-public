@@ -24,7 +24,7 @@ export declare function CashierSlotOutlet<Slot extends CashierPresentationSlotId
     children: ReactNode;
     id: Slot;
     model: CashierPresentationSlotModelMap[Slot];
-}): string | number | bigint | boolean | import("react").JSX.Element | Iterable<ReactNode> | Promise<string | number | bigint | boolean | import('react').ReactPortal | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined;
+}): string | number | bigint | boolean | Iterable<ReactNode> | Promise<string | number | bigint | boolean | import('react').ReactPortal | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | import("react").JSX.Element | null | undefined;
 export declare function CashierScreenOutlet<Screen extends CashierPresentationScreenId>({ actions, children, deferPresentationUpdates, frame, id, model, overrideEnabled, protectedContent, }: {
     actions: CashierPresentationScreenActionsMap[Screen];
     children: ReactNode;
@@ -34,7 +34,7 @@ export declare function CashierScreenOutlet<Screen extends CashierPresentationSc
     model: CashierPresentationScreenModelMap[Screen];
     overrideEnabled?: boolean;
     protectedContent?: ReactNode;
-}): string | number | bigint | boolean | import("react").JSX.Element | Iterable<ReactNode> | Promise<string | number | bigint | boolean | import('react').ReactPortal | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined;
+}): string | number | bigint | boolean | Iterable<ReactNode> | Promise<string | number | bigint | boolean | import('react').ReactPortal | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | import("react").JSX.Element | null | undefined;
 export type CashierPresentationActionOptions<Arguments extends readonly unknown[]> = Readonly<{
     busy?: boolean;
     validate?: (...args: Arguments) => boolean;

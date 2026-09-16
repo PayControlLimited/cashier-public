@@ -96,6 +96,13 @@ export type CashierRedirectData = {
     data?: Record<string, string> | string;
     type?: 'iframe' | 'hidden_iframe' | 'window' | 'script';
     scriptId?: string;
+    /** Method window begins when the hidden form is submitted. */
+    actionId?: string;
+    timeout?: {
+        durationMs: number;
+        reportUrl: string;
+        reportToken: string;
+    };
 };
 export type CashierPaymentFormData = {
     actionUrl: string;
@@ -490,6 +497,18 @@ export type CashierConfig = {
     gotoPaymentType: string | null;
     /** @since 0.0.4 */
     extraAttributes?: Record<string, string>;
+    /**
+     * Absolute HTTPS URL the payer is sent to once the payment flow is finished,
+     * sent on payment creation. Set it when a provider opens a window of its own
+     * that Cashier cannot close, so the merchant page loads there and decides
+     * what happens to that window; Cashier stops closing provider windows for a
+     * payment that carries one. The host must be listed in `returnUrlHosts` on
+     * the merchant configuration, `paymentId` is appended to the URL, and the
+     * redirect is best effort. A provider page rendered inside Cashier is never
+     * redirected.
+     * @since 1.6.1
+     */
+    returnUrl?: string;
     /** @since 0.0.4 */
     user?: CashierUser;
     /** @since 0.0.4 */

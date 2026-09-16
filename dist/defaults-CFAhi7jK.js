@@ -41,6 +41,7 @@ var a = "https://hf.pvault.net", o = {
 	summaryActions: void 0,
 	gotoPaymentType: null,
 	extraAttributes: void 0,
+	returnUrl: void 0,
 	user: void 0,
 	bonuses: void 0,
 	currencyFormatOptions: { trailingZeroDisplay: "stripIfInteger" },

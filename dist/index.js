@@ -1,17 +1,176 @@
 "use client";
 import { n as __exportAll, r as __toESM, t as __commonJSMin } from "./rolldown-runtime-B0aSnxlc.js";
 import { CashierBonusesStyle, CashierComboViewPaymentTypesMode, CashierLayoutListType, CashierMethods, CashierSuggestAction, CashierSummaryActionType } from "./types/CashierConfig.js";
-import { n as defaultCashierConfig$1 } from "./defaults-ldSVDOuy.js";
-import { A as decodePath, B as replaceEqualDeep, C as findRouteMatch, D as createLRUCache, E as processRouteTree, F as hasKeys, H as useLayoutEffect$1, I as isDangerousProtocol, M as encodePathLikeUrl, N as findLast, O as DEFAULT_PROTOCOL_ALLOWLIST, P as functionalUpdate, R as last, S as findFlatMatch, T as processRouteMasks, _ as joinPaths, a as createRootRoute, b as trimPathRight, c as useStructuralSharing, d as ClientOnly, f as isRedirect, g as interpolatePath, h as compileDecodeCharMap, i as createFileRoute, j as deepEqual, k as arraysEqual, l as useStore, m as rootRouteId, n as CashierFullscreenLoadingGate, o as useSearch, p as redirect, r as CashierFullscreenLoadingOverlay, s as useParams, t as CashierFullscreenLoader, u as matchContext, v as resolvePath, w as findSingleMatch, x as buildRouteBranch, y as trimPath, z as nullReplaceEqualDeep } from "./CashierFullscreenLoader-DCT1ukLb.js";
-import { $n as isTerminalPaymentStatus, $r as createCashierState, $t as CashierPresentationProvider, A as isMatchingPaymentFormDraft, Ai as isMoneyLike, An as CASHIER_CONFIG_LOCAL_ONLY_KEYS, Ar as CashierResolvedI18nProvider, At as getAmountLimitStatus, Bn as CashierApiClientProvider, Br as usePaymentFormReset, Bt as isBonusSelectionCandidate, C as resolveDependencyVisibleFields, Ci as localeToString, Cn as findPaymentTypeRecovery, Cr as partialMatchKey, Ct as isComboViewPaymentTypesVisible, D as hasMissingRequiredFields, Di as normalizeAmountValue, Dn as isPaymentTypeUnavailable, Dr as Subscribable, E as hasMeaningfulValue, Ei as hasAmountValue, En as getPaymentTypeSelectionId, Er as focusManager, Fi as useNavigate, Fn as useIsPaymentInteractionLocked, Ft as getCalculatedFeeSummaryField, Gn as canOpenProviderWindow, Gr as useNavigationItems, Gt as formatTemplate, Hn as PROVIDER_POPUP_BLOCKED_TOAST_ID, Hr as useOverridePayload, Ht as resolveBonusAwardDetails, Ii as useRouter, In as usePaymentStatus, Ir as getPaymentStatus, It as getCalculatedPayinTotalSummaryField, J as PaymentTypeLogo, Jn as getProviderWindowOwnership, Jt as FIELD_NOTIFICATION_BELOW_CLASS_NAME, K as usePaymentSelection, Kn as closeProviderWindowHandle, Kr as useNavigationShell, Kt as formatTemplateRich, L as createPaymentDetailsPromptDescriptor, Li as routerContext, Ln as invokeCashierCallbackSafely, Lr as getPaymentSummary, Lt as getCalculatedPayoutTotalSummaryField, M as formatClaimPercentageForTitle, Mi as Button, Mn as normaliseCashierConfig, Mr as useI18n, Mt as parseAmountValue, N as isFullClaimAmount, Nn as PaymentInteractionLockProvider, Nr as cashierTranslationsQueryOptions, Nt as resolveConfiguredAmount, O as validatePaymentFields, On as resolvePaymentTypeMatch, Or as CashierDrawer, P as InteractivePromptHeader, Pi as twJoin, Pn as PaymentProvider, Pt as createFeeCurrencyFormatter, Q as AdaptiveControlsFooter, Qn as trackProviderWindowClose, Qr as CashierContext, Qt as CashierPresentationLocalisationProvider, R as formatAmountForInput, Rn as PaymentLifecycleTrackerProvider, Rr as createClient, Rt as insertSummaryFieldsBeforeRemainingBalance, S as PaymentFieldList, Si as BadgeCheckIcon, Sn as SAVED_CARD_EXPIRY_INVALID_MESSAGE_KEY, Sr as noop$1, T as hasAnyError, Tr as skipToken, U as BonusTerms, Un as PROVIDER_WINDOW_TARGET, Ur as overridePayloadSampleJson, Ut as resolveBonusSummaryAwardLines, V as ENTRANCE_ANIMATION_SURFACE_CLASSNAME, Vn as useCashierApiClient, Vr as OverridePayloadProvider, Vt as normalizeBonuses, W as PaymentTypeListItem, Wn as buildProviderWindowStepKey, Wr as NavigationShellProvider, Wt as sortBonusAvailability, X as useBonuses, Xn as openProviderPopupWindow, Xr as CashierDomHooksProvider, Xt as isTopFieldNotification, Y as useBonusSelection, Yn as openOrReuseProviderWindow, Yt as PaymentNotificationSection, Z as usePaymentTypes, Zn as setProviderWindowHandle, Zr as useCashierDomHooks, Zt as CashierStateScreen, _ as PaymentFormObserverProvider, _i as OverwriteIcon, _n as createCashierSummaryState, _r as hashKey, ai as Tabs, an as freezeCashierPresentationDiagnostic, ar as normalizeRedirectType, at as useCashierValueFormatter, b as canEditPaymentFormAmount, bi as DebugIcon, bn as paymentTypesQueryOptions, br as matchMutation, c as useAccountDelete, ci as InteractivePrompt, cn as useCashierPresentationOptions, d as BonusCountBadge, di as CASHIER_FORM_GRID_CLASS_NAME, dn as createCashierPresentationMoney, dr as useQueryClient, dt as resolveDefaultRoute, ei as useToast, en as CashierPresentationRuntimeFailure, er as normalizePaymentStatus, fi as Formik, fr as Mutation, ft as resolveInitialRoute, g as buildCashierPaymentFormState, gi as PresentIcon, gn as CashierSummaryStateProvider, gr as functionalUpdate$1, h as PaymentForm, hi as ResetIcon, hn as useFinishPayment, hr as notifyManager, i as BonusPicker, ii as CashierUserBalanceChip, in as EMPTY_PRESENTATION_ACTIONS, ir as normalizeRedirectMethod, it as CashierValueFormatterProvider, j as retargetPaymentFormDraftAmount, ji as PortalContainerProvider, jn as isCashierSummaryActions, jr as useCashierI18nStatus, jt as getPayoutAmountMaxBoundary, k as arePaymentFormDraftsEqual, kn as CASHIER_CONFIG_CALLBACK_KEYS, kr as CashierThemeProvider, li as CircularProgress, ln as useCashierPresentationScreenOverride, lr as useQuery, mi as SwitchArrowsIcon, mr as onlineManager, n as getWithdrawalSummaryFields, ni as ToastProvider, nn as CashierScreenOutlet, nr as decodeRedirectPayload, oi as Switcher, on as useCashierPresentationActions, or as parseRedirectType, p as PaymentSummaryDetails, pi as Input, pr as Query, q as PaymentTypeLimitsFeeMeta, qn as consumeProviderWindowClosure, qt as FIELD_NOTIFICATION_ABOVE_CLASS_NAME, rn as CashierSlotOutlet, rr as encodeRedirectPayload, rt as CashierHotkeyScopeProvider, si as LinearProgress, sn as useCashierPresentationDiagnostic, sr as cashierDebugLogger, ti as ToastViewport, tn as CashierPresentationScreenCanvasProvider, tr as parseStatusStreamPayload, tt as I18nTextSlot, ui as resolvePayControlUiTheme, un as CASHIER_PROTECTED_SURFACE_LABEL_KEY, ur as QueryClientProvider, ut as isComboViewEntryEnabled, v as PaymentFormStatePublisher, vn as useCashierSummaryState, vr as hashQueryKeyByOptions, vt as isBonusPageStyle, w as buildInitialValues, wi as resolveLocale, wn as formatCardAccountLabel, wr as resolveStaleTime, xi as CloseIcon, xn as prefetchPaymentTypes, xr as matchQuery, y as usePaymentFormObserver, yr as keepPreviousData, yt as isBonusPaymentFormPickerStyle, z as BonusesList, zn as usePaymentLifecycleTracker, zr as PaymentFormResetProvider, zt as hasConfiguredBonuses } from "./inlinePaymentSubmit-CmI1mVTq.js";
-import { n as lazyRouteComponent, t as Route$7 } from "./_method-ILd9Zf-V.js";
-import { a as useBackNavigation, i as SubContainer, n as STATUS_HEADER_VISUAL_CLASS_NAME, r as StatusHeader, t as StatusText } from "./StatusText-DMkg47Ob.js";
-import { a as usePendingWithdrawalCancellation, i as PendingWithdrawalCancellationProvider, n as Route$8, o as InteractivePromptSessionProvider, r as validateComboRoute, s as PaymentSurfaceStack } from "./combo-BJplzqxk.js";
+import { n as defaultCashierConfig$1 } from "./defaults-CFAhi7jK.js";
+import { $n as normalizePaymentStatus, $r as Switcher, $t as CashierPresentationProvider, A as isMatchingPaymentFormDraft, Ai as routerContext, An as CASHIER_CONFIG_LOCAL_ONLY_KEYS, Ar as getPaymentSummary, At as getAmountLimitStatus, Bn as useProviderWindowClose, Bt as isBonusSelectionCandidate, C as resolveDependencyVisibleFields, Ci as isMoneyLike, Cn as findPaymentTypeRecovery, Cr as CashierResolvedI18nProvider, Ct as isComboViewPaymentTypesVisible, D as hasMissingRequiredFields, Di as twJoin, Dn as isPaymentTypeUnavailable, E as hasMeaningfulValue, En as getPaymentTypeSelectionId, Er as cashierTranslationsQueryOptions, Fi as parseRedirectType, Fn as useIsPaymentInteractionLocked, Fr as useOverridePayload, Ft as getCalculatedFeeSummaryField, Gn as closeProviderWindowHandle, Gr as CashierContext, Gt as formatTemplate, Hn as PROVIDER_WINDOW_TARGET, Ht as resolveBonusAwardDetails, Ii as cashierDebugLogger, In as usePaymentStatus, Ir as overridePayloadSampleJson, It as getCalculatedPayinTotalSummaryField, J as PaymentTypeLogo, Jn as openOrReuseProviderWindow, Jr as ToastViewport, Jt as FIELD_NOTIFICATION_BELOW_CLASS_NAME, K as usePaymentSelection, Kn as consumeProviderWindowClosure, Kr as createCashierState, Kt as formatTemplateRich, L as createPaymentDetailsPromptDescriptor, Li as PaymentLifecycleTrackerProvider, Ln as invokeCashierCallbackSafely, Lr as NavigationShellProvider, Lt as getCalculatedPayoutTotalSummaryField, M as formatClaimPercentageForTitle, Mi as encodeRedirectPayload, Mn as normaliseCashierConfig, Mr as PaymentFormResetProvider, Mt as parseAmountValue, N as isFullClaimAmount, Ni as normalizeRedirectMethod, Nn as PaymentInteractionLockProvider, Nr as usePaymentFormReset, Nt as resolveConfiguredAmount, O as validatePaymentFields, Oi as useNavigate, On as resolvePaymentTypeMatch, P as InteractivePromptHeader, Pi as normalizeRedirectType, Pn as PaymentProvider, Pr as OverridePayloadProvider, Pt as createFeeCurrencyFormatter, Q as AdaptiveControlsFooter, Qn as isTerminalPaymentStatus, Qr as Tabs, Qt as CashierPresentationLocalisationProvider, R as formatAmountForInput, Ri as usePaymentLifecycleTracker, Rn as CashierApiClientProvider, Rr as useNavigationItems, Rt as insertSummaryFieldsBeforeRemainingBalance, S as PaymentFieldList, Sn as SAVED_CARD_EXPIRY_INVALID_MESSAGE_KEY, Sr as CashierThemeProvider, T as hasAnyError, Ti as Button, Tr as useI18n, U as BonusTerms, Un as buildProviderWindowStepKey, Ur as CashierDomHooksProvider, Ut as resolveBonusSummaryAwardLines, V as ENTRANCE_ANIMATION_SURFACE_CLASSNAME, Vn as PROVIDER_POPUP_BLOCKED_TOAST_ID, Vt as normalizeBonuses, W as PaymentTypeListItem, Wn as canOpenProviderWindow, Wr as useCashierDomHooks, Wt as sortBonusAvailability, X as useBonuses, Xn as setProviderWindowHandle, Xt as isTopFieldNotification, Y as useBonusSelection, Yn as openProviderPopupWindow, Yr as ToastProvider, Yt as PaymentNotificationSection, Z as usePaymentTypes, Zn as trackProviderWindowClose, Zr as CashierUserBalanceChip, Zt as CashierStateScreen, _ as PaymentFormObserverProvider, _i as resolveLocale, _n as createCashierSummaryState, _r as resolveStaleTime, ai as Formik, an as freezeCashierPresentationDiagnostic, ar as Mutation, at as useCashierValueFormatter, b as canEditPaymentFormAmount, bi as normalizeAmountValue, bn as paymentTypesQueryOptions, br as Subscribable, c as useAccountDelete, ci as ResetIcon, cn as useCashierPresentationOptions, cr as notifyManager, d as BonusCountBadge, dn as createCashierPresentationMoney, dr as hashQueryKeyByOptions, dt as resolveDefaultRoute, ei as LinearProgress, en as CashierPresentationRuntimeFailure, er as parseStatusStreamPayload, fr as keepPreviousData, ft as resolveInitialRoute, g as buildCashierPaymentFormState, gi as localeToString, gn as CashierSummaryStateProvider, gr as partialMatchKey, h as PaymentForm, hi as BadgeCheckIcon, hn as useFinishPayment, hr as noop$1, i as BonusPicker, ii as CASHIER_FORM_GRID_CLASS_NAME, in as EMPTY_PRESENTATION_ACTIONS, ir as useQueryClient, it as CashierValueFormatterProvider, j as retargetPaymentFormDraftAmount, ji as decodeRedirectPayload, jn as isCashierSummaryActions, jr as createClient, jt as getPayoutAmountMaxBoundary, k as arePaymentFormDraftsEqual, ki as useRouter, kn as CASHIER_CONFIG_CALLBACK_KEYS, kr as getPaymentStatus, li as PresentIcon, ln as useCashierPresentationScreenOverride, lr as functionalUpdate, mi as CloseIcon, mr as matchQuery, n as getWithdrawalSummaryFields, ni as CircularProgress, nn as CashierScreenOutlet, nr as useQuery, oi as Input, on as useCashierPresentationActions, or as Query, p as PaymentSummaryDetails, pi as DebugIcon, pr as matchMutation, q as PaymentTypeLimitsFeeMeta, qn as getProviderWindowOwnership, qr as useToast, qt as FIELD_NOTIFICATION_ABOVE_CLASS_NAME, ri as resolvePayControlUiTheme, rn as CashierSlotOutlet, rr as QueryClientProvider, rt as CashierHotkeyScopeProvider, si as SwitchArrowsIcon, sn as useCashierPresentationDiagnostic, sr as onlineManager, ti as InteractivePrompt, tn as CashierPresentationScreenCanvasProvider, tt as I18nTextSlot, ui as OverwriteIcon, un as CASHIER_PROTECTED_SURFACE_LABEL_KEY, ur as hashKey, ut as isComboViewEntryEnabled, v as PaymentFormStatePublisher, vn as useCashierSummaryState, vr as skipToken, vt as isBonusPageStyle, w as buildInitialValues, wi as PortalContainerProvider, wn as formatCardAccountLabel, wr as useCashierI18nStatus, xn as prefetchPaymentTypes, xr as CashierDrawer, y as usePaymentFormObserver, yi as hasAmountValue, yr as focusManager, yt as isBonusPaymentFormPickerStyle, z as BonusesList, zn as useCashierApiClient, zr as useNavigationShell, zt as hasConfiguredBonuses } from "./inlinePaymentSubmit-C3GD-D2V.js";
+import { A as decodePath, B as replaceEqualDeep, C as findRouteMatch, D as createLRUCache, E as processRouteTree, F as hasKeys, H as useLayoutEffect$1, I as isDangerousProtocol, M as encodePathLikeUrl, N as findLast, O as DEFAULT_PROTOCOL_ALLOWLIST, P as functionalUpdate$1, R as last, S as findFlatMatch, T as processRouteMasks, _ as joinPaths, a as createRootRoute, b as trimPathRight, c as useStructuralSharing, d as ClientOnly, f as isRedirect, g as interpolatePath, h as compileDecodeCharMap, i as createFileRoute, j as deepEqual, k as arraysEqual, l as useStore, m as rootRouteId, n as CashierFullscreenLoadingGate, o as useSearch, p as redirect, r as CashierFullscreenLoadingOverlay, s as useParams, t as CashierFullscreenLoader, u as matchContext, v as resolvePath, w as findSingleMatch, x as buildRouteBranch, y as trimPath, z as nullReplaceEqualDeep } from "./CashierFullscreenLoader-CrNY3LLZ.js";
+import { n as lazyRouteComponent, t as Route$7 } from "./_method-BpUcpErL.js";
+import { a as useBackNavigation, i as SubContainer, n as STATUS_HEADER_VISUAL_CLASS_NAME, r as StatusHeader, t as StatusText } from "./StatusText-CLlh0_VT.js";
+import { a as usePendingWithdrawalCancellation, i as PendingWithdrawalCancellationProvider, n as Route$8, o as InteractivePromptSessionProvider, r as validateComboRoute, s as PaymentSurfaceStack } from "./combo-BD0nyBfw.js";
 import * as React$1 from "react";
 import React, { createContext, forwardRef, useCallback, useContext, useEffect, useId, useImperativeHandle, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 import { createPortal, flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
+//#region src/components/ProviderIframe.tsx
+var iframePermissions = {
+	accelerometer: "*",
+	autoplay: "*",
+	camera: "*",
+	"clipboard-read": "*",
+	"clipboard-write": "*",
+	fullscreen: "*",
+	geolocation: "*",
+	gyroscope: "*",
+	magnetometer: "*",
+	microphone: "*",
+	"otp-credentials": "*",
+	payment: "*",
+	"picture-in-picture": "*"
+}, buildProviderIframeAllow = (e) => e ?? Object.entries(iframePermissions).map(([e, t]) => `${e} ${t}`).join(";");
+function ProviderIframe({ src: e, title: t, allow: n, hiddenIframe: r = !1, tabIndex: i, ...a }) {
+	let o = buildProviderIframeAllow(n);
+	return /* @__PURE__ */ jsx("iframe", {
+		className: r ? "absolute left-[-9999px] top-[-9999px] h-px w-px border-0 opacity-0 pointer-events-none" : "block h-full min-h-full w-full flex-1",
+		allow: o,
+		src: e ?? "about:blank",
+		title: t,
+		tabIndex: r ? -1 : i,
+		"aria-hidden": r || void 0,
+		...a
+	});
+}
+//#endregion
+//#region src/components/provider/HiddenPostForm.tsx
+var HiddenPostForm = forwardRef(function({ action: e, target: t, fields: n }, r) {
+	return /* @__PURE__ */ jsx("form", {
+		ref: r,
+		method: "POST",
+		action: e,
+		target: t,
+		hidden: !0,
+		children: n.map(([e, t]) => /* @__PURE__ */ jsx("input", {
+			name: e,
+			value: t,
+			type: "hidden"
+		}, e))
+	});
+}), REPORT_TIMEOUT_MS = 15e3;
+function BrowserActionLifecycle() {
+	let e = usePaymentLifecycleTracker(), t = useSyncExternalStore(e.subscribe, e.getSnapshot, e.getSnapshot), n = useSyncExternalStore(e.subscribe, e.getConfiguration, e.getConfiguration);
+	return n ? /* @__PURE__ */ jsx(ActionWindow, {
+		tracker: e,
+		snapshot: t,
+		configuration: n,
+		mayInvokeAction: !!(t.paymentId && e.wasCreatedLocally(t.paymentId))
+	}) : null;
+}
+function ActionWindow({ tracker: e, snapshot: t, configuration: n, mayInvokeAction: r }) {
+	let { paymentId: i, phase: a, payment: o } = t, s = o?.redirect, { merchantId: c, debug: l, client: u } = n, d = `cashier-action-${useId().replace(/:/g, "")}`, f = useRef(null), p = useRef(/* @__PURE__ */ new Map()), m = useRef(null), [g, _] = useState(null), y = a === "fatal" && (t.fatalStatus === 401 || t.fatalStatus === 404), b = s?.type === "hidden_iframe" && s.method === "POST" && (a !== "fatal" || y) && a !== "terminal" ? s.timeout : void 0, x = b ? s?.actionId : void 0, S = b?.durationMs, C = b?.reportUrl, T = b?.reportToken, E = i && x && S && c ? JSON.stringify([
+		u.getConfig().baseUrl,
+		c,
+		i,
+		x
+	]) : null, D = typeof s?.data == "string" ? decodeRedirectPayload(s.data, l) : s?.data;
+	useEffect(() => {
+		if (m.current && m.current !== E) {
+			let e = p.current.get(m.current);
+			e && (e.settled = !0);
+		}
+		if (m.current = E, !E || !i || !x || !S) return;
+		let e = p.current.get(E);
+		if (!e) {
+			if (!r || y || !f.current) return;
+			e = {
+				deadline: Date.now() + S,
+				elapsed: !1,
+				settled: !1
+			}, p.current.set(E, e), f.current.submit();
+		}
+		let t = e;
+		if (t.settled) return;
+		let n, a = () => {
+			let e = t.deadline - Date.now();
+			if (e > 0) {
+				n = setTimeout(a, e);
+				return;
+			}
+			t.elapsed = !0, _(E);
+		}, o = () => {
+			n && clearTimeout(n), a();
+		};
+		return a(), document.addEventListener("visibilitychange", o), globalThis.addEventListener("pageshow", o), () => {
+			n && clearTimeout(n), document.removeEventListener("visibilitychange", o), globalThis.removeEventListener("pageshow", o);
+		};
+	}, [
+		E,
+		r,
+		i,
+		x,
+		S,
+		y
+	]), useEffect(() => {
+		if (!E || g !== E || !C || !T) return;
+		let t = p.current.get(E);
+		if (!t || t.settled || t.rejectedCredentials === T) return;
+		let n = !0, r, i, a = 1e3, o = () => n && !t.settled, s = () => t.rejectedCredentials === T, c = async () => {
+			if (!o() || s() || r) return;
+			let n = new AbortController();
+			r = n;
+			let l = setTimeout(() => {
+				n.abort();
+			}, REPORT_TIMEOUT_MS), d = new Promise((e, t) => {
+				n.signal.addEventListener("abort", () => {
+					t(new DOMException("Action report cancelled", "AbortError"));
+				}, { once: !0 });
+			});
+			try {
+				let r = u.getConfig().fetch ?? globalThis.fetch, i = await Promise.race([r(new Request(C, {
+					method: "POST",
+					mode: "cors",
+					credentials: "omit",
+					redirect: "error",
+					referrerPolicy: "no-referrer",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ reportToken: T }),
+					signal: n.signal
+				})), d]);
+				if (!o() || n.signal.aborted) return;
+				let a = i.status;
+				a === 401 ? (t.rejectedCredentials = T, e.refresh("action-report-expired")) : (a === 202 || a === 204 || a >= 400 && a < 500 && a !== 408 && a !== 424 && a !== 429) && (t.settled = !0);
+			} catch {} finally {
+				clearTimeout(l), r = void 0, o() && !s() && (i = setTimeout(() => {
+					c();
+				}, a), a = Math.min(a * 2, 15e3));
+			}
+		}, l = () => {
+			i && clearTimeout(i), c();
+		};
+		return c(), document.addEventListener("visibilitychange", l), globalThis.addEventListener("pageshow", l), () => {
+			n = !1, r?.abort(), i && clearTimeout(i), document.removeEventListener("visibilitychange", l), globalThis.removeEventListener("pageshow", l);
+		};
+	}, [
+		u,
+		g,
+		E,
+		C,
+		T,
+		e
+	]);
+	let O = E ? p.current.get(E) : void 0;
+	return !r || !E || g === E || y && !O || O?.elapsed || O?.settled ? null : /* @__PURE__ */ jsxs(Fragment$1, { children: [/* @__PURE__ */ jsx(HiddenPostForm, {
+		ref: f,
+		action: s?.url,
+		target: d,
+		fields: Object.entries(D ?? {})
+	}), /* @__PURE__ */ jsx(ProviderIframe, {
+		name: d,
+		title: "3DS Method",
+		hiddenIframe: !0,
+		hidden: !0
+	}, E)] });
+}
+//#endregion
 //#region ../../node_modules/@tanstack/router-core/dist/esm/not-found.js
 function isNotFound(e) {
 	return e?.isNotFound === !0;
@@ -250,7 +409,7 @@ function createNonReactiveMutableStore(e) {
 			return t;
 		},
 		set(e) {
-			t = functionalUpdate(e, t);
+			t = functionalUpdate$1(e, t);
 		}
 	};
 }
@@ -363,7 +522,7 @@ function createHistory(e) {
 		go: (t, n) => {
 			a({
 				task: () => {
-					e.go(t), i({
+					e.go(t, n?.ignoreBlocker ?? !1), i({
 						type: "GO",
 						index: t
 					});
@@ -437,7 +596,7 @@ function createBrowserHistory(e) {
 	}, x = (e) => {
 		l = c(), T.notify({ type: e });
 	}, S = async () => {
-		if (f) {
+		if (m = !1, f) {
 			f = !1;
 			return;
 		}
@@ -449,14 +608,14 @@ function createBrowserHistory(e) {
 		} : { type: i ? "BACK" : "FORWARD" };
 		if (p) p = !1;
 		else {
-			let n = a();
-			if (typeof document < "u" && n.length) {
-				for (let r of n) if (await r.blockerFn({
+			let r = a();
+			if (typeof document < "u" && r.length) {
+				for (let i of r) if (await i.blockerFn({
 					currentLocation: l,
 					nextLocation: e,
 					action: s
 				})) {
-					f = !0, t.history.go(1), T.notify(u);
+					f = !0, t.history.go(-n), T.notify(u);
 					return;
 				}
 			}
@@ -485,12 +644,12 @@ function createBrowserHistory(e) {
 		getLength: () => t.history.length,
 		pushState: (e, t) => b(!0, e, t),
 		replaceState: (e, t) => b(!1, e, t),
-		back: (e) => (e && (p = !0), m = !0, t.history.back()),
+		back: (e) => (e && (p = !0, m = !0), t.history.back()),
 		forward: (e) => {
-			e && (p = !0), m = !0, t.history.forward();
+			e && (p = !0, m = !0), t.history.forward();
 		},
-		go: (e) => {
-			d = !0, t.history.go(e);
+		go: (e, n) => {
+			d = !0, n && (p = !0, m = !0), t.history.go(e);
 		},
 		createHref: (e) => s(e),
 		flush: y,
@@ -734,7 +893,7 @@ var RouterCore = class {
 					}), f = e;
 				}
 				f = applySearchMiddleware(f, t, u, e._includeValidateSearch), f = nullReplaceEqualDeep(a, f);
-				let p = this.options.stringifySearch(f), m = t.hash === !0 ? n.hash : t.hash ? functionalUpdate(t.hash, n.hash) : void 0, g = m ? `#${m}` : "", _ = t.state === !0 ? n.state : t.state ? functionalUpdate(t.state, n.state) : {};
+				let p = this.options.stringifySearch(f), m = t.hash === !0 ? n.hash : t.hash ? functionalUpdate$1(t.hash, n.hash) : void 0, g = m ? `#${m}` : "", _ = t.state === !0 ? n.state : t.state ? functionalUpdate$1(t.state, n.state) : {};
 				t.state && (_ = replaceEqualDeep(n.state, _));
 				let y = `${d}${p}${g}`, b, x, S = !1;
 				if (this.rewrite) {
@@ -1117,7 +1276,7 @@ function applySearchMiddleware(e, t, n, r) {
 		if (e >= i.length) {
 			if (!t.search) return {};
 			if (t.search === !0) return n;
-			let e = functionalUpdate(t.search, n);
+			let e = functionalUpdate$1(t.search, n);
 			return r && (r.explicit = e), e;
 		}
 		return i[e]({
@@ -1153,7 +1312,7 @@ function resolveNextParams(e, t) {
 	if (e === !1 || e === null) return Object.create(null);
 	if ((e ?? !0) === !0) return t;
 	let n = Object.assign(Object.create(null), t);
-	return Object.assign(n, functionalUpdate(e, n));
+	return Object.assign(n, functionalUpdate$1(e, n));
 }
 function extractStrictParams(e, t) {
 	let n = e.options.params?.parse ?? e.options.parseParams;
@@ -2901,7 +3060,7 @@ var QueryCache = class extends Subscribable {
 		return this.#e.findAll(e).map(({ queryKey: e, state: t }) => [e, t.data]);
 	}
 	setQueryData(e, t, n) {
-		let r = this.defaultQueryOptions({ queryKey: e }), i = this.#e.get(r.queryHash)?.state.data, a = functionalUpdate$1(t, i);
+		let r = this.defaultQueryOptions({ queryKey: e }), i = this.#e.get(r.queryHash)?.state.data, a = functionalUpdate(t, i);
 		if (a !== void 0) return this.#e.build(this, r).setData(a, {
 			...n,
 			manual: !0
@@ -3224,12 +3383,12 @@ var Route$5 = createFileRoute("/")({ beforeLoad: ({ context: e }) => {
 	});
 } }), INTERACTIVE_PROMPT_ROUTE_HEADER_GUTTER_CLASSNAME$1 = "pl-[0.9rem] pr-1.5 @sm:pl-[1.1rem] @sm:pr-3 @md:pl-[1.2rem] group-data-[stuck=true]:pb-0.5", INTERACTIVE_PROMPT_ROUTE_CONTENT_SPACING_CLASSNAME$1 = "pt-2.5 @md:pt-3", BONUS_PROGRESS_ICON_SLOT_CLASSNAME = "!overflow-visible", Route$4 = createFileRoute("/bonus/")({ component: BonusView });
 function BonusView() {
-	let e = useCashierDomHooks(), t = useNavigate(), { resolveTextKey: n, translateKey: r } = useI18n(), { selectedPaymentType: i, uiComboView: a, lockAmount: o, uiInteractivePrompts: s, uiBonusesStyle: c, uiFixedControls: l, method: u, locale: d, uiListSelectable: f, initialAmount: p, onBonusSelected: m, onBonusDeselected: g, onBonusToppedUp: _, resetFlowOnBack: y, setCashierState: b } = useContext(CashierContext), { getPaymentType: x, paymentTypesList: S, isLoading: C, isError: T } = usePaymentTypes(), { bonuses: E, getBonusAvailabilityForPaymentType: D, getAvailableBonusesForPaymentType: O } = useBonuses(), { selectedBonusCode: k, selectBonusCode: A, ensureDefaultSelection: j } = useBonusSelection(), { formatCurrencyValue: M } = useCashierValueFormatter(), [N, P] = useState(!1), [F] = useState(() => parseAmountValue(p)), [I, L] = useState(null), [R, ee] = useState({}), z = useRef({}), [B, te] = useState([]), ne = resolveDefaultRoute({
+	let e = useCashierDomHooks(), t = useNavigate(), { resolveTextKey: n, translateKey: r } = useI18n(), { selectedPaymentType: i, uiComboView: a, lockAmount: o, uiInteractivePrompts: s, uiBonusesStyle: c, uiFixedControls: l, method: u, locale: d, uiListSelectable: f, initialAmount: p, onBonusSelected: m, onBonusDeselected: g, onBonusToppedUp: _, resetFlowOnBack: y, setCashierState: b } = useContext(CashierContext), { getPaymentType: x, paymentTypesList: S, isLoading: C, isError: T } = usePaymentTypes(), { bonuses: E, getBonusAvailabilityForPaymentType: D, getAvailableBonusesForPaymentType: O } = useBonuses(), { selectedBonusCode: k, selectBonusCode: A, ensureDefaultSelection: j } = useBonusSelection(), { formatCurrencyValue: M } = useCashierValueFormatter(), [N, P] = useState(!1), [F] = useState(() => parseAmountValue(p)), [I, L] = useState(null), [R, z] = useState({}), B = useRef({}), [V, H] = useState([]), U = resolveDefaultRoute({
 		uiComboView: a,
 		lockAmount: o,
 		method: u
-	}), { canGoBack: re, handleBack: ie } = useBackNavigation({
-		defaultRoute: ne,
+	}), { canGoBack: ee, handleBack: te } = useBackNavigation({
+		defaultRoute: U,
 		useHistory: !y,
 		replace: y || !a
 	});
@@ -3239,115 +3398,115 @@ function BonusView() {
 			resetFlowOnBack: !1
 		}));
 	}, [y, b]);
-	let V = i ? x(i) : null, H = V ? getPaymentTypeSelectionId(V) : i, ae = useMemo(() => D(V), [D, V]), oe = useMemo(() => sortBonusAvailability(ae), [ae]), U = useMemo(() => O(V), [O, V]), W = useMemo(() => oe.some((e) => e.status === "available"), [oe]), G = useMemo(() => parseAmountValue(p), [p]), K = V ? U.length > 0 : hasConfiguredBonuses(E), q = S.length > 0, se = C && !T && !q, ce = T || !C && !q, J = f, le = useMemo(() => k ? U.find((e) => e.code === k) ?? null : null, [U, k]), ue = useMemo(() => le ? resolveBonusAwardDetails(le, G) : null, [G, le]), Y = useMemo(() => le, [le]), de = ue, X = de?.fullClaimAmount ?? null, Z = X === null ? null : formatAmountForInput(X), fe = Z ? getAmountLimitStatus(Z, V?.limits) : null, pe = Y && X !== null ? [
-		H ?? "",
+	let ne = i ? x(i) : null, W = ne ? getPaymentTypeSelectionId(ne) : i, re = useMemo(() => D(ne), [D, ne]), ie = useMemo(() => sortBonusAvailability(re), [re]), G = useMemo(() => O(ne), [O, ne]), ae = useMemo(() => ie.some((e) => e.status === "available"), [ie]), K = useMemo(() => parseAmountValue(p), [p]), q = ne ? G.length > 0 : hasConfiguredBonuses(E), oe = S.length > 0, se = C && !T && !oe, ce = T || !C && !oe, J = f, le = useMemo(() => k ? G.find((e) => e.code === k) ?? null : null, [G, k]), ue = useMemo(() => le ? resolveBonusAwardDetails(le, K) : null, [K, le]), Y = useMemo(() => le, [le]), de = ue, X = de?.fullClaimAmount ?? null, Z = X === null ? null : formatAmountForInput(X), Q = Z ? getAmountLimitStatus(Z, ne?.limits) : null, fe = Y && X !== null ? [
+		W ?? "",
 		Y.code,
 		String(X)
-	].join(":") : null, me = useCallback((e) => {
-		if (!e || G === null) return !1;
-		let t = resolveBonusAwardDetails(e, G), n = t?.fullClaimAmount ?? null;
-		if (n === null || n <= G || isFullClaimAmount({
-			amount: G,
+	].join(":") : null, pe = useCallback((e) => {
+		if (!e || K === null) return !1;
+		let t = resolveBonusAwardDetails(e, K), n = t?.fullClaimAmount ?? null;
+		if (n === null || n <= K || isFullClaimAmount({
+			amount: K,
 			fullClaimAmount: n,
 			claimPercentage: t?.claimPercentage
 		})) return !1;
-		let r = formatAmountForInput(n), i = getAmountLimitStatus(r, V?.limits);
+		let r = formatAmountForInput(n), i = getAmountLimitStatus(r, ne?.limits);
 		return !(i.isOutOfRange || i.isIncomplete);
-	}, [G, V?.limits]), he = !!(Y && de && X !== null && fe && me(Y) && I !== pe), Q = J || he ? k : null, ge = useMemo(() => Q ? U.find((e) => e.code === Q) ?? null : null, [U, Q]), $ = useMemo(() => ge ? resolveBonusAwardDetails(ge, G) : null, [G, ge]), _e = useMemo(() => Q ? U.find((e) => e.code === Q) ?? null : null, [U, Q]), ve = useMemo(() => _e ? resolveBonusAwardDetails(_e, G) : null, [G, _e]), ye = useMemo(() => {
-		if (!Q) return null;
-		let e = R[Q];
-		return !e || !_e || he || G === null || G < e.targetAmount - .001 ? null : e;
+	}, [K, ne?.limits]), me = !!(Y && de && X !== null && Q && pe(Y) && I !== fe), $ = J || me ? k : null, he = useMemo(() => $ ? G.find((e) => e.code === $) ?? null : null, [G, $]), ge = useMemo(() => he ? resolveBonusAwardDetails(he, K) : null, [K, he]), _e = useMemo(() => $ ? G.find((e) => e.code === $) ?? null : null, [G, $]), ve = useMemo(() => _e ? resolveBonusAwardDetails(_e, K) : null, [K, _e]), ye = useMemo(() => {
+		if (!$) return null;
+		let e = R[$];
+		return !e || !_e || me || K === null || K < e.targetAmount - .001 ? null : e;
 	}, [
-		G,
+		K,
 		_e,
-		Q,
-		he,
+		$,
+		me,
 		R
 	]);
 	useEffect(() => {
 		if (!(se || ce)) {
 			if (!isBonusPageStyle(c)) {
-				t(H ? {
+				t(W ? {
 					to: "/pt/$id",
-					params: { id: H },
+					params: { id: W },
 					replace: !0
 				} : {
-					to: ne,
+					to: U,
 					replace: !0
 				});
 				return;
 			}
 			if (!i) {
 				t({
-					to: ne,
+					to: U,
 					replace: !0
 				});
 				return;
 			}
-			if (!K) {
-				if (!H) return;
+			if (!q) {
+				if (!W) return;
 				t({
 					to: "/pt/$id",
-					params: { id: H },
+					params: { id: W },
 					replace: !0
 				});
 			}
-		}
-	}, [
-		ne,
-		ce,
-		t,
-		H,
-		i,
-		K,
-		se,
-		c
-	]), useEffect(() => {
-		let e = !!(k && U.some((e) => e.code === k));
-		if (!(k && e)) {
-			if (k && !e) {
-				j(U);
-				return;
-			}
-			N || j(U);
 		}
 	}, [
 		U,
+		ce,
+		t,
+		W,
+		i,
+		q,
+		se,
+		c
+	]), useEffect(() => {
+		let e = !!(k && G.some((e) => e.code === k));
+		if (!(k && e)) {
+			if (k && !e) {
+				j(G);
+				return;
+			}
+			N || j(G);
+		}
+	}, [
+		G,
 		j,
 		N,
 		k
 	]);
 	let be = useCallback((e) => {
-		let n = U.find((t) => t.code === e);
+		let n = G.find((t) => t.code === e);
 		if (n) {
 			if (!J) {
-				if (L(null), P(!0), A(e), m && m(n), !H || me(n)) return;
+				if (L(null), P(!0), A(e), m && m(n), !W || pe(n)) return;
 				t({
 					to: "/pt/$id",
-					params: { id: H }
+					params: { id: W }
 				});
 				return;
 			}
 			k !== e && (L(null), P(!0), A(e), m && m(n));
 		}
 	}, [
-		U,
+		G,
 		J,
 		t,
 		m,
 		A,
 		k,
-		H,
-		me
+		W,
+		pe
 	]), xe = useCallback(() => {
-		H && t({
+		W && t({
 			to: "/pt/$id",
-			params: { id: H }
+			params: { id: W }
 		});
-	}, [t, H]), Se = useCallback(() => {
-		J && k === null || (L(null), P(!0), le && g && g(le), A(null), !J && H && t({
+	}, [t, W]), Se = useCallback(() => {
+		J && k === null || (L(null), P(!0), le && g && g(le), A(null), !J && W && t({
 			to: "/pt/$id",
-			params: { id: H }
+			params: { id: W }
 		}));
 	}, [
 		J,
@@ -3356,27 +3515,27 @@ function BonusView() {
 		A,
 		k,
 		le,
-		H
+		W
 	]), Ce = useCallback(() => {
-		if (!Z || !Y || X === null || G === null) return;
-		let e = V ? O(V, { amount: X }) : U, n = /* @__PURE__ */ new Map();
-		for (let e of U) n.set(e.code, e);
+		if (!Z || !Y || X === null || K === null) return;
+		let e = ne ? O(ne, { amount: X }) : G, n = /* @__PURE__ */ new Map();
+		for (let e of G) n.set(e.code, e);
 		for (let t of e) n.set(t.code, t);
 		let r = Array.from(n.values()).reduce((e, t) => {
-			let n = resolveBonusAwardDetails(t, G), r = resolveBonusAwardDetails(t, X);
+			let n = resolveBonusAwardDetails(t, K), r = resolveBonusAwardDetails(t, X);
 			return !r || !isFullClaimAmount({
 				amount: X,
 				fullClaimAmount: r.fullClaimAmount,
 				claimPercentage: r.claimPercentage
 			}) || isFullClaimAmount({
-				amount: G,
+				amount: K,
 				fullClaimAmount: n?.fullClaimAmount,
 				claimPercentage: n?.claimPercentage
 			}) || (e[t.code] = { targetAmount: X }), e;
 		}, {});
 		b((e) => {
-			let t = H ? {
-				paymentTypeName: H,
+			let t = W ? {
+				paymentTypeName: W,
 				method: u,
 				amount: e.initialAmount
 			} : null;
@@ -3386,44 +3545,44 @@ function BonusView() {
 				paymentFormDraft: t ? retargetPaymentFormDraftAmount(e.paymentFormDraft, t, Z) : e.paymentFormDraft,
 				comboViewFormDraft: t ? retargetPaymentFormDraftAmount(e.comboViewFormDraft, t, Z) : e.comboViewFormDraft
 			};
-		}), ee((e) => ({
+		}), z((e) => ({
 			...e,
 			...r
 		})), _?.({
 			bonus: Y,
-			previousAmount: G,
+			previousAmount: K,
 			nextAmount: X,
-			addedAmount: X - G,
+			addedAmount: X - K,
 			fullClaimAmount: X
-		}), !J && H && t({
+		}), !J && W && t({
 			to: "/pt/$id",
-			params: { id: H }
+			params: { id: W }
 		});
 	}, [
+		K,
 		G,
-		U,
 		Y,
 		O,
 		J,
 		t,
 		_,
-		V,
-		H,
+		ne,
+		W,
 		b,
 		u,
 		X,
 		Z
 	]), we = useCallback(() => {
-		pe && (L(pe), !J && H && t({
+		fe && (L(fe), !J && W && t({
 			to: "/pt/$id",
-			params: { id: H }
+			params: { id: W }
 		}));
 	}, [
 		J,
 		t,
-		H,
-		pe
-	]), Te = r(Q ? "cta.claim" : "cta.skip"), Ee = !H, De = r("cta.back"), Oe = r(u === CashierMethods.PAYOUT ? "cta.payout" : "cta.payin").toLocaleLowerCase(d), ke = useCallback((e) => formatTemplate(formatTemplate("You’re claiming the full offer with a {amount} {method}!", "amount", e), "method", Oe), [Oe]), Ae = useCallback((e) => /* @__PURE__ */ jsx(CircularProgress, {
+		W,
+		fe
+	]), Te = r($ ? "cta.claim" : "cta.skip"), Ee = !W, De = r("cta.back"), Oe = r(u === CashierMethods.PAYOUT ? "cta.payout" : "cta.payin").toLocaleLowerCase(d), ke = useCallback((e) => formatTemplate(formatTemplate("You’re claiming the full offer with a {amount} {method}!", "amount", e), "method", Oe), [Oe]), Ae = useCallback((e) => /* @__PURE__ */ jsx(CircularProgress, {
 		value: e,
 		strokeWidth: 5.5,
 		className: twJoin("h-14 w-14", "@max-md/interactive-prompt:h-12 @max-md/interactive-prompt:w-12"),
@@ -3437,27 +3596,27 @@ function BonusView() {
 			className: "flex h-[82%] w-[82%] items-center justify-center",
 			children: /* @__PURE__ */ jsx(PresentIcon, {})
 		})
-	}), []), je = useMemo(() => new Set(B), [B]), Me = useCallback((e, t) => !e || typeof t != "number" || !Number.isFinite(t) ? !1 : !isFullClaimAmount({ claimPercentage: t }) || je.has(e), [je]);
+	}), []), je = useMemo(() => new Set(V), [V]), Me = useCallback((e, t) => !e || typeof t != "number" || !Number.isFinite(t) ? !1 : !isFullClaimAmount({ claimPercentage: t }) || je.has(e), [je]);
 	useEffect(() => {
 		let e = [
 			Y ? {
 				bonusCode: Y.code,
 				claimPercentage: de?.claimPercentage
 			} : null,
-			ge ? {
-				bonusCode: ge.code,
-				claimPercentage: $?.claimPercentage
+			he ? {
+				bonusCode: he.code,
+				claimPercentage: ge?.claimPercentage
 			} : null,
 			_e ? {
 				bonusCode: _e.code,
 				claimPercentage: ve?.claimPercentage
 			} : null
 		].filter((e) => e !== null);
-		te((t) => {
+		H((t) => {
 			let n = new Set(t), r = !1;
 			for (let { bonusCode: t, claimPercentage: i } of e) {
-				let e = isFullClaimAmount({ claimPercentage: i }), a = z.current[t];
-				e ? a === !1 && !n.has(t) && (n.add(t), r = !0) : n.delete(t) && (r = !0), z.current[t] = e;
+				let e = isFullClaimAmount({ claimPercentage: i }), a = B.current[t];
+				e ? a === !1 && !n.has(t) && (n.add(t), r = !0) : n.delete(t) && (r = !0), B.current[t] = e;
 			}
 			return r ? [...n] : t;
 		});
@@ -3466,8 +3625,8 @@ function BonusView() {
 		ve,
 		Y,
 		de,
-		ge,
-		$
+		he,
+		ge
 	]);
 	let Ne = useMemo(() => {
 		let e = {
@@ -3475,8 +3634,8 @@ function BonusView() {
 			titleKey: "cta.interactive_prompt.choose_bonus.title",
 			bodyKey: "cta.interactive_prompt.choose_bonus.desc",
 			icon: /* @__PURE__ */ jsx(PresentIcon, {})
-		}, t = G === null ? void 0 : M(G);
-		if (he && Y && de) {
+		}, t = K === null ? void 0 : M(K);
+		if (me && Y && de) {
 			let t = de.claimPercentage, n = Me(Y.code, t);
 			return {
 				...e,
@@ -3484,7 +3643,7 @@ function BonusView() {
 				titleValues: { claimPercentage: formatClaimPercentageForTitle(de.claimPercentage) },
 				bodyKey: "bonus.top_up.desc",
 				bodyValues: {
-					amount: X !== null && G !== null ? M(X - G) : "",
+					amount: X !== null && K !== null ? M(X - K) : "",
 					targetAmount: M(de.fullClaimAmount)
 				},
 				icon: !n || typeof t != "number" ? /* @__PURE__ */ jsx(PresentIcon, {}) : Ae(t),
@@ -3504,7 +3663,7 @@ function BonusView() {
 			};
 		}
 		if (ye && _e) {
-			let n = G === null || F === null ? null : G - F, i = ve?.claimPercentage, a = Me(_e.code, i);
+			let n = K === null || F === null ? null : K - F, i = ve?.claimPercentage, a = Me(_e.code, i);
 			return {
 				...e,
 				titleKey: "bonus.selected.title",
@@ -3524,20 +3683,20 @@ function BonusView() {
 				})
 			};
 		}
-		if (ge) {
-			let n = !!($ && G !== null), r = isFullClaimAmount({
-				amount: G,
-				fullClaimAmount: $?.fullClaimAmount,
-				claimPercentage: $?.claimPercentage
-			}), i = n && !r, a = i ? "bonus.top_up.title" : "bonus.selected.title", o = i ? { claimPercentage: formatClaimPercentageForTitle($?.claimPercentage) } : void 0, s, c;
-			i && $ && G !== null ? (s = "bonus.top_up.desc", c = {
-				amount: M($.fullClaimAmount - G),
-				targetAmount: M($.fullClaimAmount)
+		if (he) {
+			let n = !!(ge && K !== null), r = isFullClaimAmount({
+				amount: K,
+				fullClaimAmount: ge?.fullClaimAmount,
+				claimPercentage: ge?.claimPercentage
+			}), i = n && !r, a = i ? "bonus.top_up.title" : "bonus.selected.title", o = i ? { claimPercentage: formatClaimPercentageForTitle(ge?.claimPercentage) } : void 0, s, c;
+			i && ge && K !== null ? (s = "bonus.top_up.desc", c = {
+				amount: M(ge.fullClaimAmount - K),
+				targetAmount: M(ge.fullClaimAmount)
 			}) : t && (s = "bonus.selected.desc", c = {
 				amount: t,
 				method: Oe
 			});
-			let l = Me(ge.code, $?.claimPercentage), u = $?.claimPercentage;
+			let l = Me(he.code, ge?.claimPercentage), u = ge?.claimPercentage;
 			return {
 				...e,
 				titleKey: a,
@@ -3553,7 +3712,7 @@ function BonusView() {
 		}
 		return e;
 	}, [
-		G,
+		K,
 		Y,
 		de,
 		F,
@@ -3562,9 +3721,9 @@ function BonusView() {
 		we,
 		Ce,
 		Oe,
-		ge,
-		$,
 		he,
+		ge,
+		me,
 		ye,
 		_e,
 		ve,
@@ -3574,11 +3733,11 @@ function BonusView() {
 		Me
 	]), Pe = useMemo(() => {
 		let e = [];
-		return (y || re) && e.push(/* @__PURE__ */ jsx(Button, {
+		return (y || ee) && e.push(/* @__PURE__ */ jsx(Button, {
 			variant: "neutral",
 			size: "xl",
 			fullWidth: !0,
-			onClick: ie,
+			onClick: te,
 			label: De
 		}, "cashier-bonus-back")), J && e.push(/* @__PURE__ */ jsx(Button, {
 			variant: "secondary",
@@ -3590,62 +3749,62 @@ function BonusView() {
 		}, "cashier-bonus-continue")), e;
 	}, [
 		De,
-		re,
+		ee,
 		Te,
-		ie,
+		te,
 		xe,
 		Ee,
 		J,
 		y
-	]), Fe = !!((re || y || J) && i && K && !se && !ce), { createAction: Ie, revision: Le } = useCashierPresentationActions({
+	]), Fe = !!((ee || y || J) && i && q && !se && !ce), { createAction: Ie, revision: Le } = useCashierPresentationActions({
 		kind: "screen",
 		id: "bonusSelection",
 		scope: "content"
-	}), Re = useMemo(() => oe.map(({ bonus: e, status: t }) => ({
+	}), Re = useMemo(() => ie.map(({ bonus: e, status: t }) => ({
 		id: e.code,
 		title: n(e.title),
 		description: n(e.description),
-		selected: Q === e.code,
+		selected: $ === e.code,
 		available: t === "available"
 	})), [
 		n,
-		Q,
-		oe
+		$,
+		ie
 	]), ze = useMemo(() => ({
 		screen: "bonusSelection",
 		revision: Le,
 		busy: !1,
 		title: n("cta.choose_bonus"),
-		continueLabel: n(Q ? "cta.claim" : "cta.skip"),
+		continueLabel: n($ ? "cta.claim" : "cta.skip"),
 		skipLabel: n("cta.skip"),
 		backLabel: n("cta.back"),
 		bonuses: Re,
-		selectedBonusId: Q,
+		selectedBonusId: $,
 		canContinue: !Ee,
-		canSkip: W
+		canSkip: ae
 	}), [
 		Ee,
 		Re,
 		n,
 		Le,
-		Q,
-		W
+		$,
+		ae
 	]), Be = useMemo(() => ({
 		selectBonus: Ie("selectBonus", be, { validate: (e) => Re.some((t) => t.id === e && t.available) }),
 		continue: Ie("continue", xe, { unavailableReason: Ee ? "invalid-state" : void 0 }),
-		skip: Ie("skip", Se, { unavailableReason: W ? void 0 : "invalid-state" }),
-		goBack: Ie("goBack", ie, { unavailableReason: re || y ? void 0 : "invalid-state" })
+		skip: Ie("skip", Se, { unavailableReason: ae ? void 0 : "invalid-state" }),
+		goBack: Ie("goBack", te, { unavailableReason: ee || y ? void 0 : "invalid-state" })
 	}), [
-		re,
+		ee,
 		Ie,
-		ie,
+		te,
 		xe,
 		be,
 		Se,
 		Ee,
 		Re,
 		y,
-		W
+		ae
 	]);
 	if (se) return /* @__PURE__ */ jsx(CashierFullscreenLoader, {
 		label: r("loading.payment_types"),
@@ -3656,19 +3815,19 @@ function BonusView() {
 		text: "payment.no_pts_found",
 		presentationScreen: "empty"
 	});
-	if (!isBonusPageStyle(c) || !i || !K) return null;
+	if (!isBonusPageStyle(c) || !i || !q) return null;
 	let Ve = /* @__PURE__ */ jsxs("div", {
 		className: twJoin(e.className("route-bonus-content"), "px-1.5 @sm:px-3", l ? "pb-3" : "pb-4", INTERACTIVE_PROMPT_ROUTE_CONTENT_SPACING_CLASSNAME$1),
 		children: [/* @__PURE__ */ jsx(BonusesList, {
-			bonuses: oe,
+			bonuses: ie,
 			domScope: "route-bonus",
 			animateItems: !0,
-			selectedBonusCode: Q,
+			selectedBonusCode: $,
 			onSelect: be,
 			onSkip: Se,
 			selectable: J,
-			showSkipOption: W,
-			isSkipSelected: J && Q === null
+			showSkipOption: ae,
+			isSkipSelected: J && $ === null
 		}), /* @__PURE__ */ jsx(AdaptiveControlsFooter, {
 			domScope: "route-bonus-actions",
 			items: Pe,
@@ -3758,36 +3917,7 @@ var ProviderWindowLifecycleMonitor = () => {
 		f,
 		n
 	]), null;
-}, iframePermissions = {
-	accelerometer: "*",
-	autoplay: "*",
-	camera: "*",
-	"clipboard-read": "*",
-	"clipboard-write": "*",
-	fullscreen: "*",
-	geolocation: "*",
-	gyroscope: "*",
-	magnetometer: "*",
-	microphone: "*",
-	"otp-credentials": "*",
-	payment: "*",
-	"picture-in-picture": "*"
-}, buildProviderIframeAllow = (e) => e ?? Object.entries(iframePermissions).map(([e, t]) => `${e} ${t}`).join(";");
-function ProviderIframe({ src: e, title: t, allow: n, hiddenIframe: r = !1, tabIndex: i, ...a }) {
-	let o = buildProviderIframeAllow(n);
-	return /* @__PURE__ */ jsx("iframe", {
-		className: r ? "absolute left-[-9999px] top-[-9999px] h-px w-px border-0 opacity-0 pointer-events-none" : "block h-full min-h-full w-full flex-1",
-		allow: o,
-		src: e ?? "about:blank",
-		title: t,
-		tabIndex: r ? -1 : i,
-		"aria-hidden": r || void 0,
-		...a
-	});
-}
-//#endregion
-//#region src/components/provider/ProviderWindowNotice.tsx
-var ProviderWindowNotice = ({ manualOpenRequired: e, title: t, manualDescription: n, autoDescription: r, buttonLabel: i, onManualOpen: a }) => {
+}, ProviderWindowNotice = ({ manualOpenRequired: e, title: t, manualDescription: n, autoDescription: r, buttonLabel: i, onManualOpen: a }) => {
 	let o = e ? n : r, s = {
 		kind: "slot",
 		id: "providerActionPrompt"
@@ -3838,26 +3968,28 @@ var ProviderWindowNotice = ({ manualOpenRequired: e, title: t, manualDescription
 		})
 	});
 }, useProviderWindowLifecycle = ({ providerStepKey: e, status: t, ownerKey: n, openWindow: r, onCleanup: i }) => {
-	let a = useRef(r), o = useRef(i), s = useRef(n ?? null), c = useRef(null);
+	let a = useProviderWindowClose(), o = useRef(a), s = useRef(r), c = useRef(i), l = useRef(n ?? null), u = useRef(null);
 	useEffect(() => {
-		s.current = n ?? null;
+		l.current = n ?? null;
 	}, [n]), useEffect(() => {
-		a.current = r;
+		o.current = a;
+	}, [a]), useEffect(() => {
+		s.current = r;
 	}, [r]), useEffect(() => {
-		o.current = i;
+		c.current = i;
 	}, [i]), useEffect(() => {
-		if (typeof window > "u" || !e || isTerminalPaymentStatus(t) || c.current === e) return;
-		o.current?.();
+		if (typeof window > "u" || !e || isTerminalPaymentStatus(t) || u.current === e) return;
+		c.current?.();
 		let n = window.setTimeout(() => {
-			c.current !== e && (c.current = e, a.current("auto"));
+			u.current !== e && (u.current = e, s.current("auto"));
 		}, 0);
 		return () => {
 			window.clearTimeout(n);
 		};
 	}, [e, t]), useEffect(() => {
-		isTerminalPaymentStatus(t) && (o.current?.(), closeProviderWindowHandle(s.current));
+		isTerminalPaymentStatus(t) && (c.current?.(), o.current(l.current));
 	}, [t]), useEffect(() => () => {
-		o.current?.(), closeProviderWindowHandle(s.current);
+		c.current?.(), o.current(l.current);
 	}, []);
 }, useProviderWindowNoticeLabels = () => {
 	let { resolveTextKey: e } = useI18n();
@@ -3933,17 +4065,11 @@ var ProviderWindowNotice = ({ manualOpenRequired: e, title: t, manualDescription
 		buttonLabel: y,
 		onManualOpen: S
 	});
-	return d ? /* @__PURE__ */ jsxs(Fragment$1, { children: [/* @__PURE__ */ jsx("form", {
+	return d ? /* @__PURE__ */ jsxs(Fragment$1, { children: [/* @__PURE__ */ jsx(HiddenPostForm, {
 		ref: c,
-		method: "POST",
 		action: e,
 		target: PROVIDER_WINDOW_TARGET,
-		hidden: !0,
-		children: n.map(([e, t]) => /* @__PURE__ */ jsx("input", {
-			name: e,
-			value: t,
-			type: "hidden"
-		}, e))
+		fields: n
 	}), C] }) : C;
 }, scriptOnLoadCallbacks = /* @__PURE__ */ new WeakMap(), takeProviderScriptOnLoad = (e) => {
 	let t = scriptOnLoadCallbacks.get(e);
@@ -4640,68 +4766,62 @@ var ProviderWindowNotice = ({ manualOpenRequired: e, title: t, manualDescription
 		"aria-hidden": N || void 0,
 		"data-testid": "provider-script-container"
 	})] });
-}, PROVIDER_IFRAME_TARGET = "cashier-provider-iframe", ProviderRedirect = ({ paymentId: e, redirectUrl: t, redirectMethod: n, redirectData: r, redirectType: i = "iframe", redirectScriptId: a }) => {
-	let { debug: o } = useContext(CashierContext), { translateKey: s } = useI18n(), c = useRef(null), l = useMemo(() => decodeRedirectPayload(r, o), [o, r]), u = useMemo(() => l ? Object.entries(l) : [], [l]), d = normalizeRedirectMethod(n), f = d === "POST", p = i === "window", m = i === "hidden_iframe", g = i === "script" || !!a, _ = useMemo(() => buildProviderWindowStepKey({
+}, PROVIDER_IFRAME_TARGET = "cashier-provider-iframe", ProviderRedirect = ({ paymentId: e, redirectUrl: t, redirectMethod: n, redirectData: r, redirectType: i = "iframe", redirectScriptId: a, timeout: o }) => {
+	let { debug: s } = useContext(CashierContext), { translateKey: c } = useI18n(), l = useRef(null), u = useMemo(() => decodeRedirectPayload(r, s), [s, r]), d = useMemo(() => u ? Object.entries(u) : [], [u]), f = normalizeRedirectMethod(n), p = f === "POST", m = i === "window", g = i === "hidden_iframe", _ = i === "script" || !!a, y = useMemo(() => buildProviderWindowStepKey({
 		paymentId: e,
 		redirectType: i,
-		redirectMethod: d,
+		redirectMethod: f,
 		redirectUrl: t,
 		redirectData: r,
 		redirectScriptId: a
 	}), [
-		d,
+		f,
 		e,
 		r,
 		a,
 		i,
 		t
-	]), y = useDelayedVisibility(m, { resetKey: `${i}:${t}:${a ?? ""}` }), b = !g && f && !p, x = s("provider.iframe.title"), S = y ? /* @__PURE__ */ jsx(PaymentProcessingLoader, {
+	]), b = useDelayedVisibility(g, { resetKey: `${i}:${t}:${a ?? ""}` }), x = !o && !_ && p && !m, S = c("provider.iframe.title"), C = b ? /* @__PURE__ */ jsx(PaymentProcessingLoader, {
 		delayMs: 0,
 		testId: "cashier-provider-processing-loading"
 	}) : null;
 	return useEffect(() => {
-		b && c.current?.submit();
-	}, [t, b]), useEffect(() => {
-		p || g || closeProviderWindowHandle(e ?? null);
+		x && l.current?.submit();
+	}, [t, x]), useEffect(() => {
+		m || _ || closeProviderWindowHandle(e ?? null);
 	}, [
-		g,
-		p,
+		_,
+		m,
 		e
-	]), g ? /* @__PURE__ */ jsxs(Fragment$1, { children: [S, /* @__PURE__ */ jsx(ProviderScript, {
-		providerStepKey: _,
+	]), o && g ? C : _ ? /* @__PURE__ */ jsxs(Fragment$1, { children: [C, /* @__PURE__ */ jsx(ProviderScript, {
+		providerStepKey: y,
 		scriptId: a,
 		redirectUrl: t,
 		redirectData: r,
 		redirectType: i
-	})] }) : p ? /* @__PURE__ */ jsx(ProviderWindow, {
-		providerStepKey: _,
+	})] }) : m ? /* @__PURE__ */ jsx(ProviderWindow, {
+		providerStepKey: y,
 		redirectUrl: t,
-		redirectMethod: d,
-		hiddenFields: u
-	}) : f ? /* @__PURE__ */ jsxs(Fragment$1, { children: [
-		S,
-		/* @__PURE__ */ jsx("form", {
-			ref: c,
-			method: "POST",
+		redirectMethod: f,
+		hiddenFields: d
+	}) : p ? /* @__PURE__ */ jsxs(Fragment$1, { children: [
+		C,
+		/* @__PURE__ */ jsx(HiddenPostForm, {
+			ref: l,
 			action: t,
 			target: PROVIDER_IFRAME_TARGET,
-			hidden: !0,
-			children: u.map(([e, t]) => /* @__PURE__ */ jsx("input", {
-				name: e,
-				value: t,
-				type: "hidden"
-			}, e))
+			fields: d
 		}),
 		/* @__PURE__ */ jsx(ProviderIframe, {
 			name: PROVIDER_IFRAME_TARGET,
-			title: x,
+			title: S,
 			src: "about:blank",
-			hiddenIframe: m
+			hiddenIframe: g
 		})
-	] }) : /* @__PURE__ */ jsxs(Fragment$1, { children: [S, /* @__PURE__ */ jsx(ProviderIframe, {
-		title: x,
+	] }) : /* @__PURE__ */ jsxs(Fragment$1, { children: [C, /* @__PURE__ */ jsx(ProviderIframe, {
+		title: S,
 		src: t,
-		hiddenIframe: m
+		hiddenIframe: g
 	})] });
 }, PROVIDER_FORM_TARGET = "cashier-provider-form", PROVIDER_FORM_ERROR_TOAST_ID = "cashier-provider-form-error", ProviderFormNavigation = ({ submitLabel: e, submitDisabled: t, submitLoading: n, onSubmit: r }) => {
 	let i = useMemo(() => [/* @__PURE__ */ jsx(Button, {
@@ -4910,7 +5030,8 @@ function RouteComponent() {
 		redirectMethod: p.method,
 		redirectData: x,
 		redirectType: p.type,
-		redirectScriptId: p.scriptId
+		redirectScriptId: p.scriptId,
+		timeout: p.timeout
 	})) : _ && m ? E(/* @__PURE__ */ jsx(ProviderForm, {
 		form: m,
 		observerPaymentType: y,
@@ -4943,15 +5064,15 @@ function PaymentTypeView() {
 	let e = useIsPaymentInteractionLocked(), t = useCashierDomHooks(), { id: n } = useParams({ strict: !1 }), r = useNavigate(), { getPaymentType: i, paymentTypesList: a, isLoading: o, isError: s } = usePaymentTypes(), { resolveTextKey: c, translateKey: l, translateKeys: u } = useI18n(), [d, f] = useState(null), [p, m] = useState({
 		isComplete: !1,
 		errorMessage: null
-	}), { uiComboView: g, lockAmount: _, uiInteractivePrompts: y, uiPaymentConfirmView: b, uiBonusesStyle: x, uiFixedControls: S, method: C, currency: T, selectedBonusCode: E, resetFlowOnBack: D, initialAmount: O, user: k, uiShowFees: A, paymentFormDraft: j, comboViewFormDraft: M, gotoPaymentType: N, uiAccountDelete: P, onPaymentTypeSelected: F, setCashierState: I } = useContext(CashierContext), { currencyFormatter: L, formatCurrencyValue: R, formatDisplayValue: ee } = useCashierValueFormatter(), { interactivePromptContent: z, pendingWithdrawalDrawer: B, attachSuccessFooter: te } = usePendingWithdrawalCancellation(), ne = useMemo(() => createFeeCurrencyFormatter(L), [L]), re = !isComboViewEntryEnabled({
+	}), { uiComboView: g, lockAmount: _, uiInteractivePrompts: y, uiPaymentConfirmView: b, uiBonusesStyle: x, uiFixedControls: S, method: C, currency: T, selectedBonusCode: E, resetFlowOnBack: D, initialAmount: O, user: k, uiShowFees: A, paymentFormDraft: j, comboViewFormDraft: M, gotoPaymentType: N, uiAccountDelete: P, onPaymentTypeSelected: F, setCashierState: I } = useContext(CashierContext), { currencyFormatter: L, formatCurrencyValue: R, formatDisplayValue: z } = useCashierValueFormatter(), { interactivePromptContent: B, pendingWithdrawalDrawer: V, attachSuccessFooter: H } = usePendingWithdrawalCancellation(), U = useMemo(() => createFeeCurrencyFormatter(L), [L]), ee = !isComboViewEntryEnabled({
 		uiComboView: g,
 		lockAmount: _
-	}), ie = re ? z : null, V = re ? B : null, { bonuses: H, getBonusAvailabilityForPaymentType: ae, getAvailableBonusesForPaymentType: oe } = useBonuses(), { selectPaymentType: U } = usePaymentSelection(), { requestAccountDelete: W, actionConfirmationModal: G } = useAccountDelete(), K = resolveDefaultRoute({
+	}), te = ee ? B : null, ne = ee ? V : null, { bonuses: W, getBonusAvailabilityForPaymentType: re, getAvailableBonusesForPaymentType: ie } = useBonuses(), { selectPaymentType: G } = usePaymentSelection(), { requestAccountDelete: ae, actionConfirmationModal: K } = useAccountDelete(), q = resolveDefaultRoute({
 		uiComboView: g,
 		lockAmount: _,
 		method: C
-	}), { handleBack: q } = useBackNavigation({
-		defaultRoute: K,
+	}), { handleBack: oe } = useBackNavigation({
+		defaultRoute: q,
 		useHistory: !D,
 		replace: D || !g
 	});
@@ -4967,7 +5088,7 @@ function PaymentTypeView() {
 			size: "xl",
 			fullWidth: !0,
 			disabled: t,
-			onClick: q,
+			onClick: oe,
 			label: n
 		}, "cashier-nav-back")];
 		return e?.visible && i.push(/* @__PURE__ */ jsx(Button, {
@@ -4983,21 +5104,21 @@ function PaymentTypeView() {
 		}, "cashier-nav-submit")), i;
 	}, [
 		d,
-		q,
+		oe,
 		C,
 		l
 	]);
 	useEffect(() => () => {
 		f(null);
 	}, [f]);
-	let de = E ? H.find((e) => e.code === E) ?? null : null, X = n, Z = X ? i(X) : null, fe = Z ? getPaymentTypeSelectionId(Z) : X, pe = !!(isBonusPaymentFormPickerStyle(x) && Z && ae(Z).length > 0);
+	let de = E ? W.find((e) => e.code === E) ?? null : null, X = n, Z = X ? i(X) : null, Q = Z ? getPaymentTypeSelectionId(Z) : X, fe = !!(isBonusPaymentFormPickerStyle(x) && Z && re(Z).length > 0);
 	useEffect(() => {
 		N && X === N && (Z || o || s || r({
-			to: K,
+			to: q,
 			replace: !0
 		}));
 	}, [
-		K,
+		q,
 		N,
 		s,
 		o,
@@ -5005,15 +5126,15 @@ function PaymentTypeView() {
 		Z,
 		X
 	]);
-	let { name: me, nameKeys: he, logo: Q, limits: ge, fee: $ } = Z ?? {}, _e = Z?.fields ?? [], ve = Z?.hfFields ?? [], ye = me ?? fe, be = Z ? formatCardAccountLabel(Z) : null, xe = Z?.notifications ?? [], Se = xe.filter(isTopPaymentTypeNotification), Ce = xe.filter((e) => !isTopPaymentTypeNotification(e)), we = Se.length > 0, Te = Ce.length > 0, Ee = _e.some((e) => e.id === "amount"), De = Ee ? O : "", Oe = !!(fe && M && isMatchingPaymentFormDraft(M, {
-		paymentTypeName: fe,
+	let { name: pe, nameKeys: me, logo: $, limits: he, fee: ge } = Z ?? {}, _e = Z?.fields ?? [], ve = Z?.hfFields ?? [], ye = pe ?? Q, be = Z ? formatCardAccountLabel(Z) : null, xe = Z?.notifications ?? [], Se = xe.filter(isTopPaymentTypeNotification), Ce = xe.filter((e) => !isTopPaymentTypeNotification(e)), we = Se.length > 0, Te = Ce.length > 0, Ee = _e.some((e) => e.id === "amount"), De = Ee ? O : "", Oe = !!(Q && M && isMatchingPaymentFormDraft(M, {
+		paymentTypeName: Q,
 		method: C,
 		amount: De
-	})), ke = !!(fe && M && !Oe && M.paymentTypeName === fe && M.method === C), Ae = !!(fe && j && isMatchingPaymentFormDraft(j, {
-		paymentTypeName: fe,
+	})), ke = !!(Q && M && !Oe && M.paymentTypeName === Q && M.method === C), Ae = !!(Q && j && isMatchingPaymentFormDraft(j, {
+		paymentTypeName: Q,
 		method: C,
 		amount: De
-	})), je = g || _ || Oe, Me = getPayoutAmountMaxBoundary(C, k, $), Ne = getAmountLimitStatus(O, ge, { maxBoundary: Me }), Pe = _e.some((e) => e.id && e.id !== "amount"), Fe = ve.length > 0 || Pe, Ie = je && Z && (!Ee || hasAmountValue(O) && !Ne.isOutOfRange && !Ne.isIncomplete), Le = !!(isBonusPageStyle(x) && de), Re = !!(Ie && (b && (Oe || !Fe) || !Fe && !ke || Oe && Le || Ie && Oe && !b && !Le)), ze = Re || J && le, Be = useCallback((e) => {
+	})), je = g || _ || Oe, Me = getPayoutAmountMaxBoundary(C, k, ge), Ne = getAmountLimitStatus(O, he, { maxBoundary: Me }), Pe = _e.some((e) => e.id && e.id !== "amount"), Fe = ve.length > 0 || Pe, Ie = je && Z && (!Ee || hasAmountValue(O) && !Ne.isOutOfRange && !Ne.isIncomplete), Le = !!(isBonusPageStyle(x) && de), Re = !!(Ie && (b && (Oe || !Fe) || !Fe && !ke || Oe && Le || Ie && Oe && !b && !Le)), ze = Re || J && le, Be = useCallback((e) => {
 		f(e), ue((t) => e?.submit.loading && t || Re);
 	}, [
 		Re,
@@ -5031,9 +5152,9 @@ function PaymentTypeView() {
 		if (Oe) return M?.values;
 		if (Ae) return j?.values;
 	})(), Ge = Ve.length > 0, Ke = Ge && !ze, qe = (e) => {
-		if (!fe) return;
+		if (!Q) return;
 		let t = {
-			paymentTypeName: fe,
+			paymentTypeName: Q,
 			method: C,
 			amount: De,
 			values: Ee ? {
@@ -5053,13 +5174,13 @@ function PaymentTypeView() {
 		fields: _e
 	}), Ye = getWithdrawalSummaryFields(C, T, k, {
 		amount: O,
-		fee: $,
+		fee: ge,
 		includeBalanceRows: Je,
 		includeRemainingBalance: Je || Ge
-	}), Xe = A ? getCalculatedFeeSummaryField($, parseAmountValue(O) ?? 0, {
-		feeCurrencyFormatter: ne,
+	}), Xe = A ? getCalculatedFeeSummaryField(ge, parseAmountValue(O) ?? 0, {
+		feeCurrencyFormatter: U,
 		formatCurrencyValue: R
-	}) : null, Ze = C === CashierMethods.PAYOUT ? getCalculatedPayoutTotalSummaryField($, parseAmountValue(O) ?? 0, T) : null, Qe = C === CashierMethods.PAYIN && A ? getCalculatedPayinTotalSummaryField($, parseAmountValue(O) ?? 0, T) : null, $e = C === CashierMethods.PAYOUT ? insertSummaryFieldsBeforeRemainingBalance(Ye, [Xe, Ze]) : Ye, et = C === CashierMethods.PAYIN ? [Xe, Qe].filter((e) => e !== null) : [], tt = Me !== null && Ne.value !== null && Ne.value > Me ? { "withdrawable-balance": "danger" } : {}, nt = Ge ? [
+	}) : null, Ze = C === CashierMethods.PAYOUT ? getCalculatedPayoutTotalSummaryField(ge, parseAmountValue(O) ?? 0, T) : null, Qe = C === CashierMethods.PAYIN && A ? getCalculatedPayinTotalSummaryField(ge, parseAmountValue(O) ?? 0, T) : null, $e = C === CashierMethods.PAYOUT ? insertSummaryFieldsBeforeRemainingBalance(Ye, [Xe, Ze]) : Ye, et = C === CashierMethods.PAYIN ? [Xe, Qe].filter((e) => e !== null) : [], tt = Me !== null && Ne.value !== null && Ne.value > Me ? { "withdrawable-balance": "danger" } : {}, nt = Ge ? [
 		...Ve,
 		...et,
 		...$e
@@ -5082,7 +5203,7 @@ function PaymentTypeView() {
 		bodyKey: void 0,
 		icon: /* @__PURE__ */ jsx(CloseIcon, {}),
 		tone: "danger"
-	}), !ie && re && !p.errorMessage && (lt = te(lt));
+	}), !te && ee && !p.errorMessage && (lt = H(lt));
 	let ut = ["border-b border-[var(--pc-color-depth-3)]", "last:border-b-0"].join(" "), dt = /* @__PURE__ */ jsx(PaymentSummaryDetails, {
 		summaryFields: nt,
 		rowVariants: tt,
@@ -5092,14 +5213,14 @@ function PaymentTypeView() {
 			children: [/* @__PURE__ */ jsx("div", {
 				className: ut,
 				children: /* @__PURE__ */ jsx(PaymentTypeListItem, {
-					selectionId: fe,
-					domSlug: fe,
+					selectionId: Q,
+					domSlug: Q,
 					name: ye,
 					presentationPaymentType: Z ?? void 0,
-					nameKeys: he,
-					logo: Q,
-					limits: ge,
-					fee: $,
+					nameKeys: me,
+					logo: $,
+					limits: he,
+					fee: ge,
 					listStyle: CashierLayoutListType.LIST,
 					showMeta: !0,
 					title: be ?? void 0,
@@ -5165,7 +5286,7 @@ function PaymentTypeView() {
 		fields: nt.map(({ id: e, label: t, value: n }) => ({
 			id: e,
 			label: c(t && t.length > 0 ? t : e),
-			value: ee(n)
+			value: z(n)
 		})),
 		protectedSurfaceRequired: !0,
 		protectedSurfaceReady: !!d,
@@ -5176,10 +5297,10 @@ function PaymentTypeView() {
 			busy: !!mt?.loading,
 			unavailableReason: gt
 		}),
-		goBack: ft.createAction("goBack", q, { busy: !!mt?.loading })
+		goBack: ft.createAction("goBack", oe, { busy: !!mt?.loading })
 	}), [
 		ft,
-		q,
+		oe,
 		mt,
 		gt
 	]), bt = useMemo(() => ({
@@ -5187,10 +5308,10 @@ function PaymentTypeView() {
 			busy: !!mt?.loading,
 			unavailableReason: gt
 		}),
-		goBack: pt.createAction("goBack", q, { busy: !!mt?.loading })
+		goBack: pt.createAction("goBack", oe, { busy: !!mt?.loading })
 	}), [
 		pt,
-		q,
+		oe,
 		mt,
 		gt
 	]);
@@ -5200,7 +5321,7 @@ function PaymentTypeView() {
 			id: "unsupported",
 			title: e,
 			titleKey: "error.invalid_payment_type",
-			onGoBack: q,
+			onGoBack: oe,
 			children: /* @__PURE__ */ jsx("div", { children: e })
 		});
 	}
@@ -5215,7 +5336,7 @@ function PaymentTypeView() {
 			id: "unsupported",
 			title: e,
 			titleKey: "error.invalid_payment_type",
-			onGoBack: q,
+			onGoBack: oe,
 			children: /* @__PURE__ */ jsx("div", { children: e })
 		});
 	}
@@ -5225,7 +5346,7 @@ function PaymentTypeView() {
 			id: "unsupported",
 			title: n,
 			titleKey: SAVED_CARD_EXPIRY_INVALID_MESSAGE_KEY,
-			onGoBack: q,
+			onGoBack: oe,
 			children: /* @__PURE__ */ jsx(SubContainer, {
 				id: t.id("route-payment-type-unavailable"),
 				title: SAVED_CARD_EXPIRY_INVALID_MESSAGE_KEY,
@@ -5245,7 +5366,7 @@ function PaymentTypeView() {
 									disabled: e,
 									onClick: () => {
 										let e = getPaymentTypeSelectionId(i);
-										U(e, { availableBonuses: oe(i) }), F?.(i), r({
+										G(e, { availableBonuses: ie(i) }), F?.(i), r({
 											to: "/pt/$id",
 											params: { id: e },
 											replace: !0
@@ -5260,7 +5381,7 @@ function PaymentTypeView() {
 									size: "lg",
 									disabled: e,
 									onClick: () => {
-										W(Z);
+										ae(Z);
 									},
 									label: s,
 									leadingIcon: /* @__PURE__ */ jsx(CloseIcon, {})
@@ -5269,19 +5390,19 @@ function PaymentTypeView() {
 									variant: "neutral",
 									size: "lg",
 									disabled: e,
-									onClick: q,
+									onClick: oe,
 									label: l("cta.back")
 								})
 							]
 						}),
-						G
+						K
 					]
 				})
 			})
 		});
 	}
 	let xt = /* @__PURE__ */ jsx(PaymentForm, {
-		id: fe,
+		id: Q,
 		onActionsChange: Be,
 		onPromptStateChange: m,
 		onValuesChange: He === "form" ? qe : void 0,
@@ -5291,7 +5412,7 @@ function PaymentTypeView() {
 		requireDirtyBeforeSubmit: Ue,
 		formSurfaceChrome: "contained",
 		reserveTrailingActionSpace: !S
-	}, fe), St = /* @__PURE__ */ jsxs("div", {
+	}, Q), St = /* @__PURE__ */ jsxs("div", {
 		className: twJoin(t.className("route-payment-type-content"), "flex flex-col", INTERACTIVE_PROMPT_ROUTE_CONTENT_SPACING_CLASSNAME, ENTRANCE_ANIMATION_SURFACE_CLASSNAME),
 		children: [
 			we && /* @__PURE__ */ jsx("div", {
@@ -5305,7 +5426,7 @@ function PaymentTypeView() {
 				"data-slot": "payment-type-detail-stack",
 				children: [
 					dt,
-					pe && /* @__PURE__ */ jsx(BonusPicker, {
+					fe && /* @__PURE__ */ jsx(BonusPicker, {
 						paymentType: Z,
 						amount: O,
 						surface: "embedded"
@@ -5336,7 +5457,7 @@ function PaymentTypeView() {
 					children: /* @__PURE__ */ jsx(BonusTerms, { termsKey: ot })
 				})
 			}),
-			V
+			ne
 		]
 	}), Ct = (e) => /* @__PURE__ */ jsx(SubContainer, {
 		id: t.id("route-payment-type"),
@@ -5344,8 +5465,8 @@ function PaymentTypeView() {
 		title: y ? void 0 : it,
 		header: y ? /* @__PURE__ */ jsxs("div", {
 			className: "flex flex-col gap-3",
-			children: [ie && /* @__PURE__ */ jsx(InteractivePromptHeader, {
-				content: ie,
+			children: [te && /* @__PURE__ */ jsx(InteractivePromptHeader, {
+				content: te,
 				className: INTERACTIVE_PROMPT_ROUTE_HEADER_GUTTER_CLASSNAME
 			}), /* @__PURE__ */ jsx(InteractivePromptHeader, {
 				content: lt,
@@ -5375,7 +5496,7 @@ function PaymentTypeView() {
 }
 //#endregion
 //#region src/routes/quick-payment/index.tsx
-var $$splitComponentImporter = () => import("./quick-payment-DtoRJ4wt.js"), Route$1 = createFileRoute("/quick-payment/")({
+var $$splitComponentImporter = () => import("./quick-payment-CqXacg_L.js"), Route$1 = createFileRoute("/quick-payment/")({
 	beforeLoad: ({ context: e }) => {
 		validateComboRoute(e);
 	},
@@ -9276,12 +9397,12 @@ var $$splitComponentImporter = () => import("./quick-payment-DtoRJ4wt.js"), Rout
 			e.lineWidths = p;
 			var F = n.a, I, L;
 			y = F.length;
-			var R, ee, z = [];
+			var R, z, B = [];
 			for (_ = 0; _ < y; _ += 1) {
-				for (I = F[_], I.a.sc && (e.strokeColorAnim = !0), I.a.sw && (e.strokeWidthAnim = !0), (I.a.fc || I.a.fh || I.a.fs || I.a.fb) && (e.fillColorAnim = !0), ee = 0, R = I.s.b, i = 0; i < a; i += 1) L = r[i], L.anIndexes[_] = ee, (R == 1 && L.val !== "" || R == 2 && L.val !== "" && L.val !== " " || R == 3 && (L.n || L.val == " " || i == a - 1) || R == 4 && (L.n || i == a - 1)) && (I.s.rn === 1 && z.push(ee), ee += 1);
-				n.a[_].s.totalChars = ee;
-				var B = -1, te;
-				if (I.s.rn === 1) for (i = 0; i < a; i += 1) L = r[i], B != L.anIndexes[_] && (B = L.anIndexes[_], te = z.splice(Math.floor(Math.random() * z.length), 1)[0]), L.anIndexes[_] = te;
+				for (I = F[_], I.a.sc && (e.strokeColorAnim = !0), I.a.sw && (e.strokeWidthAnim = !0), (I.a.fc || I.a.fh || I.a.fs || I.a.fb) && (e.fillColorAnim = !0), z = 0, R = I.s.b, i = 0; i < a; i += 1) L = r[i], L.anIndexes[_] = z, (R == 1 && L.val !== "" || R == 2 && L.val !== "" && L.val !== " " || R == 3 && (L.n || L.val == " " || i == a - 1) || R == 4 && (L.n || i == a - 1)) && (I.s.rn === 1 && B.push(z), z += 1);
+				n.a[_].s.totalChars = z;
+				var V = -1, H;
+				if (I.s.rn === 1) for (i = 0; i < a; i += 1) L = r[i], V != L.anIndexes[_] && (V = L.anIndexes[_], H = B.splice(Math.floor(Math.random() * B.length), 1)[0]), L.anIndexes[_] = H;
 			}
 			e.yOffset = e.finalLineHeight || e.finalSize * 1.2, e.ls = e.ls || 0, e.ascent = b.ascent * e.finalSize / 100;
 		}, TextProperty.prototype.updateDocumentData = function(e, t) {
@@ -9397,39 +9518,39 @@ var $$splitComponentImporter = () => import("./quick-payment-DtoRJ4wt.js"), Rout
 					C = T[x].points, S = C[b - 1], g = C[b], E = g.partialLength;
 				}
 				d = f.length, c = 0, l = 0;
-				var N = e.finalSize * 1.2 * .714, P = !0, F, I, L, R = r.length, ee, z, B = -1, te, ne, re, ie = m, V = x, H = b, ae = -1, oe, U, W, G, K, q, se, ce, J = "", le = this.defaultPropsArray, ue;
+				var N = e.finalSize * 1.2 * .714, P = !0, F, I, L, R = r.length, z, B, V = -1, H, U, ee, te = m, ne = x, W = b, re = -1, ie, G, ae, K, q, oe, se, ce, J = "", le = this.defaultPropsArray, ue;
 				if (e.j === 2 || e.j === 1) {
-					var Y = 0, de = 0, X = e.j === 2 ? -.5 : -1, Z = 0, fe = !0;
+					var Y = 0, de = 0, X = e.j === 2 ? -.5 : -1, Z = 0, Q = !0;
 					for (u = 0; u < d; u += 1) if (f[u].n) {
 						for (Y && (Y += de); Z < u;) f[Z].animatorJustifyOffset = Y, Z += 1;
-						Y = 0, fe = !0;
+						Y = 0, Q = !0;
 					} else {
-						for (L = 0; L < R; L += 1) F = r[L].a, F.t.propType && (fe && e.j === 2 && (de += F.t.v * X), I = r[L].s, z = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), z.length ? Y += F.t.v * z[0] * X : Y += F.t.v * z * X);
-						fe = !1;
+						for (L = 0; L < R; L += 1) F = r[L].a, F.t.propType && (Q && e.j === 2 && (de += F.t.v * X), I = r[L].s, B = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), B.length ? Y += F.t.v * B[0] * X : Y += F.t.v * B * X);
+						Q = !1;
 					}
 					for (Y && (Y += de); Z < u;) f[Z].animatorJustifyOffset = Y, Z += 1;
 				}
 				for (u = 0; u < d; u += 1) {
-					if (a.reset(), oe = 1, f[u].n) c = 0, l += e.yOffset, l += +!!P, m = ie, P = !1, this._hasMaskedPath && (x = V, b = H, C = T[x].points, S = C[b - 1], g = C[b], E = g.partialLength, _ = 0), J = "", ce = "", q = "", ue = "", le = this.defaultPropsArray;
+					if (a.reset(), ie = 1, f[u].n) c = 0, l += e.yOffset, l += +!!P, m = te, P = !1, this._hasMaskedPath && (x = ne, b = W, C = T[x].points, S = C[b - 1], g = C[b], E = g.partialLength, _ = 0), J = "", ce = "", oe = "", ue = "", le = this.defaultPropsArray;
 					else {
 						if (this._hasMaskedPath) {
-							if (ae !== f[u].line) {
+							if (re !== f[u].line) {
 								switch (e.j) {
 									case 1:
 										m += D - e.lineWidths[f[u].line];
 										break;
 									case 2: m += (D - e.lineWidths[f[u].line]) / 2;
 								}
-								ae = f[u].line;
+								re = f[u].line;
 							}
-							B !== f[u].ind && (f[B] && (m += f[B].extra), m += f[u].an / 2, B = f[u].ind), m += n[0] * f[u].an * .005;
-							var pe = 0;
-							for (L = 0; L < R; L += 1) F = r[L].a, F.p.propType && (I = r[L].s, z = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), z.length ? pe += F.p.v[0] * z[0] : pe += F.p.v[0] * z), F.a.propType && (I = r[L].s, z = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), z.length ? pe += F.a.v[0] * z[0] : pe += F.a.v[0] * z);
-							for (y = !0, this._pathData.a.v && (m = f[0].an * .5 + (D - this._pathData.f.v - f[0].an * .5 - f[f.length - 1].an * .5) * B / (d - 1), m += this._pathData.f.v); y;) _ + E >= m + pe || !C ? (O = (m + pe - _) / g.partialLength, ne = S.point[0] + (g.point[0] - S.point[0]) * O, re = S.point[1] + (g.point[1] - S.point[1]) * O, a.translate(-n[0] * f[u].an * .005, -(n[1] * N) * .01), y = !1) : C && (_ += g.partialLength, b += 1, b >= C.length && (b = 0, x += 1, T[x] ? C = T[x].points : A.v.c ? (b = 0, x = 0, C = T[x].points) : (_ -= g.partialLength, C = null)), C && (S = g, g = C[b], E = g.partialLength));
-							te = f[u].an / 2 - f[u].add, a.translate(-te, 0, 0);
-						} else te = f[u].an / 2 - f[u].add, a.translate(-te, 0, 0), a.translate(-n[0] * f[u].an * .005, -n[1] * N * .01, 0);
-						for (L = 0; L < R; L += 1) F = r[L].a, F.t.propType && (I = r[L].s, z = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), (c !== 0 || e.j !== 0) && (this._hasMaskedPath ? z.length ? m += F.t.v * z[0] : m += F.t.v * z : z.length ? c += F.t.v * z[0] : c += F.t.v * z));
-						for (e.strokeWidthAnim && (W = e.sw || 0), e.strokeColorAnim && (U = e.sc ? [
+							V !== f[u].ind && (f[V] && (m += f[V].extra), m += f[u].an / 2, V = f[u].ind), m += n[0] * f[u].an * .005;
+							var fe = 0;
+							for (L = 0; L < R; L += 1) F = r[L].a, F.p.propType && (I = r[L].s, B = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), B.length ? fe += F.p.v[0] * B[0] : fe += F.p.v[0] * B), F.a.propType && (I = r[L].s, B = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), B.length ? fe += F.a.v[0] * B[0] : fe += F.a.v[0] * B);
+							for (y = !0, this._pathData.a.v && (m = f[0].an * .5 + (D - this._pathData.f.v - f[0].an * .5 - f[f.length - 1].an * .5) * V / (d - 1), m += this._pathData.f.v); y;) _ + E >= m + fe || !C ? (O = (m + fe - _) / g.partialLength, U = S.point[0] + (g.point[0] - S.point[0]) * O, ee = S.point[1] + (g.point[1] - S.point[1]) * O, a.translate(-n[0] * f[u].an * .005, -(n[1] * N) * .01), y = !1) : C && (_ += g.partialLength, b += 1, b >= C.length && (b = 0, x += 1, T[x] ? C = T[x].points : A.v.c ? (b = 0, x = 0, C = T[x].points) : (_ -= g.partialLength, C = null)), C && (S = g, g = C[b], E = g.partialLength));
+							H = f[u].an / 2 - f[u].add, a.translate(-H, 0, 0);
+						} else H = f[u].an / 2 - f[u].add, a.translate(-H, 0, 0), a.translate(-n[0] * f[u].an * .005, -n[1] * N * .01, 0);
+						for (L = 0; L < R; L += 1) F = r[L].a, F.t.propType && (I = r[L].s, B = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), (c !== 0 || e.j !== 0) && (this._hasMaskedPath ? B.length ? m += F.t.v * B[0] : m += F.t.v * B : B.length ? c += F.t.v * B[0] : c += F.t.v * B));
+						for (e.strokeWidthAnim && (ae = e.sw || 0), e.strokeColorAnim && (G = e.sc ? [
 							e.sc[0],
 							e.sc[1],
 							e.sc[2]
@@ -9437,27 +9558,27 @@ var $$splitComponentImporter = () => import("./quick-payment-DtoRJ4wt.js"), Rout
 							0,
 							0,
 							0
-						]), e.fillColorAnim && e.fc && (G = [
+						]), e.fillColorAnim && e.fc && (K = [
 							e.fc[0],
 							e.fc[1],
 							e.fc[2]
-						]), L = 0; L < R; L += 1) F = r[L].a, F.a.propType && (I = r[L].s, z = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), z.length ? a.translate(-F.a.v[0] * z[0], -F.a.v[1] * z[1], F.a.v[2] * z[2]) : a.translate(-F.a.v[0] * z, -F.a.v[1] * z, F.a.v[2] * z));
-						for (L = 0; L < R; L += 1) F = r[L].a, F.s.propType && (I = r[L].s, z = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), z.length ? a.scale(1 + (F.s.v[0] - 1) * z[0], 1 + (F.s.v[1] - 1) * z[1], 1) : a.scale(1 + (F.s.v[0] - 1) * z, 1 + (F.s.v[1] - 1) * z, 1));
+						]), L = 0; L < R; L += 1) F = r[L].a, F.a.propType && (I = r[L].s, B = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), B.length ? a.translate(-F.a.v[0] * B[0], -F.a.v[1] * B[1], F.a.v[2] * B[2]) : a.translate(-F.a.v[0] * B, -F.a.v[1] * B, F.a.v[2] * B));
+						for (L = 0; L < R; L += 1) F = r[L].a, F.s.propType && (I = r[L].s, B = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), B.length ? a.scale(1 + (F.s.v[0] - 1) * B[0], 1 + (F.s.v[1] - 1) * B[1], 1) : a.scale(1 + (F.s.v[0] - 1) * B, 1 + (F.s.v[1] - 1) * B, 1));
 						for (L = 0; L < R; L += 1) {
-							if (F = r[L].a, I = r[L].s, z = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), F.sk.propType && (z.length ? a.skewFromAxis(-F.sk.v * z[0], F.sa.v * z[1]) : a.skewFromAxis(-F.sk.v * z, F.sa.v * z)), F.r.propType && (z.length ? a.rotateZ(-F.r.v * z[2]) : a.rotateZ(-F.r.v * z)), F.ry.propType && (z.length ? a.rotateY(F.ry.v * z[1]) : a.rotateY(F.ry.v * z)), F.rx.propType && (z.length ? a.rotateX(F.rx.v * z[0]) : a.rotateX(F.rx.v * z)), F.o.propType && (z.length ? oe += (F.o.v * z[0] - oe) * z[0] : oe += (F.o.v * z - oe) * z), e.strokeWidthAnim && F.sw.propType && (z.length ? W += F.sw.v * z[0] : W += F.sw.v * z), e.strokeColorAnim && F.sc.propType) for (K = 0; K < 3; K += 1) z.length ? U[K] += (F.sc.v[K] - U[K]) * z[0] : U[K] += (F.sc.v[K] - U[K]) * z;
+							if (F = r[L].a, I = r[L].s, B = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), F.sk.propType && (B.length ? a.skewFromAxis(-F.sk.v * B[0], F.sa.v * B[1]) : a.skewFromAxis(-F.sk.v * B, F.sa.v * B)), F.r.propType && (B.length ? a.rotateZ(-F.r.v * B[2]) : a.rotateZ(-F.r.v * B)), F.ry.propType && (B.length ? a.rotateY(F.ry.v * B[1]) : a.rotateY(F.ry.v * B)), F.rx.propType && (B.length ? a.rotateX(F.rx.v * B[0]) : a.rotateX(F.rx.v * B)), F.o.propType && (B.length ? ie += (F.o.v * B[0] - ie) * B[0] : ie += (F.o.v * B - ie) * B), e.strokeWidthAnim && F.sw.propType && (B.length ? ae += F.sw.v * B[0] : ae += F.sw.v * B), e.strokeColorAnim && F.sc.propType) for (q = 0; q < 3; q += 1) B.length ? G[q] += (F.sc.v[q] - G[q]) * B[0] : G[q] += (F.sc.v[q] - G[q]) * B;
 							if (e.fillColorAnim && e.fc) {
-								if (F.fc.propType) for (K = 0; K < 3; K += 1) z.length ? G[K] += (F.fc.v[K] - G[K]) * z[0] : G[K] += (F.fc.v[K] - G[K]) * z;
-								F.fh.propType && (G = z.length ? addHueToRGB(G, F.fh.v * z[0]) : addHueToRGB(G, F.fh.v * z)), F.fs.propType && (G = z.length ? addSaturationToRGB(G, F.fs.v * z[0]) : addSaturationToRGB(G, F.fs.v * z)), F.fb.propType && (G = z.length ? addBrightnessToRGB(G, F.fb.v * z[0]) : addBrightnessToRGB(G, F.fb.v * z));
+								if (F.fc.propType) for (q = 0; q < 3; q += 1) B.length ? K[q] += (F.fc.v[q] - K[q]) * B[0] : K[q] += (F.fc.v[q] - K[q]) * B;
+								F.fh.propType && (K = B.length ? addHueToRGB(K, F.fh.v * B[0]) : addHueToRGB(K, F.fh.v * B)), F.fs.propType && (K = B.length ? addSaturationToRGB(K, F.fs.v * B[0]) : addSaturationToRGB(K, F.fs.v * B)), F.fb.propType && (K = B.length ? addBrightnessToRGB(K, F.fb.v * B[0]) : addBrightnessToRGB(K, F.fb.v * B));
 							}
 						}
-						for (L = 0; L < R; L += 1) F = r[L].a, F.p.propType && (I = r[L].s, z = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), this._hasMaskedPath ? z.length ? a.translate(0, F.p.v[1] * z[0], -F.p.v[2] * z[1]) : a.translate(0, F.p.v[1] * z, -F.p.v[2] * z) : z.length ? a.translate(F.p.v[0] * z[0], F.p.v[1] * z[1], -F.p.v[2] * z[2]) : a.translate(F.p.v[0] * z, F.p.v[1] * z, -F.p.v[2] * z));
-						if (e.strokeWidthAnim && (q = W < 0 ? 0 : W), e.strokeColorAnim && (se = "rgb(" + Math.round(U[0] * 255) + "," + Math.round(U[1] * 255) + "," + Math.round(U[2] * 255) + ")"), e.fillColorAnim && e.fc && (ce = "rgb(" + Math.round(G[0] * 255) + "," + Math.round(G[1] * 255) + "," + Math.round(G[2] * 255) + ")"), this._hasMaskedPath) {
+						for (L = 0; L < R; L += 1) F = r[L].a, F.p.propType && (I = r[L].s, B = I.getMult(f[u].anIndexes[L], i.a[L].s.totalChars), this._hasMaskedPath ? B.length ? a.translate(0, F.p.v[1] * B[0], -F.p.v[2] * B[1]) : a.translate(0, F.p.v[1] * B, -F.p.v[2] * B) : B.length ? a.translate(F.p.v[0] * B[0], F.p.v[1] * B[1], -F.p.v[2] * B[2]) : a.translate(F.p.v[0] * B, F.p.v[1] * B, -F.p.v[2] * B));
+						if (e.strokeWidthAnim && (oe = ae < 0 ? 0 : ae), e.strokeColorAnim && (se = "rgb(" + Math.round(G[0] * 255) + "," + Math.round(G[1] * 255) + "," + Math.round(G[2] * 255) + ")"), e.fillColorAnim && e.fc && (ce = "rgb(" + Math.round(K[0] * 255) + "," + Math.round(K[1] * 255) + "," + Math.round(K[2] * 255) + ")"), this._hasMaskedPath) {
 							if (a.translate(0, -e.ls), a.translate(0, n[1] * N * .01 + l, 0), this._pathData.p.v) {
 								k = (g.point[1] - S.point[1]) / (g.point[0] - S.point[0]);
-								var me = Math.atan(k) * 180 / Math.PI;
-								g.point[0] < S.point[0] && (me += 180), a.rotate(-me * Math.PI / 180);
+								var pe = Math.atan(k) * 180 / Math.PI;
+								g.point[0] < S.point[0] && (pe += 180), a.rotate(-pe * Math.PI / 180);
 							}
-							a.translate(ne, re, 0), m -= n[0] * f[u].an * .005, f[u + 1] && B !== f[u + 1].ind && (m += f[u].an / 2, m += e.tr * .001 * e.finalSize);
+							a.translate(U, ee, 0), m -= n[0] * f[u].an * .005, f[u + 1] && V !== f[u + 1].ind && (m += f[u].an / 2, m += e.tr * .001 * e.finalSize);
 						} else {
 							switch (a.translate(c, l, 0), e.ps && a.translate(e.ps[0], e.ps[1] + e.ascent, 0), e.j) {
 								case 1:
@@ -9465,7 +9586,7 @@ var $$splitComponentImporter = () => import("./quick-payment-DtoRJ4wt.js"), Rout
 									break;
 								case 2: a.translate(f[u].animatorJustifyOffset + e.justifyOffset + (e.boxWidth - e.lineWidths[f[u].line]) / 2, 0, 0);
 							}
-							a.translate(0, -e.ls), a.translate(te, 0, 0), a.translate(n[0] * f[u].an * .005, n[1] * N * .01, 0), c += f[u].l + e.tr * .001 * e.finalSize;
+							a.translate(0, -e.ls), a.translate(H, 0, 0), a.translate(n[0] * f[u].an * .005, n[1] * N * .01, 0), c += f[u].l + e.tr * .001 * e.finalSize;
 						}
 						o === "html" ? J = a.toCSS() : o === "svg" ? J = a.to2dCSS() : le = [
 							a.props[0],
@@ -9484,9 +9605,9 @@ var $$splitComponentImporter = () => import("./quick-payment-DtoRJ4wt.js"), Rout
 							a.props[13],
 							a.props[14],
 							a.props[15]
-						], ue = oe;
+						], ue = ie;
 					}
-					s <= u ? (ee = new LetterProps(ue, q, se, ce, J, le), this.renderedLetters.push(ee), s += 1, this.lettersChangedFlag = !0) : (ee = this.renderedLetters[u], this.lettersChangedFlag = ee.update(ue, q, se, ce, J, le) || this.lettersChangedFlag);
+					s <= u ? (z = new LetterProps(ue, oe, se, ce, J, le), this.renderedLetters.push(z), s += 1, this.lettersChangedFlag = !0) : (z = this.renderedLetters[u], this.lettersChangedFlag = z.update(ue, oe, se, ce, J, le) || this.lettersChangedFlag);
 				}
 			}
 		}, TextAnimatorProperty.prototype.getValue = function() {
@@ -15927,6 +16048,85 @@ var normaliseSummaryStatus = (e) => e?.toLowerCase(), resolvePaymentSummaryOutco
 		case "inconsistent":
 		case "unknown": return "neutral";
 	}
+}, SUMMARY_POLL_DELAYS_MS = [
+	3e3,
+	5e3,
+	8e3,
+	13e3,
+	2e4,
+	3e4,
+	45e3
+], SUMMARY_POLL_CEILING_MS = 6e4, summaryPollDelayMs = (e) => SUMMARY_POLL_DELAYS_MS[e] ?? 6e4, shouldPollPaymentSummary = (e) => resolvePaymentSummaryOutcome(e) === "pending", hasPaymentSummaryChanged = (e, t) => JSON.stringify(e) !== JSON.stringify(t), usePaymentSummaryPolling = ({ paymentId: e, merchantId: t, summary: n }) => {
+	let r = useCashierApiClient(), { debug: i, onPaymentUpdated: a } = useContext(CashierContext), [o, s] = useState(null), c = useRef(a);
+	useEffect(() => {
+		c.current = a;
+	}, [a]);
+	let l = o?.paymentId === e ? o.summary : n, u = useRef(l);
+	useEffect(() => {
+		u.current = l;
+	}, [l]);
+	let d = shouldPollPaymentSummary(l.paymentStatus);
+	return useEffect(() => {
+		if (!d) return;
+		let n = 0, a = 0, o = null, l = null, f = null, p = new AbortController(), m = () => p.signal.aborted, g = (e) => (e !== null && globalThis.clearTimeout(e), null), _ = () => typeof document < "u" && document.visibilityState === "hidden", y = (n) => {
+			if (!hasPaymentSummaryChanged(u.current, n)) return;
+			let r = u.current.paymentStatus;
+			u.current = n, s({
+				paymentId: e,
+				summary: n
+			}), n.paymentStatus !== r && (cashierDebugLogger.log(i, "[Cashier] Payment summary status changed after the user flow ended", {
+				paymentId: e,
+				from: r,
+				to: n.paymentStatus
+			}), !shouldPollPaymentSummary(n.paymentStatus) && invokeCashierCallbackSafely({
+				callback: c.current,
+				callbackName: "onPaymentUpdated",
+				debug: i,
+				payload: {
+					type: "message",
+					merchantId: t,
+					paymentId: e,
+					status: "done",
+					paymentStatus: n.paymentStatus
+				}
+			}));
+		}, b = () => {
+			o = g(o), !m() && (o = globalThis.setTimeout(() => {
+				o = null, x();
+			}, summaryPollDelayMs(n)), n += 1);
+		}, x = async () => {
+			if (m() || _()) return;
+			f?.abort();
+			let n = ++a, i = new AbortController();
+			f = i;
+			let o = await getPaymentSummary({
+				client: r,
+				path: { paymentId: e },
+				query: { merchantId: t },
+				signal: i.signal
+			}).catch(() => void 0);
+			if (m() || n !== a || (f = null, _())) return;
+			let s = o?.data;
+			s && (y(s), !shouldPollPaymentSummary(s.paymentStatus)) || b();
+		}, S = () => {
+			if (_()) {
+				o = g(o), l = g(l), f?.abort();
+				return;
+			}
+			l === null && (l = globalThis.setTimeout(() => {
+				l = null, x();
+			}, 250));
+		};
+		return b(), document.addEventListener("visibilitychange", S), () => {
+			p.abort(), f?.abort(), o = g(o), l = g(l), document.removeEventListener("visibilitychange", S);
+		};
+	}, [
+		r,
+		i,
+		d,
+		t,
+		e
+	]), l;
 }, DEFAULT_SUMMARY_ACTIONS = {
 	layout: "row",
 	items: [{
@@ -16235,175 +16435,179 @@ function DefaultSummaryAction({ actions: e, label: t, model: n, onRestart: r }) 
 	});
 }
 function SummaryView() {
-	let e = useCashierDomHooks(), t = useCashierSummaryState(), n = Route.useLoaderData(), { id: r } = Route.useParams(), { paymentStatus: i, messages: a, displayMessages: o, fields: s } = n, { merchantId: c, uiComboView: l, lockAmount: u, method: d, uiSuggestAction: f, uiFixedControls: p, summaryActions: m, debug: g, onPaymentSummary: _ } = useContext(CashierContext), y = useFinishPayment(), b = useCashierPresentationOptions(), x = useCashierPresentationDiagnostic(), { resolveTextKey: S, resolveTextKeys: C, translateKey: T, translateKeys: E } = useI18n(), { formatDisplayValue: D } = useCashierValueFormatter(), { createAction: O, revision: k } = useCashierPresentationActions({
+	let e = useCashierDomHooks(), t = useCashierSummaryState(), n = Route.useLoaderData(), { id: r } = Route.useParams(), { merchantId: i, uiComboView: a, lockAmount: o, method: s, uiSuggestAction: c, uiFixedControls: l, summaryActions: u, debug: d, onPaymentSummary: f } = useContext(CashierContext), p = usePaymentSummaryPolling({
+		paymentId: r,
+		merchantId: i,
+		summary: n
+	}), { paymentStatus: m, messages: g, displayMessages: _, fields: y } = p, b = useFinishPayment(), x = useCashierPresentationOptions(), S = useCashierPresentationDiagnostic(), { resolveTextKey: C, resolveTextKeys: T, translateKey: E, translateKeys: D } = useI18n(), { formatDisplayValue: O } = useCashierValueFormatter(), { createAction: k, revision: A } = useCashierPresentationActions({
 		kind: "screen",
 		id: "summary",
 		scope: "content"
-	}), { createAction: A } = useCashierPresentationActions({
+	}), { createAction: j } = useCashierPresentationActions({
 		kind: "slot",
 		id: "summaryActions"
-	}), j = useRef(_), M = resolveDefaultRoute({
-		uiComboView: l,
-		lockAmount: u,
-		method: d
-	}), N = T("cta.back"), P = resolvePaymentSummaryOutcome(i), F = mapPaymentOutcomeToIconName(P), I = resolvePaymentSummaryTheme(i), { handleBack: L } = useBackNavigation({
-		defaultRoute: M,
+	}), M = useRef(f), N = resolveDefaultRoute({
+		uiComboView: a,
+		lockAmount: o,
+		method: s
+	}), P = E("cta.back"), F = resolvePaymentSummaryOutcome(m), I = mapPaymentOutcomeToIconName(F), L = resolvePaymentSummaryTheme(m), { handleBack: R } = useBackNavigation({
+		defaultRoute: N,
 		useHistory: !1,
 		replace: !0,
 		resetHistory: !0
-	}), R = useMemo(() => resolvePresentationSummaryActions(b, m), [b, m]);
+	}), z = useMemo(() => resolvePresentationSummaryActions(x, u), [x, u]);
 	useEffect(() => {
-		R.invalidPresentationValue && x({
+		z.invalidPresentationValue && S({
 			kind: "screen",
 			id: "summary",
 			scope: "content"
 		}, "validation", "invalid-presentation");
-	}, [x, R]);
-	let ee = useMemo(() => R.source === "default" ? null : resolveCashierSummaryActions(R.actions, {
-		debug: g,
-		paymentStatus: i
+	}, [S, z]);
+	let B = useMemo(() => z.source === "default" ? null : resolveCashierSummaryActions(z.actions, {
+		debug: d,
+		paymentStatus: m
 	}), [
-		g,
-		i,
-		R
-	]), z = useMemo(() => resolveCashierSummaryActions(R.source === "default" ? void 0 : R.actions, {
-		debug: g,
-		paymentStatus: i
+		d,
+		m,
+		z
+	]), V = useMemo(() => resolveCashierSummaryActions(z.source === "default" ? void 0 : z.actions, {
+		debug: d,
+		paymentStatus: m
 	}), [
-		g,
-		i,
-		R
-	]), B = useMemo(() => ({
-		layout: z?.layout ?? "stack",
-		items: z?.items.map((e) => ({
+		d,
+		m,
+		z
+	]), H = useMemo(() => ({
+		layout: V?.layout ?? "stack",
+		items: V?.items.map((e) => ({
 			id: e.id,
-			label: S(e.label),
+			label: C(e.label),
 			kind: getResolvedSummaryActionKind(e),
 			theme: e.themeVariant
 		})) ?? []
-	}), [z, S]), te = useMemo(() => ({ activate: A("activate", (e) => {
-		let t = z?.items.find((t) => t.id === e);
-		t && activateResolvedSummaryAction(t, L);
-	}, { validate: (e) => !!z?.items.some((t) => t.id === e && t.action !== void 0) }) }), [
-		A,
-		L,
-		z
-	]), ne = useMemo(() => [/* @__PURE__ */ jsx(DefaultSummaryAction, {
-		actions: te,
-		label: N,
-		model: B,
-		onRestart: L
+	}), [V, C]), U = useMemo(() => ({ activate: j("activate", (e) => {
+		let t = V?.items.find((t) => t.id === e);
+		t && activateResolvedSummaryAction(t, R);
+	}, { validate: (e) => !!V?.items.some((t) => t.id === e && t.action !== void 0) }) }), [
+		j,
+		R,
+		V
+	]), ee = useMemo(() => [/* @__PURE__ */ jsx(DefaultSummaryAction, {
+		actions: U,
+		label: P,
+		model: H,
+		onRestart: R
 	}, "cashier-summary-back")], [
-		N,
-		te,
-		L,
-		B
-	]), re = useMemo(() => ee ? [/* @__PURE__ */ jsx(SummaryActions, {
-		actions: ee,
-		onRestart: L
-	}, "cashier-summary-actions")] : [], [ee, L]), ie = R.source === "default" ? ne : re;
+		P,
+		U,
+		R,
+		H
+	]), te = useMemo(() => B ? [/* @__PURE__ */ jsx(SummaryActions, {
+		actions: B,
+		onRestart: R
+	}, "cashier-summary-actions")] : [], [B, R]), ne = z.source === "default" ? ee : te;
 	useEffect(() => {
-		y();
-	}, [y]), useEffect(() => {
-		j.current = _;
-	}, [_]), useEffect(() => {
-		j.current?.({
-			merchantId: c,
+		b();
+	}, [b]), useEffect(() => {
+		M.current = f;
+	}, [f]), useEffect(() => {
+		M.current?.({
+			merchantId: i,
 			paymentId: r,
-			summary: n
+			summary: p
 		});
 	}, [
-		c,
+		i,
 		r,
-		n
+		p
 	]), useEffect(() => () => {
 		t.clearAccess(), t.clearProgress();
 	}, [t]);
-	let V = T(i), H = useMemo(() => (o ? o.map((e) => E(e.keys)) : a?.map((e) => T(e)))?.filter(Boolean), [
-		o,
-		a,
-		T,
-		E
-	]), ae = useMemo(() => (o ? o.map((e) => C(e.keys)) : a?.map((e) => S(e)))?.filter((e) => e.value.length > 0) ?? [], [
-		o,
-		a,
-		S,
-		C
-	]), oe = i ? V : void 0, U = useMemo(() => H?.length ? /* @__PURE__ */ jsx("div", {
+	let W = E(m), re = useMemo(() => (_ ? _.map((e) => D(e.keys)) : g?.map((e) => E(e)))?.filter(Boolean), [
+		_,
+		g,
+		E,
+		D
+	]), ie = useMemo(() => (_ ? _.map((e) => T(e.keys)) : g?.map((e) => C(e)))?.filter((e) => e.value.length > 0) ?? [], [
+		_,
+		g,
+		C,
+		T
+	]), G = m ? W : void 0, ae = useMemo(() => re?.length ? /* @__PURE__ */ jsx("div", {
 		className: "flex flex-col gap-1",
-		children: H.map((e, t) => /* @__PURE__ */ jsx("p", {
+		children: re.map((e, t) => /* @__PURE__ */ jsx("p", {
 			className: "m-0",
 			children: e
 		}, `${e}-${String(t)}`))
-	}) : void 0, [H]), W = useMemo(() => s ?? [], [s]), G = (P === "failed" || P === "cancelled") && f.includes(CashierSuggestAction.ON_PAYMENT_FAILURE_LAST_SUCCESSFUL), K = useMemo(() => ({
+	}) : void 0, [re]), K = useMemo(() => y ?? [], [y]), q = (F === "failed" || F === "cancelled") && c.includes(CashierSuggestAction.ON_PAYMENT_FAILURE_LAST_SUCCESSFUL), oe = useMemo(() => ({
 		screen: "summary",
-		revision: k,
+		revision: A,
 		busy: !1,
-		status: S(i),
-		outcome: P,
-		messages: ae,
-		fields: W.map(({ id: e, label: t, value: n }) => ({
+		status: C(m),
+		outcome: F,
+		messages: ie,
+		fields: K.map(({ id: e, label: t, value: n }) => ({
 			id: e,
-			label: S(t && t.length > 0 ? t : e),
-			value: D(n)
+			label: C(t && t.length > 0 ? t : e),
+			value: O(n)
 		})),
-		actions: B,
-		restartLabel: S("cta.back")
-	}), [
-		D,
-		P,
-		i,
-		ae,
-		B,
-		k,
-		W,
-		S
-	]), q = useMemo(() => ({
-		activate: O("activate", (e) => {
-			let t = z?.items.find((t) => t.id === e);
-			t && activateResolvedSummaryAction(t, L);
-		}, { validate: (e) => !!z?.items.some((t) => t.id === e && t.action !== void 0) }),
-		restart: O("restart", L)
+		actions: H,
+		restartLabel: C("cta.back")
 	}), [
 		O,
-		L,
-		z
-	]), se = /* @__PURE__ */ jsxs(Fragment$1, { children: [
+		F,
+		m,
+		ie,
+		H,
+		A,
+		K,
+		C
+	]), se = useMemo(() => ({
+		activate: k("activate", (e) => {
+			let t = V?.items.find((t) => t.id === e);
+			t && activateResolvedSummaryAction(t, R);
+		}, { validate: (e) => !!V?.items.some((t) => t.id === e && t.action !== void 0) }),
+		restart: k("restart", R)
+	}), [
+		k,
+		R,
+		V
+	]), ce = /* @__PURE__ */ jsxs(Fragment$1, { children: [
 		/* @__PURE__ */ jsx(SummaryBonusAwards, {
-			summaryFields: W,
-			paymentStatus: i
+			summaryFields: K,
+			paymentStatus: m
 		}),
-		G && /* @__PURE__ */ jsx(SuggestedPaymentTypePanel, { summaryFields: W }),
+		q && /* @__PURE__ */ jsx(SuggestedPaymentTypePanel, { summaryFields: K }),
 		/* @__PURE__ */ jsxs("div", {
 			"data-slot": "route-summary-action-stack",
 			className: "flex flex-col gap-3",
 			children: [/* @__PURE__ */ jsx(PaymentSummaryDetails, {
-				summaryFields: W,
+				summaryFields: K,
 				presentationSlot: !0,
 				animateEntrance: !0,
 				animationDirection: "forward",
 				animationStyleOptions: SUMMARY_ANIMATION_STYLE_OPTIONS
 			}), /* @__PURE__ */ jsx(AdaptiveControlsFooter, {
 				domScope: "route-summary-actions",
-				items: ie,
-				fixed: p
+				items: ne,
+				fixed: l
 			})]
 		})
-	] }), ce = useCallback((t) => /* @__PURE__ */ jsx(SubContainer, {
+	] }), J = useCallback((t) => /* @__PURE__ */ jsx(SubContainer, {
 		id: e.id("route-summary"),
 		className: e.className("route-summary"),
 		contentClassName: twJoin(e.className("route-summary-content"), ENTRANCE_ANIMATION_SURFACE_CLASSNAME, "gap-[var(--pc-space-bonus-summary-block-gap,var(--pc-bonus-summary-block-gap,1.5rem))]"),
 		stickyHeader: !0,
 		header: /* @__PURE__ */ jsx(StatusHeader, {
-			title: oe,
-			presentationTitle: S(i),
-			subtitle: U,
-			theme: I,
+			title: G,
+			presentationTitle: C(m),
+			subtitle: ae,
+			theme: L,
 			className: "pb-[var(--pc-space-bonus-summary-block-gap,var(--pc-bonus-summary-block-gap,1.5rem))]",
 			subtitleClassName: "mb-0",
 			leading: /* @__PURE__ */ jsx(Icon, {
 				className: STATUS_HEADER_VISUAL_CLASS_NAME,
-				name: F,
+				name: I,
 				backgroundColor: "var(--pc-color-surface)",
 				foregroundColor: "var(--pc-color-text)"
 			})
@@ -16411,19 +16615,19 @@ function SummaryView() {
 		children: t
 	}), [
 		e,
-		U,
-		oe,
-		F,
-		i,
-		S,
-		I
+		ae,
+		G,
+		I,
+		m,
+		C,
+		L
 	]);
 	return /* @__PURE__ */ jsx(CashierScreenOutlet, {
 		id: "summary",
-		model: K,
-		actions: q,
-		frame: ce,
-		children: se
+		model: oe,
+		actions: se,
+		frame: J,
+		children: ce
 	});
 }
 //#endregion
@@ -16841,7 +17045,7 @@ var HEALTHY_RECONCILIATION_MS = 6e4, RECOVERING_RECONCILIATION_MS = 15e3, JSON_R
 	3e4,
 	6e4,
 	12e4
-], INITIAL_NOT_FOUND_GRACE_MS = 6e4, FOREGROUND_COALESCE_MS = 250, EVENT_SOURCE_CONNECTING = 0, EVENT_SOURCE_OPEN = 1, EVENT_SOURCE_CLOSED = 2, PAYMENT_STATUS_ERROR_KEY = "error.payment_status_unavailable", INITIAL_SNAPSHOT = Object.freeze({
+], NOT_FOUND_GRACE_MS = 6e4, FOREGROUND_COALESCE_MS = 250, EVENT_SOURCE_CONNECTING = 0, EVENT_SOURCE_OPEN = 1, EVENT_SOURCE_CLOSED = 2, PAYMENT_STATUS_ERROR_KEY = "error.payment_status_unavailable", INITIAL_SNAPSHOT = Object.freeze({
 	phase: "idle",
 	payment: void 0,
 	paymentId: null,
@@ -16857,7 +17061,7 @@ var HEALTHY_RECONCILIATION_MS = 6e4, RECOVERING_RECONCILIATION_MS = 15e3, JSON_R
 	},
 	signal: i,
 	throwOnError: !1
-}), getClientBaseUrl = (e) => e.getConfig().baseUrl ?? "", samePayment = (e, t) => JSON.stringify(e) === JSON.stringify(t), isMeaningfulPayload = (e) => !!(e?.status || e?.redirect || e?.form), toMessageEvent = ({ merchantId: e, payment: t }) => ({
+}), normaliseApiBaseUrl = (e) => (e ?? "").replace(/\/+$/, ""), samePayment = (e, t) => JSON.stringify(e) === JSON.stringify(t), isMeaningfulPayload = (e) => !!(e?.status || e?.redirect || e?.form), toMessageEvent = ({ merchantId: e, payment: t }) => ({
 	type: "message",
 	merchantId: e,
 	paymentId: t.paymentId,
@@ -16886,7 +17090,7 @@ var HEALTHY_RECONCILIATION_MS = 6e4, RECOVERING_RECONCILIATION_MS = 15e3, JSON_R
 		} : {}
 	};
 	let a = {};
-	return r.redirect ? a = { redirect: r.redirect } : r.form && (a = { form: r.form }), n.redirect ? a = { redirect: n.redirect } : n.form && (a = { form: n.form }), {
+	return r.redirect && !(r.redirect.actionId && r.redirect.timeout) ? a = { redirect: r.redirect } : r.form && (a = { form: r.form }), n.redirect ? a = { redirect: n.redirect } : n.form && (a = { form: n.form }), {
 		paymentId: t,
 		...i ? {
 			status: i,
@@ -16895,59 +17099,59 @@ var HEALTHY_RECONCILIATION_MS = 6e4, RECOVERING_RECONCILIATION_MS = 15e3, JSON_R
 		...a
 	};
 }, createPaymentLifecycleTracker = (e = {}) => {
-	let t = e.createEventSource ?? ((e, t) => new EventSource(e, t)), n = e.fetchStatus ?? defaultFetchStatus, r = e.now ?? Date.now, i = INITIAL_SNAPSHOT, a, o = !1, s = 0, c = 0, l = 0, u = !1, d = null, f = null, p = null, m = null, g = null, _ = 0, y = null, b = !1, x = null, S = null, C = null, T = null, E = 0, D = 0, O = !1, k = !1, A = !1, j = null, M = !1, N = !1, P = /* @__PURE__ */ new Set(), F = /* @__PURE__ */ new Set(), I = /* @__PURE__ */ new WeakMap(), L = () => typeof document < "u" && document.visibilityState === "hidden", R = (e, t) => {
+	let t = e.createEventSource ?? ((e, t) => new EventSource(e, t)), n = e.fetchStatus ?? defaultFetchStatus, r = e.now ?? Date.now, i = INITIAL_SNAPSHOT, a, o = !1, s = 0, c = 0, l = null, u = !1, d = !1, f = null, p = null, m = null, g = null, _ = null, y = null, b = 0, x = null, S = !1, C = null, T = null, E = null, D = null, O = 0, k = 0, A = !1, j = !1, M = !1, N = null, P = !1, F = !1, I = /* @__PURE__ */ new Set(), L = /* @__PURE__ */ new Set(), R = /* @__PURE__ */ new WeakMap(), z = () => typeof document < "u" && document.visibilityState === "hidden", B = (e, t) => {
 		cashierDebugLogger.log(a?.debug, "[Cashier] Payment status recovery transition", {
 			reason: e,
 			...t ?? {}
 		});
-	}, ee = (e) => {
-		(i.phase !== e.phase || i.payment !== e.payment || i.paymentId !== e.paymentId || i.errorMessage !== e.errorMessage || i.fatalStatus !== e.fatalStatus) && (i = Object.freeze(e), P.forEach((e) => {
+	}, V = (e) => {
+		(i.phase !== e.phase || i.payment !== e.payment || i.paymentId !== e.paymentId || i.errorMessage !== e.errorMessage || i.fatalStatus !== e.fatalStatus) && (i = Object.freeze(e), I.forEach((e) => {
 			e();
 		}));
-	}, z = (e, t) => {
-		ee({
+	}, H = (e, t) => {
+		V({
 			...i,
 			phase: e,
 			errorMessage: t?.errorMessage ?? null,
 			fatalStatus: t?.fatalStatus ?? null
 		});
-	}, B = (e) => (e !== null && globalThis.clearTimeout(e), null), te = (e) => {
-		e && p !== e || (m = B(m), p = null);
+	}, U = (e) => (e !== null && globalThis.clearTimeout(e), null), ee = (e) => {
+		e && g !== e || (_ = U(_), g = null);
+	}, te = () => {
+		_ = U(_), g?.abort(), g = null;
 	}, ne = () => {
-		m = B(m), p?.abort(), p = null;
+		C = U(C), T = null, S = !1, x &&= (x.onopen = null, x.onmessage = null, x.onerror = null, x.close(), null);
+	}, W = () => {
+		y = U(y), E = U(E), D = null, C = U(C), T = null, N = U(N), P = !1;
 	}, re = () => {
-		x = B(x), S = null, b = !1, y &&= (y.onopen = null, y.onmessage = null, y.onerror = null, y.close(), null);
-	}, ie = () => {
-		g = B(g), C = B(C), T = null, x = B(x), S = null, j = B(j), M = !1;
-	}, V = () => {
-		s += 1, re(), ne(), ie();
-	}, H = (e, t) => e === s && (!t || t === y) && !!i.paymentId, ae = (e) => {
+		s += 1, ne(), te(), W();
+	}, ie = (e, t) => e === s && (!t || t === x) && !!i.paymentId, G = (e) => {
 		invokeCashierCallbackSafely({
 			callback: a?.onPaymentUpdated,
 			callbackName: "onPaymentUpdated",
 			debug: a?.debug,
 			payload: e
 		});
-	}, oe = (e) => {
-		d !== e.paymentId && (d = e.paymentId, invokeCashierCallbackSafely({
+	}, ae = (e) => {
+		p !== e.paymentId && (p = e.paymentId, invokeCashierCallbackSafely({
 			callback: a?.onPaymentFinished,
 			callbackName: "onPaymentFinished",
 			debug: a?.debug,
 			payload: e
 		}));
-	}, U = () => {
-		!N || typeof document > "u" || (document.removeEventListener("visibilitychange", _e), typeof window < "u" && window.removeEventListener("focus", ve), N = !1);
-	}, W = (e) => {
-		V(), U(), ee({
+	}, K = () => {
+		!F || typeof document > "u" || (document.removeEventListener("visibilitychange", ye), typeof window < "u" && window.removeEventListener("focus", be), F = !1);
+	}, q = (e) => {
+		re(), K(), V({
 			phase: "terminal",
 			payment: e,
 			paymentId: e.paymentId,
 			errorMessage: null,
 			fatalStatus: null
-		}), R("terminal");
-	}, G = (e) => {
-		W(e), oe(e);
-	}, K = (e) => {
+		}), B("terminal");
+	}, oe = (e) => {
+		q(e), ae(e);
+	}, se = (e) => {
 		let t = i.paymentId;
 		if (!t || e.paymentId && e.paymentId !== t || !isMeaningfulPayload(e)) return null;
 		let n = mergePaymentSnapshot({
@@ -16955,7 +17159,7 @@ var HEALTHY_RECONCILIATION_MS = 6e4, RECOVERING_RECONCILIATION_MS = 15e3, JSON_R
 			paymentId: t,
 			payload: e
 		}), r = !samePayment(i.payment, n);
-		return r && (c += 1, isTerminalPaymentStatus(n.status) || ee({
+		return r && (c += 1, isTerminalPaymentStatus(n.status) || V({
 			...i,
 			payment: n,
 			paymentId: t
@@ -16963,58 +17167,58 @@ var HEALTHY_RECONCILIATION_MS = 6e4, RECOVERING_RECONCILIATION_MS = 15e3, JSON_R
 			changed: r,
 			payment: n
 		};
-	}, q = (e, t) => {
-		g = B(g), !L() && (g = globalThis.setTimeout(() => {
-			g = null, X("scheduled-json", t);
+	}, ce = (e, t) => {
+		y = U(y), !z() && (y = globalThis.setTimeout(() => {
+			y = null, Q("scheduled-json", t);
 		}, e));
-	}, se = (e, t) => {
+	}, J = (e, t) => {
 		if (t !== s) return;
-		let n = JSON_RETRY_DELAYS_MS[Math.min(_, JSON_RETRY_DELAYS_MS.length - 1)];
-		_ += 1, z("recovering"), R(e, { retryInMs: n }), q(n, t);
-	}, ce = () => !!(y && b && y.readyState !== EVENT_SOURCE_CLOSED), J = () => !!(y && b && y.readyState === EVENT_SOURCE_OPEN && !O), le = () => J() ? HEALTHY_RECONCILIATION_MS : RECOVERING_RECONCILIATION_MS, ue = (e) => {
-		g === null || p || _ > 0 || !J() || q(HEALTHY_RECONCILIATION_MS, e);
-	}, Y = (e, t) => {
-		V(), U(), z("fatal", {
+		let n = JSON_RETRY_DELAYS_MS[Math.min(b, JSON_RETRY_DELAYS_MS.length - 1)];
+		b += 1, H("recovering"), B(e, { retryInMs: n }), ce(n, t);
+	}, le = () => !!(x && S && x.readyState !== EVENT_SOURCE_CLOSED), ue = () => !!(x && S && x.readyState === EVENT_SOURCE_OPEN && !A), Y = () => ue() ? HEALTHY_RECONCILIATION_MS : RECOVERING_RECONCILIATION_MS, de = (e) => {
+		y === null || g || b > 0 || !ue() || ce(HEALTHY_RECONCILIATION_MS, e);
+	}, X = (e, t) => {
+		re(), K(), H("fatal", {
 			errorMessage: PAYMENT_STATUS_ERROR_KEY,
 			fatalStatus: e
-		}), R(t, { status: e });
-	}, de = (e, t, n) => {
-		if (u = !0, _ = 0, c !== n && !isTerminalPaymentStatus(e.status)) {
-			z(O ? "recovering" : "tracking"), R("stale-json-snapshot-ignored"), q(le(), t);
+		}), B(t, { status: e });
+	}, Z = (e, t, n) => {
+		if (l = null, d = !0, b = 0, c !== n && !isTerminalPaymentStatus(e.status)) {
+			H(A ? "recovering" : "tracking"), B("stale-json-snapshot-ignored"), ce(Y(), t);
 			return;
 		}
-		let r = K(e);
+		let r = se(e);
 		if (!r) {
-			se("invalid-json-identity", t);
+			J("invalid-json-identity", t);
 			return;
 		}
-		let o = isTerminalPaymentStatus(r.payment.status), l = r.changed && a ? toMessageEvent({
+		let o = isTerminalPaymentStatus(r.payment.status), u = r.changed && a ? toMessageEvent({
 			merchantId: a.merchantId,
 			payment: r.payment
 		}) : null;
-		if (o && W(r.payment), l && ae(l), o) {
-			oe(r.payment);
+		if (o && q(r.payment), u && G(u), o) {
+			ae(r.payment);
 			return;
 		}
-		t === s && r.payment.paymentId === i.paymentId && (z(O ? "recovering" : "tracking"), q(le(), t));
+		t === s && r.payment.paymentId === i.paymentId && (H(A ? "recovering" : "tracking"), ce(Y(), t));
 	};
-	async function X(e, t = s, d = !1) {
-		if (!o || t !== s || !i.paymentId || !a || i.phase === "fatal" || i.phase === "terminal" || L() && !d || p) return;
-		let f = new AbortController();
-		p = f, m = globalThis.setTimeout(() => {
-			f.abort();
+	async function Q(e, t = s, u = !1) {
+		if (!o || t !== s || !i.paymentId || !a || i.phase === "fatal" || i.phase === "terminal" || z() && !u || g) return;
+		let d = new AbortController();
+		g = d, _ = globalThis.setTimeout(() => {
+			d.abort();
 		}, JSON_TIMEOUT_MS);
-		let g = i.paymentId, _ = c;
+		let f = i.paymentId, p = c;
 		try {
 			let e = await n({
 				client: a.client,
 				merchantId: a.merchantId,
-				paymentId: g,
+				paymentId: f,
 				sessionId: a.sessionId,
-				signal: f.signal,
+				signal: d.signal,
 				...a.userId ? { userId: a.userId } : {}
 			});
-			if (te(f), t !== s || g !== i.paymentId) return;
+			if (ee(d), t !== s || f !== i.paymentId) return;
 			let o = e.response?.status;
 			if (e.data !== void 0) {
 				let n = null;
@@ -17023,37 +17227,36 @@ var HEALTHY_RECONCILIATION_MS = 6e4, RECOVERING_RECONCILIATION_MS = 15e3, JSON_R
 				} catch {
 					n = null;
 				}
-				if (n && n.paymentId === g && isMeaningfulPayload(n)) {
-					de(n, t, _);
+				if (n && n.paymentId === f && isMeaningfulPayload(n)) {
+					Z(n, t, p);
 					return;
 				}
-				se("malformed-json-response", t);
+				J("malformed-json-response", t);
 				return;
 			}
-			if (o === 401 && ce()) {
-				se("transient-json-auth-with-usable-stream", t);
+			if (o === 401 && le()) {
+				J("transient-json-auth-with-usable-stream", t);
 				return;
 			}
 			if (o === 400 || o === 401 || o === 409) {
-				Y(o, "fatal-json-response");
+				X(o, "fatal-json-response");
 				return;
 			}
 			if (o === 404) {
-				let e = r() - l;
-				if (u || e < INITIAL_NOT_FOUND_GRACE_MS) {
-					se("payment-not-found-yet", t);
+				if (l ??= r(), r() - l < NOT_FOUND_GRACE_MS) {
+					J("payment-not-found-yet", t);
 					return;
 				}
-				Y(o, "payment-not-found-after-grace");
+				X(o, "payment-not-found-after-grace");
 				return;
 			}
-			se(o ? `transient-json-${String(o)}` : "transient-json-network", t);
+			J(o ? `transient-json-${String(o)}` : "transient-json-network", t);
 		} catch {
-			if (te(f), t !== s || g !== i.paymentId) return;
-			se(f.signal.aborted ? "json-request-timeout" : `json-request-${e}-failed`, t);
+			if (ee(d), t !== s || f !== i.paymentId) return;
+			J(d.signal.aborted ? "json-request-timeout" : `json-request-${e}-failed`, t);
 		}
 	}
-	let Z = () => {
+	let fe = () => {
 		if (!a || !i.paymentId) return null;
 		let e = a.client.buildUrl({
 			baseUrl: a.client.getConfig().baseUrl,
@@ -17067,179 +17270,193 @@ var HEALTHY_RECONCILIATION_MS = 6e4, RECOVERING_RECONCILIATION_MS = 15e3, JSON_R
 			}
 		}), t = typeof window > "u" ? "http://localhost" : window.location.origin;
 		return new URL(e, t).toString();
-	}, fe = (e, t) => {
-		C = B(C);
-		let n = SSE_REOPEN_DELAYS_MS[Math.min(E, SSE_REOPEN_DELAYS_MS.length - 1)];
-		E += 1, T = r() + n, R(t, { reopenInMs: n }), !L() && (C = globalThis.setTimeout(() => {
-			C = null, T = null, Q(e);
-		}, n));
 	}, pe = (e, t) => {
-		e === s && (re(), z("recovering"), fe(e, t));
-	}, me = (e, t, n) => {
-		x = B(x), S = r() + n, !L() && (x = globalThis.setTimeout(() => {
-			x = null, S = null, !(t !== s || e !== y || !O) && pe(t, "native-reconnect-timeout");
+		E = U(E);
+		let n = SSE_REOPEN_DELAYS_MS[Math.min(O, SSE_REOPEN_DELAYS_MS.length - 1)];
+		O += 1, D = r() + n, B(t, { reopenInMs: n }), !z() && (E = globalThis.setTimeout(() => {
+			E = null, D = null, ge(e);
+		}, n));
+	}, me = (e, t) => {
+		e === s && (ne(), H("recovering"), pe(e, t));
+	}, $ = (e, t, n) => {
+		C = U(C), T = r() + n, !z() && (C = globalThis.setTimeout(() => {
+			C = null, T = null, !(t !== s || e !== x || !A) && me(t, "native-reconnect-timeout");
 		}, n));
 	}, he = (e, t) => {
-		if (!H(t, e) || (D += 1, z("recovering"), !H(t, e) || !a || !i.paymentId)) return;
+		if (!ie(t, e) || (k += 1, H("recovering"), !ie(t, e) || !a || !i.paymentId)) return;
 		let n = a.merchantId, r = i.paymentId;
-		if (A = !0, O || (O = !0, ae({
+		if (M = !0, A || (A = !0, G({
 			type: "error",
 			merchantId: n,
 			paymentId: r,
 			error: { message: "Payment status stream error" }
-		})), H(t, e)) {
-			if (X("sse-error", t), D === 1 && e.readyState === EVENT_SOURCE_CONNECTING) {
-				me(e, t, NATIVE_RECONNECT_GRACE_MS);
+		})), ie(t, e)) {
+			if (Q("sse-error", t), k === 1 && e.readyState === EVENT_SOURCE_CONNECTING) {
+				$(e, t, NATIVE_RECONNECT_GRACE_MS);
 				return;
 			}
-			if (L()) {
-				me(e, t, 0);
+			if (z()) {
+				$(e, t, 0);
 				return;
 			}
-			pe(t, e.readyState === EVENT_SOURCE_CLOSED ? "status-stream-closed" : "status-stream-repeated-error");
+			me(t, e.readyState === EVENT_SOURCE_CLOSED ? "status-stream-closed" : "status-stream-repeated-error");
 		}
 	};
-	function Q(e) {
-		if (!(!o || e !== s || !i.paymentId || !a || i.phase === "fatal" || i.phase === "terminal" || y)) try {
-			let n = Z();
+	function ge(e) {
+		if (!(!o || e !== s || !i.paymentId || !a || i.phase === "fatal" || i.phase === "terminal" || x)) try {
+			let n = fe();
 			if (!n) return;
-			A = k, k = !0;
+			M = j, j = !0;
 			let r = t(n, { withCredentials: !1 });
-			y = r, b = !1, R("status-stream-opened"), r.onopen = () => {
-				e === s && r === y && (x = B(x), S = null, C = B(C), T = null, E = 0, D = 0, O = !1, b = !0, z("tracking"), ue(e), R("status-stream-connected"));
+			x = r, S = !1, B("status-stream-opened"), r.onopen = () => {
+				e === s && r === x && (C = U(C), T = null, E = U(E), D = null, O = 0, k = 0, A = !1, S = !0, H("tracking"), de(e), B("status-stream-connected"));
 			}, r.onmessage = (t) => {
-				if (e !== s || r !== y || !a || !i.paymentId) return;
+				if (e !== s || r !== x || !a || !i.paymentId) return;
 				let n = typeof t.data == "string" ? t.data : "", o = n ? parseStatusStreamPayload(n, a.debug) : null;
 				if (o?.paymentId && o.paymentId !== i.paymentId) return;
-				b = !0, x = B(x), S = null, E = 0, D = 0, O = !1;
-				let c = u && o && isMeaningfulPayload(o) ? K(o) : null, l = !!(A && c && !c.changed);
-				A = !1;
-				let d = !!(c && isTerminalPaymentStatus(c.payment.status)), f = c ? toMessageEvent({
+				S = !0, C = U(C), T = null, O = 0, k = 0, A = !1;
+				let c = d && o && isMeaningfulPayload(o) ? se(o) : null;
+				c && (l = null);
+				let u = !!(M && c && !c.changed);
+				M = !1;
+				let f = !!(c && isTerminalPaymentStatus(c.payment.status)), p = c ? toMessageEvent({
 					merchantId: a.merchantId,
 					payment: c.payment
 				}) : toIdentityOnlyMessageEvent({
 					merchantId: a.merchantId,
 					paymentId: i.paymentId
 				});
-				if (d && c && W(c.payment), l || ae(f), d && c) {
-					oe(c.payment);
+				if (f && c && q(c.payment), u || G(p), f && c) {
+					ae(c.payment);
 					return;
 				}
-				e !== s || r !== y || c && c.payment.paymentId !== i.paymentId || (z("tracking"), ue(e));
+				e !== s || r !== x || c && c.payment.paymentId !== i.paymentId || (H("tracking"), de(e));
 			}, r.onerror = () => {
 				he(r, e);
 			};
 		} catch {
-			if (y = null, b = !1, O || (O = !0, ae({
+			if (x = null, S = !1, A || (A = !0, G({
 				type: "error",
 				merchantId: a.merchantId,
 				paymentId: i.paymentId,
 				error: { message: "Payment status stream error" }
-			})), !H(e)) return;
-			z("recovering"), X("status-stream-construction", e, !0), fe(e, "status-stream-construction-failed");
+			})), !ie(e)) return;
+			H("recovering"), Q("status-stream-construction", e, !0), pe(e, "status-stream-construction-failed");
 		}
 	}
-	let ge = (e) => {
+	let _e = (e) => {
 		if (!o || !a || !i.paymentId || !a.merchantId || !a.sessionId || i.phase === "fatal" || i.phase === "terminal") return;
 		let t = ++s;
-		z(k ? "recovering" : "tracking"), R(e), Q(t), X("tracking-start", t, !0);
-	}, $ = (e) => {
-		V(), _ = 0, E = 0, D = 0, O = !1, k = !0, z("recovering"), be(), ge(e);
+		H(j ? "recovering" : "tracking"), B(e), ge(t), Q("tracking-start", t, !0);
+	}, ve = (e) => {
+		re(), l = null, b = 0, O = 0, k = 0, A = !1, j = !0, H("recovering"), Se(), _e(e);
 	};
-	function _e() {
-		if (L()) {
-			g = B(g), C = B(C), x = B(x), j = B(j), M = !1;
+	function ye() {
+		if (z()) {
+			y = U(y), E = U(E), C = U(C), N = U(N), P = !1;
 			return;
 		}
-		if (T !== null && !y) {
-			let e = s, t = Math.max(0, T - r());
-			C = B(C), C = globalThis.setTimeout(() => {
-				C = null, T = null, Q(e);
+		if (D !== null && !x) {
+			let e = s, t = Math.max(0, D - r());
+			E = U(E), E = globalThis.setTimeout(() => {
+				E = null, D = null, ge(e);
 			}, t);
 		}
-		if (S !== null && y) {
-			let e = y, t = s, n = Math.max(0, S - r());
-			me(e, t, n);
+		if (T !== null && x) {
+			let e = x, t = s, n = Math.max(0, T - r());
+			$(e, t, n);
 		}
-		ye("document-visible");
-	}
-	function ve() {
-		ye("window-focus");
-	}
-	function ye(e) {
-		L() || M || (M = !0, j = B(j), j = globalThis.setTimeout(() => {
-			j = null, M = !1;
-		}, FOREGROUND_COALESCE_MS), X(e));
+		xe("document-visible");
 	}
 	function be() {
-		N || !o || !i.paymentId || typeof document > "u" || (document.addEventListener("visibilitychange", _e), typeof window < "u" && window.addEventListener("focus", ve), N = !0);
+		xe("window-focus");
 	}
-	let xe = () => {
-		V(), U(), i = INITIAL_SNAPSHOT, c = 0, l = 0, u = !1, d = null, f = null, _ = 0, E = 0, D = 0, O = !1, k = !1, P.forEach((e) => {
+	function xe(e) {
+		z() || P || (P = !0, N = U(N), N = globalThis.setTimeout(() => {
+			N = null, P = !1;
+		}, FOREGROUND_COALESCE_MS), Q(e));
+	}
+	function Se() {
+		F || !o || !i.paymentId || typeof document > "u" || (document.addEventListener("visibilitychange", ye), typeof window < "u" && window.addEventListener("focus", be), F = !0);
+	}
+	let Ce = () => {
+		re(), K(), i = INITIAL_SNAPSHOT, c = 0, l = null, u = !1, d = !1, p = null, m = null, b = 0, O = 0, k = 0, A = !1, j = !1, I.forEach((e) => {
 			e();
 		});
-	}, Se = (e, t, n) => {
-		let o = e.trim();
-		if (!o) return !1;
-		if (i.paymentId && i.paymentId !== o && i.phase !== "terminal" && i.phase !== "idle") return cashierDebugLogger.warn(a?.debug, "[Cashier] Ignored payment recovery while another payment is active."), !1;
-		if (i.paymentId === o) return n?.merchantOwnershipProved && (u = !0), !0;
-		V(), U(), l = r(), c = 0, u = n?.merchantOwnershipProved === !0, d = null, f = null, _ = 0, E = 0, D = 0, O = !1, k = !1;
-		let s = normalizePaymentStatus(t?.status) ?? normalizePaymentStatus(t?.paymentStatus) ?? "ongoing", p = {
+	}, we = (e) => {
+		if (!a) return {};
+		let t = normaliseApiBaseUrl(a.client.getConfig().baseUrl) !== normaliseApiBaseUrl(e.apiUrl), n = a.merchantId !== e.merchantId, r = !!a.userId && a.userId !== e.userId;
+		if (!t && !n && !r) return {};
+		let o = i.paymentId ?? void 0;
+		return B("payment-authority-boundary-changed"), a = void 0, Ce(), { boundaryClearedPaymentId: o };
+	}, Te = (e, t, n) => {
+		let r = e.trim();
+		if (!r) return !1;
+		if (i.paymentId && i.paymentId !== r && i.phase !== "terminal" && i.phase !== "idle") return cashierDebugLogger.warn(a?.debug, "[Cashier] Ignored payment recovery while another payment is active."), !1;
+		if (i.paymentId === r) return n?.createdLocally && (u = !0), n?.merchantOwnershipProved && (d = !0), n?.merchantOwnsProviderWindow && (f = r), !0;
+		re(), K(), l = null, c = 0, u = n?.createdLocally === !0, d = n?.merchantOwnershipProved === !0, f = n?.merchantOwnsProviderWindow === !0 ? r : null, p = null, m = null, b = 0, O = 0, k = 0, A = !1, j = !1;
+		let o = normalizePaymentStatus(t?.status) ?? normalizePaymentStatus(t?.paymentStatus) ?? "ongoing", s = {
 			...t,
-			paymentId: o,
-			status: s,
-			paymentStatus: s
+			paymentId: r,
+			status: o,
+			paymentStatus: o
 		};
-		return ee({
-			phase: isTerminalPaymentStatus(s) ? "terminal" : "tracking",
-			payment: p,
-			paymentId: o,
+		return V({
+			phase: isTerminalPaymentStatus(o) ? "terminal" : "tracking",
+			payment: s,
+			paymentId: r,
 			errorMessage: null,
 			fatalStatus: null
-		}), isTerminalPaymentStatus(s) ? (G(p), !0) : (be(), ge("payment-tracking-started"), !0);
+		}), isTerminalPaymentStatus(o) ? (oe(s), !0) : (Se(), _e("payment-tracking-started"), !0);
 	};
 	return {
 		activate: () => {
-			o || (o = !0, be(), i.paymentId && i.phase !== "terminal" && i.phase !== "fatal" && ge("tracker-activated"));
+			o || (o = !0, Se(), i.paymentId && i.phase !== "terminal" && i.phase !== "fatal" && _e("tracker-activated"));
 		},
 		deactivate: () => {
-			o && (o = !1, V(), U());
+			o && (o = !1, re(), K());
 		},
 		configure: (e) => {
-			let t = a;
-			if (a = e, !t || !i.paymentId) return o && i.paymentId && (be(), ge("tracker-configured")), {};
-			let n = getClientBaseUrl(t.client) !== getClientBaseUrl(e.client), r = t.merchantId !== e.merchantId, s = !!t.userId && t.userId !== e.userId;
-			if (n || r || s) {
-				let e = i.paymentId;
-				return xe(), R("payment-authority-boundary-changed"), { boundaryClearedPaymentId: e };
-			}
-			let c = t.sessionId !== e.sessionId, l = !t.userId && !!e.userId, u = i.phase !== "fatal" || i.fatalStatus === 401;
-			return i.phase !== "terminal" && u && (c || l) && $(c ? "session-refreshed" : "user-identity-resolved"), {};
+			let t = a, n = we({
+				apiUrl: e.client.getConfig().baseUrl ?? "",
+				merchantId: e.merchantId,
+				userId: e.userId
+			});
+			if (a = e, I.forEach((e) => {
+				e();
+			}), n.boundaryClearedPaymentId) return n;
+			if (!t || !i.paymentId) return o && i.paymentId && (Se(), _e("tracker-configured")), {};
+			let r = t.sessionId !== e.sessionId, s = !t.userId && !!e.userId, c = i.phase !== "fatal" || i.fatalStatus === 401 || i.fatalStatus === 404;
+			return i.phase !== "terminal" && c && (r || s) && ve(r ? "session-refreshed" : "user-identity-resolved"), {};
 		},
+		clearOnScopeChange: we,
 		getSnapshot: () => i,
-		subscribe: (e) => (P.add(e), () => P.delete(e)),
-		track: Se,
+		getConfiguration: () => a,
+		wasCreatedLocally: (e) => i.paymentId === e && u,
+		subscribe: (e) => (I.add(e), () => I.delete(e)),
+		track: Te,
 		adoptRecovery: (e) => {
 			let t = e.trim();
-			if (!t || F.has(t)) return !!t;
-			let n = Se(t);
-			return n && F.add(t), n;
+			if (!t || L.has(t)) return !!t;
+			let n = Te(t);
+			return n && L.add(t), n;
 		},
-		clear: xe,
+		clear: Ce,
 		refresh: (e = "manual-refresh") => {
 			if (!(!o || !a || !i.paymentId || i.phase === "idle" || i.phase === "terminal")) {
 				if (i.phase === "fatal") {
-					l = r(), $(e);
+					ve(e);
 					return;
 				}
-				X(e, s, !0);
+				Q(e, s, !0);
 			}
 		},
 		claimProviderAction: (e, t) => {
-			let n = I.get(e) ?? /* @__PURE__ */ new Set();
-			return !n.has(t) && (n.add(t), I.set(e, n), !0);
+			let n = R.get(e) ?? /* @__PURE__ */ new Set();
+			return !n.has(t) && (n.add(t), R.set(e, n), !0);
 		},
-		claimTerminalNavigation: (e) => f !== e && (f = e, !0)
+		merchantOwnsProviderWindow: (e) => f !== null && f === e,
+		claimTerminalNavigation: (e) => m !== e && (m = e, !0)
 	};
 }, createCashierRouter = (e) => createRouter({
 	routeTree,
@@ -17356,21 +17573,32 @@ function CashierRootFrame({ cashierConfig: e, children: t }) {
 	});
 }
 var Cashier$1 = forwardRef(function(e, t) {
-	let n = e.presentation, r = e.resumePaymentId, [i] = useState(createPaymentLifecycleTracker), a = "config" in e ? e.config : Object.fromEntries(Object.entries(e).filter(([e]) => e !== "presentation" && e !== "resumePaymentId")), o = useMemo(() => prepareCashierConfig(a), [a]), s = getCashierRemountKey(o);
-	return useEffect(() => (i.activate(), () => {
+	let n = e.presentation, r = e.resumePaymentId, [i] = useState(createPaymentLifecycleTracker), a = "config" in e ? e.config : Object.fromEntries(Object.entries(e).filter(([e]) => e !== "presentation" && e !== "resumePaymentId")), o = useMemo(() => prepareCashierConfig(a), [a]), s = getCashierRemountKey(o), { apiUrl: c, merchantId: l, userId: u } = o;
+	return useLayoutEffect(() => {
+		i.clearOnScopeChange({
+			apiUrl: c,
+			merchantId: l,
+			userId: u
+		});
+	}, [
+		i,
+		c,
+		l,
+		u
+	]), useEffect(() => (i.activate(), () => {
 		i.deactivate();
 	}), [i]), useEffect(() => {
 		typeof r != "string" || !r.trim() || i.adoptRecovery(r);
-	}, [i, r]), /* @__PURE__ */ jsx(PaymentLifecycleTrackerProvider, {
+	}, [i, r]), /* @__PURE__ */ jsxs(PaymentLifecycleTrackerProvider, {
 		tracker: i,
-		children: /* @__PURE__ */ jsx(CashierPresentationProvider, {
+		children: [/* @__PURE__ */ jsx(BrowserActionLifecycle, {}), /* @__PURE__ */ jsx(CashierPresentationProvider, {
 			presentation: n,
 			children: /* @__PURE__ */ jsx(CashierRoot, {
 				clientConfigOverrides: a,
 				clientCashierConfig: o,
 				ref: t
 			}, s)
-		})
+		})]
 	});
 }), CashierRoot = forwardRef(function({ clientConfigOverrides: e, clientCashierConfig: t }, n) {
 	let [r] = useState(() => createClient({
@@ -17547,7 +17775,7 @@ var Cashier$1 = forwardRef(function(e, t) {
 		u
 	]), N = useRef(null), P = E.startsWith("/provider"), F = E.startsWith("/summary"), I = t && !P && !F, L = null;
 	p ? L = "method-transition" : I && (L = "bootstrap-refresh");
-	let R = !!x.uiUserBalance, ee = x.uiPaymentMethodSwitcher || R;
+	let R = !!x.uiUserBalance, z = x.uiPaymentMethodSwitcher || R;
 	useEffect(() => {
 		let e = T.subscribe("onResolved", () => {
 			let e = T.state.location.pathname, t = resolveCashierProgressBarTheme({
@@ -17560,7 +17788,7 @@ var Cashier$1 = forwardRef(function(e, t) {
 			e();
 		};
 	}, [T]);
-	let z = useCallback(() => {
+	let B = useCallback(() => {
 		let e = {
 			...S.current,
 			hasSelectedBonusOverride: !1
@@ -17597,11 +17825,11 @@ var Cashier$1 = forwardRef(function(e, t) {
 		},
 		setSelectedBonusCode: (t) => {
 			if (t === null) {
-				z();
+				B();
 				return;
 			}
 			if (!e.uiBonuses) {
-				z();
+				B();
 				return;
 			}
 			let n = S.current.hasBonusesOverride ? S.current.bonuses : e.bonuses, r = normalizeBonuses(n).some((e) => e.code === t) ? t : null, i = {
@@ -17613,14 +17841,14 @@ var Cashier$1 = forwardRef(function(e, t) {
 				selectedBonusCode: r
 			});
 		},
-		clearSelectedBonus: z
+		clearSelectedBonus: B
 	}), [
 		e.bonuses,
 		e.uiBonuses,
-		z,
+		B,
 		l
 	]);
-	let B = e.uiBonuses && (d.hasBonusesOverride || d.hasUserOverride || d.hasUserBalanceOverride || d.hasSelectedBonusOverride);
+	let V = e.uiBonuses && (d.hasBonusesOverride || d.hasUserOverride || d.hasUserBalanceOverride || d.hasSelectedBonusOverride);
 	return /* @__PURE__ */ jsx(CashierContext.Provider, {
 		value: j,
 		children: /* @__PURE__ */ jsx(CashierSummaryStateProvider, {
@@ -17646,7 +17874,7 @@ var Cashier$1 = forwardRef(function(e, t) {
 										className: twJoin("pc-cashier__app-shell", "flex min-h-0 flex-1"),
 										children: /* @__PURE__ */ jsxs("div", {
 											className: twJoin("pc-cashier__app-content", "relative flex min-h-0 flex-1 flex-col"),
-											children: [ee && /* @__PURE__ */ jsx(MethodSwitcher, {
+											children: [z && /* @__PURE__ */ jsx(MethodSwitcher, {
 												method: c.method,
 												onSelect: A,
 												disabled: P || e,
@@ -17660,7 +17888,7 @@ var Cashier$1 = forwardRef(function(e, t) {
 												children: [/* @__PURE__ */ jsx(RouterScrollManager, {
 													router: T,
 													scrollContainerRef: N
-												}), /* @__PURE__ */ jsx(InteractivePromptSessionProvider, { children: /* @__PURE__ */ jsxs(PendingWithdrawalCancellationProvider, { children: [B && /* @__PURE__ */ jsx(BonusSelectionBridge, {}), /* @__PURE__ */ jsx(RouterProvider, {
+												}), /* @__PURE__ */ jsx(InteractivePromptSessionProvider, { children: /* @__PURE__ */ jsxs(PendingWithdrawalCancellationProvider, { children: [V && /* @__PURE__ */ jsx(BonusSelectionBridge, {}), /* @__PURE__ */ jsx(RouterProvider, {
 													router: T,
 													context: M
 												})] }) })]

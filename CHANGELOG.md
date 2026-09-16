@@ -2,6 +2,40 @@
 
 ## Unreleased
 
+## 1.6.1
+
+### Added
+
+- Added `returnUrl`, sent on payment creation, so the payer is delivered to a
+  merchant page once the payment flow is finished. Set it when a provider opens
+  a window of its own that Cashier cannot close: the merchant page loads there
+  and decides what happens to that window. Cashier leaves the provider window of
+  a payment created with a return URL open for the merchant page to close. The
+  host must be listed in `returnUrlHosts` on the merchant configuration or
+  payment creation is rejected, `paymentId` is appended to the URL, and a
+  provider page rendered inside Cashier is never redirected.
+
+### Fixed
+
+- Fixed spurious origin-mismatch errors while secure card fields are loading.
+- Screen readers can announce helper text and validation errors when focusing
+  payment text inputs and multiline fields.
+- Selection fields connect their error and helper text to the control so screen
+  readers can announce it when the field receives focus.
+
+- The payment summary now updates on its own when a payment finishes after the
+  user has completed their part of the flow. Previously a payment still marked
+  pending at that moment stayed pending on screen until the page was reloaded,
+  even once it had succeeded or failed. `onPaymentUpdated` is called with the
+  final status when this happens.
+
+- Card payments can continue when the issuer's 3DS Method callback is missing,
+  once timeout reporting is enabled in the PayControl environment. Keep the
+  active Cashier mounted: full recreation resumes status observation only.
+- Persistent payment-status `404` responses show **Try again** after 60 seconds.
+  Cashier retains the payment and prevents a second attempt while status access
+  is unavailable.
+
 ## 1.6.0
 
 ### Added

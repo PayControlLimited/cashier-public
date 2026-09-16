@@ -15,6 +15,11 @@ export type PaymentLifecycleSnapshot = Readonly<{
     errorMessage: string | null;
     fatalStatus: number | null;
 }>;
+type PaymentAuthorityScope = Readonly<{
+    apiUrl: string;
+    merchantId: string;
+    userId?: string;
+}>;
 export type PaymentLifecycleTrackerConfiguration = Readonly<{
     client: Client;
     merchantId: string;
@@ -48,11 +53,19 @@ export type PaymentLifecycleTracker = Readonly<{
     configure: (configuration: PaymentLifecycleTrackerConfiguration) => {
         boundaryClearedPaymentId?: string;
     };
+    clearOnScopeChange: (scope: PaymentAuthorityScope) => {
+        boundaryClearedPaymentId?: string;
+    };
     getSnapshot: () => PaymentLifecycleSnapshot;
+    getConfiguration: () => PaymentLifecycleTrackerConfiguration | undefined;
+    wasCreatedLocally: (paymentId: string) => boolean;
     subscribe: (listener: () => void) => () => void;
     track: (paymentId: string, initial?: Partial<TrackedPaymentProgress>, options?: Readonly<{
+        createdLocally?: boolean;
         merchantOwnershipProved?: boolean;
+        merchantOwnsProviderWindow?: boolean;
     }>) => boolean;
+    merchantOwnsProviderWindow: (paymentId: string) => boolean;
     adoptRecovery: (paymentId: string) => boolean;
     clear: () => void;
     refresh: (reason?: string) => void;

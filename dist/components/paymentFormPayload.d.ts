@@ -3,7 +3,7 @@ import { PaymentType } from '../types/payment.js';
 import { HostedFieldsController, HostedFieldsFormData } from '../lib/hostedFields.js';
 import { PaymentFormValues } from '../utils/paymentFieldUtils.js';
 type RequiredPaymentPayloadParams = Pick<PaymentsRequest, 'merchantId' | 'userId' | 'sessionId' | 'accountId' | 'currency'>;
-type OptionalPaymentPayloadParams = Partial<Pick<PaymentsRequest, 'service' | 'bonusCode' | 'locales' | 'extra'>>;
+type OptionalPaymentPayloadParams = Partial<Pick<PaymentsRequest, 'service' | 'bonusCode' | 'locales' | 'extra' | 'returnUrl'>>;
 export type PreparePaymentPayloadParams = RequiredPaymentPayloadParams & OptionalPaymentPayloadParams & {
     values: PaymentFormValues;
     method: PaymentType['method'] | undefined;
