@@ -1,4 +1,4 @@
-import { Di as e, Oi as t, Xr as n, Zt as r, ki as i, ln as a } from "./inlinePaymentSubmit-C3GD-D2V.js";
+import { Ur as e, Zt as t, fi as n, ln as r, mi as i, pi as a } from "./inlinePaymentSubmit-Cw-MCOPa.js";
 import * as o from "react";
 import s, { useCallback as c, useDebugValue as l, useEffect as u, useLayoutEffect as d, useMemo as f, useRef as p, useState as m, useSyncExternalStore as h } from "react";
 import { jsx as g, jsxs as _ } from "react/jsx-runtime";
@@ -1167,7 +1167,7 @@ var dt = o.forwardRef((e, t) => {
 		}), this.useLoaderData = (e) => Je({
 			...e,
 			from: this.id
-		}), this.useNavigate = () => t({ from: this.fullPath }), this.Link = s.forwardRef((e, t) => /* @__PURE__ */ g(dt, {
+		}), this.useNavigate = () => a({ from: this.fullPath }), this.Link = s.forwardRef((e, t) => /* @__PURE__ */ g(dt, {
 			ref: t,
 			from: this.fullPath,
 			...e
@@ -1200,7 +1200,7 @@ var mt = class extends Ie {
 		}), this.useLoaderData = (e) => Je({
 			...e,
 			from: this.id
-		}), this.useNavigate = () => t({ from: this.fullPath }), this.Link = s.forwardRef((e, t) => /* @__PURE__ */ g(dt, {
+		}), this.useNavigate = () => a({ from: this.fullPath }), this.Link = s.forwardRef((e, t) => /* @__PURE__ */ g(dt, {
 			ref: t,
 			from: this.fullPath,
 			...e
@@ -1230,21 +1230,21 @@ var _t = "animate-[pc-cashier-fullscreen-content-reveal_180ms_ease-out_both]", v
 		};
 	}, []), e;
 };
-function bt({ label: e = "Loading payment methods", labelKey: t, message: i, messageKey: a, testId: o = "cashier-fullscreen-loading", loaderSlot: s = "cashier-fullscreen-logo-loader", delayMs: l = 180, onVisibleChange: u, presentationScreen: d = "loading" }) {
+function bt({ label: n = "Loading payment methods", labelKey: r, message: i, messageKey: a, testId: o = "cashier-fullscreen-loading", loaderSlot: s = "cashier-fullscreen-logo-loader", delayMs: l = 180, onVisibleChange: u, presentationScreen: d = "loading" }) {
 	let [f, p] = m(!1), h = c((e) => {
 		p(e), u?.(e);
 	}, [u]);
-	return /* @__PURE__ */ g(r, {
+	return /* @__PURE__ */ g(t, {
 		id: d,
-		title: e,
-		titleKey: t,
+		title: n,
+		titleKey: r,
 		message: i,
 		messageKey: a,
 		busy: !0,
 		overrideEnabled: f,
-		children: /* @__PURE__ */ g(n, {
+		children: /* @__PURE__ */ g(e, {
 			className: "pc-cashier__fullscreen-loader",
-			label: e,
+			label: n,
 			message: i,
 			testId: o,
 			delayMs: l,
@@ -1255,21 +1255,21 @@ function bt({ label: e = "Loading payment methods", labelKey: t, message: i, mes
 		})
 	});
 }
-function $({ label: e = "Loading payment methods", labelKey: t, message: r, messageKey: i, testId: o = "cashier-fullscreen-loading", loaderSlot: s = "cashier-fullscreen-logo-loader", delayMs: c = 180, onVisibleChange: l, presentationScreen: u = "loading" }) {
-	return a(u) ? /* @__PURE__ */ g(bt, {
-		label: e,
-		labelKey: t,
-		message: r,
-		messageKey: i,
+function $({ label: t = "Loading payment methods", labelKey: n, message: i, messageKey: a, testId: o = "cashier-fullscreen-loading", loaderSlot: s = "cashier-fullscreen-logo-loader", delayMs: c = 180, onVisibleChange: l, presentationScreen: u = "loading" }) {
+	return r(u) ? /* @__PURE__ */ g(bt, {
+		label: t,
+		labelKey: n,
+		message: i,
+		messageKey: a,
 		testId: o,
 		loaderSlot: s,
 		delayMs: c,
 		onVisibleChange: l,
 		presentationScreen: u
-	}) : /* @__PURE__ */ g(n, {
+	}) : /* @__PURE__ */ g(e, {
 		className: "pc-cashier__fullscreen-loader",
-		label: e,
-		message: r,
+		label: t,
+		message: i,
 		testId: o,
 		delayMs: c,
 		indicatorSize: "xl",
@@ -1278,11 +1278,11 @@ function $({ label: e = "Loading payment methods", labelKey: t, message: r, mess
 		onVisibleChange: l
 	});
 }
-function xt({ isLoading: t, children: n, loaderLabel: r, loaderLabelKey: i, loaderMessage: a, loaderMessageKey: o, loaderTestId: s, loaderSlot: l, loaderDelayMs: u }) {
+function xt({ isLoading: e, children: t, loaderLabel: r, loaderLabelKey: i, loaderMessage: a, loaderMessageKey: o, loaderTestId: s, loaderSlot: l, loaderDelayMs: u }) {
 	let [d, f] = m(0), p = yt(), h = c((e) => {
 		e && f((e) => e + 1);
 	}, []);
-	return t ? /* @__PURE__ */ g($, {
+	return e ? /* @__PURE__ */ g($, {
 		label: r,
 		labelKey: i,
 		message: a,
@@ -1293,34 +1293,34 @@ function xt({ isLoading: t, children: n, loaderLabel: r, loaderLabelKey: i, load
 		onVisibleChange: h
 	}) : /* @__PURE__ */ g("div", {
 		"data-slot": "cashier-fullscreen-content-reveal",
-		className: e("pc-cashier__fullscreen-content-reveal flex min-h-full w-full flex-1 self-stretch flex-col", d > 0 && !p && _t),
-		children: n
+		className: n("pc-cashier__fullscreen-content-reveal flex min-h-full w-full flex-1 self-stretch flex-col", d > 0 && !p && _t),
+		children: t
 	}, d);
 }
-function St({ isLoading: t, children: n, loaderLabel: r, loaderLabelKey: i, loaderTestId: a, loaderSlot: o }) {
+function St({ isLoading: e, children: t, loaderLabel: r, loaderLabelKey: i, loaderTestId: a, loaderSlot: o }) {
 	let s = p(null);
 	return d(() => {
-		let e = s.current;
-		if (e) {
-			if (t) {
-				e.setAttribute("inert", "");
+		let t = s.current;
+		if (t) {
+			if (e) {
+				t.setAttribute("inert", "");
 				return;
 			}
-			e.removeAttribute("inert");
+			t.removeAttribute("inert");
 		}
-	}, [t]), /* @__PURE__ */ _("div", {
+	}, [e]), /* @__PURE__ */ _("div", {
 		"data-testid": "cashier-fullscreen-loading-overlay",
-		"data-state": t ? "loading" : "ready",
-		"aria-busy": t || void 0,
-		className: t ? "relative flex h-full min-h-0 w-full flex-1" : "contents",
+		"data-state": e ? "loading" : "ready",
+		"aria-busy": e || void 0,
+		className: e ? "relative flex h-full min-h-0 w-full flex-1" : "contents",
 		children: [/* @__PURE__ */ g("div", {
 			ref: s,
 			"data-testid": "cashier-fullscreen-loading-overlay-content",
-			"aria-hidden": t || void 0,
-			className: t ? "invisible flex h-full min-h-0 w-full flex-1 flex-col" : "contents",
-			children: n
-		}), t && /* @__PURE__ */ g("div", {
-			className: e("absolute inset-0 z-50 flex", "bg-[var(--pc-color-surface)]"),
+			"aria-hidden": e || void 0,
+			className: e ? "invisible flex h-full min-h-0 w-full flex-1 flex-col" : "contents",
+			children: t
+		}), e && /* @__PURE__ */ g("div", {
+			className: n("absolute inset-0 z-50 flex", "bg-[var(--pc-color-surface)]"),
 			children: /* @__PURE__ */ g($, {
 				label: r,
 				labelKey: i,

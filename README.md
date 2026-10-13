@@ -40,6 +40,8 @@ Type exports from `@paycontrollimited/cashier`:
     clearSelectedBonus: () => void
   }
   ```
+- `CashierEmbeddingSnapshot`, `CashierEmbeddingRecovery`,
+  `CashierEmbeddingCommandResult` and `CashierEmbeddingStateChanged`
 - `CashierConfig`
 - `CashierProps`
 - `CashierBonusesStyle`
@@ -172,6 +174,52 @@ export function Checkout() {
   return <Cashier config={config} />
 }
 ```
+
+## Embedding lifecycle and guarded host actions
+
+The optional top-level `onEmbeddingStateChanged` prop reports a readonly
+`CashierEmbeddingSnapshot`. It is separate from `CashierConfig`; the Custom
+Element exposes the same callback as a JavaScript property. It never reports
+configuration, credentials, form values, provider payloads or raw errors.
+
+```tsx
+import { useRef } from 'react'
+import Cashier, { type CashierHandle } from '@paycontrollimited/cashier'
+
+const ref = useRef<CashierHandle>(null)
+<Cashier ref={ref} config={config} onEmbeddingStateChanged={(state) => {
+  // Readiness requires completed bootstrap and a committed Cashier runtime.
+  setReady(state.lifecycle === 'ready')
+}} />
+```
+
+`CashierHandle` retains its existing methods and adds:
+
+- `getEmbeddingState()`: current lifecycle (`bootstrapping`, `ready`, `error` or
+  `disposed`), `busy`, `canGoBack`, recovery state and optional safe error code.
+- `requestBack()`: requests guarded Cashier history navigation.
+- `requestClose()`: checks whether the host may close. An accepted result does
+  not unmount Cashier, cancel a payment or declare a financial outcome.
+- `reconcile()`: refreshes the current payment using the existing status owner.
+
+Commands return `{ status: 'accepted' }` or `{ status: 'rejected', reason }`.
+A rejected command has no effect. Retained handles reject after destruction.
+The observer runs after committed updates; equivalent snapshots are suppressed,
+replacement observers receive the current snapshot, and observer failures are
+isolated. `onInit` retains its existing configuration callback semantics.
+
+Recovery is `{ kind: 'unsubmitted' }`, `{ kind: 'known', paymentId }` or
+`{ kind: 'unknown-creation' }`. Cashier marks creation uncertain before dispatch;
+if the request fails without a payment ID, the absence of an ID does not prove
+that no payment exists. With lifecycle observation enabled, Cashier prevents
+another submission in that state. Preserve the instance and resolve the payment
+with the merchant; neither reconciliation nor recreation automatically retries
+creation. An explicit verified payment ID can use `resumePaymentId`.
+
+Change only `sessionId` to refresh credentials within the existing API, merchant
+and user scope. This preserves active provider content. Session-only recovery
+still requires the documented original ownership context. `uiTheme` also updates
+without recreating Cashier; other configuration changes may remount the runtime.
 
 ## Recovering an active payment
 
@@ -1057,8 +1105,11 @@ Runtime method behaviour:
 - `clearSelectedBonus()` clears the current selection.
 - Passing `undefined` to `setBonuses()`, `setUser()`, or `setUserBalance()`
   clears that runtime override and falls back to the original config value.
-- Changing the main `config` still hard resets Cashier and clears runtime
-  overrides.
+- React handle updates are retained during bootstrap and same-principal runtime
+  remounts. Changing API, merchant or user clears them; when `userId` is absent,
+  a session change also clears them. Explicit clears remain cleared on remount.
+- Assigning the web component's `config` property clears its runtime overrides,
+  including values supplied while bootstrap is pending.
 
 ## Web component usage (framework agnostic)
 

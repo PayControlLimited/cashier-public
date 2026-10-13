@@ -2,6 +2,59 @@
 
 ## Unreleased
 
+## 1.6.2
+
+### Added
+
+- Added `extraAttributes` to payment-type loading so payment-type, limit and fee
+  rules can use the same attributes as payment creation. Non-empty attributes
+  require a Payment API that supports `POST /payment-types`.
+
+- Added `onEmbeddingStateChanged` and the `getEmbeddingState`, `requestBack`,
+  `requestClose` and `reconcile` handle methods for React and web-component
+  hosts. Hosts can observe readiness, errors and payment recovery, check
+  whether closing is safe, navigate back and refresh an existing payment's
+  status without submitting again. Back and close requests are blocked during
+  an active payment or an uncertain creation result. Enabling the observer
+  also prevents another submission when payment creation could not be confirmed.
+
+- Added `onEmbeddingPresentationTextChanged` for React hosts to receive the
+  translated title, Close and connection-loss labels, together with the current
+  locale, for their surrounding payment UI.
+
+- Added `layout="content"` for React hosts that size their container to Cashier
+  content. The default is `layout="viewport"`. Changing layout preserves the
+  current payment flow.
+
+- Added support for Cashier handle updates during initial loading and across
+  configuration changes for the same API, merchant and user. Updates cover user
+  details, balances, bonuses and bonus selection. Changing the API, merchant or
+  user clears these overrides; assigning the web component's `config` still
+  clears them.
+
+- Added optional `hostRiskContext.coinflow` for card payins using a device ID
+  collected on the merchant's site. Supply `deviceId` and `expiresAt`; expired
+  context blocks card verification and submission until refreshed. The error
+  message uses the `error.host_risk_context_expired` translation key. Explicit
+  `coinflowDeviceId` payment-field values take precedence.
+
+- Added notification message parameters so users see values such as minimum
+  deposits and required crypto confirmations in place of `{placeholder}` text.
+  Parameter values are displayed as plain text.
+
+### Changed
+
+- Updating `uiTheme` now preserves the current payment flow and open provider
+  content.
+
+### Fixed
+
+- Fixed Cashier browser startup when the package was built alongside tests.
+- Fixed Safari cross-origin console errors when secure card fields initialise or
+  reconfigure.
+- Fixed dropdown fields overflowing narrow Cashier containers when an option has
+  a long label.
+
 ## 1.6.1
 
 ### Added
@@ -17,7 +70,8 @@
 
 ### Fixed
 
-- Fixed spurious origin-mismatch errors while secure card fields are loading.
+- Fixed spurious origin-mismatch errors while secure card fields are loading,
+  including cross-origin startup errors in Safari.
 - Screen readers can announce helper text and validation errors when focusing
   payment text inputs and multiline fields.
 - Selection fields connect their error and helper text to the control so screen

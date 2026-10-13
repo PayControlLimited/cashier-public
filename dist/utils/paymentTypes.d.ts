@@ -1,4 +1,4 @@
-import { GetPaymentTypesData, PaymentType } from '../../../api/src/payments.ts';
+import { GetPaymentTypesData, PaymentType, PaymentTypesRequest } from '../../../api/src/payments.ts';
 import { Client } from '../../../api/src/payments/client.js';
 import { CashierConfig } from '../types/CashierConfig.js';
 export declare const SAVED_CARD_EXPIRY_INVALID_MESSAGE_KEY = "account.saved_card_expiry_invalid";
@@ -13,7 +13,7 @@ export type PaymentTypesResult = {
     pciTenantId?: string;
     cashierConfig?: Partial<CashierConfig>;
 };
-export declare const fetchPaymentTypes: (query: GetPaymentTypesData["query"], options: {
+export declare const fetchPaymentTypes: (query: GetPaymentTypesData["query"] & Pick<PaymentTypesRequest, "extra">, options: {
     client: Client;
     debug?: boolean;
     fetchConfig?: boolean;

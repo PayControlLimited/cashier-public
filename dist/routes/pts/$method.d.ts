@@ -2,7 +2,7 @@ import { PaymentType } from '../../../../api/src/payments.ts';
 import { CashierConfig } from '../../types/CashierConfig.js';
 import { QueryClient } from '@tanstack/react-query';
 import { Client } from '../../../../api/src/payments/client.js';
-type LoaderContext = Pick<CashierConfig, 'merchantId' | 'method' | 'userId' | 'sessionId' | 'currency' | 'fetchConfig' | 'debug'> & {
+type LoaderContext = Pick<CashierConfig, 'merchantId' | 'method' | 'userId' | 'sessionId' | 'currency' | 'fetchConfig' | 'extraAttributes' | 'debug'> & {
     apiClient: Client;
     queryClient: QueryClient;
 };

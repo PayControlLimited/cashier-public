@@ -314,6 +314,12 @@ export interface HostedFieldsFontDefinition {
     sources: HostedFieldsFontSource[];
 }
 export type CashierProps = (Partial<CashierConfig> & CashierExtensions & {
+    /** Content layout grows naturally for a host that controls scrolling. */
+    layout?: 'viewport' | 'content';
+    /** Safe lifecycle observation for hosts; never contains configuration or form values. */
+    onEmbeddingStateChanged?: CashierEmbeddingStateChanged;
+    /** Resolved host labels; never the full translation catalogue. */
+    onEmbeddingPresentationTextChanged?: CashierEmbeddingPresentationTextChanged;
     /**
      * Resumes observation of a server-known payment after the host recreates
      * Cashier. This intentionally sits outside CashierConfig.
@@ -322,18 +328,61 @@ export type CashierProps = (Partial<CashierConfig> & CashierExtensions & {
 }) | ({
     config: Partial<CashierConfig>;
 } & CashierExtensions & {
+    /** Content layout grows naturally for a host that controls scrolling. */
+    layout?: 'viewport' | 'content';
+    onEmbeddingStateChanged?: CashierEmbeddingStateChanged;
+    /** Resolved host labels; never the full translation catalogue. */
+    onEmbeddingPresentationTextChanged?: CashierEmbeddingPresentationTextChanged;
     /**
      * Resumes observation of a server-known payment after the host recreates
      * Cashier. This intentionally sits outside CashierConfig.
      */
     resumePaymentId?: string;
 });
+export type CashierEmbeddingPresentationText = Readonly<{
+    locale: string;
+    title?: string;
+    close?: string;
+    connectionLost?: string;
+}>;
+export type CashierEmbeddingPresentationTextChanged = (text: CashierEmbeddingPresentationText) => void | Promise<void>;
+export type CashierEmbeddingRecovery = Readonly<{
+    kind: 'unsubmitted';
+} | {
+    kind: 'known';
+    paymentId: string;
+} | {
+    kind: 'unknown-creation';
+}>;
+export type CashierEmbeddingSnapshot = Readonly<{
+    lifecycle: 'bootstrapping' | 'ready' | 'error' | 'disposed';
+    busy: boolean;
+    canGoBack: boolean;
+    recovery: CashierEmbeddingRecovery;
+    error?: Readonly<{
+        code: 'bootstrap-failed' | 'session-required' | 'status-unavailable';
+        retryable: boolean;
+    }>;
+}>;
+export type CashierEmbeddingCommandResult = Readonly<{
+    status: 'accepted';
+} | {
+    status: 'rejected';
+    reason: 'not-ready' | 'busy' | 'active-payment' | 'unknown-creation' | 'unavailable' | 'disposed';
+}>;
+export type CashierEmbeddingStateChanged = (snapshot: CashierEmbeddingSnapshot) => void | Promise<void>;
 export type CashierHandle = {
     setBonuses: (bonuses: CashierBonus[] | undefined) => void;
     setUser: (user: CashierUser | undefined) => void;
     setUserBalance: (userBalance: CashierUserBalance | undefined) => void;
     setSelectedBonusCode: (code: string | null) => void;
     clearSelectedBonus: () => void;
+    getEmbeddingState: () => CashierEmbeddingSnapshot;
+    requestBack: () => CashierEmbeddingCommandResult;
+    /** Checks whether the host may close; does not cancel a payment or unmount. */
+    requestClose: () => CashierEmbeddingCommandResult;
+    /** Reconciles the current payment through Cashier's existing status owner. */
+    reconcile: () => CashierEmbeddingCommandResult;
 };
 /** @since 1.5.1 */
 export type CashierPaymentMethodChangedEvent = {
@@ -497,6 +546,19 @@ export type CashierConfig = {
     gotoPaymentType: string | null;
     /** @since 0.0.4 */
     extraAttributes?: Record<string, string>;
+    /**
+     * Opaque provider context collected in the merchant's origin. Coinflow uses
+     * this only for card payins. The merchant supplies the provider-approved
+     * expiry; stale context blocks submission until the Cashier is recreated.
+     * Never include card data, credentials or a general fingerprint payload.
+     * @since 1.6.2
+     */
+    hostRiskContext?: {
+        coinflow?: {
+            deviceId: string;
+            expiresAt: string;
+        };
+    };
     /**
      * Absolute HTTPS URL the payer is sent to once the payment flow is finished,
      * sent on payment creation. Set it when a provider opens a window of its own

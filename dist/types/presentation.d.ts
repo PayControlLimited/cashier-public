@@ -1,7 +1,9 @@
 import { ComponentType } from 'react';
 import { CashierMethods, CashierSummaryActions } from './CashierConfig.js';
-export type CashierPresentationScreenId = 'combo' | 'paymentTypes' | 'bonusSelection' | 'paymentDetails' | 'paymentConfirmation' | 'providerAction' | 'summary' | 'loading' | 'empty' | 'processing' | 'unsupported' | 'error';
-export type CashierPresentationSlotId = 'header' | 'methodSwitcher' | 'progress' | 'paymentTypeItem' | 'providerActionPrompt' | 'summaryDetails' | 'summaryActions';
+export declare const cashierPresentationScreenIds: readonly ["combo", "paymentTypes", "bonusSelection", "paymentDetails", "paymentConfirmation", "providerAction", "summary", "loading", "empty", "processing", "unsupported", "error"];
+export type CashierPresentationScreenId = typeof cashierPresentationScreenIds[number];
+export declare const cashierPresentationSlotIds: readonly ["header", "methodSwitcher", "progress", "paymentTypeItem", "providerActionPrompt", "summaryDetails", "summaryActions"];
+export type CashierPresentationSlotId = typeof cashierPresentationSlotIds[number];
 /**
  * `content` keeps the Cashier route frame and visible application shell.
  * `screen` replaces the complete visible Cashier canvas for the active screen.
