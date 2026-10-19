@@ -3,16 +3,16 @@ import { CashierPresentationAction, CashierPresentationError, CashierPresentatio
 export declare function CashierPresentationLocalisationProvider({ children, locale, }: {
     children: ReactNode;
     locale: Intl.Locale | string;
-}): import("react").JSX.Element;
+}): import('react').JSX.Element;
 export declare function CashierPresentationScreenCanvasProvider({ children, rootNode, }: {
     children: ReactNode;
     rootNode: HTMLDivElement | null;
-}): import("react").JSX.Element;
+}): import('react').JSX.Element;
 export declare const freezeCashierPresentationDiagnostic: (diagnostic: CashierPresentationError) => CashierPresentationError;
 export declare function CashierPresentationProvider({ children, presentation, }: {
     children: ReactNode;
     presentation?: CashierPresentation;
-}): import("react").JSX.Element;
+}): import('react').JSX.Element;
 export declare class CashierPresentationRuntimeFailure extends Error {
     readonly phase: CashierPresentationErrorPhase;
     readonly code: CashierPresentationErrorCode;
@@ -24,17 +24,28 @@ export declare function CashierSlotOutlet<Slot extends CashierPresentationSlotId
     children: ReactNode;
     id: Slot;
     model: CashierPresentationSlotModelMap[Slot];
-}): string | number | bigint | boolean | Iterable<ReactNode> | Promise<string | number | bigint | boolean | import('react').ReactPortal | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | import("react").JSX.Element | null | undefined;
-export declare function CashierScreenOutlet<Screen extends CashierPresentationScreenId>({ actions, children, deferPresentationUpdates, frame, id, model, overrideEnabled, protectedContent, }: {
+}): string | number | bigint | boolean | Iterable<ReactNode> | Promise<string | number | bigint | boolean | import('react').ReactPortal | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | import('react').JSX.Element | null | undefined;
+export declare function CashierScreenOutlet<Screen extends CashierPresentationScreenId>({ actions, children, deferPresentationUpdates, frame, id, model, overrideEnabled, protectedContent, paymentStatus, paymentId, authoritativeAmount, authoritativeCurrency, additionalAwards, bonusPreviewOwned, }: {
     actions: CashierPresentationScreenActionsMap[Screen];
-    children: ReactNode;
+    children: ReactNode | ((regions: Readonly<{
+        top: ReactNode;
+        bottom: ReactNode;
+        hasSummaryContent: boolean;
+        hasContent: boolean;
+    }>) => ReactNode);
     deferPresentationUpdates?: boolean;
     frame?: (content: ReactNode) => ReactNode;
     id: Screen;
     model: CashierPresentationScreenModelMap[Screen];
     overrideEnabled?: boolean;
     protectedContent?: ReactNode;
-}): string | number | bigint | boolean | Iterable<ReactNode> | Promise<string | number | bigint | boolean | import('react').ReactPortal | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | import("react").JSX.Element | null | undefined;
+    paymentStatus?: string;
+    paymentId?: string;
+    authoritativeAmount?: unknown;
+    authoritativeCurrency?: unknown;
+    bonusPreviewOwned?: boolean;
+    additionalAwards?: readonly import('../types/CashierConfig.js').CashierFrozenAward[];
+}): import('react').JSX.Element | null;
 export type CashierPresentationActionOptions<Arguments extends readonly unknown[]> = Readonly<{
     busy?: boolean;
     validate?: (...args: Arguments) => boolean;

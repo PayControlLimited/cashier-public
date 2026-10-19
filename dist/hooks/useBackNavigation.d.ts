@@ -6,8 +6,9 @@ type UseBackNavigationOptions = {
     requireCanGoBackForHotkey?: boolean;
     replace?: boolean;
     resetHistory?: boolean;
+    restartPurchase?: boolean;
 };
-export declare function useBackNavigation({ defaultRoute, backKey, enableHotkey, useHistory, requireCanGoBackForHotkey, replace, resetHistory, }: UseBackNavigationOptions): {
+export declare function useBackNavigation({ defaultRoute, backKey, enableHotkey, useHistory, requireCanGoBackForHotkey, replace, resetHistory, restartPurchase, }: UseBackNavigationOptions): {
     canGoBack: boolean;
     handleBack: () => void;
 };

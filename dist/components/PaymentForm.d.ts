@@ -44,6 +44,7 @@ type PaymentFormProps = {
     onValuesChange?: PaymentFormValuesChangeCallback;
     renderMode?: 'form' | 'confirm';
     hideAmountField?: boolean;
+    presentedAmountError?: string | null;
     amountValueOverride?: string;
     renderAfterAmountField?: ReactNode;
     valueOverrides?: Partial<PaymentFormValues>;
@@ -57,7 +58,7 @@ type PaymentFormProps = {
     observePublicState?: boolean;
     onPaymentSubmitted?: () => void;
 };
-declare function PaymentForm({ id, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, renderMode, hideAmountField, amountValueOverride, renderAfterAmountField, valueOverrides, requireDirtyBeforeSubmit, comboViewLayout, comboViewSurfaceChrome, formSurfaceChrome, fieldPanelMode, reserveTrailingActionSpace, animateEntrance, observePublicState, onPaymentSubmitted, }: PaymentFormProps): ReactNode | null;
+declare function PaymentForm({ id, onActionsChange, onPromptStateChange, onPreparedValues, onValuesChange, renderMode, hideAmountField, presentedAmountError, amountValueOverride, renderAfterAmountField, valueOverrides, requireDirtyBeforeSubmit, comboViewLayout, comboViewSurfaceChrome, formSurfaceChrome, fieldPanelMode, reserveTrailingActionSpace, animateEntrance, observePublicState, onPaymentSubmitted, }: PaymentFormProps): ReactNode | null;
 export default PaymentForm;
 type PaymentFormActionsBridgeProps = {
     onActionsChange?: PaymentFormActionCallback;

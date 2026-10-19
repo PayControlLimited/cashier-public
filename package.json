@@ -1,6 +1,6 @@
 {
   "name": "@paycontrollimited/cashier",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "license": "SEE LICENSE IN LICENCE.md",
   "type": "module",
   "main": "./dist/index.js",
@@ -17,7 +17,10 @@
     "package.json",
     "README.md",
     "CHANGELOG.md",
-    "LICENCE.md"
+    "LICENCE.md",
+    "dist/utils/purchaseValidation.d.ts",
+    "dist/purchase.d.ts",
+    "dist/types/offers.d.ts"
   ],
   "peerDependencies": {
     "react": ">=18.0.0 <20.0.0",
@@ -43,6 +46,11 @@
       "import": "./dist/index.css",
       "require": "./dist/index.css",
       "default": "./dist/index.css"
+    },
+    "./purchase": {
+      "types": "./dist/purchase.d.ts",
+      "import": "./dist/purchase.js",
+      "default": "./dist/purchase.js"
     }
   },
   "nx": {

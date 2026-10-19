@@ -33,6 +33,6 @@ type PaymentFieldListProps = {
     reserveTrailingActionClearance?: boolean;
     submitUnrenderedFields?: boolean;
 };
-declare const PaymentFieldList: ({ fields, translateKey, translateKeys, disabled, amountError, amountFieldId, renderBelowFieldContent, belowFieldContentClassName, belowFieldContentInheritsTheme, renderBeforeField, renderAfterField, renderAfterFieldRow, animateRows, animationStartIndex, animationTotalCount, animationDirection, reserveInputMessageSpace, reserveCheckboxMessageSpace, reserveLastCheckboxMessageSpace, reserveLastAmountMessageSpace, addFirstFieldTopPadding, addLastFieldBottomPadding, allowReservedLastFieldBottomPadding, reserveTrailingActionClearance, submitUnrenderedFields, }: PaymentFieldListProps) => import("react").JSX.Element;
+declare const PaymentFieldList: ({ fields, translateKey, translateKeys, disabled, amountError, amountFieldId, renderBelowFieldContent, belowFieldContentClassName, belowFieldContentInheritsTheme, renderBeforeField, renderAfterField, renderAfterFieldRow, animateRows, animationStartIndex, animationTotalCount, animationDirection, reserveInputMessageSpace, reserveCheckboxMessageSpace, reserveLastCheckboxMessageSpace, reserveLastAmountMessageSpace, addFirstFieldTopPadding, addLastFieldBottomPadding, allowReservedLastFieldBottomPadding, reserveTrailingActionClearance, submitUnrenderedFields, }: PaymentFieldListProps) => import('react').JSX.Element;
 export default PaymentFieldList;
 //# sourceMappingURL=PaymentFieldList.d.ts.map

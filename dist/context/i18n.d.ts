@@ -18,10 +18,11 @@ type HasTranslation = (key: string | null | undefined) => boolean;
 type CashierResolvedI18nProviderProps = {
     children: ReactNode;
     translations: CashierTranslations;
+    locale?: string;
     debug: boolean;
     isTranslationVisible: boolean;
 };
-export declare function CashierResolvedI18nProvider({ children, translations, debug, isTranslationVisible, }: CashierResolvedI18nProviderProps): ReactNode;
+export declare function CashierResolvedI18nProvider({ children, translations, locale, debug, isTranslationVisible, }: CashierResolvedI18nProviderProps): ReactNode;
 export declare const useI18n: () => CashierI18nValue;
 export declare const useCashierI18nStatus: () => {
     hasTranslation: HasTranslation;

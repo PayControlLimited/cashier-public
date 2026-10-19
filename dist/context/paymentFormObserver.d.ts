@@ -1,6 +1,9 @@
 import { ReactNode } from 'react';
 import { CashierConfig, CashierPaymentFormState } from '../types/CashierConfig.js';
 type PaymentFormObserverContextValue = {
+    hasPendingInitialSurface: boolean;
+    revealInitialSurface: () => void;
+    setSurfacePending: (sourceId: string, pending: boolean) => void;
     cancelSubmission: (sourceId: string) => void;
     clearActive: (sourceId: string) => void;
     completePendingSubmission: () => void;

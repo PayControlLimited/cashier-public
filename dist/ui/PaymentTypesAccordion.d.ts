@@ -10,6 +10,7 @@ type PaymentTypesAccordionProps = {
     renderPanel: (paymentType: PaymentType) => ReactNode;
     renderFooter?: (paymentType: PaymentType) => ReactNode;
     hasPanel?: (paymentType: PaymentType) => boolean;
+    hasPanelBody?: (paymentType: PaymentType) => boolean;
     collapsible?: boolean;
     showMeta?: boolean;
     compact?: boolean;
@@ -25,6 +26,6 @@ type PaymentTypesAccordionProps = {
     animateItems?: boolean;
     bonusEvaluationContext?: BonusEvaluationContextInput;
 };
-declare function PaymentTypesAccordion({ paymentTypes, selectedPaymentType, onSelect, renderPanel, renderFooter, hasPanel, collapsible, showMeta, compact, renderActions, isPaymentTypeDisabled, interactionLocked, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, hoverMode, domScope, animateItems, bonusEvaluationContext, }: PaymentTypesAccordionProps): import("react").JSX.Element;
+declare function PaymentTypesAccordion({ paymentTypes, selectedPaymentType, onSelect, renderPanel, renderFooter, hasPanel, hasPanelBody, collapsible, showMeta, compact, renderActions, isPaymentTypeDisabled, interactionLocked, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, hoverMode, domScope, animateItems, bonusEvaluationContext, }: PaymentTypesAccordionProps): import('react').JSX.Element;
 export default PaymentTypesAccordion;
 //# sourceMappingURL=PaymentTypesAccordion.d.ts.map

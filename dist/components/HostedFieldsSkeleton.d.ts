@@ -11,6 +11,6 @@ type HostedFieldsSkeletonProps = HostedFieldsSkeletonStateProps & {
     fields: readonly LocalisedHostedFieldEntry[];
     className?: string;
 };
-export default function HostedFieldsSkeleton({ fields, className, state, errorMessage, }: HostedFieldsSkeletonProps): import("react").JSX.Element;
+export default function HostedFieldsSkeleton({ fields, className, state, errorMessage, }: HostedFieldsSkeletonProps): import('react').JSX.Element;
 export {};
 //# sourceMappingURL=HostedFieldsSkeleton.d.ts.map

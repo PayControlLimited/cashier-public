@@ -1,15 +1,17 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
-import { CashierConfig, CashierEmbeddingStateChanged } from './types/CashierConfig.js';
+import { CashierPaymentContext, CashierConfig, CashierEmbeddingStateChanged } from './types/CashierConfig.js';
 import { CashierDomPresentation } from './types/presentation.js';
 export type CashierElementProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & {
     config?: Partial<CashierConfig>;
     resumePaymentId?: string;
+    resumePaymentContext?: CashierPaymentContext;
     presentation?: CashierDomPresentation;
     onEmbeddingStateChanged?: CashierEmbeddingStateChanged;
 };
 export type CashierProps = {
     config?: Partial<CashierConfig>;
     resumePaymentId?: string;
+    resumePaymentContext?: CashierPaymentContext;
     presentation?: CashierDomPresentation;
     onEmbeddingStateChanged?: CashierEmbeddingStateChanged;
 };

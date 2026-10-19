@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ButtonAppearance, ButtonVariant, UiAppearance, UiSize, UiVariant } from '../../../ui/src/client.js';
-import { CashierBonus } from '../types/CashierConfig.js';
+import { CashierBonusDefinition } from '../types/CashierConfig.js';
 export type InteractivePromptActionDescriptor = {
     id: string;
     labelKey?: string;
@@ -44,8 +44,8 @@ export declare const resolveInteractivePromptDismissKey: ({ route, paymentType, 
 }) => string;
 export declare const resolveFocusedAwardBonus: ({ selectedBonusCode, availableBonuses, }: {
     selectedBonusCode?: string | null;
-    availableBonuses: CashierBonus[];
-}) => CashierBonus | null;
+    availableBonuses: CashierBonusDefinition[];
+}) => CashierBonusDefinition | null;
 export declare const createChoosePaymentTypePromptIcon: (className?: string) => ReactNode;
 export declare const createChoosePaymentTypePromptDescriptor: ({ translateKey, }: {
     translateKey: (key: string) => string;

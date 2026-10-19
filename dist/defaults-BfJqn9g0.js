@@ -45,6 +45,13 @@ var a = "https://hf.pvault.net", o = {
 	returnUrl: void 0,
 	user: void 0,
 	bonuses: void 0,
+	offers: void 0,
+	selectedOfferId: void 0,
+	checkout: void 0,
+	uiOffers: void 0,
+	uiOffersStyle: void 0,
+	uiOffersAvailable: void 0,
+	paymentContextId: void 0,
 	currencyFormatOptions: { trailingZeroDisplay: "stripIfInteger" },
 	dateTimeFormatOptions: {
 		dateStyle: "medium",

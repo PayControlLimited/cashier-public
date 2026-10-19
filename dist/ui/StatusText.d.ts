@@ -1,12 +1,15 @@
+import { ReactNode } from 'react';
 import { StatusHeaderTheme } from './StatusHeader.js';
 import { CashierStateScreenId } from '../types/presentation.js';
 type StatusTextProps = {
     text: string;
+    children?: ReactNode;
+    paymentStatus?: string;
     subtitle?: string;
     theme?: StatusHeaderTheme;
     withLoader?: boolean;
     presentationScreen?: Extract<CashierStateScreenId, 'empty' | 'error' | 'unsupported'>;
 };
-declare function StatusText({ text, subtitle, theme, withLoader, presentationScreen, }: StatusTextProps): import("react").JSX.Element;
+declare function StatusText({ text, children, paymentStatus, subtitle, theme, withLoader, presentationScreen, }: StatusTextProps): import('react').JSX.Element;
 export default StatusText;
 //# sourceMappingURL=StatusText.d.ts.map

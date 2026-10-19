@@ -1,20 +1,20 @@
 import { StoryObj } from '@storybook/react-vite';
-import { CashierBonus } from '../types/CashierConfig.js';
+import { CashierBonusDefinition } from '../types/CashierConfig.js';
 type BonusPickerStoryProps = {
     amount: string;
     selectedBonusCode: string | null;
-    configuredBonuses: CashierBonus[];
+    configuredBonuses: CashierBonusDefinition[];
 };
-declare function StoryHarness({ amount, selectedBonusCode, configuredBonuses, }: BonusPickerStoryProps): import("react").JSX.Element;
+declare function StoryHarness({ amount, selectedBonusCode, configuredBonuses, }: BonusPickerStoryProps): import('react').JSX.Element;
 declare const meta: {
     title: string;
     component: typeof StoryHarness;
     args: {
         amount: string;
         selectedBonusCode: string;
-        configuredBonuses: CashierBonus[];
+        configuredBonuses: CashierBonusDefinition[];
     };
-    render: (args: BonusPickerStoryProps) => import("react").JSX.Element;
+    render: (args: BonusPickerStoryProps) => import('react').JSX.Element;
 };
 export default meta;
 type Story = StoryObj<typeof meta>;

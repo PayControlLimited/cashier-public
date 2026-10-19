@@ -8,6 +8,7 @@ export default function usePaymentTypes(): {
     pciTenantId: string | undefined;
     isLoading: boolean;
     isError: boolean;
+    hasPaymentTypesResponse: boolean;
 };
 export {};
 //# sourceMappingURL=usePaymentTypes.d.ts.map

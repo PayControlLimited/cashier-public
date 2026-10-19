@@ -547,7 +547,7 @@ function Me({ defaultValue: t, defaultLanguage: o, defaultPath: s, value: c, lan
 		A.current?.editor.setTheme(d);
 	}, [d], E);
 	let B = n(() => {
-		if (!(!M.current || !A.current) && !R.current) {
+		if (M.current && A.current && !R.current) {
 			P.current(A.current);
 			let e = u || s, n = Z(A.current, c || t || "", o || l || "", e || "");
 			j.current = A.current?.editor.create(M.current, {

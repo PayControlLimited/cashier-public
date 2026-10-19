@@ -51,7 +51,7 @@ declare const meta: {
         animateItems?: boolean | undefined;
         bonusEvaluationContext?: (import('../utils/bonuses.js').BonusEvaluationContext | ((paymentType: PaymentType) => import('../utils/bonuses.js').BonusEvaluationContext | undefined)) | undefined;
         themeSlot?: import('./PaymentTypeListItem.js').PaymentTypeListItemThemeSlot | undefined;
-    }>) => import("react").JSX.Element)[];
+    }>) => import('react').JSX.Element)[];
 };
 export default meta;
 type Story = StoryObj<typeof meta>;

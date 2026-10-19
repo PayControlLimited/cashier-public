@@ -13,18 +13,24 @@ export type CalculatedPaymentTypeFee = {
 export declare const hasMeaningfulFeeValue: (fee: PaymentType["fee"] | undefined) => boolean;
 export declare const resolveFeeDirectionSign: (direction: PaymentTypeFee["direction"] | undefined) => string;
 export declare const createFeeCurrencyFormatter: (currencyFormatter: CurrencyFormatter | null) => CurrencyFormatter | null;
-export declare const formatCalculatedPaymentTypeFee: (fee: PaymentType["fee"] | undefined, amount: number, options: {
+export declare const formatCalculatedPaymentTypeFee: (fee: PaymentType["fee"] | undefined, amount: number | string, options: {
     feeCurrencyFormatter: CurrencyFormatter | null;
     formatCurrencyValue: (value: unknown) => string;
 }) => string;
-export declare const getCalculatedFeeSummaryField: (fee: PaymentType["fee"] | undefined, amount: number, options: {
+export declare const getCalculatedFeeSummaryField: (fee: PaymentType["fee"] | undefined, amount: number | string, options: {
     feeCurrencyFormatter: CurrencyFormatter | null;
     formatCurrencyValue: (value: unknown) => string;
 }) => PaymentSummaryField | null;
-export declare const getCalculatedPayoutTotalSummaryField: (fee: PaymentType["fee"] | undefined, amount: number, currency: string) => PaymentSummaryField | null;
-export declare const getCalculatedPayinTotalSummaryField: (fee: PaymentType["fee"] | undefined, amount: number, currency: string) => PaymentSummaryField | null;
+export declare const getCalculatedPayoutTotalSummaryField: (fee: PaymentType["fee"] | undefined, amount: number | string, currency: string) => PaymentSummaryField | null;
+export declare const getCalculatedPayinTotalSummaryField: (fee: PaymentType["fee"] | undefined, amount: number | string, currency: string) => PaymentSummaryField | null;
 export declare const insertSummaryFieldsBeforeRemainingBalance: (fields: PaymentSummaryField[], insertedFields: Array<PaymentSummaryField | null>) => PaymentSummaryField[];
 export declare const getFeeAdjustedPayoutAmountMax: (withdrawableBalance: number, _fee: PaymentType["fee"] | undefined) => number;
 export declare const getFeeAdjustedPayoutConsumedAmount: (amount: number, _fee: PaymentType["fee"] | undefined) => number;
+/** Backend-compatible preview: fees are calculated against the original amount and rounded once. */
+export declare const calculatePaymentFeePreview: (fee: PaymentType["fee"] | undefined, amount: string, currency: string) => {
+    feeAmount: string;
+    chargedAmount: string;
+    receivedAmount: string;
+} | null;
 export {};
 //# sourceMappingURL=paymentTypeFee.d.ts.map

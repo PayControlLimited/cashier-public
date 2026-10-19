@@ -2,6 +2,91 @@
 
 ## Unreleased
 
+## 1.7.0
+
+### Added
+
+- Added merchant-owned `presentation.elements` for purchase items, awards,
+  Markdown text, notices and link actions. Groups control screen visibility,
+  result-status filtering, placement and layout. Global content follows current
+  configuration; payment-scoped facts are captured when Pay is committed and
+  retained through provider handoffs and results.
+- Added `offers`, `CashierOffer` and `uiOffers*` for selectable discounts and
+  rewards using the existing eligibility and picker flows. Only an explicit
+  `submission.bonusCode` is sent to the existing Payment API; offer IDs and
+  displayed coupon codes are never submitted implicitly. Unchanged-price offers
+  can refresh their catalogue without a checkout callback; the payer’s entered
+  amount remains authoritative.
+- Added informational item and order price comparisons, including original and
+  current prices, fixed/percentage discounts and
+  merchant-rounded line amounts. These display values do not calculate the
+  amount charged.
+- Added merchant-confirmed checkout updates through
+  `onCheckoutUpdateRequested` and `resolveCheckoutUpdate`. Cashier applies the
+  amount, order revision, selection and payment content together, preserves
+  entered details and secure fields, and blocks Pay while prices are pending,
+  expired or unconfirmed. Order refresh is available for locked, identified
+  orders with a merchant update handler; unavailable recovery directs the payer
+  to the merchant. Confirmed zero-price orders use `onNoPaymentRequired`
+  to return control to the merchant without creating a payment.
+- Added merchant-supplied purchase recovery, optional `paymentContextId`
+  correlation and pure validation exports at the root and `/purchase` entry.
+  Recovery preserves original payment facts, including offer bindings and
+  comparison prices; missing or mismatched context is omitted. Historical
+  recovery versions remain supported. Hosted integrations negotiate these
+  capabilities explicitly. New checkout handle methods are optional on
+  `CashierHandle`, preserving existing handle implementations and mocks.
+
+- Added localised offer and checkout defaults for all shipped languages, with
+  merchant translations taking precedence. Offers retain released bonus-key
+  translations until an offer-specific translation is supplied.
+
+### Changed
+
+- Uncertain payment creation prevents another submission even when
+  `onEmbeddingStateChanged` is not configured. Hosts can reconcile a discovered
+  payment ID without creating a replacement payment.
+- Locked amounts retain useful combo views, payment-method choices, secure card
+  fields and eligible offers. Flows with no useful entry controls advance to
+  the next step without creating a payment. Use `uiComboView: false` for a
+  separate flow. Background configuration updates preserve the current screen.
+- Branded card panels use a more compact minimum height while retaining room
+  for stored-card security-code fields and larger content.
+
+### Deprecated
+
+- Bonus-named configuration, styles, callbacks and handle methods are superseded
+  by their offer equivalents. Existing bonus integrations, selectors and theme
+  tokens remain supported through compatibility adapters. Invalid individual
+  legacy bonus awards are skipped without disabling payment; strict atomic
+  validation applies to new offers and presentation elements.
+
+### Fixed
+
+- Concurrent payment submissions are rejected while creation is pending.
+  Obsolete creation requests are cancelled when the payer changes or
+  Cashier unmounts. Late responses cannot update the replacement checkout.
+  Known payment recovery survives unmounting inside `onPaymentCreated`;
+  status observation starts after that callback. An aborted request still
+  requires recovery if its server outcome is unknown.
+
+- Secure card fields initialise after navigation and field-container changes.
+  Slow iframe navigation has a separate startup window, and fields can become
+  ready when an embedded browser suspends animation frames. The card panel and
+  loading skeleton remain visible until startup completes; failed startup shows
+  an unavailable message, which clears after a late successful load.
+- Provider iframe navigation starts after attachment, preventing its initial
+  blank document from interrupting the handoff. Ordinary updates preserve the
+  existing frame without repeating the provider request.
+- Locked amounts remain fixed after draft restoration, asynchronous payment
+  preparation and switching methods after failure. Amount suggestions and bonus
+  top-up actions stay hidden, invalid locked amounts show one error, and
+  separate accordion summaries retain their amount, fees and totals.
+- Empty accordion forms and hidden bonus pickers no longer reserve unused space.
+  Payment-method pickers show keyboard focus outlines that follow themed corners.
+- Ready combo views retain the ready translation key when its translation is
+  unavailable instead of requesting details that are already complete.
+
 ## 1.6.2
 
 ### Added

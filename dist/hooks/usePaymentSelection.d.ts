@@ -1,9 +1,9 @@
 import { PaymentType } from '../../../api/src/payments.ts';
-import { CashierBonus } from '../types/CashierConfig.js';
+import { CashierBonusDefinition } from '../types/CashierConfig.js';
 type SelectPaymentTypeOptions = {
-    availableBonuses?: CashierBonus[];
+    availableBonuses?: CashierBonusDefinition[];
 };
-export declare const reconcileSelectedBonusCode: (selectedBonusCode: string | null | undefined, availableBonuses: CashierBonus[]) => string | null;
+export declare const reconcileSelectedBonusCode: (selectedBonusCode: string | null | undefined, availableBonuses: CashierBonusDefinition[]) => string | null;
 export declare const usePaymentSelection: () => {
     selectedPaymentType: string | null;
     selectPaymentType: (id: string, options?: SelectPaymentTypeOptions) => void;

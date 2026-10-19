@@ -2,7 +2,7 @@ import { CreatePaymentData, PaymentsRequest, PaymentsResponse } from '../../../a
 import { PaymentProgress } from '../context/paymentStatus.js';
 import { FinishPaymentOptions } from './useFinishPayment.js';
 type PayHookType = {
-    makePayment: (values: PaymentsRequest) => Promise<PaymentsResponse>;
+    makePayment: (values: PaymentsRequest, attemptGeneration?: number) => Promise<PaymentsResponse>;
     finishPayment: (options?: FinishPaymentOptions) => void;
     paymentStatusMessage: string | null;
     paymentResponse: PaymentProgress | undefined;

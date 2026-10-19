@@ -21,6 +21,6 @@ export declare const createCashierSummaryState: () => CashierSummaryState;
 export declare function CashierSummaryStateProvider({ children, state, }: {
     children: ReactNode;
     state: CashierSummaryState;
-}): import("react").JSX.Element;
+}): import('react').JSX.Element;
 export declare const useCashierSummaryState: () => CashierSummaryState;
 //# sourceMappingURL=summaryState.d.ts.map

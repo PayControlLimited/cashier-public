@@ -13,4 +13,4 @@ var e = /* @__PURE__ */ function(e) {
 	return e.BUTTON = "button", e.TEXT = "text", e;
 }({});
 //#endregion
-export { r as CashierBonusesStyle, n as CashierComboViewPaymentTypesMode, t as CashierLayoutListType, e as CashierMethods, i as CashierSuggestAction, a as CashierSummaryActionType };
+export { r as CashierBonusesStyle, r as CashierOffersStyle, n as CashierComboViewPaymentTypesMode, t as CashierLayoutListType, e as CashierMethods, i as CashierSuggestAction, a as CashierSummaryActionType };

@@ -1,5 +1,5 @@
 import { PaymentType } from '../../../api/src/payments.ts';
-import { CashierAward, CashierBonus, CashierUser } from '../types/CashierConfig.js';
+import { CashierBonusDefinition, CashierUser, CashierFrozenAward } from '../types/CashierConfig.js';
 export type BonusConditionReasonType = 'amount' | 'totalPayinAmount' | 'payinCount' | 'daysSinceRegistration';
 export type BonusPaymentReasonType = 'paymentTypeRequired' | 'paymentTypeMismatch' | 'excluded';
 export type BonusConditionAvailabilityReason = {
@@ -19,31 +19,25 @@ export type BonusUnavailableReasonType = BonusConditionReasonType | BonusPayment
 export type BonusUnavailableReason = BonusAvailabilityReason;
 export type BonusAvailabilityStatus = 'available' | 'close' | 'unavailable';
 export type BonusAvailability = {
-    bonus: CashierBonus;
+    bonus: CashierBonusDefinition;
     status: BonusAvailabilityStatus;
     reasons: BonusAvailabilityReason[];
 };
 export type BonusAwardDetails = {
     maxBonus: number;
     maxBonusPercentage: number;
-    estimatedBonus: number | null;
+    estimatedBonus: string | null;
     fullClaimAmount: number;
     claimPercentage: number | null;
 };
-export type BonusSummaryAwardLine = {
-    id: string;
-    type: CashierAward['type'];
-    value: number;
-    formattedValue: string;
-    text: string;
-    name?: string;
-};
+export type BonusSummaryAwardLine = CashierFrozenAward;
 type BonusSummaryAwardLineOptions = {
-    amount?: number | null;
+    amount?: string | number | null;
     paymentStatus?: string | null;
+    locale?: string;
     translateKey?: (key: string) => string;
     hasTranslation?: (key: string) => boolean;
-    formatAmount?: (value: number) => string;
+    formatAmount?: (value: string) => string;
 };
 export declare const sortBonusAvailability: (availability: BonusAvailability[]) => BonusAvailability[];
 export declare const isBonusSelectionCandidate: (availability: BonusAvailability) => boolean;
@@ -51,13 +45,15 @@ export type BonusEvaluationContext = {
     amount?: number | null;
     user?: CashierUser | null;
 };
-export declare const normalizeBonuses: (bonuses?: CashierBonus[]) => CashierBonus[];
-export declare const hasConfiguredBonuses: (bonuses?: CashierBonus[] | null) => boolean;
-export declare const getBonusAvailabilityForPaymentType: (bonuses: CashierBonus[], paymentType?: PaymentType | null, context?: BonusEvaluationContext) => BonusAvailability[];
-export declare const getBonusAvailabilityForPaymentTypes: (bonuses: CashierBonus[], paymentTypes: PaymentType[], selectedPaymentType?: PaymentType | null, context?: BonusEvaluationContext) => BonusAvailability[];
-export declare const getAvailableBonusesForPaymentType: (bonuses: CashierBonus[], paymentType?: PaymentType | null, context?: BonusEvaluationContext) => CashierBonus[];
-export declare const resolveBonusAwardDetails: (bonus: Pick<CashierBonus, "awards" | "maxBonus" | "maxBonusPercentage">, amount?: number | null) => BonusAwardDetails | null;
-export declare const resolveBonusSummaryAwardLines: (bonus: Pick<CashierBonus, "code" | "title" | "awards">, options: BonusSummaryAwardLineOptions) => BonusSummaryAwardLine[];
+export declare const normalizeBonuses: (bonuses?: CashierBonusDefinition[]) => CashierBonusDefinition[];
+export declare const hasConfiguredBonuses: (bonuses?: CashierBonusDefinition[] | null) => boolean;
+export declare const getBonusAvailabilityForPaymentType: (bonuses: CashierBonusDefinition[], paymentType?: PaymentType | null, context?: BonusEvaluationContext) => BonusAvailability[];
+export declare const getBonusAvailabilityForPaymentTypes: (bonuses: CashierBonusDefinition[], paymentTypes: PaymentType[], selectedPaymentType?: PaymentType | null, context?: BonusEvaluationContext) => BonusAvailability[];
+export declare const getAvailableBonusesForPaymentType: (bonuses: CashierBonusDefinition[], paymentType?: PaymentType | null, context?: BonusEvaluationContext) => CashierBonusDefinition[];
+export declare const resolveBonusAwardDetails: (bonus: Pick<CashierBonusDefinition, "awards" | "maxBonus" | "maxBonusPercentage">, amount?: number | null) => BonusAwardDetails | null;
+/** Bonus policy adapter. Quantities and display lines use the shared award engine. */
+export declare const resolveBonusAwardLines: (bonus: Pick<CashierBonusDefinition, "code" | "title" | "awards">, options: Omit<BonusSummaryAwardLineOptions, "paymentStatus">) => CashierFrozenAward[];
+export declare const resolveBonusSummaryAwardLines: (bonus: Pick<CashierBonusDefinition, "code" | "title" | "awards">, options: BonusSummaryAwardLineOptions) => BonusSummaryAwardLine[];
 export declare const formatBonusAvailabilityReasonLabel: (reason: BonusAvailabilityReason, translateKey: (key: string) => string, formatAmount: (value: number) => string) => string;
 export {};
 //# sourceMappingURL=bonuses.d.ts.map

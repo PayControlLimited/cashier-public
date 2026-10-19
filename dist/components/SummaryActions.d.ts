@@ -6,6 +6,6 @@ type SummaryActionsProps = {
 };
 export declare const activateResolvedSummaryAction: (action: ResolvedCashierSummaryAction, onRestart: () => void) => void;
 export declare const getResolvedSummaryActionKind: (action: ResolvedCashierSummaryAction) => "button" | "link" | "text";
-export default function SummaryActions({ actions, onRestart, }: SummaryActionsProps): ReactNode;
+export default function SummaryActions({ actions: configuredActions, onRestart, }: SummaryActionsProps): ReactNode;
 export {};
 //# sourceMappingURL=SummaryActions.d.ts.map

@@ -10,6 +10,7 @@ export type PaymentError = {
 export type PaymentMutationVariables = {
     body: PaymentsRequest;
     path: CreatePaymentData['path'];
+    attemptGeneration?: number;
 };
 type ClearPaymentStateOptions = {
     closeProviderWindow?: boolean;
@@ -35,10 +36,10 @@ type PaymentInteractionLockProviderProps = {
     children: ReactNode;
     locked: boolean;
 };
-export declare const PaymentInteractionLockProvider: ({ children, locked, }: PaymentInteractionLockProviderProps) => import("react").JSX.Element;
+export declare const PaymentInteractionLockProvider: ({ children, locked, }: PaymentInteractionLockProviderProps) => import('react').JSX.Element;
 export declare const PaymentProvider: ({ children }: {
     children: ReactNode;
-}) => import("react").JSX.Element;
+}) => import('react').JSX.Element;
 export declare const usePaymentStatus: () => PaymentContextValue;
 export declare const useIsPaymentInteractionLocked: () => boolean;
 export {};

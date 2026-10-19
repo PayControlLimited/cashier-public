@@ -26,6 +26,6 @@ type PaymentTypesListProps = {
     bonusEvaluationContext?: BonusEvaluationContextInput;
     themeSlot?: PaymentTypeListItemThemeSlot;
 };
-declare function PaymentTypesList({ paymentTypes, onSelect, listStyle, compact, stacked, showMeta, selectable, selectedPaymentType, renderActions, isPaymentTypeDisabled, interactionLocked, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, domScope, animateItems, bonusEvaluationContext, themeSlot, }: PaymentTypesListProps): import("react").JSX.Element;
+declare function PaymentTypesList({ paymentTypes, onSelect, listStyle, compact, stacked, showMeta, selectable, selectedPaymentType, renderActions, isPaymentTypeDisabled, interactionLocked, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, domScope, animateItems, bonusEvaluationContext, themeSlot, }: PaymentTypesListProps): import('react').JSX.Element;
 export default PaymentTypesList;
 //# sourceMappingURL=PaymentTypesList.d.ts.map

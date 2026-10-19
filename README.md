@@ -21,7 +21,8 @@ Runtime exports from `@paycontrollimited/cashier`:
 - `Cashier` (named React component export)
 - `defineCashier`
 - `defaultCashierConfig`
-- `CashierBonusesStyle`
+- `CashierOffersStyle`
+- `CashierBonusesStyle` (legacy adapter)
 - `CashierComboViewPaymentTypesMode`
 - `CashierLayoutListType`
 - `CashierMethods`
@@ -30,21 +31,22 @@ Runtime exports from `@paycontrollimited/cashier`:
 
 Type exports from `@paycontrollimited/cashier`:
 
-- `CashierHandle`
-  ```ts
-  {
-    setBonuses: (bonuses: CashierBonus[] | undefined) => void
-    setUser: (user: CashierUser | undefined) => void
-    setUserBalance: (balance: CashierUserBalance | undefined) => void
-    setSelectedBonusCode: (code: string | null) => void
-    clearSelectedBonus: () => void
-  }
-  ```
+- `CashierHandle` for runtime offer, checkout, user/balance and guarded
+  navigation/recovery commands; see the imperative API below.
 - `CashierEmbeddingSnapshot`, `CashierEmbeddingRecovery`,
   `CashierEmbeddingCommandResult` and `CashierEmbeddingStateChanged`
+- `CashierOffer`, `CashierOfferSelectionChangedEvent`
+- `CashierCheckoutSnapshot`, `CashierCheckoutUpdateRequest`,
+  `CashierCheckoutUpdateResolution`, `CashierCheckoutUpdateRejection`,
+  `CashierCheckoutState` and `CashierCheckoutCommandResult`
+- `CashierPriceComparison`, `CashierOrderPriceComparison`, `CashierDiscount`
+  and `CashierSavingAllocation`
+- `CashierElement`, `CashierElementItem`, `CashierDisplayItem` and `CashierAward`
+- `CashierPaymentContext` and its versioned historical shapes
 - `CashierConfig`
 - `CashierProps`
-- `CashierBonusesStyle`
+- `CashierOffersStyle`
+- `CashierBonusesStyle` (legacy adapter)
 - `CashierComboViewPaymentTypesMode`
 - `CashierLocale`
 - `CashierCurrency`
@@ -803,8 +805,15 @@ configuration:
   locked amount is shown in the summary card instead of the editable
   payment-form amount field. If the locked `initialAmount` is blank or
   invalid, Cashier uses `0`. Suggested amounts are hidden while the amount is
-  locked, and the combo-view entry screen is skipped even if
-  `uiComboView` is enabled.
+  locked. Bonus top-up actions are hidden and restored drafts cannot change the
+  locked value. Eligible partial bonus awards remain available.
+- Locked amounts preserve useful combo views: multiple methods or accounts,
+  disabled alternatives, editable inline details, Hosted Fields and eligible
+  bonus choices. A sole usable method with no useful entry controls opens the
+  existing bonus/details/confirmation step. Automatic selection creates no
+  payment and does not fire `onPaymentTypeSelected`. Use `uiComboView: false`
+  to require the separate flow. Entry is resolved after Restart or a method
+  switch; later eligibility updates leave the customer on their current screen.
 - Use `uiListStyle: 'accordion'` to show payment types as an accordion. The
   selected payment type opens its payment form inside the list and moves into
   view below any sticky header, prompt, or shadow. Bonus lists use the regular
@@ -1169,3 +1178,86 @@ if (element) {
   element.config = config
 }
 ```
+
+## Merchant elements and purchase recovery
+
+Use `presentation.elements` for ordered text, actions and awards, grouped by scope,
+screens, placement and layout. Members share semantic visuals. Reuse the same scoped
+member ID across screens to reuse one captured fact with different presentation;
+conflicting definitions reject. No separate rules or action-layout API is needed.
+See the [complete authoring example](https://github.com/PayControlLimited/PayControl/blob/master/docs/cashier/cashier-ui-overrides.md#configure-built-in-content-without-component-overrides).
+
+Payment definitions, resolved translations, exact quantities, URLs and visibility freeze
+at final Pay; global content and cosmetics remain live. Update the presentation prop/property
+without remounting payment fields. Notifications announce only when explicitly requested.
+Released bonuses, summary actions, slots, screens, selectors, theme tokens and callbacks
+retain their adapters. Merchant additions do not implicitly replace standard payment controls.
+
+`resumePaymentContext` beside `resumePaymentId` accepts frozen purchase facts,
+display membership (v2), display items (v3), and confirmed offer/pricing facts (v4).
+All four readers retain literal historical wording.
+Identity or exact-money contradictions omit purchase content while retaining authoritative
+payment details and current global declarations. Recovery cannot prove fulfilment.
+
+After uncertain creation retain the instance, discover the existing payment ID on your
+server, then call `reconcile({ paymentId, paymentContextId? })`. Failed candidates retain
+the uncertainty lock. No browser persistence or automatic unlock is provided.
+
+Pure element/content/recovery validators are exported through `/purchase`. Hosted Web
+configure accepts JSON presentation; negotiated `setPresentation` updates it (`null` clears).
+Native SDK conformance covers hosted Web embedding, not future directly rendered native Cashier.
+
+## Shared offers and merchant-confirmed prices
+
+Configure `offers` (`CashierOffer[]`) to use the existing bonus picker with neutral
+copy. One selection can grant awards and request a merchant-owned discount.
+`pricing: 'merchant'` requires `lockAmount`, `paymentContextId`, and a host
+`onCheckoutUpdateRequested` handler to acknowledge changes. A displayed coupon or
+offer ID is not a submission code; opt in with `submission: { bonusCode }`.
+Legacy `bonuses` and UI/handle/callback names remain compatible adapters.
+
+`initialAmount` is always authoritative. Item `pricing` supports reference/current
+money, fixed/percentage display previews, explicit unit/line basis and identified
+merchant saving allocations. `checkout.pricing` compares the confirmed order
+amount; fees stay separate. There is no item-sum, cart, tax, shipping or payable
+engine. For merchant-rounded lines, provide `pricing.amount` directly rather than
+inventing unit money by division. `unitPrice` still works as shorthand.
+
+```ts
+const handle = cashierRef.current
+// In onCheckoutUpdateRequested, ask the merchant server, then acknowledge once:
+handle?.resolveCheckoutUpdate({
+  requestId: request.requestId,
+  checkout: {
+    initialAmount: result.amount, currency: result.currency,
+    paymentContextId: result.revision,
+    selectedOfferId: request.selectedOfferId,
+    elements: result.paymentElements,
+    eligibilityAmount: result.eligibilityAmount,
+    pricing: result.comparison,
+  },
+})
+```
+
+The boundary applies confirmed facts atomically without remounting the runtime,
+route or Hosted Fields. Pending money remains the previous confirmed money; Pay
+is disabled. Known rejection restores Pay only if the previous confirmation is
+still valid. Unknown/timeout/expiry requires fresh merchant confirmation through
+`refreshCheckout`; no automatic timeout retry occurs. A 30-second deadline does
+not prove the previous price remains valid. Backend validation remains essential.
+
+Zero-price acknowledgement replaces payment inputs with an explicit
+`onNoPaymentRequired` handoff. It does not tokenise, create a payment or emit a
+payment-success event. The merchant completes the order. At Pay, recovery v4
+captures literal offer binding, wording and comparison facts; v1/v2/v3 readers
+remain supported. Hosted operations require `checkoutOffers` negotiation. See the
+[configuration reference](https://github.com/PayControlLimited/PayControl/blob/master/docs/cashier/cashier-configuration.md#shared-offers-comparison-prices-and-merchant-updates)
+for precedence, rounding, callbacks and migration.
+
+## Merchant checkout tutorial
+
+Follow the [step-by-step checkout tutorial](https://github.com/PayControlLimited/PayControl/blob/master/docs/cashier/cashier-integration.md#tutorial-build-a-merchant-checkout)
+to add goods and a linked support footer, connect offer selection to your order
+service, handle uncertain prices and free orders, and resume the original
+payment. The [typed example](https://github.com/PayControlLimited/PayControl/blob/master/frontend/fixtures/cashier-consumers/vite-react/src/merchant-checkout.ts)
+is compiled against the packed package. No Payment API change is required.

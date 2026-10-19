@@ -31,8 +31,8 @@ type CashierFullscreenLoadingOverlayProps = {
     loaderTestId?: string;
     loaderSlot?: string;
 };
-export default function CashierFullscreenLoader({ label, labelKey, message, messageKey, testId, loaderSlot, delayMs, onVisibleChange, presentationScreen, }: CashierFullscreenLoaderProps): import("react").JSX.Element;
-export declare function CashierFullscreenLoadingGate({ isLoading, children, loaderLabel, loaderLabelKey, loaderMessage, loaderMessageKey, loaderTestId, loaderSlot, loaderDelayMs, }: CashierFullscreenLoadingGateProps): import("react").JSX.Element;
-export declare function CashierFullscreenLoadingOverlay({ isLoading, children, loaderLabel, loaderLabelKey, loaderTestId, loaderSlot, }: CashierFullscreenLoadingOverlayProps): import("react").JSX.Element;
+export default function CashierFullscreenLoader({ label, labelKey, message, messageKey, testId, loaderSlot, delayMs, onVisibleChange, presentationScreen, }: CashierFullscreenLoaderProps): import('react').JSX.Element;
+export declare function CashierFullscreenLoadingGate({ isLoading, children, loaderLabel, loaderLabelKey, loaderMessage, loaderMessageKey, loaderTestId, loaderSlot, loaderDelayMs, }: CashierFullscreenLoadingGateProps): import('react').JSX.Element;
+export declare function CashierFullscreenLoadingOverlay({ isLoading, children, loaderLabel, loaderLabelKey, loaderTestId, loaderSlot, }: CashierFullscreenLoadingOverlayProps): import('react').JSX.Element;
 export {};
 //# sourceMappingURL=CashierFullscreenLoader.d.ts.map

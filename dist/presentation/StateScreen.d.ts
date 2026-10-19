@@ -5,6 +5,7 @@ type CashierStateScreenProps = Readonly<{
     id: CashierStateScreenId;
     message?: string;
     messageKey?: string;
+    paymentStatus?: string;
     title: string;
     titleKey?: string;
     busy?: boolean;
@@ -12,6 +13,6 @@ type CashierStateScreenProps = Readonly<{
     onGoBack?: () => void | Promise<void>;
     overrideEnabled?: boolean;
 }>;
-export declare function CashierStateScreen({ busy, children, id, message, messageKey, onGoBack, onRetry, overrideEnabled, title, titleKey, }: CashierStateScreenProps): import("react").JSX.Element;
+export declare function CashierStateScreen({ busy, children, id, message, messageKey, paymentStatus, onGoBack, onRetry, overrideEnabled, title, titleKey, }: CashierStateScreenProps): import('react').JSX.Element;
 export {};
 //# sourceMappingURL=StateScreen.d.ts.map

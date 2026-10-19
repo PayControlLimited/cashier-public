@@ -1,4 +1,5 @@
-import { CashierExtensions } from './presentation.js';
+import { CashierOffer, CashierCheckoutDetails, CashierCheckoutState, CashierCheckoutUpdateRequest, CashierCheckoutUpdateResolution, CashierCheckoutUpdateRejection, CashierCheckoutCommandResult, CashierOfferSelectionChangedEvent, CashierFrozenOffer, CashierResolvedPriceComparison } from './offers.js';
+import { CashierExtensions, CashierContentStyle, CashierPresentationScreenId } from './presentation.js';
 export declare enum CashierMethods {
     PAYIN = "payin",
     PAYOUT = "payout",
@@ -18,11 +19,13 @@ export declare enum CashierComboViewPaymentTypesMode {
     NONE = "none",
     PICKER = "picker"
 }
-export declare enum CashierBonusesStyle {
+export declare enum CashierOffersStyle {
     PAGE = "page",
     PICKER_PAYMENT_FORM = "picker-payment-form",
     PICKER_PAYMENT_LIST = "picker-payment-list"
 }
+/** @deprecated Use CashierOffersStyle. Enum-member types remain compatible. */
+export { CashierOffersStyle as CashierBonusesStyle };
 export declare enum CashierSuggestAction {
     ON_PAYMENT_FAILURE_LAST_SUCCESSFUL = "onPaymentFailed:lastSuccessful",
     ON_PENDING_PAYOUT_CANCEL = "onPendingPayout:cancel"
@@ -31,26 +34,38 @@ export declare enum CashierSummaryActionType {
     BUTTON = "button",
     TEXT = "text"
 }
-export type CashierSummaryActionThemeVariant = 'neutral' | 'secondary' | 'primary' | 'success' | 'danger' | 'warning' | 'info';
-export type CashierSummaryUrlAction = {
+export type CashierActionThemeVariant = 'neutral' | 'secondary' | 'primary' | 'success' | 'danger' | 'warning' | 'info';
+export type CashierUrlAction = {
     href: string;
     target?: string;
     rel?: string;
-    referrerPolicy?: ReferrerPolicy;
+    referrerPolicy?: '' | 'no-referrer' | 'no-referrer-when-downgrade' | 'origin' | 'origin-when-cross-origin' | 'same-origin' | 'strict-origin' | 'strict-origin-when-cross-origin' | 'unsafe-url';
     download?: boolean | string;
 };
 export type CashierSummaryAction = {
     id: string;
     type?: `${CashierSummaryActionType}`;
     label: string;
-    themeVariant?: CashierSummaryActionThemeVariant;
+    themeVariant?: CashierActionThemeVariant;
     paymentStatuses?: string[];
-    action?: 'restart' | CashierSummaryUrlAction;
+    action?: 'restart' | CashierUrlAction;
 };
 export type CashierSummaryActions = {
     layout?: 'row' | 'stack';
     items: CashierSummaryAction[];
 };
+/** Screen-targeted merchant control. Cosmetic options belong to presentation rules. */
+export type CashierAction = Omit<CashierContentStyle, 'layout'> & {
+    id: string;
+    scope: 'global' | 'payment';
+    label: string;
+    params?: Record<string, string>;
+    screens?: CashierPresentationScreenId[];
+    paymentStatuses?: string[];
+    action: 'restart' | CashierUrlAction;
+};
+export type CashierSummaryActionThemeVariant = CashierActionThemeVariant;
+export type CashierSummaryUrlAction = CashierUrlAction;
 export type CashierPaymentFieldNotification = {
     key: string;
     type: 'info' | 'warning' | 'positive' | 'negative';
@@ -115,6 +130,8 @@ export type CashierPaymentFormData = {
  */
 export type CashierPaymentCreatedResponse = {
     paymentId?: string;
+    /** Merchant-owned correlation captured when Pay was committed. */
+    paymentContextId?: string;
     /**
      * @deprecated Never populated on the create response; read it from the
      * CashierPaymentProgress passed to onPaymentUpdated or onPaymentFinished.
@@ -140,6 +157,8 @@ export type CashierPaymentProgress = {
 };
 export type CashierPaymentError = {
     error: string;
+    creationOutcome?: 'rejected' | 'unknown';
+    paymentContextId?: string;
 };
 export type CashierPaymentUpdatedEvent = ({
     type: 'message';
@@ -187,7 +206,7 @@ export type PayControlUiThemeCssDeclarationValue = string | number;
 export type PayControlUiThemeCssDeclaration = Partial<Record<string, PayControlUiThemeCssDeclarationValue>>;
 export type PayControlUiThemeCssObject = Record<string, PayControlUiThemeCssDeclaration | null>;
 export type PayControlUiTheme = {
-    schemaVersion?: 1 | 2;
+    schemaVersion?: 1 | 2 | 3;
     name?: string;
     logoUrl?: string;
     cssUrl?: string | null;
@@ -229,21 +248,134 @@ export type CashierBonusConditions = {
     include?: CashierBonusConditionItem[];
     exclude?: CashierBonusConditionItem[];
 };
-export type CashierAwardValue = {
+export type CashierValueRule<Value = number> = {
     type: 'fixed' | 'percentage' | 'multiplier';
-    value: number;
-    maxValue?: number;
+    value: Value;
+    maxValue?: Value;
     rounding?: 'floor' | 'round' | 'ceil' | 'none';
 };
-export type CashierAward = {
+export type CashierItemValue = CashierValueRule;
+export type CashierItem = {
     id: string;
     type: 'currency' | 'item';
     name?: string;
     paymentStatuses?: string[];
     message?: string;
-    value: CashierAwardValue;
+    value: CashierItemValue;
+    screens?: CashierPresentationScreenId[];
 };
-export type CashierBonus = {
+/** Released bonus award names share the item contract. */
+export type CashierAwardValue = CashierItemValue;
+export type CashierAward = CashierItem;
+export type CashierMessage = Omit<CashierContentStyle, 'layout'> & {
+    id: string;
+    scope: 'global' | 'payment';
+    text: string;
+    params?: Record<string, string>;
+    screens?: CashierPresentationScreenId[];
+    paymentStatuses?: string[];
+    tone?: 'info' | 'warning' | 'positive' | 'negative';
+    announcement?: 'polite' | 'assertive';
+};
+/** Literal display data. It must never be translated again during recovery. */
+export type CashierFrozenAward = {
+    /** Omitted source means checkout for version-one recovery compatibility. */
+    source?: {
+        kind: 'checkout';
+    } | {
+        kind: 'bonus';
+        bonusCode: string;
+    };
+    id: string;
+    type: CashierAward['type'];
+    value: string;
+    formattedValue: string;
+    /** Literal neutral quantity wording; omitted by older recovery records. */
+    quantityText?: string;
+    name?: string;
+    text: string;
+    screens?: CashierPresentationScreenId[];
+    paymentStatuses?: string[];
+};
+export type CashierFrozenMessage = Omit<CashierMessage, 'scope' | 'params' | 'text' | keyof CashierContentStyle> & {
+    scope: 'payment';
+    text: import('./presentation.js').CashierPresentationText;
+    format: 'markdown';
+};
+export type CashierFrozenAction = Omit<CashierAction, 'scope' | 'params' | 'label' | keyof CashierContentStyle> & {
+    scope: 'payment';
+    label: import('./presentation.js').CashierPresentationText;
+};
+/** Version one retains literal historical wording and its original placeholder policy. */
+export type CashierPaymentContextV1 = {
+    schemaVersion: 1;
+    paymentId: string;
+    merchantId: string;
+    paymentContextId?: string;
+    amount?: string;
+    currency: string;
+    locale: string;
+    awards?: CashierFrozenAward[];
+    messages?: (Omit<CashierMessage, 'text' | 'scope' | keyof CashierContentStyle> & {
+        scope: 'payment';
+        text: string;
+        placement: 'top' | 'bottom';
+        params?: Record<string, string>;
+        actions?: CashierSummaryActions;
+    })[];
+};
+/** Historical display membership; quantities and wording live in the unique frozen facts. */
+export type CashierFrozenElement = {
+    id: string;
+    scope: 'payment';
+    screens?: CashierPresentationScreenId[];
+    paymentStatuses?: string[];
+    items: {
+        id: string;
+        kind: 'text' | 'action' | 'award';
+    }[];
+};
+/** Merchant-supplied historical expectation, not proof of item fulfilment. */
+export type CashierPaymentContextV2 = {
+    schemaVersion: 2;
+    paymentId: string;
+    merchantId: string;
+    paymentContextId?: string;
+    amount?: string;
+    currency: string;
+    locale: string;
+    items?: CashierFrozenAward[];
+    elements?: CashierFrozenElement[];
+    messages?: CashierFrozenMessage[];
+    actions?: CashierFrozenAction[];
+};
+/** Version three adds literal informational rows without changing payment authority. */
+export type CashierPaymentContextV3 = Omit<CashierPaymentContextV2, 'schemaVersion' | 'elements'> & {
+    schemaVersion: 3;
+    displayItems?: import('./presentation.js').CashierResolvedDisplayItem[];
+    elements?: (Omit<CashierFrozenElement, 'items'> & {
+        items: {
+            id: string;
+            kind: 'text' | 'action' | 'award' | 'item';
+        }[];
+    })[];
+};
+/** Confirmed offer and graphical prices are literal historical facts. */
+export type CashierPaymentContextV4 = Omit<CashierPaymentContextV3, 'schemaVersion'> & {
+    schemaVersion: 4;
+    offer?: CashierFrozenOffer;
+    orderPricing?: CashierResolvedPriceComparison;
+};
+export type CashierPaymentContext = CashierPaymentContextV1 | CashierPaymentContextV2 | CashierPaymentContextV3 | CashierPaymentContextV4;
+export type CashierReconcileOptions = {
+    paymentId: string;
+    paymentContextId?: string;
+};
+export type CashierConfigurationIssue = {
+    code: 'invalid-value' | 'duplicate-id' | 'unsupported-version';
+    path: string;
+};
+export type CashierBonusDefinition = {
     code: string;
     title: string;
     description: string;
@@ -262,6 +394,8 @@ export type CashierBonus = {
     termsAndConditions?: string;
     conditions?: CashierBonusConditions;
 };
+/** @deprecated Use CashierOffer. Existing bonus contracts remain supported. */
+export type CashierBonus = CashierBonusDefinition;
 export type CashierBonusPaymentTypeConditions = CashierBonusConditions;
 export type CashierPendingWithdrawalCancelledEvent = {
     paymentId: string;
@@ -281,7 +415,7 @@ export type CashierPendingWithdrawalCancelledEvent = {
     }>;
 };
 export type CashierBonusTopUpEvent = {
-    bonus: CashierBonus;
+    bonus: CashierBonusDefinition;
     previousAmount: number;
     nextAmount: number;
     addedAmount: number;
@@ -316,7 +450,7 @@ export interface HostedFieldsFontDefinition {
 export type CashierProps = (Partial<CashierConfig> & CashierExtensions & {
     /** Content layout grows naturally for a host that controls scrolling. */
     layout?: 'viewport' | 'content';
-    /** Safe lifecycle observation for hosts; never contains configuration or form values. */
+    /** Safe lifecycle observation; excludes configuration and form values. */
     onEmbeddingStateChanged?: CashierEmbeddingStateChanged;
     /** Resolved host labels; never the full translation catalogue. */
     onEmbeddingPresentationTextChanged?: CashierEmbeddingPresentationTextChanged;
@@ -325,6 +459,7 @@ export type CashierProps = (Partial<CashierConfig> & CashierExtensions & {
      * Cashier. This intentionally sits outside CashierConfig.
      */
     resumePaymentId?: string;
+    resumePaymentContext?: CashierPaymentContext;
 }) | ({
     config: Partial<CashierConfig>;
 } & CashierExtensions & {
@@ -338,6 +473,7 @@ export type CashierProps = (Partial<CashierConfig> & CashierExtensions & {
      * Cashier. This intentionally sits outside CashierConfig.
      */
     resumePaymentId?: string;
+    resumePaymentContext?: CashierPaymentContext;
 });
 export type CashierEmbeddingPresentationText = Readonly<{
     locale: string;
@@ -372,17 +508,26 @@ export type CashierEmbeddingCommandResult = Readonly<{
 }>;
 export type CashierEmbeddingStateChanged = (snapshot: CashierEmbeddingSnapshot) => void | Promise<void>;
 export type CashierHandle = {
-    setBonuses: (bonuses: CashierBonus[] | undefined) => void;
+    setOffers?: (offers: CashierOffer[] | undefined) => void;
+    selectOffer?: (id: string | null) => CashierCheckoutCommandResult;
+    refreshCheckout?: () => CashierCheckoutCommandResult;
+    resolveCheckoutUpdate?: (resolution: CashierCheckoutUpdateResolution) => CashierCheckoutCommandResult;
+    rejectCheckoutUpdate?: (rejection: CashierCheckoutUpdateRejection) => CashierCheckoutCommandResult;
+    getCheckoutState?: () => CashierCheckoutState;
+    /** @deprecated Use setOffers. */
+    setBonuses: (bonuses: CashierBonusDefinition[] | undefined) => void;
     setUser: (user: CashierUser | undefined) => void;
     setUserBalance: (userBalance: CashierUserBalance | undefined) => void;
+    /** @deprecated Use selectOffer. */
     setSelectedBonusCode: (code: string | null) => void;
+    /** @deprecated Use selectOffer(null). */
     clearSelectedBonus: () => void;
     getEmbeddingState: () => CashierEmbeddingSnapshot;
     requestBack: () => CashierEmbeddingCommandResult;
     /** Checks whether the host may close; does not cancel a payment or unmount. */
     requestClose: () => CashierEmbeddingCommandResult;
     /** Reconciles the current payment through Cashier's existing status owner. */
-    reconcile: () => CashierEmbeddingCommandResult;
+    reconcile: (options?: CashierReconcileOptions) => CashierEmbeddingCommandResult;
 };
 /** @since 1.5.1 */
 export type CashierPaymentMethodChangedEvent = {
@@ -530,11 +675,23 @@ export type CashierConfig = {
     uiPreselectedPaymentType: string | null;
     /** @since 0.0.4 */
     uiAccountDelete: boolean;
-    /** @since 1.3.0 */
+    /**
+     * @since 1.3.0
+     * @deprecated Use uiOffers. Legacy behaviour remains supported.
+     * @deprecatedSince 1.7.0
+     */
     uiBonuses: boolean;
-    /** @since 1.5.0 */
-    uiBonusesStyle: CashierBonusesStyle;
-    /** @since 0.0.4 */
+    /**
+     * @since 1.5.0
+     * @deprecated Use uiOffersStyle. Legacy behaviour remains supported.
+     * @deprecatedSince 1.7.0
+     */
+    uiBonusesStyle: CashierOffersStyle;
+    /**
+     * @since 0.0.4
+     * @deprecated Use uiOffersAvailable. Legacy behaviour remains supported.
+     * @deprecatedSince 1.7.0
+     */
     uiBonusesAvailable: boolean;
     /** @since 0.0.4 */
     uiSuggestAmounts: string;
@@ -573,8 +730,42 @@ export type CashierConfig = {
     returnUrl?: string;
     /** @since 0.0.4 */
     user?: CashierUser;
-    /** @since 0.0.4 */
-    bonuses?: CashierBonus[];
+    /**
+     * @since 0.0.4
+     * @deprecated Use offers. Legacy behaviour remains supported.
+     * @deprecatedSince 1.7.0
+     */
+    bonuses?: CashierBonusDefinition[];
+    /** @since 1.7.0 */
+    offers?: CashierOffer[];
+    /** @since 1.7.0 */
+    selectedOfferId?: string | null;
+    /** @since 1.7.0 */
+    checkout?: CashierCheckoutDetails;
+    /** @since 1.7.0 */
+    uiOffers?: boolean;
+    /** @since 1.7.0 */
+    uiOffersStyle?: CashierOffersStyle;
+    /** @since 1.7.0 */
+    uiOffersAvailable?: boolean;
+    /** @since 1.7.0 */
+    onCheckoutUpdateRequested?: (request: CashierCheckoutUpdateRequest) => void | Promise<void>;
+    /** @since 1.7.0 */
+    onCheckoutStateChanged?: (state: CashierCheckoutState) => void | Promise<void>;
+    /** @since 1.7.0 */
+    onOfferSelectionChanged?: (event: CashierOfferSelectionChangedEvent) => void | Promise<void>;
+    /** Explicit shopper handoff; never payment success or fulfilment.
+     * @since 1.7.0
+     */
+    onNoPaymentRequired?: (event: {
+        paymentContextId: string;
+        currency: string;
+        selectedOfferId: string | null;
+    }) => void | Promise<void>;
+    /** Opaque order/revision correlation; never a deduplication key.
+     * @since 1.7.0
+     */
+    paymentContextId?: string;
     /** @since 0.0.4 */
     currencyFormatOptions?: CashierNumberFormatOptions;
     /** @since 0.0.4 */
@@ -609,10 +800,18 @@ export type CashierConfig = {
     onPendingWithdrawalCancelled?: (event: CashierPendingWithdrawalCancelledEvent) => void;
     /** @since 1.2.0 */
     onBonusToppedUp?: (event: CashierBonusTopUpEvent) => void;
-    /** @since 0.0.4 */
-    onBonusSelected?: (bonus: CashierBonus) => void;
-    /** @since 0.0.4 */
-    onBonusDeselected?: (bonus: CashierBonus) => void;
+    /**
+     * @since 0.0.4
+     * @deprecated Use onOfferSelectionChanged. Legacy behaviour remains supported.
+     * @deprecatedSince 1.7.0
+     */
+    onBonusSelected?: (bonus: CashierBonusDefinition) => void;
+    /**
+     * @since 0.0.4
+     * @deprecated Use onOfferSelectionChanged. Legacy behaviour remains supported.
+     * @deprecatedSince 1.7.0
+     */
+    onBonusDeselected?: (bonus: CashierBonusDefinition) => void;
     /** @since 0.0.4 */
     onPaymentTypeSelected?: (paymentType: CashierPaymentType) => void;
     /** @since 0.0.4 */

@@ -15,7 +15,7 @@ export type PaymentLifecycleSnapshot = Readonly<{
     errorMessage: string | null;
     fatalStatus: number | null;
 }>;
-type PaymentAuthorityScope = Readonly<{
+export type PaymentAuthorityScope = Readonly<{
     apiUrl: string;
     merchantId: string;
     userId?: string;
@@ -65,6 +65,7 @@ export type PaymentLifecycleTracker = Readonly<{
         merchantOwnershipProved?: boolean;
         merchantOwnsProviderWindow?: boolean;
     }>) => boolean;
+    hasMerchantOwnership: (paymentId: string) => boolean;
     merchantOwnsProviderWindow: (paymentId: string) => boolean;
     adoptRecovery: (paymentId: string) => boolean;
     clear: () => void;
@@ -72,6 +73,8 @@ export type PaymentLifecycleTracker = Readonly<{
     claimProviderAction: (owner: object, actionKey: string) => boolean;
     claimTerminalNavigation: (paymentId: string) => boolean;
 }>;
+/** Resolving an initially absent user preserves the existing session's authority. */
+export declare const hasPaymentAuthorityChanged: (previous: PaymentAuthorityScope | undefined, next: PaymentAuthorityScope) => boolean;
 export declare const createPaymentLifecycleTracker: (dependencies?: PaymentLifecycleTrackerDependencies) => PaymentLifecycleTracker;
 export {};
 //# sourceMappingURL=paymentLifecycleTracker.d.ts.map

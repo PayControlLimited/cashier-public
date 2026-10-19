@@ -1,8 +1,8 @@
-import { CashierBonus } from '../types/CashierConfig.js';
+import { CashierBonusDefinition } from '../types/CashierConfig.js';
 type ResolveSubmittableBonusCodeOptions = {
     uiBonuses: boolean;
     selectedBonusCode?: string | null;
-    availableBonuses: CashierBonus[];
+    availableBonuses: CashierBonusDefinition[];
 };
 export declare const resolveSubmittableBonusCode: ({ uiBonuses, selectedBonusCode, availableBonuses, }: ResolveSubmittableBonusCodeOptions) => string | undefined;
 export {};
