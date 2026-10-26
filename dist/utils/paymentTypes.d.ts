@@ -17,6 +17,8 @@ export declare const fetchPaymentTypes: (query: GetPaymentTypesData["query"] & P
     client: Client;
     debug?: boolean;
     fetchConfig?: boolean;
+    signal?: AbortSignal;
+    requireData?: boolean;
 }) => Promise<PaymentTypesResult>;
 export declare const resolvePaymentTypeMatch: (paymentTypes: PaymentType[], rawMatch?: string | null) => PaymentType | null;
 export declare const resolveAvailablePaymentTypeMatch: (paymentTypes: PaymentType[], rawMatch?: string | null) => PaymentType | null;

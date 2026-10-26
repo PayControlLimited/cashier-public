@@ -2,6 +2,55 @@
 
 ## Unreleased
 
+## 1.7.1
+
+### Added
+
+- Added independent modal, drawer, status artwork and circular-progress colour
+  roles, plus card input aliases with active-brand precedence. Card aliases
+  apply consistently to local cardholder fields, loading controls and secure
+  Hosted Fields through existing generic input roles.
+
+### Fixed
+
+- Empty payment-method accordion footers no longer leave a blank strip. Fees,
+  totals and merchant content remain visible when present.
+- Payment-method logos retain their rounded edges in Firefox after picker and
+  drawer transitions, including at fractional layout positions.
+- Returning from a payment summary keeps the last entered amount for the next
+  payment, including after switching through a recovery suggestion. Fees and
+  discounts do not replace that entry. Locked amounts remain merchant-controlled.
+- Choosing the suggested payment method after a failed payment correctly starts
+  a new attempt, instead of rejecting the next card payment before submission.
+- Delayed secure-field autofocus no longer takes focus back after the payer
+  moves to another input.
+
+- Summary text, including numeric payment references and date-like strings,
+  now displays exactly as supplied. Structured amounts retain exact decimal
+  values and use their declared currency across standard and custom summaries.
+
+- Secure card fields recover after interrupted loading and configuration
+  changes. Slow startup stays in the loading state and recovers automatically,
+  without requiring a retry action or submitting a payment.
+- Card branding and input grouping updates preserve the selected payment
+  account, checkout amount and entered card details, keeping valid card
+  payments available after presentation changes.
+- Keep long summary values from squeezing labels into vertical text on narrow
+  screens.
+- Aligned the bonus-summary theme catalogue with the standalone runtime award
+  callout, including existing aliases, spacing, typography and sizing.
+- Fixed bonus-summary radius overrides competing with the base panel radius.
+- Isolated component theme CSS between Cashier instances and previews. Scoped
+  drawers now dismiss before their containing dialog and restore focus.
+- Isolate provider POST iframe targets and guard popup cleanup by Cashier
+  instance ownership while preserving merchant return windows. Closing a reused
+  provider window still reaches the payment summary after its action changes.
+  Equivalent status updates do not repeat provider form submissions.
+
+- Uncertain payment recovery remains visible while a locale change reloads
+  translations, including when translation loading fails. The original purchase
+  stays locked until the merchant reconciles the existing payment.
+
 ## 1.7.0
 
 ### Added

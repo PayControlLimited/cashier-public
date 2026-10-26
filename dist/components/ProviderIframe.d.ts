@@ -1,5 +1,5 @@
 import { IframeHTMLAttributes, ReactNode } from 'react';
-export declare const buildProviderIframeAllow: (allow?: string) => string;
+export { buildProviderIframeAllow } from '../utils/providerIframe.js';
 type ProviderIframeProps = Omit<IframeHTMLAttributes<HTMLIFrameElement>, 'className' | 'title'> & {
     title: string;
     hiddenIframe?: boolean;

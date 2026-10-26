@@ -84,6 +84,7 @@ export type HostedFieldsConfiguration = {
 };
 /** Event hooks fired while the iframe exchanges postMessage events. */
 export type HostedFieldsCallbacks = {
+    onLoading?: (reason: 'navigation' | 'configuration') => void;
     onReady?: () => void;
     onLayout?: (layout: HostedFieldsLayout, message: HostedFieldsMessage) => void;
     onCapabilities?: (capabilities: HostedFieldsCapabilities, message: HostedFieldsMessage) => void;
@@ -113,6 +114,8 @@ export type CreateHostedFieldsControllerOptions = {
     iframe: HTMLIFrameElement;
     targetOrigin?: string;
     win?: Window;
+    /** Internal mount owner recovery; a startup delay is not a payment error. */
+    onStartupStalled?: (isStillStalled: () => boolean) => void;
 };
 /** Recommended iframe title i18n key for accessibility tooling. */
 export declare const DEFAULT_HOSTED_FIELDS_TITLE = "hosted_fields.title";

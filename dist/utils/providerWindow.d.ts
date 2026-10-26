@@ -4,6 +4,7 @@ export declare const PROVIDER_POPUP_BLOCKED_TOAST_ID = "cashier-provider-popup-b
 export declare const PROVIDER_WINDOW_DETACHED_OPEN_GRACE_MS = 500;
 export type ProviderWindowOpenSource = 'auto' | 'manual';
 type ProviderWindowStepKeyParams = {
+    scopeId?: string;
     paymentId?: string | null;
     redirectType?: string;
     redirectMethod?: string;
@@ -53,9 +54,12 @@ export declare const consumeProviderWindowClosure: (ownerKey: string) => boolean
  */
 export declare const closeProviderWindowHandle: (ownerKey?: string | null) => void;
 export declare const canOpenProviderWindow: () => boolean;
-export declare const buildProviderWindowStepKey: ({ paymentId, redirectType, redirectMethod, redirectUrl, redirectData, redirectScriptId, }: ProviderWindowStepKeyParams) => string | null;
+/** Preserve a merchant-owned window without retaining a disposed close owner. */
+export declare const releaseProviderWindowOwnership: (ownerKey?: string | null) => void;
+export declare const buildProviderWindowStepKey: ({ scopeId, paymentId, redirectType, redirectMethod, redirectUrl, redirectData, redirectScriptId, }: ProviderWindowStepKeyParams) => string | null;
 type OpenOrReuseProviderWindowOptions = {
     source: ProviderWindowOpenSource;
+    signal?: AbortSignal;
     open: () => Window | null;
     onReuse?: (handle: Window) => void;
     onOpened?: (handle: Window) => void;
@@ -67,5 +71,15 @@ type OpenOrReuseProviderWindowOptions = {
     onDetachedOpened?: () => void;
 };
 export declare const openOrReuseProviderWindow: (options: OpenOrReuseProviderWindowOptions) => Promise<Window | null>;
+/** Narrow platform lease. Shared popup reuse never shares a payment authority. */
+export declare const createProviderWindowScope: (instanceId: string) => Readonly<{
+    instanceId: string;
+    setProviderWindowHandle: (handle: Window | null, paymentId?: string | null) => void;
+    getProviderWindowOwnership: (paymentId: string) => ProviderWindowOwnership;
+    transferProviderWindowOwnership: (previous: string, next: string) => boolean;
+    consumeProviderWindowClosure: (paymentId: string) => boolean;
+    releaseProviderWindowOwnership: (paymentId?: string | null) => void;
+    closeProviderWindowHandle: (paymentId?: string | null) => void;
+}>;
 export {};
 //# sourceMappingURL=providerWindow.d.ts.map

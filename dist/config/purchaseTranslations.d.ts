@@ -21,5 +21,5 @@ export declare const purchaseFallbacks: {
     readonly 'error.payment_creation_uncertain': "We could not confirm whether your payment was created. Contact the merchant to recover the existing payment before trying again.";
     readonly 'error.purchase_configuration_invalid': "Checkout information is unavailable. Contact the merchant to correct the configuration.";
 };
-export declare const purchaseLocaleFallbacks: Record<string, Record<keyof typeof purchaseFallbacks, string>>;
+export declare const purchaseLocaleFallbacks: Partial<Record<string, Record<keyof typeof purchaseFallbacks, string>>>;
 //# sourceMappingURL=purchaseTranslations.d.ts.map

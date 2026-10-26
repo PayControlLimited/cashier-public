@@ -16,15 +16,16 @@ type PendingWithdrawalHistoryResult = {
     currentPage: number;
     pageSize: number;
 };
-export declare const fetchPendingWithdrawalHistory: (query: PendingWithdrawalHistoryQuery, client: Client) => Promise<PendingWithdrawalHistoryResult>;
+export declare const fetchPendingWithdrawalHistory: (query: PendingWithdrawalHistoryQuery, client: Client, signal?: AbortSignal) => Promise<PendingWithdrawalHistoryResult>;
 type CancelPendingWithdrawalParams = {
     client: Client;
     merchantId: string;
     userId: string;
     sessionId: string;
     paymentId: string;
+    signal?: AbortSignal;
 };
-export declare const cancelPendingWithdrawal: ({ client, merchantId, userId, sessionId, paymentId, }: CancelPendingWithdrawalParams) => Promise<import('../../../api/src/payments.ts').CancelPaymentResponse | undefined>;
+export declare const cancelPendingWithdrawal: ({ client, merchantId, userId, sessionId, paymentId, signal, }: CancelPendingWithdrawalParams) => Promise<import('../../../api/src/payments.ts').CancelPaymentResponse | undefined>;
 export declare const resolvePendingWithdrawalDismissKey: (pendingWithdrawals: PendingWithdrawal[]) => string | null;
 export declare const getPendingWithdrawalCurrencyTotals: (pendingWithdrawals: PendingWithdrawal[]) => PendingWithdrawalCurrencyTotal[];
 export {};

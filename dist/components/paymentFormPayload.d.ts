@@ -18,6 +18,8 @@ export type PreparePaymentPayloadParams = RequiredPaymentPayloadParams & Optiona
 };
 type BuildPaymentPayloadParams = Omit<PreparePaymentPayloadParams, 'tokenizeHfData' | 'controller'>;
 export declare const preparePaymentValues: (values: PaymentFormValues, tokenizeHfData: (saveAccount?: boolean) => Promise<HostedFieldsFormData>, controller: HostedFieldsController | null) => Promise<PaymentFormValues>;
+/** Same ordinary preparation for Formik and the private adapter; no tokenisation port. */
+export declare const prepareOrdinaryPaymentValues: (values: PaymentFormValues) => PaymentFormValues;
 export declare const buildPaymentPayload: (params: BuildPaymentPayloadParams) => PaymentsRequest;
 export declare const preparePaymentPayload: (params: PreparePaymentPayloadParams) => Promise<PaymentsRequest>;
 export {};

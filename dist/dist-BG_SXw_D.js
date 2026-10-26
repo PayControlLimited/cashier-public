@@ -1,3 +1,4 @@
+/* CASHIER_CORE_CRYPTO_SELECT=0 */
 import e, { memo as t, useCallback as n, useEffect as r, useRef as i, useState as a } from "react";
 //#region ../../node_modules/@monaco-editor/loader/lib/es/_virtual/_rollupPluginBabelHelpers.js
 function o(e, t) {

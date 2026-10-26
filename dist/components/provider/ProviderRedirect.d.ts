@@ -8,6 +8,6 @@ type Props = {
     redirectScriptId?: RedirectWithType['scriptId'];
     timeout?: RedirectWithType['timeout'];
 };
-declare const ProviderRedirect: ({ paymentId, redirectUrl, redirectMethod, redirectData, redirectType, redirectScriptId, timeout, }: Props) => import('react').JSX.Element | null;
+declare const ProviderRedirect: (props: Props) => import('react').JSX.Element;
 export default ProviderRedirect;
 //# sourceMappingURL=ProviderRedirect.d.ts.map

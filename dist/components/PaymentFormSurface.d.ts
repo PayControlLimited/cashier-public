@@ -3,11 +3,12 @@ export type PaymentFormSurfaceKind = 'form' | 'field-panel';
 export type PaymentFormSurfaceChrome = 'contained' | 'plain';
 type PaymentFormSurfaceProps = {
     children: ReactNode;
+    active?: boolean;
     kind: PaymentFormSurfaceKind;
     chrome?: PaymentFormSurfaceChrome;
     fieldEdgeSpacing?: 'default' | 'balanced';
     animateEntrance?: boolean;
 };
-export default function PaymentFormSurface({ children, kind, chrome, fieldEdgeSpacing, animateEntrance, }: PaymentFormSurfaceProps): import('react').JSX.Element;
+export default function PaymentFormSurface({ children, active, kind, chrome, fieldEdgeSpacing, animateEntrance, }: PaymentFormSurfaceProps): import('react').JSX.Element;
 export {};
 //# sourceMappingURL=PaymentFormSurface.d.ts.map

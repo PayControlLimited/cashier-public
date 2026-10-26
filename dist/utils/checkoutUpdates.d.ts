@@ -23,6 +23,13 @@ export declare const createCheckoutUpdates: ({ canChange, invalidatePreparation,
         paymentContextId?: string;
         requestId?: string;
     }>;
+    getPendingRequest: () => Readonly<{
+        requestId: string;
+        reason: "offer-selection" | "refresh" | "expiry";
+        basePaymentContextId: string;
+        selectedOfferId: string | null;
+    }> | undefined;
+    getSelectionAvailability: (id: string | null) => "available" | "busy" | "unavailable";
     getConfirmed: () => CashierCheckoutSnapshot | undefined;
     getRefreshAvailability: () => "available" | "busy" | "unavailable";
     subscribe: (listener: () => void) => () => void;

@@ -1,3 +1,4 @@
+/* CASHIER_CORE_CRYPTO_SELECT=0 */
 import { CashierBonusesStyle as e, CashierComboViewPaymentTypesMode as t, CashierLayoutListType as n, CashierMethods as r, CashierSuggestAction as i } from "./types/CashierConfig.js";
 //#region src/config/defaults.ts
 var a = "https://hf.pvault.net", o = {

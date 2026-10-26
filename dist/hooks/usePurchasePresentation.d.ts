@@ -10,6 +10,7 @@ export declare const usePurchasePresentation: (screen: CashierPresentationScreen
     previewAmount?: string;
     additionalAwards?: readonly CashierFrozenAward[];
 }) => {
+    purchase: import('../utils/purchaseContext.js').PurchaseCapture | undefined;
     elements: Readonly<{
         id: string;
         scope: "global" | "payment";

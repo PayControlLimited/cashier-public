@@ -1,4 +1,7 @@
 export declare const CashierEmbeddingContext: import('react').Context<{
+    instanceId: `${string}-${string}-${string}-${string}-${string}`;
+    getBrowserActionId: () => `${string}-${string}-${string}-${string}-${string}`;
+    getBrowserAuthorityId: () => `${string}-${string}-${string}-${string}-${string}`;
     creation: Readonly<{
         getSnapshot: () => import('libs/cashier-core/src/controller/paymentCreation').PaymentCreationSnapshot;
         subscribe: (listener: () => unknown) => () => void;
@@ -63,6 +66,7 @@ export declare const CashierEmbeddingContext: import('react').Context<{
         confirmReconciliation: (paymentId: string) => void;
         rejectReconciliation: () => void;
         restore: (value: unknown, paymentId: string, merchantId: string) => boolean;
+        restoreUncertain: (value: unknown, merchantId: string) => boolean;
         omitContext: (paymentId: string) => void;
         restart: () => boolean;
         isBlocked: () => boolean;
@@ -75,6 +79,13 @@ export declare const CashierEmbeddingContext: import('react').Context<{
             paymentContextId?: string;
             requestId?: string;
         }>;
+        getPendingRequest: () => Readonly<{
+            requestId: string;
+            reason: "offer-selection" | "refresh" | "expiry";
+            basePaymentContextId: string;
+            selectedOfferId: string | null;
+        }> | undefined;
+        getSelectionAvailability: (id: string | null) => "available" | "busy" | "unavailable";
         getConfirmed: () => import('..').CashierCheckoutSnapshot | undefined;
         getRefreshAvailability: () => "available" | "busy" | "unavailable";
         subscribe: (listener: () => void) => () => void;
@@ -100,11 +111,11 @@ export declare const CashierEmbeddingContext: import('react').Context<{
         canPay: () => boolean;
     };
     summaryState: Readonly<{
-        getAccess: () => import('./summaryState.js').CashierSummaryAccess;
-        setAccess: (next: import('./summaryState.js').CashierSummaryAccess) => void;
+        getAccess: () => import('../utils/summaryState.js').CashierSummaryAccess;
+        setAccess: (next: import('../utils/summaryState.js').CashierSummaryAccess) => void;
         clearAccess: () => void;
-        getProgress: () => import('./summaryState.js').CashierSummaryProgressState;
-        setProgress: (next: import('./summaryState.js').CashierSummaryProgressState) => void;
+        getProgress: () => import('../utils/summaryState.js').CashierSummaryProgressState;
+        setProgress: (next: import('../utils/summaryState.js').CashierSummaryProgressState) => void;
         clearProgress: () => void;
         hasProviderStep: (paymentId: string | null) => boolean;
     }>;
@@ -144,6 +155,9 @@ export declare const CashierEmbeddingContext: import('react').Context<{
     reconcile: (options?: import('..').CashierReconcileOptions) => import('..').CashierEmbeddingCommandResult;
 } | null>;
 export declare const useCashierEmbeddingState: () => {
+    instanceId: `${string}-${string}-${string}-${string}-${string}`;
+    getBrowserActionId: () => `${string}-${string}-${string}-${string}-${string}`;
+    getBrowserAuthorityId: () => `${string}-${string}-${string}-${string}-${string}`;
     creation: Readonly<{
         getSnapshot: () => import('libs/cashier-core/src/controller/paymentCreation').PaymentCreationSnapshot;
         subscribe: (listener: () => unknown) => () => void;
@@ -208,6 +222,7 @@ export declare const useCashierEmbeddingState: () => {
         confirmReconciliation: (paymentId: string) => void;
         rejectReconciliation: () => void;
         restore: (value: unknown, paymentId: string, merchantId: string) => boolean;
+        restoreUncertain: (value: unknown, merchantId: string) => boolean;
         omitContext: (paymentId: string) => void;
         restart: () => boolean;
         isBlocked: () => boolean;
@@ -220,6 +235,13 @@ export declare const useCashierEmbeddingState: () => {
             paymentContextId?: string;
             requestId?: string;
         }>;
+        getPendingRequest: () => Readonly<{
+            requestId: string;
+            reason: "offer-selection" | "refresh" | "expiry";
+            basePaymentContextId: string;
+            selectedOfferId: string | null;
+        }> | undefined;
+        getSelectionAvailability: (id: string | null) => "available" | "busy" | "unavailable";
         getConfirmed: () => import('..').CashierCheckoutSnapshot | undefined;
         getRefreshAvailability: () => "available" | "busy" | "unavailable";
         subscribe: (listener: () => void) => () => void;
@@ -245,11 +267,11 @@ export declare const useCashierEmbeddingState: () => {
         canPay: () => boolean;
     };
     summaryState: Readonly<{
-        getAccess: () => import('./summaryState.js').CashierSummaryAccess;
-        setAccess: (next: import('./summaryState.js').CashierSummaryAccess) => void;
+        getAccess: () => import('../utils/summaryState.js').CashierSummaryAccess;
+        setAccess: (next: import('../utils/summaryState.js').CashierSummaryAccess) => void;
         clearAccess: () => void;
-        getProgress: () => import('./summaryState.js').CashierSummaryProgressState;
-        setProgress: (next: import('./summaryState.js').CashierSummaryProgressState) => void;
+        getProgress: () => import('../utils/summaryState.js').CashierSummaryProgressState;
+        setProgress: (next: import('../utils/summaryState.js').CashierSummaryProgressState) => void;
         clearProgress: () => void;
         hasProviderStep: (paymentId: string | null) => boolean;
     }>;

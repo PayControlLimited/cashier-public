@@ -516,6 +516,11 @@ const config: Partial<CashierConfig> = {
 `CashierPaymentSummaryResponse` mirrors the Summary API response shape as a
 Cashier-owned public type for package consumers.
 
+Summary field strings display exactly as supplied, including numeric references
+and date-like text. Currency formatting applies only to structured
+`{ value, currency }` amounts. The same values reach standard receipts and
+presentation overrides; `onPaymentSummary` receives the original API response.
+
 Typical summary event:
 
 ```ts

@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { CashierConfig, CashierPaymentFormState } from '../types/CashierConfig.js';
+import { PaymentFormValues } from '../utils/paymentFieldUtils.js';
 type PaymentFormObserverContextValue = {
     hasPendingInitialSurface: boolean;
     revealInitialSurface: () => void;
@@ -18,9 +19,13 @@ export declare function PaymentFormObserverProvider({ children, debug, onPayment
     onPaymentFormChanged: CashierConfig['onPaymentFormChanged'];
 }): ReactNode;
 export declare const usePaymentFormObserver: () => PaymentFormObserverContextValue;
-export declare function PaymentFormStatePublisher({ sourceId, state, }: {
+export declare function PaymentFormStatePublisher({ sourceId, state, resolveState, }: {
     sourceId: string;
     state: CashierPaymentFormState | null;
+    resolveState?: {
+        values: PaymentFormValues;
+        map: (state: CashierPaymentFormState, values: PaymentFormValues) => CashierPaymentFormState | null;
+    };
 }): null;
 export {};
 //# sourceMappingURL=paymentFormObserver.d.ts.map

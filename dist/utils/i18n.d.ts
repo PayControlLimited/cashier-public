@@ -1,6 +1,10 @@
 import { Client } from '../../../api/src/payments/client.js';
 import { CashierConfig } from '../types/CashierConfig.js';
 export { localeToString, resolveLocale } from '../../../format/src/index.ts';
+type FetchTranslationsParams = {
+    merchantId: string;
+    locale: string;
+};
 export type CashierTranslations = Record<string, string>;
 export type I18nKeyCandidates = string | readonly string[] | null | undefined;
 export declare const toCandidateList: (keys: I18nKeyCandidates) => readonly string[];
@@ -10,9 +14,12 @@ export type CashierTranslationsQueryParams = Pick<CashierConfig, 'merchantId'> &
 };
 export declare const cashierTranslationsQueryOptions: (params: CashierTranslationsQueryParams, client: Client) => {
     queryKey: readonly ["cashier", "i18n", string, string];
-    queryFn: () => Promise<CashierTranslations>;
+    queryFn: ({ signal }: {
+        signal: AbortSignal;
+    }) => Promise<CashierTranslations>;
     retry: boolean;
     staleTime: number;
     gcTime: number;
 };
+export declare const fetchCashierTranslations: ({ merchantId, locale, }: FetchTranslationsParams, client: Client, signal?: AbortSignal) => Promise<CashierTranslations>;
 //# sourceMappingURL=i18n.d.ts.map

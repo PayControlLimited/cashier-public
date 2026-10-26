@@ -14,5 +14,7 @@ export declare const encodeRedirectPayload: (payload: RedirectData, debug?: bool
 export declare const normalizeRedirectMethod: (method?: RedirectWithType["method"]) => RedirectWithType["method"];
 export declare const normalizeRedirectType: (type?: RedirectWithType["type"]) => RedirectType;
 export declare const decodeRedirectPayload: (rawData: string | undefined, debug?: boolean) => RedirectDataRecord | undefined;
+/** Comparison only: provider field order/encoding is not execution identity. */
+export declare const redirectDataIdentity: (data: RedirectData | undefined) => string;
 export {};
 //# sourceMappingURL=redirect.d.ts.map

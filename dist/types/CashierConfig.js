@@ -1,3 +1,4 @@
+/* CASHIER_CORE_CRYPTO_SELECT=0 */
 //#region src/types/CashierConfig.ts
 var e = /* @__PURE__ */ function(e) {
 	return e.PAYIN = "payin", e.PAYOUT = "payout", e.VERIFY = "verify", e;

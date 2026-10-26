@@ -62,6 +62,7 @@ export declare const createPaymentAttempt: () => {
     confirmReconciliation: (paymentId: string) => void;
     rejectReconciliation: () => void;
     restore: (value: unknown, paymentId: string, merchantId: string) => boolean;
+    restoreUncertain: (value: unknown, merchantId: string) => boolean;
     omitContext: (paymentId: string) => void;
     restart: () => boolean;
     isBlocked: () => boolean;

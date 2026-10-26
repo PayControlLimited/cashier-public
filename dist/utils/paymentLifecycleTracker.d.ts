@@ -73,6 +73,7 @@ export type PaymentLifecycleTracker = Readonly<{
     claimProviderAction: (owner: object, actionKey: string) => boolean;
     claimTerminalNavigation: (paymentId: string) => boolean;
 }>;
+export declare const normaliseApiBaseUrl: (baseUrl?: string) => string;
 /** Resolving an initially absent user preserves the existing session's authority. */
 export declare const hasPaymentAuthorityChanged: (previous: PaymentAuthorityScope | undefined, next: PaymentAuthorityScope) => boolean;
 export declare const createPaymentLifecycleTracker: (dependencies?: PaymentLifecycleTrackerDependencies) => PaymentLifecycleTracker;

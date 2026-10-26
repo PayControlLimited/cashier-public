@@ -1,4 +1,5 @@
-import { mn as e, pn as t } from "./usePaymentSelection-DEVic0G9.js";
+/* CASHIER_CORE_CRYPTO_SELECT=0 */
+import { K as e, q as t } from "./usePaymentSelection-BT8H9hee.js";
 import * as n from "react";
 import r, { useCallback as i, useDebugValue as a, useEffect as o, useMemo as s, useRef as c, useSyncExternalStore as l } from "react";
 import { jsx as u } from "react/jsx-runtime";
@@ -719,11 +720,8 @@ function Se({ path: e, params: t, decoder: n, ...r }) {
 		let o = c[5];
 		if (s = o + 1, r === o) continue;
 		let u = c[0];
-		if (u === 0) {
-			l += "/" + e.substring(r, o);
-			continue;
-		}
-		if (u === 2) {
+		if (u === 0) l += "/" + e.substring(r, o);
+		else if (u === 2) {
 			let s = t._splat;
 			a._splat = s, a["*"] = s;
 			let u = e.substring(r, c[1]), d = e.substring(c[4], o);
@@ -733,22 +731,17 @@ function Se({ path: e, params: t, decoder: n, ...r }) {
 			}
 			let f = xe("_splat", t, n);
 			l += "/" + u + f + d;
-			continue;
-		}
-		if (u === 1) {
+		} else if (u === 1) {
 			let s = e.substring(c[2], c[3]);
 			!i && !(s in t) && (i = !0), a[s] = t[s];
 			let u = e.substring(r, c[1]), d = e.substring(c[4], o), f = xe(s, t, n) ?? "undefined";
 			l += "/" + u + f + d;
-			continue;
-		}
-		if (u === 3) {
+		} else if (u === 3) {
 			let i = e.substring(c[2], c[3]), s = t[i];
 			if (s == null) continue;
 			a[i] = s;
 			let u = e.substring(r, c[1]), d = e.substring(c[4], o), f = xe(i, t, n) ?? "";
 			l += "/" + u + f + d;
-			continue;
 		}
 	}
 	return e.endsWith("/") && (l += "/"), {
@@ -892,11 +885,11 @@ function ze(e, t) {
 		return e?.structuralSharing ?? t.options.defaultStructuralSharing ? r.current = b(r.current, i) : i;
 	};
 }
-function Z(t) {
-	let r = e(), i = n.useContext(t.from ? Ne : Me), a = t.from ?? i, o = r.stores.getMatchStore(a), s = ze(t, r), c = Le(o, (e) => e ? s(e) : Re);
+function Z(e) {
+	let r = t(), i = n.useContext(e.from ? Ne : Me), a = e.from ?? i, o = r.stores.getMatchStore(a), s = ze(e, r), c = Le(o, (e) => e ? s(e) : Re);
 	if (c !== Re) return c;
-	if (t.shouldThrow ?? !0) {
-		if (process.env.NODE_ENV !== "production") throw Error(`Invariant failed: Could not find ${t.from ? `an active match from "${t.from}"` : "a nearest match!"}`);
+	if (e.shouldThrow ?? !0) {
+		if (process.env.NODE_ENV !== "production") throw Error(`Invariant failed: Could not find ${e.from ? `an active match from "${e.from}"` : "a nearest match!"}`);
 		ce();
 	}
 }
@@ -990,18 +983,18 @@ function Je(e, t, n, r, i, a) {
 		ignoreUndefined: !n?.explicitUndefined
 	}) ? !1 : !n?.includeHash || i && e.hash === t.hash;
 }
-function Ye(t, r) {
-	let i = e(), a = m(r), { activeProps: o, inactiveProps: s, activeOptions: c, to: l, preload: u, preloadDelay: d, preloadIntentProximity: f, hashScrollIntoView: h, replace: _, startTransition: v, resetScroll: y, viewTransition: ee, children: te, target: b, disabled: x, style: S, className: C, onClick: w, onBlur: T, onFocus: E, onMouseEnter: D, onMouseLeave: O, onTouchStart: k, ignoreBlocker: ne, params: re, search: ie, hash: ae, state: oe, mask: se, reloadDocument: ce, unsafeRelative: A, from: j, _fromLocation: le, ...M } = t, N = Ae(), ue = Ge(t.search), P = Ge(t.params), de = Ge(c), F = n.useMemo(() => t, [
+function Ye(e, r) {
+	let i = t(), a = m(r), { activeProps: o, inactiveProps: s, activeOptions: c, to: l, preload: u, preloadDelay: d, preloadIntentProximity: f, hashScrollIntoView: h, replace: _, startTransition: v, resetScroll: y, viewTransition: ee, children: te, target: b, disabled: x, style: S, className: C, onClick: w, onBlur: T, onFocus: E, onMouseEnter: D, onMouseLeave: O, onTouchStart: k, ignoreBlocker: ne, params: re, search: ie, hash: ae, state: oe, mask: se, reloadDocument: ce, unsafeRelative: A, from: j, _fromLocation: le, ...M } = e, N = Ae(), ue = Ge(e.search), P = Ge(e.params), de = Ge(c), F = n.useMemo(() => e, [
 		i,
-		t.from,
-		t._fromLocation,
-		t.hash,
-		t.to,
+		e.from,
+		e._fromLocation,
+		e.hash,
+		e.to,
 		ue,
 		P,
-		t.state,
-		t.mask,
-		t.unsafeRelative
+		e.state,
+		e.mask,
+		e.unsafeRelative
 	]), fe = n.useCallback((e) => {
 		let t = i.buildLocation({
 			_fromLocation: e,
@@ -1027,26 +1020,14 @@ function Ye(t, r) {
 		...S,
 		...R.style,
 		...z.style
-	}, me = n.useRef(!1), H = t.reloadDocument || I || x ? !1 : u ?? i.options.defaultPreload, U = d ?? i.options.defaultPreloadDelay ?? 0, W = n.useCallback(() => {
+	}, me = n.useRef(!1), H = e.reloadDocument || I || x ? !1 : u ?? i.options.defaultPreload, U = d ?? i.options.defaultPreloadDelay ?? 0, W = n.useCallback(() => {
 		i.preloadRoute(F).catch((e) => {
 			console.warn(e), console.warn(Ee);
 		});
 	}, [i, F]), G = n.useCallback((e) => {
-		if (!e) {
-			et(a);
-			return;
-		}
-		if (!(e.isIntersecting ?? H === "intent")) {
-			e.isIntersecting === !1 && et(a);
-			return;
-		}
-		if (!U) {
-			W();
-			return;
-		}
-		Q.has(a) || Q.set(a, setTimeout(() => {
+		e ? e.isIntersecting ?? H === "intent" ? U ? Q.has(a) || Q.set(a, setTimeout(() => {
 			Q.delete(a), W();
-		}, U));
+		}, U)) : W() : e.isIntersecting === !1 && et(a) : et(a);
 	}, [
 		W,
 		a,
@@ -1145,8 +1126,8 @@ var rt = n.forwardRef((e, t) => {
 	}
 	return n.createElement(r, o, s);
 }), it = class extends De {
-	constructor(e) {
-		super(e), this.useMatch = (e) => Z({
+	constructor(t) {
+		super(t), this.useMatch = (e) => Z({
 			select: e?.select,
 			from: this.id,
 			structuralSharing: e?.structuralSharing
@@ -1167,7 +1148,7 @@ var rt = n.forwardRef((e, t) => {
 		}), this.useLoaderData = (e) => Be({
 			...e,
 			from: this.id
-		}), this.useNavigate = () => t({ from: this.fullPath }), this.Link = r.forwardRef((e, t) => /* @__PURE__ */ u(rt, {
+		}), this.useNavigate = () => e({ from: this.fullPath }), this.Link = r.forwardRef((e, t) => /* @__PURE__ */ u(rt, {
 			ref: t,
 			from: this.fullPath,
 			...e
@@ -1178,8 +1159,8 @@ function at(e) {
 	return new it(e);
 }
 var ot = class extends Oe {
-	constructor(e) {
-		super(e), this.useMatch = (e) => Z({
+	constructor(t) {
+		super(t), this.useMatch = (e) => Z({
 			select: e?.select,
 			from: this.id,
 			structuralSharing: e?.structuralSharing
@@ -1200,7 +1181,7 @@ var ot = class extends Oe {
 		}), this.useLoaderData = (e) => Be({
 			...e,
 			from: this.id
-		}), this.useNavigate = () => t({ from: this.fullPath }), this.Link = r.forwardRef((e, t) => /* @__PURE__ */ u(rt, {
+		}), this.useNavigate = () => e({ from: this.fullPath }), this.Link = r.forwardRef((e, t) => /* @__PURE__ */ u(rt, {
 			ref: t,
 			from: this.fullPath,
 			...e

@@ -50,6 +50,11 @@ export declare const hasConfiguredBonuses: (bonuses?: CashierBonusDefinition[] |
 export declare const getBonusAvailabilityForPaymentType: (bonuses: CashierBonusDefinition[], paymentType?: PaymentType | null, context?: BonusEvaluationContext) => BonusAvailability[];
 export declare const getBonusAvailabilityForPaymentTypes: (bonuses: CashierBonusDefinition[], paymentTypes: PaymentType[], selectedPaymentType?: PaymentType | null, context?: BonusEvaluationContext) => BonusAvailability[];
 export declare const getAvailableBonusesForPaymentType: (bonuses: CashierBonusDefinition[], paymentType?: PaymentType | null, context?: BonusEvaluationContext) => CashierBonusDefinition[];
+export declare const resolveSubmittableBonusCode: ({ uiBonuses, selectedBonusCode, availableBonuses, }: {
+    uiBonuses: boolean;
+    selectedBonusCode?: string | null;
+    availableBonuses: CashierBonusDefinition[];
+}) => string | undefined;
 export declare const resolveBonusAwardDetails: (bonus: Pick<CashierBonusDefinition, "awards" | "maxBonus" | "maxBonusPercentage">, amount?: number | null) => BonusAwardDetails | null;
 /** Bonus policy adapter. Quantities and display lines use the shared award engine. */
 export declare const resolveBonusAwardLines: (bonus: Pick<CashierBonusDefinition, "code" | "title" | "awards">, options: Omit<BonusSummaryAwardLineOptions, "paymentStatus">) => CashierFrozenAward[];

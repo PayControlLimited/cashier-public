@@ -6,7 +6,7 @@ export declare function SummaryRow({ leading, children, trailing, compact, basel
     trailing?: ReactNode;
     compact?: boolean;
     baseline?: boolean;
-    wrapTrailing?: boolean;
+    wrapTrailing?: boolean | 'narrow';
 }): import('react').JSX.Element;
 /** Shared label/description column used by payment, bonus and merchant rows. */
 export declare function SummaryRowContent({ children, className, }: {
