@@ -1,5 +1,5 @@
 import { CSSProperties, KeyboardEvent, MouseEvent, ReactNode } from 'react';
-import { UiAppearance, UiShape, UiVariant } from '../../../ui/src/client.js';
+import { StatusTagProps, UiAppearance, UiShape, UiVariant } from '../../../ui/src/client.js';
 import { CashierLayoutListType } from '../types/CashierConfig.js';
 import { PaymentType, PaymentTypeLogoSource } from '../types/payment.js';
 import { CashierLogoThemeSurface } from '../components/PaymentTypeLogo.js';
@@ -32,6 +32,7 @@ export type PaymentTypeListItemProps = Pick<PaymentType, 'name'> & Partial<Pick<
         id: string;
         label: ReactNode;
         variant?: UiVariant;
+        status?: Pick<StatusTagProps, 'tone' | 'statusLabel' | 'showMarker'>;
     }>;
     hasAvailableBonuses?: boolean;
     interactive?: boolean;

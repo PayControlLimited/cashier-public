@@ -2,6 +2,60 @@
 
 ## Unreleased
 
+## 1.7.2
+
+### Added
+
+- Cashier displays sections supplied by the Payment API in payment-method lists,
+  grids, accordions and picker drawers. Custom renderers can use the optional
+  `paymentTypeGroups` field to display the same sections.
+- Read-only payment steps, such as a QR code the payer scans with their banking
+  app, show “Waiting for your payment” in place of a submit button. Cashier
+  advances when the payment status allows it. Merchants can customise the
+  message with `payment.awaiting_payment`.
+
+### Changed
+
+- Cashier now lists available saved accounts first, then unavailable saved
+  accounts, then new payment methods, within each section or across the list
+  when there are no sections. Set `uiPaymentTypesSort` to `as-provided` to keep
+  the Payment API order. The default is `accounts-first`. Integrations that
+  construct a complete `CashierConfig` must supply this field.
+- Currency displays show up to 20 fractional digits by default so small
+  positive amounts stay visible. Explicit precision settings in
+  `currencyFormatOptions` control display rounding.
+- Unavailable saved payment methods show an **Unavailable** badge. Direct
+  links explain that the method is unavailable and offer applicable recovery
+  actions. Merchants who customised `account.saved_card_expiry_invalid` can
+  customise the new explanation with `account.unavailable.description`.
+
+### Fixed
+
+- Payment methods that require an amount reject missing, malformed, zero and
+  negative amounts, including when the amount is locked or hidden. Small
+  positive decimals retain their exact value, and payers can correct malformed
+  prefills when the amount is editable.
+- Amount validation uses the same effective limits before and after method
+  selection, including saved-account limits and gaps between supported ranges.
+  Cashier displays those ranges in the configured currency and locale. If the
+  withdrawable balance is the tighter payout limit, Cashier shows
+  “Insufficient balance.” before submission, using `error.insufficient_balance`.
+- Payment methods that require no amount omit `amount` from the request.
+  Switching between methods preserves the editable amount draft, and **Continue**
+  remains available in amount-first flows that offer only amountless methods.
+- A confirmed zero-price checkout calls `onNoPaymentRequired` once, even if
+  the payer clicks **Return to shop** repeatedly. Pending and expired zero-price
+  checkouts show their checkout status without an amount validation error.
+- Repeated payment methods open the correct form and saved account without
+  carrying over another method's values. An empty payment-method response
+  clears previous choices.
+- Cashier retains recovery for an in-flight payment when React Suspense
+  temporarily hides it.
+- Informational payment methods show payment information instead of prompting
+  payers to enter details or indicating that the method is ready to pay.
+- Keyboard focus stays visible on payment-method rows, accordion headers and
+  floating pickers, and is preserved when choosing a method from a compact menu.
+
 ## 1.7.1
 
 ### Added

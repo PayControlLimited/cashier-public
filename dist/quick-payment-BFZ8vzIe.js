@@ -1,5 +1,5 @@
 /* CASHIER_CORE_CRYPTO_SELECT=0 */
-import { t as e } from "./combo-61ppBbl3.js";
+import { t as e } from "./combo-Um8sk9LB.js";
 //#region src/routes/quick-payment/index.tsx?tsr-split=component
 var t = e;
 //#endregion

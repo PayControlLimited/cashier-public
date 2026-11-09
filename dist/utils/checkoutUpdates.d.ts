@@ -11,8 +11,9 @@ type Binding = {
     observe?: (state: CashierCheckoutState) => void | Promise<void>;
 };
 /** Instance-owned checkout facts. Payment creation remains solely with PaymentAttempt. */
-export declare const createCheckoutUpdates: ({ canChange, invalidatePreparation, now, }: {
+export declare const createCheckoutUpdates: ({ canChange, canHandOffNoPayment, invalidatePreparation, now, }: {
     canChange: () => boolean;
+    canHandOffNoPayment?: () => boolean;
     invalidatePreparation: () => void;
     now?: () => number;
 }) => {
@@ -31,6 +32,8 @@ export declare const createCheckoutUpdates: ({ canChange, invalidatePreparation,
     }> | undefined;
     getSelectionAvailability: (id: string | null) => "available" | "busy" | "unavailable";
     getConfirmed: () => CashierCheckoutSnapshot | undefined;
+    hasNoPaymentRequiredHandoff: () => boolean;
+    claimNoPaymentRequired: () => CashierCheckoutSnapshot | undefined;
     getRefreshAvailability: () => "available" | "busy" | "unavailable";
     subscribe: (listener: () => void) => () => void;
     activate: () => void;

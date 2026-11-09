@@ -2,6 +2,9 @@
 import { CashierBonusesStyle as e, CashierComboViewPaymentTypesMode as t, CashierLayoutListType as n, CashierMethods as r, CashierSuggestAction as i } from "./types/CashierConfig.js";
 //#region src/config/defaults.ts
 var a = "https://hf.pvault.net", o = {
+	trailingZeroDisplay: "stripIfInteger",
+	maximumFractionDigits: 20
+}, s = {
 	merchantId: "000e8400-e29b-41d4-a716-446655440002",
 	userId: "kalle_kula",
 	sessionId: "session_example",
@@ -13,6 +16,7 @@ var a = "https://hf.pvault.net", o = {
 	lockAmount: !1,
 	currency: "EUR",
 	uiListStyle: n.GRID,
+	uiPaymentTypesSort: "accounts-first",
 	locale: "en-GB",
 	uiPaymentMethodSwitcher: !0,
 	uiUserBalance: !1,
@@ -53,7 +57,7 @@ var a = "https://hf.pvault.net", o = {
 	uiOffersStyle: void 0,
 	uiOffersAvailable: void 0,
 	paymentContextId: void 0,
-	currencyFormatOptions: { trailingZeroDisplay: "stripIfInteger" },
+	currencyFormatOptions: o,
 	dateTimeFormatOptions: {
 		dateStyle: "medium",
 		timeStyle: "short"
@@ -66,4 +70,4 @@ var a = "https://hf.pvault.net", o = {
 	uiSelectorPrefix: void 0
 };
 //#endregion
-export { o as n, a as t };
+export { a as n, s as r, o as t };

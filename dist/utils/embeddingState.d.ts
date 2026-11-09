@@ -95,6 +95,8 @@ export declare const createCashierEmbeddingState: (tracker: PaymentLifecycleTrac
         }> | undefined;
         getSelectionAvailability: (id: string | null) => "available" | "busy" | "unavailable";
         getConfirmed: () => import('..').CashierCheckoutSnapshot | undefined;
+        hasNoPaymentRequiredHandoff: () => boolean;
+        claimNoPaymentRequired: () => import('..').CashierCheckoutSnapshot | undefined;
         getRefreshAvailability: () => "available" | "busy" | "unavailable";
         subscribe: (listener: () => void) => () => void;
         activate: () => void;

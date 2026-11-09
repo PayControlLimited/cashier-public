@@ -4,6 +4,16 @@ type PaymentTypeWithHf = PaymentType & {
 };
 export default function usePaymentTypes(): {
     paymentTypesList: import('../../../api/src/payments.ts').PaymentType[];
+    paymentTypeGroups: {
+        label: Readonly<{
+            value: string;
+            key?: string;
+        }>;
+        id: string;
+        kind: "section" | "unsectioned";
+        sectionId?: string;
+        paymentTypeIds: readonly string[];
+    }[] | undefined;
     getPaymentType: (id: string) => PaymentTypeWithHf | null;
     pciTenantId: string | undefined;
     isLoading: boolean;

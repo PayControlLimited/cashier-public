@@ -12,6 +12,7 @@ declare const meta: {
     };
     decorators: ((Story: import('storybook/internal/csf').PartialStoryFn<import('@storybook/react').ReactRenderer, {
         paymentTypes: PaymentType[];
+        paymentTypeGroups?: readonly import('..').CashierPresentationPaymentTypeGroup[] | undefined;
         selectedPaymentType?: string | null | undefined;
         onSelect?: ((id: string) => void) | undefined;
         renderPanel: (paymentType: PaymentType) => ReactNode;
@@ -34,6 +35,7 @@ declare const meta: {
         bonusEvaluationContext?: (import('../utils/bonuses.js').BonusEvaluationContext | ((paymentType: PaymentType) => import('../utils/bonuses.js').BonusEvaluationContext | undefined)) | undefined;
     }>, context: import('storybook/internal/csf').StoryContext<import('@storybook/react').ReactRenderer, {
         paymentTypes: PaymentType[];
+        paymentTypeGroups?: readonly import('..').CashierPresentationPaymentTypeGroup[] | undefined;
         selectedPaymentType?: string | null | undefined;
         onSelect?: ((id: string) => void) | undefined;
         renderPanel: (paymentType: PaymentType) => ReactNode;

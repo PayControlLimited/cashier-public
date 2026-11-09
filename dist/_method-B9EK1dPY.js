@@ -1,11 +1,11 @@
 /* CASHIER_CORE_CRYPTO_SELECT=0 */
 import { CashierMethods as e } from "./types/CashierConfig.js";
-import "./purchase-CcLuoaCq.js";
-import { Sr as t, br as n, kn as r } from "./usePaymentSelection-BT8H9hee.js";
-import "./inlinePaymentSubmit-B9nyF_92.js";
-import { P as i, R as a, t as o } from "./fileRoute-D8JEWbd3.js";
-import { t as s } from "./CashierFullscreenLoader-BUvXkLZm.js";
-import "./StatusText-CnBd38Fg.js";
+import "./purchase-Bc_pT4mi.js";
+import { Dr as t, Tr as n, hn as r } from "./usePaymentSelection-ikQnuCZA.js";
+import "./inlinePaymentSubmit-D-34_gib.js";
+import { P as i, R as a, t as o } from "./fileRoute-DLfgXLd5.js";
+import { t as s } from "./CashierFullscreenLoader-fJ94qcDn.js";
+import "./StatusText-DqwaY5yi.js";
 import * as c from "react";
 import { jsx as l } from "react/jsx-runtime";
 //#region ../../node_modules/@tanstack/react-router/dist/esm/lazyRouteComponent.js
@@ -32,7 +32,7 @@ function u(e, t) {
 }
 //#endregion
 //#region src/routes/pts/$method.tsx
-var d = () => import("./_method-D6vTZtX-.js"), f = () => import("./_method-C6C2S5Ik.js"), p = async (r) => {
+var d = () => import("./_method-Dv6tOSZ3.js"), f = () => import("./_method-xur2PJOI.js"), p = async (r) => {
 	let { merchantId: i, method: a, userId: o, sessionId: s, currency: c, fetchConfig: l, extraAttributes: u, debug: d, apiClient: f, queryClient: p } = r, m = {
 		merchantId: i,
 		method: a === e.PAYOUT ? e.PAYOUT : e.PAYIN,
@@ -45,7 +45,11 @@ var d = () => import("./_method-D6vTZtX-.js"), f = () => import("./_method-C6C2S
 	};
 	if (p.getQueryState(n(m))?.status === "error") return { paymentTypes: [] };
 	try {
-		return { paymentTypes: (await t(p, m, f)).paymentTypes };
+		let e = await t(p, m, f);
+		return {
+			paymentTypes: e.paymentTypes,
+			sections: e.sections
+		};
 	} catch {
 		return { paymentTypes: [] };
 	}

@@ -11,6 +11,7 @@ export type CashierState = Pick<CashierConfig, 'method' | 'currency' | 'initialA
     resetFlowOnBack: boolean;
     hasAppliedGotoPaymentType: boolean;
     entryDecision?: CashierEntryDecision | null;
+    paymentTypeSelectionInvalidated?: boolean;
 };
 export declare const createCashierState: (config: CashierConfig) => CashierState;
 export type CashierContextValue = CashierConfig & CashierMerchantInput & CashierState & {

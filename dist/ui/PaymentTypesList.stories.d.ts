@@ -13,6 +13,7 @@ declare const meta: {
     };
     decorators: ((Story: import('storybook/internal/csf').PartialStoryFn<import('@storybook/react').ReactRenderer, {
         paymentTypes: PaymentType[];
+        paymentTypeGroups?: readonly import('..').CashierPresentationPaymentTypeGroup[] | undefined;
         onSelect?: ((id: string) => void) | undefined;
         listStyle?: CashierLayoutListType | undefined;
         compact?: boolean | undefined;
@@ -33,6 +34,7 @@ declare const meta: {
         themeSlot?: import('./PaymentTypeListItem.js').PaymentTypeListItemThemeSlot | undefined;
     }>, context: import('storybook/internal/csf').StoryContext<import('@storybook/react').ReactRenderer, {
         paymentTypes: PaymentType[];
+        paymentTypeGroups?: readonly import('..').CashierPresentationPaymentTypeGroup[] | undefined;
         onSelect?: ((id: string) => void) | undefined;
         listStyle?: CashierLayoutListType | undefined;
         compact?: boolean | undefined;
@@ -57,6 +59,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export declare const ListSelectable: Story;
 export declare const GridSelectable: Story;
+export declare const SectionedList: Story;
+export declare const SectionedGrid: Story;
 export declare const ListWithoutSelection: Story;
 export declare const ListWithActions: Story;
 export declare const GridWithActions: Story;

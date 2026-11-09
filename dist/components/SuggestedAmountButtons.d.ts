@@ -8,11 +8,12 @@ type SuggestedAmountButtonsProps = {
     onSelect: (suggestion: string) => void;
     formatLabel?: (suggestion: string) => string;
     amountLimits?: AmountLimits;
+    isSuggestionSupported?: (suggestion: string) => boolean;
     size?: SuggestedAmountButtonSize;
     disabled?: boolean;
     className?: string;
     style?: CSSProperties;
 };
-declare function SuggestedAmountButtons({ suggestions, activeSuggestion, onSelect, formatLabel, amountLimits, size, disabled, className, style, }: SuggestedAmountButtonsProps): import('react').JSX.Element | null;
+declare function SuggestedAmountButtons({ suggestions, activeSuggestion, onSelect, formatLabel, amountLimits, isSuggestionSupported, size, disabled, className, style, }: SuggestedAmountButtonsProps): import('react').JSX.Element | null;
 export default SuggestedAmountButtons;
 //# sourceMappingURL=SuggestedAmountButtons.d.ts.map

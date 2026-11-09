@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
 import { UiAppearance, UiVariant } from '../../../ui/src/client.js';
+import { CashierPresentationPaymentTypeGroup } from '../types/presentation.js';
 import { PaymentType } from '../types/payment.js';
 import { BonusEvaluationContext } from '../utils/bonuses.js';
 type BonusEvaluationContextInput = BonusEvaluationContext | ((paymentType: PaymentType) => BonusEvaluationContext | undefined);
 type PaymentTypesAccordionProps = {
     paymentTypes: PaymentType[];
+    paymentTypeGroups?: readonly CashierPresentationPaymentTypeGroup[];
     selectedPaymentType?: string | null;
     onSelect?: (id: string) => void;
     renderPanel: (paymentType: PaymentType) => ReactNode;
@@ -26,6 +28,6 @@ type PaymentTypesAccordionProps = {
     animateItems?: boolean;
     bonusEvaluationContext?: BonusEvaluationContextInput;
 };
-declare function PaymentTypesAccordion({ paymentTypes, selectedPaymentType, onSelect, renderPanel, renderFooter, hasPanel, hasPanelBody, collapsible, showMeta, compact, renderActions, isPaymentTypeDisabled, interactionLocked, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, hoverMode, domScope, animateItems, bonusEvaluationContext, }: PaymentTypesAccordionProps): import('react').JSX.Element;
+declare function PaymentTypesAccordion({ paymentTypes, paymentTypeGroups, selectedPaymentType, onSelect, renderPanel, renderFooter, hasPanel, hasPanelBody, collapsible, showMeta, compact, renderActions, isPaymentTypeDisabled, interactionLocked, preserveDisabledSelection, itemVariant, itemAppearance, includeItemDataTheme, hoverMode, domScope, animateItems, bonusEvaluationContext, }: PaymentTypesAccordionProps): import('react').JSX.Element;
 export default PaymentTypesAccordion;
 //# sourceMappingURL=PaymentTypesAccordion.d.ts.map

@@ -4,6 +4,9 @@ import { TranslateKeysFn } from '../utils/paymentFieldUtils.js';
 import { EntranceAnimationDirection } from '../utils/entranceAnimation.js';
 type PaymentFieldListProps = {
     fields: readonly PaymentTypeField[];
+    validationMode?: 'local' | 'external';
+    amountValidationMode?: 'local' | 'external';
+    textMode?: 'keys' | 'resolved';
     translateKey: (key: string | null | undefined) => string;
     translateKeys: TranslateKeysFn;
     disabled?: boolean;
@@ -33,6 +36,6 @@ type PaymentFieldListProps = {
     reserveTrailingActionClearance?: boolean;
     submitUnrenderedFields?: boolean;
 };
-declare const PaymentFieldList: ({ fields, translateKey, translateKeys, disabled, amountError, amountFieldId, renderBelowFieldContent, belowFieldContentClassName, belowFieldContentInheritsTheme, renderBeforeField, renderAfterField, renderAfterFieldRow, animateRows, animationStartIndex, animationTotalCount, animationDirection, reserveInputMessageSpace, reserveCheckboxMessageSpace, reserveLastCheckboxMessageSpace, reserveLastAmountMessageSpace, addFirstFieldTopPadding, addLastFieldBottomPadding, allowReservedLastFieldBottomPadding, reserveTrailingActionClearance, submitUnrenderedFields, }: PaymentFieldListProps) => import('react').JSX.Element;
+declare const PaymentFieldList: ({ fields, validationMode, amountValidationMode, textMode, translateKey, translateKeys, disabled, amountError, amountFieldId, renderBelowFieldContent, belowFieldContentClassName, belowFieldContentInheritsTheme, renderBeforeField, renderAfterField, renderAfterFieldRow, animateRows, animationStartIndex, animationTotalCount, animationDirection, reserveInputMessageSpace, reserveCheckboxMessageSpace, reserveLastCheckboxMessageSpace, reserveLastAmountMessageSpace, addFirstFieldTopPadding, addLastFieldBottomPadding, allowReservedLastFieldBottomPadding, reserveTrailingActionClearance, submitUnrenderedFields, }: PaymentFieldListProps) => import('react').JSX.Element;
 export default PaymentFieldList;
 //# sourceMappingURL=PaymentFieldList.d.ts.map

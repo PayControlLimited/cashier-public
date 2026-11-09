@@ -12,6 +12,7 @@ export type PreparePaymentPayloadParams = RequiredPaymentPayloadParams & Optiona
     type: PaymentType['type'] | undefined;
     debug: boolean;
     overrideRaw?: string;
+    hasAmountField: boolean;
     hostRiskContext?: CashierConfig['hostRiskContext'];
     tokenizeHfData: (saveAccount?: boolean) => Promise<HostedFieldsFormData>;
     controller: HostedFieldsController | null;

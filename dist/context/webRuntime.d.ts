@@ -6,7 +6,7 @@ export declare const CashierWebRuntimeContext: import('react').Context<Readonly<
     attachBootstrapCache: (cache: import('@tanstack/query-core').QueryClient) => () => void;
     retainBootstrapCache: (cache: import('@tanstack/query-core').QueryClient) => (() => void) | undefined;
     onWebPaymentUpdated: (event: Parameters<NonNullable<import('../utils/elements.js').CashierRuntimeConfig["onPaymentUpdated"]>>[0]) => void;
-    onWebPaymentFinished: (payment: Parameters<NonNullable<import('../utils/elements.js').CashierRuntimeConfig["onPaymentFinished"]>>[0]) => void;
+    onWebPaymentFinished: (event: Parameters<NonNullable<import('../utils/elements.js').CashierRuntimeConfig["onPaymentFinished"]>>[0]) => void;
     pinQuery: (cache: import('@tanstack/query-core').QueryClient, kind: string, options: import('@tanstack/query-core').QueryObserverOptions) => void;
     submissionError: () => string | undefined;
     ordinaryForm: Readonly<{
@@ -51,22 +51,16 @@ export declare const CashierWebRuntimeContext: import('react').Context<Readonly<
     loadSummary: (paymentId: string) => Promise<import('../../../api/src/payments.ts').PaymentSummaryResponse | undefined>;
     readSummary: () => import('../../../api/src/payments.ts').PaymentSummaryResponse | undefined;
     subscribeSummary: (listener: () => void) => () => void;
-    adoptBootstrap: (next: import('../utils/elements.js').CashierRuntimeConfig, catalogue?: import('../types/payment.js').PaymentType[], translations?: import('../utils/i18n.js').CashierTranslations) => void;
-    attachConfigurationEpoch: (epoch: object) => () => void;
-    adoptWeb: (epoch: object, next: Omit<import('..').CashierConfig, "uiBonuses" | "uiBonusesStyle" | "uiBonusesAvailable" | "bonuses" | "onBonusSelected" | "onBonusDeselected"> & {
-        bonuses?: import('../types/CashierConfig.js').CashierBonusDefinition[];
-        uiBonuses: boolean;
-        uiBonusesStyle: import('..').CashierOffersStyle;
-        uiBonusesAvailable: boolean;
-        onBonusSelected?: (bonus: import('../types/CashierConfig.js').CashierBonusDefinition) => void;
-        onBonusDeselected?: (bonus: import('../types/CashierConfig.js').CashierBonusDefinition) => void;
-    } & import('../utils/elements.js').CashierMerchantInput & Partial<Pick<import('./main.js').CashierState, "selectedBonusCode">>) => void;
-    reportWebBootstrap: (status: "pending" | "ready" | "session-required" | "bootstrap-unavailable") => void;
-    ownsSelection: () => boolean;
-    attachSelection: (type: import('../types/payment.js').PaymentType | null) => () => void;
-    mapFormObserver: (state: import('..').CashierPaymentFormState, proposed: import('../utils/paymentFieldUtils.js').PaymentFormValues) => import('..').CashierPaymentFormState | null;
-    validateWeb: (type: import('../types/payment.js').PaymentType, values: import('../utils/paymentFieldUtils.js').PaymentFormValues) => Readonly<Record<string, string>>;
-    submitWeb: (type: import('../types/payment.js').PaymentType, values: import('../utils/paymentFieldUtils.js').PaymentFormValues) => Promise<boolean>;
+    updateConfiguration: (next: import('../utils/elements.js').CashierRuntimeConfig, replaceBootstrap?: boolean) => void;
+    readLockedPaymentTypes: () => Pick<import('../utils/paymentTypes.js').PaymentTypesResult, "paymentTypes" | "sections">;
+    configureCatalogue: (next: Pick<import('../utils/elements.js').CashierRuntimeConfig, "method">) => void;
+    configureHostData: (next: Pick<import('../utils/elements.js').CashierRuntimeConfig, "offers" | "uiBonuses" | "user" | "bonuses"> & {
+        selectedBonusCode?: string | null;
+    }) => void;
+    ownsSelection: (selectionId?: string) => boolean;
+    prepareOrdinary: () => boolean;
+    submitted: () => Promise<void> | undefined;
+    mapFormObserver: (state: import('..').CashierPaymentFormState) => import('..').CashierPaymentFormState | null;
     start: () => Promise<void>;
     destroy: () => void;
     getSnapshot: () => import('../../../cashier-core/src/index.ts').HeadlessCashierSnapshot;
@@ -83,7 +77,7 @@ export declare const useCashierWebRuntime: () => Readonly<{
     attachBootstrapCache: (cache: import('@tanstack/query-core').QueryClient) => () => void;
     retainBootstrapCache: (cache: import('@tanstack/query-core').QueryClient) => (() => void) | undefined;
     onWebPaymentUpdated: (event: Parameters<NonNullable<import('../utils/elements.js').CashierRuntimeConfig["onPaymentUpdated"]>>[0]) => void;
-    onWebPaymentFinished: (payment: Parameters<NonNullable<import('../utils/elements.js').CashierRuntimeConfig["onPaymentFinished"]>>[0]) => void;
+    onWebPaymentFinished: (event: Parameters<NonNullable<import('../utils/elements.js').CashierRuntimeConfig["onPaymentFinished"]>>[0]) => void;
     pinQuery: (cache: import('@tanstack/query-core').QueryClient, kind: string, options: import('@tanstack/query-core').QueryObserverOptions) => void;
     submissionError: () => string | undefined;
     ordinaryForm: Readonly<{
@@ -128,22 +122,16 @@ export declare const useCashierWebRuntime: () => Readonly<{
     loadSummary: (paymentId: string) => Promise<import('../../../api/src/payments.ts').PaymentSummaryResponse | undefined>;
     readSummary: () => import('../../../api/src/payments.ts').PaymentSummaryResponse | undefined;
     subscribeSummary: (listener: () => void) => () => void;
-    adoptBootstrap: (next: import('../utils/elements.js').CashierRuntimeConfig, catalogue?: import('../types/payment.js').PaymentType[], translations?: import('../utils/i18n.js').CashierTranslations) => void;
-    attachConfigurationEpoch: (epoch: object) => () => void;
-    adoptWeb: (epoch: object, next: Omit<import('..').CashierConfig, "uiBonuses" | "uiBonusesStyle" | "uiBonusesAvailable" | "bonuses" | "onBonusSelected" | "onBonusDeselected"> & {
-        bonuses?: import('../types/CashierConfig.js').CashierBonusDefinition[];
-        uiBonuses: boolean;
-        uiBonusesStyle: import('..').CashierOffersStyle;
-        uiBonusesAvailable: boolean;
-        onBonusSelected?: (bonus: import('../types/CashierConfig.js').CashierBonusDefinition) => void;
-        onBonusDeselected?: (bonus: import('../types/CashierConfig.js').CashierBonusDefinition) => void;
-    } & import('../utils/elements.js').CashierMerchantInput & Partial<Pick<import('./main.js').CashierState, "selectedBonusCode">>) => void;
-    reportWebBootstrap: (status: "pending" | "ready" | "session-required" | "bootstrap-unavailable") => void;
-    ownsSelection: () => boolean;
-    attachSelection: (type: import('../types/payment.js').PaymentType | null) => () => void;
-    mapFormObserver: (state: import('..').CashierPaymentFormState, proposed: import('../utils/paymentFieldUtils.js').PaymentFormValues) => import('..').CashierPaymentFormState | null;
-    validateWeb: (type: import('../types/payment.js').PaymentType, values: import('../utils/paymentFieldUtils.js').PaymentFormValues) => Readonly<Record<string, string>>;
-    submitWeb: (type: import('../types/payment.js').PaymentType, values: import('../utils/paymentFieldUtils.js').PaymentFormValues) => Promise<boolean>;
+    updateConfiguration: (next: import('../utils/elements.js').CashierRuntimeConfig, replaceBootstrap?: boolean) => void;
+    readLockedPaymentTypes: () => Pick<import('../utils/paymentTypes.js').PaymentTypesResult, "paymentTypes" | "sections">;
+    configureCatalogue: (next: Pick<import('../utils/elements.js').CashierRuntimeConfig, "method">) => void;
+    configureHostData: (next: Pick<import('../utils/elements.js').CashierRuntimeConfig, "offers" | "uiBonuses" | "user" | "bonuses"> & {
+        selectedBonusCode?: string | null;
+    }) => void;
+    ownsSelection: (selectionId?: string) => boolean;
+    prepareOrdinary: () => boolean;
+    submitted: () => Promise<void> | undefined;
+    mapFormObserver: (state: import('..').CashierPaymentFormState) => import('..').CashierPaymentFormState | null;
     start: () => Promise<void>;
     destroy: () => void;
     getSnapshot: () => import('../../../cashier-core/src/index.ts').HeadlessCashierSnapshot;

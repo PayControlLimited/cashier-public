@@ -164,6 +164,13 @@ export type CashierPresentationPaymentType = Readonly<{
     disabled: boolean;
     unavailable: boolean;
 }>;
+export type CashierPresentationPaymentTypeGroup = Readonly<{
+    id: string;
+    kind: 'section' | 'unsectioned';
+    sectionId?: string;
+    label: CashierPresentationText;
+    paymentTypeIds: readonly string[];
+}>;
 export type CashierPresentationBonus = Readonly<{
     id: string;
     title: CashierPresentationText;
@@ -191,6 +198,7 @@ export type CashierComboScreenModel = CashierPresentationModelBase<'combo'> & Re
     paymentTypesLabel: CashierPresentationText;
     continueLabel: CashierPresentationText;
     paymentTypes: readonly CashierPresentationPaymentType[];
+    paymentTypeGroups?: readonly CashierPresentationPaymentTypeGroup[];
     suggestedAmounts: readonly CashierPresentationSuggestedAmount[];
     bonuses: readonly CashierPresentationBonus[];
     selectedBonusId: string | null;
@@ -205,6 +213,7 @@ export type CashierPaymentTypesScreenModel = CashierPresentationModelBase<'payme
     continueLabel: CashierPresentationText;
     backLabel: CashierPresentationText;
     paymentTypes: readonly CashierPresentationPaymentType[];
+    paymentTypeGroups?: readonly CashierPresentationPaymentTypeGroup[];
     protectedSurfaceRequired: boolean;
     protectedSurfaceReady: boolean;
     protectedSurfaceLabel?: CashierPresentationText;

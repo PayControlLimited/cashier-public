@@ -15,6 +15,7 @@ export declare const paymentTypesQueryOptions: (params: PaymentTypesQueryOptions
         signal: AbortSignal;
     }) => Promise<PaymentTypesResult>;
     enabled: boolean;
+    structuralSharing: boolean;
     retry: boolean;
     refetchOnMount: boolean;
     retryOnMount: boolean;

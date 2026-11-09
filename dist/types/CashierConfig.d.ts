@@ -607,6 +607,11 @@ export type CashierConfig = {
     currency: CashierCurrency;
     /** @since 0.0.4 */
     uiListStyle: CashierLayoutListType;
+    /**
+     * Order saved accounts within each supplied section. Defaults to accounts-first.
+     * @since 1.7.2
+     */
+    uiPaymentTypesSort: 'accounts-first' | 'as-provided';
     /** @since 0.0.4 */
     locale: CashierLocale;
     /** @since 0.0.4 */

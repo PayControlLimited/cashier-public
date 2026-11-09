@@ -87,6 +87,8 @@ export declare const CashierEmbeddingContext: import('react').Context<{
         }> | undefined;
         getSelectionAvailability: (id: string | null) => "available" | "busy" | "unavailable";
         getConfirmed: () => import('..').CashierCheckoutSnapshot | undefined;
+        hasNoPaymentRequiredHandoff: () => boolean;
+        claimNoPaymentRequired: () => import('..').CashierCheckoutSnapshot | undefined;
         getRefreshAvailability: () => "available" | "busy" | "unavailable";
         subscribe: (listener: () => void) => () => void;
         activate: () => void;
@@ -243,6 +245,8 @@ export declare const useCashierEmbeddingState: () => {
         }> | undefined;
         getSelectionAvailability: (id: string | null) => "available" | "busy" | "unavailable";
         getConfirmed: () => import('..').CashierCheckoutSnapshot | undefined;
+        hasNoPaymentRequiredHandoff: () => boolean;
+        claimNoPaymentRequired: () => import('..').CashierCheckoutSnapshot | undefined;
         getRefreshAvailability: () => "available" | "busy" | "unavailable";
         subscribe: (listener: () => void) => () => void;
         activate: () => void;

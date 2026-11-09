@@ -6,6 +6,7 @@ type PaymentSummaryDetailsPanelBorderEdges = 'all' | 'without-top';
 type PaymentSummaryDetailsSurfaceChrome = 'panel' | 'plain';
 type PaymentSummaryDetailsProps = {
     summaryFields: PaymentSummaryField[];
+    amountDisplay?: string;
     variant?: UiVariant | null;
     rowVariants?: Partial<Record<string, UiVariant>>;
     className?: string;
@@ -19,6 +20,6 @@ type PaymentSummaryDetailsProps = {
     onlyMerchantElements?: boolean;
     presentationSlot?: boolean;
 };
-export default function PaymentSummaryDetails({ summaryFields, variant, rowVariants, className, children, panelBorderEdges, surfaceChrome, animationDirection, animationStyleOptions, animateEntrance, merchantElements, onlyMerchantElements, presentationSlot, }: PaymentSummaryDetailsProps): import('react').JSX.Element | null;
+export default function PaymentSummaryDetails({ summaryFields, amountDisplay, variant, rowVariants, className, children, panelBorderEdges, surfaceChrome, animationDirection, animationStyleOptions, animateEntrance, merchantElements, onlyMerchantElements, presentationSlot, }: PaymentSummaryDetailsProps): import('react').JSX.Element | null;
 export {};
 //# sourceMappingURL=PaymentSummaryDetails.d.ts.map

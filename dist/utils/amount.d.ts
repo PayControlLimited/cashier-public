@@ -30,5 +30,4 @@ export declare const parseAmountValue: (rawValue: string) => number | null;
 export declare const getAmountLimitStatus: (rawValue: string, limits?: AmountLimits, options?: AmountLimitOptions) => AmountLimitStatus;
 export declare const getAmountLimitErrorKey: (rawValue: string, limits?: AmountLimits, options?: AmountLimitOptions) => AmountLimitErrorKey | undefined;
 export declare const getAmountLimitErrorDetails: (rawValue: string, limits?: AmountLimits, options?: AmountLimitOptions) => AmountLimitErrorDetails | undefined;
-export declare const formatAmountLimitError: (details: AmountLimitErrorDetails | undefined, translateKey: (key: string) => string, formatAmount: (value: number) => string) => string | undefined;
 //# sourceMappingURL=amount.d.ts.map

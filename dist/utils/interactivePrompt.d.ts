@@ -53,5 +53,8 @@ export declare const createChoosePaymentTypePromptDescriptor: ({ translateKey, }
 export declare const createPaymentDetailsPromptDescriptor: ({ translateKey, }: {
     translateKey: (key: string) => string;
 }) => InteractivePromptDescriptor;
+export declare const createPaymentInfoPromptDescriptor: ({ translateKey, }: {
+    translateKey: (key: string) => string;
+}) => InteractivePromptDescriptor;
 export declare const formatAmountForInput: (value: number) => string;
 //# sourceMappingURL=interactivePrompt.d.ts.map

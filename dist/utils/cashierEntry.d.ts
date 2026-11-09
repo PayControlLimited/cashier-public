@@ -11,7 +11,6 @@ export declare const resolveEntryFields: (paymentType: PaymentType, amount: stri
     editable: boolean;
     resolved: boolean;
 };
-export declare const isPaymentTypeDisabledForAmount: (paymentType: PaymentType, config: Pick<CashierRuntimeConfig, "initialAmount" | "method" | "user">) => boolean;
 export declare const resolveCashierEntry: ({ config, paymentTypes, hasAvailableBonus, hasComboOverride, }: {
     config: CashierRuntimeConfig;
     paymentTypes: PaymentType[];

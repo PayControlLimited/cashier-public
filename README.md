@@ -608,8 +608,9 @@ with `variables` and scoped selector-object `css`. Flat
 
 In payout flows, if you provide both `user.balance` and
 `user.withdrawableBalance`, Cashier uses `withdrawableBalance` as the payout
-amount ceiling and shows the regular amount-limit error state if the entered
-amount is too high. Cashier shows `Withdrawable` and `Locked` on the combo-view
+amount ceiling. When that balance is the tighter restriction, Cashier shows
+“Insufficient balance.” (`error.insufficient_balance`) before submission.
+Payment-method limits keep the regular minimum and maximum errors. Cashier shows `Withdrawable` and `Locked` on the combo-view
 screen and on editable payout payment-form routes. Cashier also shows
 `Remaining balance` on payout summary surfaces and a payout `You will receive`
 row on the combo-view screen and in payout payment form / confirm summaries when the
@@ -808,10 +809,41 @@ configuration:
   bonus, and amount inside one shared summary card above the action area.
 - Use `lockAmount` to keep the configured amount fixed inside Cashier. The
   locked amount is shown in the summary card instead of the editable
-  payment-form amount field. If the locked `initialAmount` is blank or
-  invalid, Cashier uses `0`. Suggested amounts are hidden while the amount is
+  payment-form amount field. A blank, malformed, non-positive or out-of-range
+  locked `initialAmount` prevents payment and shows the regular amount error,
+  or offers an available amountless method.
+  Cashier preserves the attempted value;
+  it does not substitute zero. Suggested amounts are hidden while the amount is
   locked. Bonus top-up actions are hidden and restored drafts cannot change the
   locked value. Eligible partial bonus awards remain available.
+- Currency displays use `currencyFormatOptions`. The default
+  `maximumFractionDigits: 20` keeps small positive amounts visible; an explicit
+  precision setting controls display rounding without changing the payment
+  amount.
+- When a payment type declares an `amount` field, payment requires a valid
+  decimal greater than zero, including when its minimum is absent or zero,
+  the field is hidden, or the amount is locked. Supported positive fractions
+  such as `0.000001` remain valid. Editing can pass through `0` and `0.`;
+  relevant feedback appears after leaving the field and clears after correction.
+- Amount explanations and method availability use the same effective limits,
+  including saved-account overrides and withdrawable payout balance. Before
+  selection, Cashier explains when the amount falls outside all available
+  ranges or in a gap between them. Unavailable accounts do not make an amount
+  eligible. Selecting another method does not silently change the amount.
+  Minimum and maximum feedback reuses the existing `error.amount_below_limit`
+  and `error.amount_above_limit` messages. A tighter payout balance uses
+  `error.insufficient_balance` (“Insufficient balance.”). Method rows keep their range metadata
+  and disabled state without repeating the amount error. Ineligible methods
+  cannot be selected from the picker.
+- A payment type without an `amount` field is amountless. Its payment form has
+  no amount controls and its request omits `amount`, including after a method
+  switch. When amount-bearing alternatives exist, the unlocked combo selection
+  keeps the amount draft editable so the payer can correct it before switching
+  back. In separate selection, choose an amount-bearing method to correct the
+  retained amount on its form. A catalogue containing only amountless methods
+  hides amount entry. Amount-first mode keeps Continue available for those
+  methods, including after Back. Amountless verification and a confirmed
+  zero-price checkout retain their existing host handoff behaviour.
 - Locked amounts preserve useful combo views: multiple methods or accounts,
   disabled alternatives, editable inline details, Hosted Fields and eligible
   bonus choices. A sole usable method with no useful entry controls opens the
@@ -880,6 +912,49 @@ What to expect:
   change the configuration while the payment is still running. Your return page
   can call `window.close()`, which browsers allow for a window opened by a
   script, and should otherwise tell the payer they can close it.
+
+### Saved payment method availability
+
+Unavailable saved payment methods show a compact **Unavailable** badge in lists,
+grids, accordions and picker drawers. They cannot be selected, while enabled
+delete actions remain usable. Direct links show a generic explanation and offer
+the existing new-card recovery action when a matching payment method exists.
+Amount-limit failures retain their separate limit feedback.
+
+| Translation key | Default text |
+| --- | --- |
+| `account.unavailable` | Unavailable |
+| `account.unavailable.status_label` | Status (accessible badge prefix) |
+| `account.unavailable.description` | This saved payment method is unavailable. Choose another payment method. |
+
+These keys include localised package defaults for the supported locales and
+English fallback text for other locales. Merchant translations take precedence.
+They work with the existing Payment API response and translation catalogue;
+unavailable reasons are not distinguished as expired or invalid in the UI.
+
+### Amount validation translations
+
+Amount validation uses the following translation keys. Preserve each placeholder
+when overriding its text in the existing merchant or locale translation catalogue.
+API-supplied translations keep their normal precedence. Cashier includes default
+English fallback text when an older Payment API has not supplied these keys;
+debug mode still shows keys and loading visibility keeps its existing behaviour.
+
+| Key | Placeholders | Used for |
+| --- | --- | --- |
+| `error.amount_required` | None | Missing amount. |
+| `error.amount_invalid` | None | Malformed or incomplete decimal. |
+| `error.amount_must_be_positive` | None | Zero or negative amount. |
+| `error.amount_below_limit` | `{amount}` | Effective minimum, formatted in the payment currency. |
+| `error.amount_above_limit` | `{amount}` | Payment-method maximum, formatted in the payment currency. |
+| `error.insufficient_balance` | None | Withdrawable payout balance is the tighter restriction, including an exhausted balance. Default: “Insufficient balance.” Localised package fallbacks preserve merchant overrides. |
+| `error.amount_unsupported_ranges` | `{ranges}` | Available ranges, formatted with `locale` and `currencyFormatOptions` and joined with the locale's equivalent of “or”. Default: “Amount must be {ranges}.” |
+| `error.amount_no_supported_range` | None | No available method admits a positive amount. |
+| `error.amount_amountless_alternative` | None | An available method can proceed without an amount. |
+| `error.amount_locked_amountless_alternative` | None | An available amountless method can proceed when the amount is locked. |
+| `error.amount_locked_recovery` | None | Retained for compatibility; no longer appended to locked-amount errors. |
+| `amount.range_up_to` | `{amount}` | A range with only a maximum. |
+| `amount.range_from` | `{amount}` | A range with only a minimum. |
 
 ## Direct payment type selection
 
@@ -1253,7 +1328,8 @@ not prove the previous price remains valid. Backend validation remains essential
 
 Zero-price acknowledgement replaces payment inputs with an explicit
 `onNoPaymentRequired` handoff. It does not tokenise, create a payment or emit a
-payment-success event. The merchant completes the order. At Pay, recovery v4
+payment-success event. Repeated **Return to shop** actions emit the handoff once
+for the confirmed checkout. The merchant completes the order. At Pay, recovery v4
 captures literal offer binding, wording and comparison facts; v1/v2/v3 readers
 remain supported. Hosted operations require `checkoutOffers` negotiation. See the
 [configuration reference](https://github.com/PayControlLimited/PayControl/blob/master/docs/cashier/cashier-configuration.md#shared-offers-comparison-prices-and-merchant-updates)
